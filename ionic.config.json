@@ -1,0 +1,7 @@
+{
+  "name": "ULCANS_ORG",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
