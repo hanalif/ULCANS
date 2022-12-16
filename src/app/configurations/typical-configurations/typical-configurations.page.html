@@ -5,8 +5,8 @@
   <div class="tc-container main-layout">
     <div class="tc-top">
       <h1>Choose an asset you want to camouflage</h1>
-      <div class="search-container">
-
+      <div class="search-container main-layout">
+        <ion-searchbar show-clear-button="focus"></ion-searchbar>
       </div>
     </div>
     <div class="tc-middle">
@@ -20,10 +20,15 @@
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </div>
         </a>
+        <a routerLink="/configurations/configuration-calaulator" class="single-link">
+          <div class="title not-in-list">
+            Your asset is not in the list
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </div>
+        </a>
       </div>
     </div>
     <div class="tc-buttom">
-      <app-main-btn routerLink="/configurations/configuration-calaulator">Your asset is not in the list</app-main-btn>
     </div>
   </div>
 </ion-content>

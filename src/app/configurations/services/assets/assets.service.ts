@@ -11,6 +11,8 @@ export class AssetsService {
 
   constructor(private http: HttpClient) { }
 
+
+
   _getAssetes(){
     return this.http.get<Asset[]>('assets/assets.json');
   }
