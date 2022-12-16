@@ -1,0 +1,104 @@
+@import "../setup/variables";
+@import "../setup/mixins";
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 1rem;
+  scroll-behavior: smooth;
+  font-family: Roboto-Regular, sans-serif;
+}
+
+body{
+  margin: 0;
+
+  &.overflow-hidden{
+    overflow: hidden;
+  }
+}
+
+li{
+  list-style: none;
+}
+
+ul{
+  padding: 0;
+  margin: 0%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+  margin: 0;
+}
+
+img{
+  width: inherit;
+}
+
+
+.main-layout{
+  max-width: 95%;
+  margin: 0 auto;
+
+
+}
+
+div{
+  margin: 0;
+}
+
+a{
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.main-btn{
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: #0091FF;
+  border-radius: 0px 0px 0px 0px;
+  line-height: 1;
+  padding: 12px 24px;
+  fill: #fff;
+  text-align: center;
+  transition: all .3s;
+  cursor: pointer;
+  font-family: Light-font, sans-serif;
+
+
+   span{
+    text-decoration: inherit;
+   }
+
+   .main-btn-txt{
+    display: inline-block;
+   }
+}
+
+a.main-btn{
+  display: inline-block;
+  transform: skew(-17deg);
+
+  .main-btn-content{
+    display: inline-block;
+    transform: skew(17deg);
+
+
+
+  }
+}
+
+
+
+
+

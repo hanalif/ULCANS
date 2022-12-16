@@ -1,0 +1,43 @@
+@import '../../../styles/setup/mixins';
+@import '../../../styles/setup/variables';
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+
+
+
+    .logo{
+        cursor: pointer;
+        max-width: 270px;
+        min-width: 80px;
+        ion-img{
+            height: auto;
+            max-width: 100%;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+
+            @include for-bpoint-mobile{
+                max-width: 60%;
+            }
+        }
+    }
+
+    .side-nav{
+
+      display: flex;
+
+        ion-icon{
+            display: none;
+            cursor: pointer;
+
+            @include for-bpoint-mobile{
+                display: block;
+                font-size: 40px;
+            }
+        }
+    }
+}

@@ -1,20 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+  <app-header></app-header>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+    <div class="home-container">
+      <div class="img-slider-container">
+        <div class="img-slider-banner">
+          <div class="banner-content">
+            <div class="banner-top">
+              <h1 class="main-title">{{'ulcans' | uppercase}}</h1>
+            </div>
+            <div class="banner-middle">
+              <h3 class="subtitle">Ultra Lightweight</h3>
+              <h3 class="subtitle">Camouflage Net System</h3>
+            </div>
+            <div class="banner-buttom">
+              <app-main-btn routerLink="/configurations/typical-configurstions">Start using ulcans</app-main-btn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </ion-content>

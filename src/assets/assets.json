@@ -1,0 +1,123 @@
+[
+    {
+        "id": "ZRXgJ",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/JLTV.png",
+        "name": "JLTV",
+        "configurationId": "c4",
+        "measures": {
+            "widthFt": 8.2,
+            "heightFt": 8.6,
+            "lengthFt": 20.4
+        }
+    },
+    {
+        "id": "YtWnE",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/MRAP.png",
+        "name": "MRAP/MATV",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 8.25,
+            "heightFt": 10,
+            "lengthFt": 22.3
+        }
+    },
+    {
+        "id": "bRB9n",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/stryker.png",
+        "name": "Stryker",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 8.11,
+            "heightFt": 22.1,
+            "lengthFt": 8.8
+        }
+    },
+    {
+        "id": "COIiz",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/Bradley.png",
+        "name": "Bradley",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 3.6,
+            "heightFt": 6.55,
+            "lengthFt": 6.55
+        }
+    },
+    {
+        "id": "mK7YI",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/Abrams.png",
+        "name": "Abrams",
+        "configurationId": "c7",
+        "measures": {
+            "widthFt": 12,
+            "heightFt": 8,
+            "lengthFt": 32.04
+        }
+    },
+    {
+        "id": "aSlVh",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/Howitzer%20105.png",
+        "name": "Howitzer 105",
+        "configurationId": "c4",
+        "measures": {
+            "widthFt": 7.3,
+            "heightFt": 5.8,
+            "lengthFt": 19.6
+        }
+    },
+    {
+        "id": "Hjpj1",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/Howitzer%20155.png",
+        "name": "Howitzer 155",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 8,
+            "heightFt": 5.11,
+            "lengthFt": 20
+        }
+    },
+    {
+        "id": "iO9WF",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/Paladin%202.png",
+        "name": "M109 Paladin",
+        "configurationId": "c7",
+        "measures": {
+            "widthFt": 10.4,
+            "heightFt": 10.8,
+            "lengthFt": 30
+        }
+    },
+    {
+        "id": "92SHl",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/M1087.png",
+        "name": "M1087 Expandable Van",
+        "configurationId": "c8",
+        "measures": {
+            "widthFt": 96,
+            "heightFt": 145,
+            "lengthFt": 390
+        }
+    },
+    {
+        "id": "EAE1C",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/HMMET.png",
+        "name": "HEMTT",
+        "configurationId": "c8",
+        "measures": {
+            "widthFt": 8,
+            "heightFt": 9.3,
+            "lengthFt": 33.4
+        }
+    },
+    {
+        "id": "Ybq3Y",
+        "assetImgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/Tent.png",
+        "name": "Billeting Tent/GP Medium",
+        "configurationId": "c8",
+        "measures": {
+            "widthFt": 34,
+            "heightFt": 12,
+            "lengthFt": 34
+        }
+    }
+]
