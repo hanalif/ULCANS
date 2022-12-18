@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonSearchbar } from '@ionic/angular';
-import { SegmentChangeEventDetail } from '@ionic/core/dist/types/interface';
+import { Router } from '@angular/router';
+import { IonSearchbar, NavController } from '@ionic/angular';
 import { debounceTime, Subscription } from 'rxjs';
 import { Asset } from '../models/asset.model';
 import { AssetsService } from '../services/assets/assets.service';
@@ -16,7 +16,7 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
   private searchBarElSub!: Subscription;
 
 
-  constructor(private assetsService:AssetsService) { }
+  constructor(private assetsService:AssetsService, private route: Router, private navCntrl: NavController) { }
 
 
 
@@ -26,16 +26,23 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
     })
   }
 
+  onAssetLink(assetId: string){
+    this.route.navigate(['configurations', 'typical-configurations', assetId]);
+
+  }
+
   ngAfterViewInit(): void {
     this.searchBarEl.ionInput.pipe(
       debounceTime(300)
     ).subscribe(res => {
       const target = res.target as HTMLInputElement;
-      console.log(target.value)
+      this.assetsService.getSearchResultAssets(target.value).subscribe(fetchedAssets=>{
+        this.assetsList = fetchedAssets;
+      })
     })
   }
 
   ngOnDestroy(): void {
-    this.searchBarElSub.unsubscribe()
+    this.searchBarElSub?.unsubscribe()
   }
 }

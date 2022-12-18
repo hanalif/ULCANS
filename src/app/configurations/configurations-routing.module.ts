@@ -14,8 +14,8 @@ const routes: Routes = [
             loadChildren: () => import('./configuration-list/configuration-list-routing.module').then(m=> m.ConfigurationListPageRoutingModule)
         },
         {
-            path: 'typical-configurstions',
-            loadChildren: () => import('./typical-configurations/typical-configurations-routing.module').then( m => m.TypicalConfigurationsPageRoutingModule)
+            path: 'typical-configurations',
+            loadChildren: () => import('./typical-configurations/typical-configurations-routing.module').then( m => m.TypicalConfigurationsPageRoutingModule),
         },
         {
             path: 'configuration-calaulator',

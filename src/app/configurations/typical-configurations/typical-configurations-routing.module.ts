@@ -6,7 +6,11 @@ import { TypicalConfigurationsPage } from './typical-configurations.page';
 const routes: Routes = [
   {
     path: '',
-    component: TypicalConfigurationsPage
+    component: TypicalConfigurationsPage,
+  },
+  {
+    path: ':assetId',
+    loadChildren: () => import('./asset/asset.module').then( m => m.AssetPageModule)
   }
 ];
 

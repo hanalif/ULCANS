@@ -11,7 +11,7 @@
     </div>
     <div class="tc-middle">
       <div class="assets-container main-layout">
-        <a class="single-link" *ngFor="let asset of assetsList">
+        <a class="single-link" *ngFor="let asset of assetsList" (click)="onAssetLink(asset.id)">
           <div class="img-wrapper">
             <img [src]="asset.assetImgUrl">
           </div>
@@ -20,15 +20,10 @@
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </div>
         </a>
-        <a routerLink="/configurations/configuration-calaulator" class="single-link">
-          <div class="title not-in-list">
-            Your asset is not in the list
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </div>
-        </a>
       </div>
     </div>
     <div class="tc-buttom">
+      <app-main-btn routerLink="/configurations/configuration-calaulator">Your asset is not in the list</app-main-btn>
     </div>
   </div>
 </ion-content>
