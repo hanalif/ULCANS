@@ -3,8 +3,51 @@
 </ion-header>
 
 <ion-content>
-  <div class="asset-container">
-
+  <div class="asset-container main-layout">
+    <div class="asset-inline-start">
+      <div class="asset-img">
+        <img [src]="asset.assetImgUrl" alt="asset-pic">
+      </div>
+    </div>
+    <div class="asset-inline-end">
+      <div class="card">
+        <div class="card-title">
+          <h1>{{asset.name}}</h1>
+        </div>
+        <div class="card-content">
+          <div class="card-row">
+            <h3>Width: {{asset.measures.widthFt}}</h3>
+          </div>
+          <div class="card-row">
+            <h3>Height: {{asset.measures.heightFt}}</h3>
+          </div>
+          <div class="card-row">
+            <h3>Length: {{asset.measures.lengthFt}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          <h1>Suitble Configuration Type {{configuration.name}}</h1>
+        </div>
+        <div class="card-content">
+          <div class="card-row">
+            <h3>Image:</h3>
+            <div class="card-row-img">
+              <img [src]="configuration.imgUrl" alt="config-pic">
+            </div>
+          </div>
+          <div class="card-row">
+            <h3>Hexagon: {{configuration.hexagon}}</h3>
+          </div>
+          <div class="card-row">
+            <h3>Rhombus: {{configuration.rhombus}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>
+
+
 

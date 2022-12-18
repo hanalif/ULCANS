@@ -1,5 +1,5 @@
 export interface AssetMeasures{
-    width: number,
-    height: number,
-    length: number
+    widthFt: number,
+    heightFt: number,
+    lengthFt: number
 }

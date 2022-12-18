@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Asset } from '../../models/asset.model';
 import { AssetForPreview } from '../../models/assetForPreview.model';
+import { Configuration } from '../../models/configuration.model';
 import { AssetsService } from '../../services/assets/assets.service';
 
 @Component({
@@ -11,7 +12,8 @@ import { AssetsService } from '../../services/assets/assets.service';
   styleUrls: ['./asset.page.scss'],
 })
 export class AssetPage implements OnInit {
-  public assetForPreview!: AssetForPreview;
+  public asset!: Asset;
+  public configuration!: Configuration
 
 
 
@@ -21,8 +23,10 @@ export class AssetPage implements OnInit {
 
 
   ngOnInit() {
-    this.assetForPreview = this.router.snapshot.data['assetForPreview'];
-    console.log(this.assetForPreview);
+    const assetForPreview = this.router.snapshot.data['assetForPreview'];
+    this.asset = assetForPreview.asset;
+    this.configuration = assetForPreview.configuration;
+    console.log(this.asset)
 
   }
 
