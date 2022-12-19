@@ -1,26 +1,52 @@
-
+@import '../../../styles/setup/mixins';
+@import '../../../styles/setup/variables';
 
 .asset{
 
 
   &-container{
+    background-color: black;
+    border-radius: 8px;
+    padding: 0px 23px 44px;
+    gap: 32px;
+    margin-block-start: 24px;
     display: flex;
-    width: 80%;
+    width: 100%;
+
+    @include for-bpoint-tablet{
+      flex-direction: column;
+      padding: 0px;
+      gap: 0px;
+    }
+
+
   }
 
   &-inline-start{
     display: flex;
     align-items: center;
-    flex: 3;
+    flex: 5;
+
+    @include for-bpoint-tablet{
+      justify-content: center;
+    }
     .asset-img{
       width: 100%;
+
+      @include for-bpoint-tablet{
+        width: 65%;
+        display: flex;
+        justify-content: center;
+      }
+
+
     }
   }
 
   &-inline-end{
     flex: 7;
-    .card{
 
+    .card{
       font-family: Light-font, sans-serif;
 
       &-title{
@@ -29,14 +55,17 @@
         margin-block-end: 20px;
         margin-block-start: 20px;
 
+        h1{
+          @include for-bpoint-tablet{
+              font-size: 20px;
+          }
+        }
 
       }
 
       &-content{
         display: flex;
         flex-direction: column;
-
-
       }
 
       &-row{
@@ -52,10 +81,20 @@
         color: #9b9b9b;
         align-items: center;
         gap: 10px;
-        border-radius: 4px;
+
+
+        h3{
+          @include for-bpoint-tablet{
+              font-size: 16px;
+          }
+        }
 
         &-img{
           width: 80px;
+
+            @include for-bpoint-tablet{
+                width: 60px;
+            }
         }
 
       }
