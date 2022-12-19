@@ -17,6 +17,7 @@
       flex-direction: column;
       padding: 0px;
       gap: 0px;
+      margin-block-end: 20px;
     }
 
 
@@ -24,8 +25,15 @@
 
   &-inline-start{
     display: flex;
+    flex-direction: column;
     align-items: center;
     flex: 5;
+
+    ion-buttons{
+      align-self: baseline;
+      padding-block-start: 20px;
+    }
+
 
     @include for-bpoint-tablet{
       justify-content: center;
@@ -50,10 +58,13 @@
       font-family: Light-font, sans-serif;
 
       &-title{
-        text-align: center;
         color: white;
         margin-block-end: 20px;
         margin-block-start: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
 
         h1{
           @include for-bpoint-tablet{
@@ -100,4 +111,12 @@
       }
     }
   }
+}
+
+.select-btns{
+  background-color: #1f1f1f;
+}
+
+.active{
+  background-color: #00A9FF;
 }

@@ -5,6 +5,16 @@
 <ion-content>
   <div class="asset-container main-layout">
     <div class="asset-inline-start">
+      <ion-buttons slot="start">
+        <ion-back-button title="Back" defaultHref="/configurations/typical-configurations"></ion-back-button>
+        <ion-button title="Equipment Information "><ion-icon name="information-outline"></ion-icon></ion-button>
+        <ion-button title="Camouflage Instructions"><ion-icon name="book-outline"></ion-icon></ion-button>
+        <ion-button title="Configurations List"><ion-icon name="prism-outline"></ion-icon></ion-button>
+        <div class="select-btns">
+          <ion-button [ngClass]="{'active': measureOption === 1}" (click)="onSelectBtn(1)">M</ion-button>
+          <ion-button [ngClass]="{'active': measureOption === 2}"(click)="onSelectBtn(2)">FT</ion-button>
+        </div>
+      </ion-buttons>
       <div class="asset-img">
         <img [src]="asset.assetImgUrl" alt="asset-pic">
       </div>
@@ -16,19 +26,20 @@
         </div>
         <div class="card-content">
           <div class="card-row">
-            <h3>Width: {{asset.measures.widthFt}}</h3>
+            <h3>Width: {{asset.measures.widthFt | ftToM: measureOption | number: '1.1-3'}} {{measureOption === 1? 'M': 'FT'}}</h3>
           </div>
           <div class="card-row">
-            <h3>Height: {{asset.measures.heightFt}}</h3>
+            <h3>Height: {{asset.measures.heightFt | ftToM: measureOption | number: '1.1-3'}} {{measureOption === 1? 'M': 'FT'}}</h3>
           </div>
           <div class="card-row">
-            <h3>Length: {{asset.measures.lengthFt}}</h3>
+            <h3>Length: {{asset.measures.lengthFt | ftToM: measureOption | number: '1.1-3'}} {{measureOption === 1? 'M': 'FT'}}</h3>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-title">
-          <h1>Suitble Configuration of Type: {{configuration.name}}</h1>
+          <ion-icon size="large" name="prism-outline"></ion-icon>
+          <h1>Suitble Configuration: Type {{configuration.name}}</h1>
         </div>
         <div class="card-content">
           <div class="card-row">
@@ -44,6 +55,8 @@
             <h3>Rhombus: {{configuration.rhombus}}</h3>
           </div>
         </div>
+      </div>
+      <div class="card-buttom">
       </div>
     </div>
   </div>

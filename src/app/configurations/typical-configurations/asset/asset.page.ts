@@ -1,8 +1,8 @@
-import { AfterContentChecked, AfterContentInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { MeasureType } from 'src/app/shared/models/measure-type.model';
+import { FtToMPipe } from 'src/app/shared/pipes/ft-to-m.pipe';
 import { Asset } from '../../models/asset.model';
-import { AssetForPreview } from '../../models/assetForPreview.model';
 import { Configuration } from '../../models/configuration.model';
 import { AssetsService } from '../../services/assets/assets.service';
 
@@ -13,11 +13,13 @@ import { AssetsService } from '../../services/assets/assets.service';
 })
 export class AssetPage implements OnInit {
   public asset!: Asset;
-  public configuration!: Configuration
+  public configuration!: Configuration;
+  public measureToRender!: MeasureType;
 
 
 
-  constructor(private router: ActivatedRoute, private assetsService: AssetsService) { }
+  constructor(private router: ActivatedRoute, private assetsService: AssetsService, private ftToMPipe: FtToMPipe) { }
+  public measureOption: number = 1
 
 
 
@@ -27,7 +29,14 @@ export class AssetPage implements OnInit {
     this.asset = assetForPreview.asset;
     this.configuration = assetForPreview.configuration;
     console.log(this.asset)
+  }
 
+  onSelectBtn(measureType:number){
+    if(this.measureOption === measureType){
+      return;
+    }
+
+    this.measureOption = measureType;
   }
 
 
