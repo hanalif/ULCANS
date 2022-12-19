@@ -9,7 +9,7 @@
         <ion-back-button title="Back" defaultHref="/configurations/typical-configurations"></ion-back-button>
         <ion-button title="Equipment Information "><ion-icon name="information-outline"></ion-icon></ion-button>
         <ion-button title="Camouflage Instructions"><ion-icon name="book-outline"></ion-icon></ion-button>
-        <ion-button title="Configurations List"><ion-icon name="prism-outline"></ion-icon></ion-button>
+        <ion-button routerLink="/configurations" title="Configurations List"><ion-icon name="prism-outline"></ion-icon></ion-button>
         <div class="select-btns">
           <ion-button [ngClass]="{'active': measureOption === 1}" (click)="onSelectBtn(1)">M</ion-button>
           <ion-button [ngClass]="{'active': measureOption === 2}"(click)="onSelectBtn(2)">FT</ion-button>
@@ -38,7 +38,7 @@
       </div>
       <div class="card">
         <div class="card-title">
-          <ion-icon size="large" name="prism-outline"></ion-icon>
+          <ion-icon routerLink="/configurations" size="large" name="prism-outline"></ion-icon>
           <h1>Suitble Configuration: Type {{configuration.name}}</h1>
         </div>
         <div class="card-content">

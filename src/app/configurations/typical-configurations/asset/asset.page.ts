@@ -28,7 +28,6 @@ export class AssetPage implements OnInit {
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
     this.asset = assetForPreview.asset;
     this.configuration = assetForPreview.configuration;
-    console.log(this.asset)
   }
 
   onSelectBtn(measureType:number){
