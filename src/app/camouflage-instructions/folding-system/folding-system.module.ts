@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FoldingSystemPageRoutingModule } from './folding-system-routing.module';
 
 import { FoldingSystemPage } from './folding-system.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FoldingSystemPageRoutingModule
+    FoldingSystemPageRoutingModule,
+    SharedModule
   ],
   declarations: [FoldingSystemPage]
 })

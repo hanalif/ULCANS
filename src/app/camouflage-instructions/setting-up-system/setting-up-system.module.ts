@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SettingUpSystemPageRoutingModule } from './setting-up-system-routing.module';
 
 import { SettingUpSystemPage } from './setting-up-system.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SettingUpSystemPageRoutingModule
+    SettingUpSystemPageRoutingModule,
+    SharedModule
   ],
   declarations: [SettingUpSystemPage]
 })
