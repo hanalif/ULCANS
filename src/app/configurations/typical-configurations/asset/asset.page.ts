@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MeasureType } from 'src/app/shared/models/measure-type.model';
-import { FtToMPipe } from 'src/app/shared/pipes/ft-to-m.pipe';
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
-import { AssetsService } from '../../services/assets/assets.service';
+
 
 @Component({
   selector: 'app-asset',
@@ -14,15 +13,10 @@ import { AssetsService } from '../../services/assets/assets.service';
 export class AssetPage implements OnInit {
   public asset!: Asset;
   public configuration!: Configuration;
-  public measureToRender!: MeasureType;
+  public measureType: MeasureType = MeasureType.METERS;
+  public MeasureType = MeasureType;
 
-
-
-  constructor(private router: ActivatedRoute, private assetsService: AssetsService, private ftToMPipe: FtToMPipe) { }
-  public measureOption: number = 1
-
-
-
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit() {
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
@@ -30,13 +24,11 @@ export class AssetPage implements OnInit {
     this.configuration = assetForPreview.configuration;
   }
 
-  onSelectBtn(measureType:number){
-    if(this.measureOption === measureType){
+  onSelectBtn(measureType:MeasureType){
+    if(this.measureType === measureType){
       return;
     }
 
-    this.measureOption = measureType;
+    this.measureType = measureType;
   }
-
-
 }

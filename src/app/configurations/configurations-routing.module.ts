@@ -20,9 +20,18 @@ const routes: Routes = [
         {
             path: 'configuration-calaulator',
             loadChildren: () => import('./configuration-calculator/configuration-calculator-routing.module').then(m=> m.ConfigurationCalculatorPageRoutingModule)
+        },
+        {
+          path: 'configurations-and-enviorments',
+          loadChildren: () => import('./configurations-and-enviorments/configurations-and-enviorments.module').then( m => m.ConfigurationsAndEnviormentsPageModule)
         }
     ]
-  }
+  },
+
+
+
+
+
 ];
 
 @NgModule({

@@ -1,126 +1,143 @@
 @import '../../../styles/setup/mixins';
 @import '../../../styles/setup/variables';
+:host {
 
-.asset{
-
-
-  &-container{
-    background-color: black;
-    border-radius: 8px;
-    padding: 0px 23px 44px;
-    gap: 32px;
-    margin-block-start: 24px;
-    display: flex;
-    width: 100%;
-
-    @include for-bpoint-tablet{
-      flex-direction: column;
-      padding: 0px;
-      gap: 0px;
-      margin-block-end: 20px;
-    }
-
-
-  }
-
-  &-inline-start{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 5;
-
-    ion-buttons{
-      align-self: baseline;
-      padding-block-start: 20px;
-    }
-
-
-    @include for-bpoint-tablet{
-      justify-content: center;
-    }
-    .asset-img{
+  .asset{
+    &-container{
+      background-color: black;
+      border-radius: 8px;
+      padding: 0px 23px 44px;
+      gap: 32px;
+      margin-block-start: 24px;
+      display: flex;
       width: 100%;
 
       @include for-bpoint-tablet{
-        width: 65%;
-        display: flex;
-        justify-content: center;
-      }
-
-
-    }
-  }
-
-  &-inline-end{
-    flex: 7;
-
-    .card{
-      font-family: Light-font, sans-serif;
-
-      &-title{
-        color: white;
-        margin-block-end: 20px;
-        margin-block-start: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-
-        h1{
-          @include for-bpoint-tablet{
-              font-size: 20px;
-          }
-        }
-
-      }
-
-      &-content{
-        display: flex;
         flex-direction: column;
+        padding: 0px;
+        gap: 0px;
+        margin-block-end: 20px;
       }
 
-      &-row{
-        color: white;
-        border-style: solid;
-        border-width: 0px 0px 1px 0px;
-        border-color: #00A9FF;
-        background-color: black;
-        padding: 10px 25px;
+
+    }
+
+    &-inline-start{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 5;
+      gap: 9px;
+
+
+      ion-buttons{
+        align-self: baseline;
+        padding-block-start: 20px;
         display: flex;
-        justify-content: flex-start;
-        font-size: 12px;
-        color: #9b9b9b;
-        align-items: center;
-        gap: 10px;
+        gap: 5px;
+        padding-inline-start: 5px;
+      }
 
 
-        h3{
-          @include for-bpoint-tablet{
-              font-size: 16px;
-          }
+      @include for-bpoint-tablet{
+        justify-content: center;
+      }
+      .asset-img{
+        width: 100%;
+
+        @include for-bpoint-tablet{
+          width: 65%;
+          display: flex;
+          justify-content: center;
         }
 
-        &-img{
-          width: 80px;
-
-            @include for-bpoint-tablet{
-                width: 60px;
-            }
-        }
 
       }
     }
+
+    &-inline-end{
+      flex: 7;
+
+      .card{
+        font-family: Light-font, sans-serif;
+
+        &-title{
+          color: white;
+          margin-block-end: 20px;
+          margin-block-start: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+
+          h1{
+            @include for-bpoint-tablet{
+                font-size: 20px;
+            }
+          }
+
+        }
+
+        &-content{
+          display: flex;
+          flex-direction: column;
+        }
+
+        &-row{
+          color: white;
+          border-style: solid;
+          border-width: 0px 0px 1px 0px;
+          border-color: #00A9FF;
+          background-color: black;
+          padding: 10px 25px;
+          display: flex;
+          justify-content: flex-start;
+          font-size: 12px;
+          color: #9b9b9b;
+          align-items: center;
+          gap: 10px;
+
+
+          h3{
+            @include for-bpoint-tablet{
+                font-size: 16px;
+            }
+          }
+
+          &-img{
+            width: 80px;
+
+              @include for-bpoint-tablet{
+                  width: 60px;
+              }
+          }
+
+        }
+      }
+    }
   }
-}
 
-.select-btns{
-  background-color: #1f1f1f;
-}
+  .select-btns{
+    display: flex;
+    gap: 2px;
 
-.active{
-  background-color: #00A9FF;
-}
+    button{
+      height: 33px;
+      width: 33px;
+      font-size: 16px;
+      color: white;
+      background: #1f1f1f;
 
-ion-icon{
-  cursor: pointer;
+      &.active{
+        background-color: #00A9FF;
+      }
+
+    }
+  }
+
+
+
+  ion-icon{
+    cursor: pointer;
+  }
 }

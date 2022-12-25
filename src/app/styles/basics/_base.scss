@@ -95,11 +95,22 @@ a.main-btn{
   .main-btn-content{
     display: inline-block;
     transform: skew(17deg);
-
-
-
   }
 }
+
+.icon-btn{
+  background-color: black;
+  color: white;
+  font-size: 22px;
+  padding: 7px;
+  border-radius: 2px;
+
+  &:hover{
+    background-color: #1f1f1f
+  }
+}
+
+
 
 
 

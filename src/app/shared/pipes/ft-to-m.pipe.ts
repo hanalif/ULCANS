@@ -6,7 +6,7 @@ import { MeasureType } from '../models/measure-type.model';
 })
 export class FtToMPipe implements PipeTransform {
 
-  transform(number: number, measureType:MeasureType): number {
+  transform(number: number, measureType: MeasureType): number {
     let calcNumber: number;
     switch(measureType) {
       case MeasureType.METERS:

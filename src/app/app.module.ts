@@ -8,12 +8,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConfigurationsModule } from './configurations/configurations.module';
 import { SharedModule } from './shared/shared.module';
+import { UsefulInformationModule } from './useful-information/useful-information.module';
+import { CamouflageInstructionsModule } from './camouflage-instructions/camouflage-instructions.module';
+
 
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ConfigurationsModule, SharedModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ConfigurationsModule, UsefulInformationModule, CamouflageInstructionsModule, SharedModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 

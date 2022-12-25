@@ -14,6 +14,14 @@ const routes: Routes = [
   {
     path: 'configurations',
     loadChildren: () => import('./configurations/configurations-routing.module').then( m => m.ConfigurationsRoutingModule)
+  },
+  {
+    path: 'camouflage-instructions',
+    loadChildren: () => import('./camouflage-instructions/camouflage-instructions-routing.module').then(m => m.CamouflageInstructionsRoutingModule)
+  },
+  {
+    path: 'useful-information',
+    loadChildren: () => import('./useful-information/useful-information-routing.module').then(m => m.UsefulInformationRoutingModule)
   }
 ];
 

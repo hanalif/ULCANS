@@ -6,13 +6,13 @@
   <div class="asset-container main-layout">
     <div class="asset-inline-start">
       <ion-buttons slot="start">
-        <ion-back-button title="Back" defaultHref="/configurations/typical-configurations"></ion-back-button>
-        <ion-button title="Equipment Information "><ion-icon name="information-outline"></ion-icon></ion-button>
-        <ion-button title="Camouflage Instructions"><ion-icon name="book-outline"></ion-icon></ion-button>
-        <ion-button routerLink="/configurations" title="Configurations List"><ion-icon name="prism-outline"></ion-icon></ion-button>
+        <button  title="Back" routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+        <button  title="Equipment Information" class="icon-btn"><ion-icon name="information-outline"></ion-icon></button>
+        <button title="Camouflage Instructions" class="icon-btn"><ion-icon name="book-outline"></ion-icon></button>
+        <button routerLink="/configurations" title="Configurations List" class="icon-btn"><ion-icon name="prism-outline"></ion-icon></button>
         <div class="select-btns">
-          <ion-button [ngClass]="{'active': measureOption === 1}" (click)="onSelectBtn(1)">M</ion-button>
-          <ion-button [ngClass]="{'active': measureOption === 2}"(click)="onSelectBtn(2)">FT</ion-button>
+          <button [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+          <button [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
         </div>
       </ion-buttons>
       <div class="asset-img">
@@ -26,19 +26,22 @@
         </div>
         <div class="card-content">
           <div class="card-row">
-            <h3>Width: {{asset.measures.widthFt | ftToM: measureOption | number: '1.1-3'}} {{measureOption === 1? 'M': 'FT'}}</h3>
+            <h3>Width:</h3>
+            <h3>{{asset.measures.widthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
           </div>
           <div class="card-row">
-            <h3>Height: {{asset.measures.heightFt | ftToM: measureOption | number: '1.1-3'}} {{measureOption === 1? 'M': 'FT'}}</h3>
+            <h3>Height:</h3>
+            <h3>{{asset.measures.heightFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
           </div>
           <div class="card-row">
-            <h3>Length: {{asset.measures.lengthFt | ftToM: measureOption | number: '1.1-3'}} {{measureOption === 1? 'M': 'FT'}}</h3>
+            <h3>Length:</h3>
+            <h3>{{asset.measures.lengthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-title">
-          <ion-icon routerLink="/configurations" size="large" name="prism-outline"></ion-icon>
+          <ion-icon routerLink="/configurations" size="small" name="prism-outline"></ion-icon>
           <h1>Suitble Configuration: Type {{configuration.name}}</h1>
         </div>
         <div class="card-content">
@@ -49,14 +52,17 @@
             </div>
           </div>
           <div class="card-row">
-            <h3>Hexagon: {{configuration.hexagon}}</h3>
+            <h3>Hexagon:</h3>
+            <h3>{{configuration.hexagon}}</h3>
           </div>
           <div class="card-row">
-            <h3>Rhombus: {{configuration.rhombus}}</h3>
+            <h3>Rhombus:</h3>
+            <h3>{{configuration.rhombus}}</h3>
           </div>
         </div>
       </div>
       <div class="card-buttom">
+
       </div>
     </div>
   </div>
