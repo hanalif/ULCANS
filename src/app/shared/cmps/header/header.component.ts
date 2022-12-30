@@ -35,6 +35,12 @@ export class HeaderComponent implements OnInit {
 
 
   onMenuLink(id: string){
+    for(let key in this.openMenuLinksMaping) {
+      if(key !== id) {
+        this.openMenuLinksMaping[key] = false;
+      }
+    }
+
     if(this.openMenuLinksMaping[id]){
       this.openMenuLinksMaping[id] = !this.openMenuLinksMaping[id];
     } else{
@@ -43,7 +49,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onAccordionItemHeader(){
-    // this.isDropdownMenuOpen = false;
+    this.isDropdownMenuOpen = false;
   }
 
 }
