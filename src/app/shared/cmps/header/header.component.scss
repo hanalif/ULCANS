@@ -1,12 +1,14 @@
 @import '../../../styles/setup/mixins';
 @import '../../../styles/setup/variables';
 
+.header-wrapper{
+  position: relative;
+}
 .header-container{
     display: flex;
     justify-content: space-between;
     height: 70px;
     align-items: center;
-
 
 
     .logo{
@@ -41,3 +43,42 @@
         }
     }
 }
+
+
+.dropdown-menu{
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background-color: black;
+  transform: scaleY(0);
+  transition: transform 150ms ease-in-out;
+  pointer-events: none;
+  transform-origin: top;
+
+  &.active{
+    transform: scaleY(1);
+    pointer-events: auto;
+  }
+
+  @include for-bpoint-mobile{
+    display: block;
+}
+
+
+}
+
+.menu-item{
+  border-bottom: 1px solid #2D79A5;
+  padding: 25px 20px;
+  line-height: 20px;
+  font-size: 22px;
+  font-family: Light-font, sans-serif;
+  font-weight: bold;
+
+  a{
+    color: #9F9F9F;
+  }
+}
+

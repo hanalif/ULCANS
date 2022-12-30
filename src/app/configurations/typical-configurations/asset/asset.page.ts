@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MeasureType } from 'src/app/shared/models/measure-type.model';
+import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
 

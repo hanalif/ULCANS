@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MeasureType } from '../models/measure-type.model';
+import { MeasureType } from '../models/measure-type.enum';
 
 @Pipe({
   name: 'ftToM'

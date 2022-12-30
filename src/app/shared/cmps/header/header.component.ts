@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  isHamburgerClicked: boolean = false;
+  numberOfInnerMenuClicked: number = 0;
 
   constructor(private route: Router) { }
 
@@ -14,6 +16,16 @@ export class HeaderComponent implements OnInit {
 
   onLogo(){
     this.route.navigate(['home']);
+  }
+
+  onHamburgerIcon(){
+    this.isHamburgerClicked = !this.isHamburgerClicked
+  }
+
+  onMenuLink(val:number){
+      this.numberOfInnerMenuClicked = val;
+
+
   }
 
 }
