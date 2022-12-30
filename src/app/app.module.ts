@@ -10,13 +10,17 @@ import { ConfigurationsModule } from './configurations/configurations.module';
 import { SharedModule } from './shared/shared.module';
 import { UsefulInformationModule } from './useful-information/useful-information.module';
 import { CamouflageInstructionsModule } from './camouflage-instructions/camouflage-instructions.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 
 
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ConfigurationsModule, UsefulInformationModule, CamouflageInstructionsModule, SharedModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ConfigurationsModule, UsefulInformationModule, CamouflageInstructionsModule, SharedModule, BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 

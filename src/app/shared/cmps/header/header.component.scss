@@ -45,7 +45,7 @@
 }
 
 
-.dropdown-menu{
+.accordion{
   position: absolute;
   display: none;
   left: 0;
@@ -57,28 +57,55 @@
   pointer-events: none;
   transform-origin: top;
 
-  &.active{
+  &-item{
+    &-header {
+      border-bottom: 1px solid #2D79A5;
+      padding: 25px 20px;
+      line-height: 20px;
+      font-size: 22px;
+      font-family: Light-font, sans-serif;
+      font-weight: bold;
+      color: #9F9F9F;
+
+      &.is-active{
+        background-color: #0091FF;
+        color: white;
+      }
+
+      a{
+        display: flex;
+        gap: 11px;
+        align-items: center;
+      }
+
+      &.inner{
+        padding-inline-start: 35px;
+      }
+    }
+
+    &-body{
+      overflow: hidden;
+    }
+
+
+
+  }
+
+
+  &.accordion-open{
     transform: scaleY(1);
     pointer-events: auto;
   }
 
   @include for-bpoint-mobile{
     display: block;
-}
-
-
-}
-
-.menu-item{
-  border-bottom: 1px solid #2D79A5;
-  padding: 25px 20px;
-  line-height: 20px;
-  font-size: 22px;
-  font-family: Light-font, sans-serif;
-  font-weight: bold;
-
-  a{
-    color: #9F9F9F;
   }
+
+
 }
+
+
+
+
+
 

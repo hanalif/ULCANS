@@ -10,7 +10,7 @@ const routes: Routes = [
     path:'',
     children:[
         {
-            path: '',
+            path: 'configurations-list',
             loadChildren: () => import('./configuration-list/configuration-list-routing.module').then(m=> m.ConfigurationListPageRoutingModule)
         },
         {

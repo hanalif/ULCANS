@@ -1,0 +1,63 @@
+[
+  {
+    "id": "MC1",
+    "mainTitle": "configurations",
+    "mainRouterLink": "/configurations",
+    "iconName": "prism-outline",
+    "subCategories": [
+      {
+        "subTitle": "configurations list",
+        "subRouterLink": "/configurations/configurations-list"
+      },
+      {
+        "subTitle": "typical configurations",
+        "subRouterLink": "/configurations/typical-configurations"
+      },
+      {
+        "subTitle": "configuration calculator",
+        "subRouterLink": "/configurations/configuration-calaulator"
+      }
+    ]
+  },
+  {
+    "id": "MC2",
+    "mainTitle": "camouflage instructions",
+    "mainRouterLink": "/camouflage-instructions",
+    "iconName": "book-outline",
+    "subCategories": [
+      {
+        "subTitle": "setting up system",
+        "subRouterLink": "/camouflage-instructions/setting-up-system"
+      },
+      {
+        "subTitle": "folding system",
+        "subRouterLink": "/camouflage-instructions/folding-system"
+      },
+      {
+        "subTitle": "critical considerations",
+        "subRouterLink": "/camouflage-instructions/critical-considerations"
+      }
+    ]
+  },
+  {
+    "id": "MC3",
+    "mainTitle": "useful information",
+    "mainRouterLink": "/useful-information",
+    "iconName": "information-outline",
+
+    "subCategories": [
+      {
+        "subTitle": "equipment description",
+        "subRouterLink": "/useful-information/equipment-description"
+      },
+      {
+        "subTitle": "maintenance",
+        "subRouterLink": "/useful-information/maintenance"
+      },
+      {
+        "subTitle": "refrences",
+        "subRouterLink": "/useful-information/refrences"
+      }
+    ]
+  }
+]

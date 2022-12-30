@@ -1,31 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Animations } from 'src/app/angular-animations/animations';
+import { MenuCategory } from '../../models/menu-category.model';
+import { MenuCategoriesService } from '../../services/menu-categories.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  animations: [Animations.slidesDownAnimation]
+
 })
 export class HeaderComponent implements OnInit {
-  isHamburgerClicked: boolean = false;
+  menuCategories$!: Observable<MenuCategory[]>
+  isDropdownMenuOpen: boolean = false;
   numberOfInnerMenuClicked: number = 0;
+  public openMenuLinksMaping: any = {};
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private menuCategoriesServive: MenuCategoriesService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+      this.menuCategories$ = this.menuCategoriesServive.getMenuCategories()
+  }
 
   onLogo(){
     this.route.navigate(['home']);
   }
 
   onHamburgerIcon(){
-    this.isHamburgerClicked = !this.isHamburgerClicked
+    this.isDropdownMenuOpen = !this.isDropdownMenuOpen
   }
 
-  onMenuLink(val:number){
-      this.numberOfInnerMenuClicked = val;
 
 
+  onMenuLink(id: string){
+    if(this.openMenuLinksMaping[id]){
+      this.openMenuLinksMaping[id] = !this.openMenuLinksMaping[id];
+    } else{
+      this.openMenuLinksMaping[id] = true;
+    }
+  }
+
+  onAccordionItemHeader(){
+    // this.isDropdownMenuOpen = false;
   }
 
 }

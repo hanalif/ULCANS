@@ -1,35 +1,64 @@
 <div class="header-wrapper">
   <div class="header-container main-layout">
     <div (click)="onLogo()" class="logo">
-      <ion-img src="https://fibrotexusa.com/wp-content/uploads/2021/12/fibro-white-logo.png"></ion-img>
+      <ion-img
+        src="https://fibrotexusa.com/wp-content/uploads/2021/12/fibro-white-logo.png"
+      ></ion-img>
     </div>
     <div class="side-nav">
-        <ion-icon *ngIf="!isHamburgerClicked" (click)="onHamburgerIcon()" class="hamburger-btn" style="color: white;" name="menu-outline"></ion-icon>
-        <ion-icon *ngIf="isHamburgerClicked" (click)="onHamburgerIcon()"  class="close-icon" style="color: white;" name="close-outline"></ion-icon>
+      <ion-icon
+        *ngIf="!isDropdownMenuOpen"
+        (click)="onHamburgerIcon()"
+        class="hamburger-btn"
+        style="color: white"
+        name="menu-outline"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="isDropdownMenuOpen"
+        (click)="onHamburgerIcon()"
+        class="close-icon"
+        style="color: white"
+        name="close-outline"
+      ></ion-icon>
     </div>
   </div>
-  <div class="dropdown-menu" [ngClass]="{'active': isHamburgerClicked}">
-        <div class="dropdown-menu-section">
-          <div class="menu-item">
-            <a (click)="onMenuLink(1)">{{'nets selection' | uppercase}} <ion-icon name="caret-down-outline"></ion-icon></a>
+  <div class="accordion" [ngClass]="{ 'accordion-open': isDropdownMenuOpen }">
+    <div
+      *ngFor="let menuCategory of menuCategories$ | async"
+      class="accordion-item"
+    >
+      <div
+        class="accordion-item-header"
+        [routerLink]="menuCategory.mainRouterLink"
+        href="#"
+        routerLinkActive="is-active"
+        (click)="onMenuLink(menuCategory.id)"
+      >
+        <a
+          ><ion-icon [name]="menuCategory.iconName"></ion-icon>
+          {{ menuCategory.mainTitle | uppercase }}
+          <ion-icon name="caret-down-outline"></ion-icon
+        ></a>
+      </div>
+      <div
+        class="accordion-item-body"
+        *ngIf="openMenuLinksMaping[menuCategory.id]"
+        [@slidesDownAnimation]
+      >
+        <div
+          *ngFor="let subCategory of menuCategory.subCategories"
+          class="accordion-item"
+        >
+          <div
+            class="inner accordion-item-header"
+            (click)="onAccordionItemHeader()"
+            [routerLink]="subCategory.subRouterLink"
+            routerLinkActive="is-active"
+          >
+            <a>{{ subCategory.subTitle | uppercase }}</a>
           </div>
-            <div *ngIf="numberOfInnerMenuClicked === 1" class="inner-dropdown">
-              <div class="menu-item">
-                <a >{{'nets selection' | uppercase}} <ion-icon name="caret-down-outline"></ion-icon></a>
-              </div>
-              <div class="menu-item">
-                <a>{{'nets selection' | uppercase}} <ion-icon name="caret-down-outline"></ion-icon></a>
-              </div>
-            </div>
         </div>
-        <div class="menu-item">
-          <a (click)="onMenuLink(2)">{{'camouflage instructions' | uppercase}} <ion-icon name="caret-down-outline"></ion-icon></a>
-        </div>
-        <div class="menu-item">
-          <a (click)="onMenuLink(3)">{{'useful information' | uppercase}} <ion-icon name="caret-down-outline"></ion-icon></a>
-        </div>
-
-      <button>Start</button>
+      </div>
+    </div>
   </div>
-
 </div>
