@@ -5,7 +5,8 @@
         src="https://fibrotexusa.com/wp-content/uploads/2021/12/fibro-white-logo.png"
       ></ion-img>
     </div>
-    <div class="side-nav">
+    <div class="top-nav">
+      <!-- Hamburger Icon For Mobile -->
       <ion-icon
         *ngIf="!isDropdownMenuOpen"
         (click)="onHamburgerIcon()"
@@ -20,8 +21,34 @@
         style="color: white"
         name="close-outline"
       ></ion-icon>
+
+      <!-- Menu For Wide Screens -->
+      <div class="top-nav-wrapper">
+        <div *ngFor="let menuCategory of menuCategories$ | async" class="top-nav-item">
+          <div
+            class="top-nav-header">
+            {{ menuCategory.mainTitle | uppercase }}
+            <ion-icon name="caret-down-outline"></ion-icon>
+          </div>
+          <div class="top-nav-body">
+            <div *ngFor="let subCategory of menuCategory.subCategories" class="top-nav-body-item">
+              <a
+                [routerLink]="subCategory.subRouterLink"
+                routerLinkActive="is-active"
+                >{{subCategory.subTitle}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-main-btn class="top-nav-btn">{{ 'get your ulcans system' | uppercase }}</app-main-btn>
     </div>
   </div>
+
+
+
+
+  <!-- Accordion Menu For Mobile-->
   <div class="accordion" [ngClass]="{ 'accordion-open': isDropdownMenuOpen }">
     <div
       *ngFor="let menuCategory of menuCategories$ | async"
@@ -34,10 +61,16 @@
         routerLinkActive="is-active"
         (click)="onMenuLink(menuCategory.id)"
       >
-        <a
-          ><ion-icon [name]="menuCategory.iconName"></ion-icon>
-          {{ menuCategory.mainTitle | uppercase }}
-          <ion-icon name="caret-down-outline"></ion-icon
+        <a>
+          <div>
+            <ion-icon [name]="menuCategory.iconName"></ion-icon>
+            {{ menuCategory.mainTitle | uppercase }}
+          </div>
+          <ion-icon
+            class="down-icon"
+            [ngClass]="{ 'icon-spins': openMenuLinksMaping[menuCategory.id]}"
+            name="caret-down-outline"
+            ></ion-icon
         ></a>
       </div>
       <div
@@ -58,6 +91,16 @@
             <a>{{ subCategory.subTitle | uppercase }}</a>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="accordion-item dropdown-get-ulcans-btn">
+      <div class="accordion-item-header">
+          <a>
+            <div>
+              <ion-icon name="checkmark-done-outline"></ion-icon>
+              {{'get your ulcans system' | uppercase}}
+            </div>
+          </a>
       </div>
     </div>
   </div>

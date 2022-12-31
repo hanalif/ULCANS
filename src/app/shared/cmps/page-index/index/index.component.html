@@ -1,0 +1,5 @@
+<div class="index-container">
+  <div *ngFor="let indexNode of indexNodes" class="index">
+    <a [routerLink]="['./']" [fragment]="indexNode.id">{{indexNode.mainTitle}}</a>
+  </div>
+</div>

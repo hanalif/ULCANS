@@ -1,0 +1,24 @@
+.page-index{
+  &-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Light-font, sans-serif;
+    height: 80px;
+    background-color: black;
+  }
+
+  &-body{
+    .table-of-contents{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      a{
+        cursor: pointer;
+      }
+    }
+  }
+
+
+}
+

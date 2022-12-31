@@ -15,7 +15,6 @@ import { MenuCategoriesService } from '../../services/menu-categories.service';
 export class HeaderComponent implements OnInit {
   menuCategories$!: Observable<MenuCategory[]>
   isDropdownMenuOpen: boolean = false;
-  numberOfInnerMenuClicked: number = 0;
   public openMenuLinksMaping: any = {};
 
   constructor(private route: Router, private menuCategoriesServive: MenuCategoriesService) { }

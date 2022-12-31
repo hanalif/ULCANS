@@ -2,5 +2,40 @@
 </ion-header>
 
 <ion-content>
-<h1>setting-up-system</h1>
+<div class="page-index-container">
+  <div class="page-index-header">
+    <h1>{{'erect' | uppercase}}</h1>
+  </div>
+  <div class="page-index-body main-layout">
+    <div class="page-index-guide">
+      <div class="top-guide"></div>
+        <nav class="table-of-contents">
+          <a (click)="scrollToElement(rightNet)">Make sure to have the right net screen(s)</a>
+          <a (click)="scrollToElement(netPreparation)">Net Assembly Preparation </a>
+          <a (click)="scrollToElement(foldingNet)">Folding Net Assembly </a>
+          <a (click)="scrollToElement(Deployment)">Deployment Process</a>
+        </nav>
+      </div>
+    <div class="page-index-content">
+      <div #rightNet >
+        Screens should be assembled prior to fielding. This allows quick deployment of ULCANS in a hostile environment.
+        Before assembling screens, open and inventory all contents. Ensure all screens are of the same type and class
+      </div>
+      <div #netPreparation >
+        <video src="../../../assets/imgs/erect/Lacing.mp4"></video>
+      </div>
+      <div #foldingNet >
+        <video src="../../../assets/imgs/erect/FoldNetAssembly.mp4"></video>
+      </div>
+      <div #Deployment >
+        	When choosing a location for concealment of equipment, consider the following:
+        The location of concealed equipment and ULCANS should not stand out as foreign object in surrounding area.
+        The geographical characteristics of surrounding environment to help assimilate ULCANS (e.g. locating ULCANS Increment I under or near trees or hills).
+        Do not locate equipment to be concealed and ULCANS on top of a ridge to avoid creating a silhouette on the skyline.
+
+      </div>
+
+    </div>
+  </div>
+</div>
 </ion-content>
