@@ -56,9 +56,7 @@
     >
       <div
         class="accordion-item-header"
-        [routerLink]="menuCategory.mainRouterLink"
-        href="#"
-        routerLinkActive="is-active"
+        [ngClass]="{ 'is-active': openMenuLinksMaping[menuCategory.id]}"
         (click)="onMenuLink(menuCategory.id)"
       >
         <a>
