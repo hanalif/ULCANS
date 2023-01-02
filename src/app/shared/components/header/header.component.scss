@@ -1,0 +1,241 @@
+@import '../../../styles/setup/mixins';
+@import '../../../styles/setup/variables';
+
+.header-wrapper{
+  position: relative;
+}
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+
+
+    .logo{
+        cursor: pointer;
+        max-width: 200px;
+        min-width: 80px;
+        ion-img{
+            height: auto;
+            max-width: 100%;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+
+            @include for-bpoint-mobile{
+                max-width: 75%;
+            }
+        }
+    }
+
+    .top-nav{
+
+      display: flex;
+      gap: 20px;
+
+      @include for-bpoint-tablet-landscape{
+        flex-direction: row-reverse;
+        gap: 10px;
+      }
+
+        .hamburger-btn{
+            display: none;
+            cursor: pointer;
+
+            @include for-bpoint-tablet-landscape{
+                display: block;
+                font-size: 40px;
+            }
+        }
+
+        .close-icon{
+          display: none;
+          width: 40px;
+          height: 40px;
+
+          @include for-bpoint-tablet-landscape{
+            display: block;
+          }
+
+        }
+
+        // Menu For Wide Screens
+
+        &-wrapper{
+          display: flex;
+          align-items: center;
+          gap: 27px;
+
+
+            @include for-bpoint-tablet-landscape{
+              display: none;
+            }
+        }
+
+        &-item{
+          position: relative;
+          font-family: Light-font, sans-serif;
+
+          &:hover{
+            .top-nav-header{
+              transform: scale(1.05);
+              color: white;
+            }
+
+            .top-nav-body{
+              opacity: 1;
+              visibility: visible;
+              transition:none;
+            }
+          }
+        }
+
+        &-header{
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 5px;
+          font-family: Light-font, sans-serif;
+          font-weight: bold;
+          color: #9F9F9F;
+          font-size: 22px;
+          transition: all .2s ease-in-out;
+          cursor: pointer;
+
+
+        }
+
+        &-body{
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+          top: 30px;
+          transition: all 1s ease-out;
+          background-color: black;
+          z-index: 999;
+          width: 100%;
+
+          &-item {
+            border-bottom: 1px solid #2D79A5;
+            a {
+              padding: 13px 20px;
+              display: block;
+              color: #9F9F9F;
+
+              &:focus {
+                background-color: #55595c;
+              }
+
+              &.is-active, &:hover {
+                color: white;
+                background-color: #0091FF;
+              }
+            }
+          }
+        }
+
+        &-btn{
+          font-weight: 700;
+          color: black;
+
+          @include for-bpoint-mobile{
+            display: none;
+          }
+        }
+    }
+
+}
+
+
+
+.info-icon{
+  width: 20px;
+  height: 20px;
+}
+
+
+.accordion{
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background-color: black;
+  transform-origin: top;
+  pointer-events: none;
+  transform: scaleY(0);
+  display: none;
+  transition: transform 150ms ease-in-out;
+
+
+  &-item{
+    cursor: pointer;
+    &-header {
+      border-bottom: 1px solid #2D79A5;
+      padding: 25px 20px;
+      line-height: 20px;
+      font-size: 22px;
+      font-family: Light-font, sans-serif;
+      font-weight: bold;
+      color: #9F9F9F;
+
+      &.is-active{
+        background-color: #0091FF;
+        color: white;
+      }
+
+      a{
+        display: flex;
+        gap: 11px;
+        align-items: center;
+        justify-content: space-between;
+
+        div{
+          display: flex;
+          gap: 10px;
+        }
+
+        .down-icon{
+          transition:.5s ease-in-out;
+
+          &.icon-spins{
+            rotate: 180deg;
+          }
+        }
+      }
+
+      &.inner{
+        padding-inline-start: 60px;
+      }
+    }
+
+    &-body{
+      overflow: hidden;
+    }
+  }
+
+  &.accordion-open{
+    transform: scaleY(1);
+    pointer-events: auto;
+  }
+
+  @include for-bpoint-tablet-landscape{
+    display: block;
+  }
+
+  .dropdown-get-ulcans-btn{
+    @include for-bpoint-tablet-landscape{
+      display: none;
+    }
+
+    @include for-bpoint-mobile{
+     display: block;
+  }
+
+  }
+}
+
+
+
+
+
+

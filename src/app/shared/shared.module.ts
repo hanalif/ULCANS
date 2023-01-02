@@ -6,20 +6,18 @@ import { IonicModule} from '@ionic/angular';
 
 
 
-import { HeaderComponent } from './cmps/header/header.component';
-import { MainBtnComponent } from './cmps/main-btn/main-btn.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MainBtnComponent } from './components/main-btn/main-btn.component';
 import { FtToMPipe } from './pipes/ft-to-m.pipe';
-import { SlideDownMenuComponent } from './cmps/slide-down-menu/slide-down-menu.component';
 import {RouterModule} from '@angular/router';
-import { PageIndexComponent } from './cmps/page-index/page-index.component';
-import { IndexComponent } from './cmps/page-index/index/index.component';
+
 
 
 
 @NgModule({
-  declarations: [HeaderComponent,MainBtnComponent, FtToMPipe, SlideDownMenuComponent, PageIndexComponent, IndexComponent],
+  declarations: [HeaderComponent,MainBtnComponent, FtToMPipe],
   imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule ],
-  exports: [HeaderComponent, MainBtnComponent, FtToMPipe, FormsModule, SlideDownMenuComponent, PageIndexComponent, IndexComponent],
+  exports: [HeaderComponent, MainBtnComponent, FtToMPipe, FormsModule],
   providers:[ FtToMPipe]
 })
 export class SharedModule {}
