@@ -1,5 +1,15 @@
 @import "../../styles/setup/mixins";
 @import "../../styles/setup/variables";
+
+ion-content{
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .tc-{
   &container{
     display: flex;

@@ -26,11 +26,11 @@
     "iconName": "book-outline",
     "subCategories": [
       {
-        "subTitle": "erect",
+        "subTitle": "setting up system",
         "subRouterLink": "/camouflage-instructions/setting-up-system"
       },
       {
-        "subTitle": "strike",
+        "subTitle": "folding up system",
         "subRouterLink": "/camouflage-instructions/folding-system"
       },
       {

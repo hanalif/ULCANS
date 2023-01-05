@@ -2,42 +2,60 @@
 </ion-header>
 
 <ion-content>
-<div class="page-index-container">
-  <div class="page-index-header">
-    <h1>{{'erect' | uppercase}}</h1>
-  </div>
-  <div class="page-index-body main-layout">
-    <div class="page-index-guide">
-      <div class="top-guide"></div>
-        <nav class="table-of-contents">
-          <a (click)="scrollToElement(rightNet)">Make sure to have the right net screen(s)</a>
-          <a (click)="scrollToElement(netPreparation)">Net Assembly Preparation </a>
-          <a (click)="scrollToElement(foldingNet)">Folding Net Assembly </a>
-          <a (click)="scrollToElement(Deployment)">Deployment Process</a>
-        </nav>
-      </div>
-    <div class="page-index-content">
-      <div #rightNet >
-        Screens should be assembled prior to fielding. This allows quick deployment of ULCANS in a hostile environment.
-        Before assembling screens, open and inventory all contents. Ensure all screens are of the same type and class
-      </div>
-      <div #netPreparation >
-        <video src="../../../assets/imgs/erect/Lacing.mp4"></video>
-      </div>
-      <div #foldingNet >
-        <video controls>
-          <source src="../../../assets/imgs/erect/FoldNetAssembly.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div #Deployment >
-        	When choosing a location for concealment of equipment, consider the following:
-        The location of concealed equipment and ULCANS should not stand out as foreign object in surrounding area.
-        The geographical characteristics of surrounding environment to help assimilate ULCANS (e.g. locating ULCANS Increment I under or near trees or hills).
-        Do not locate equipment to be concealed and ULCANS on top of a ridge to avoid creating a silhouette on the skyline.
+    <app-accordion>
+      <app-accordion-item>
+        <div accordionItemHeader>
+          example header 1
+        </div>
+        <div accordionItemBody>
+          example body 1
+        </div>
+      </app-accordion-item>
+      <app-accordion-item>
+        <div accordionItemHeader>
+          example header 2
+        </div>
+        <div accordionItemBody>
+          example body 2
+        </div>
+      </app-accordion-item>
+      <app-accordion-item>
+        <div accordionItemHeader>
+          example header 3
+        </div>
+        <div accordionItemBody>
+          example body 3
+        </div>
+      </app-accordion-item>
+      <app-accordion-item>
+        <div accordionItemHeader>
+          example header 4
+        </div>
+        <div accordionItemBody>
+          example body 4
+        </div>
+      </app-accordion-item>
+    </app-accordion>
 
-      </div>
 
+
+    <div class="erect-container main-layout">
+      <div class="erect-top">
+        <div class="main-title">{{'Setting Up ULCANS' | uppercase}}</div>
+      </div>
+      <div class="erect-middle">
+        <div class="card">
+          <div class="card-header">
+            <h1  class="card-title">NET ASSEMBLY SELECTION </h1>
+          </div>
+          <div  class="card-content">
+            <p>Make sure to have the right net screen(s).
+              Screens should be assembled prior to fielding. This allows quick deployment of ULCANS in a hostile environment.
+              Before assembling screens, open and inventory all contents. Ensure all screens are of the same type and class
+            </p>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 </ion-content>

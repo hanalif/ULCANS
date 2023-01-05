@@ -1,0 +1,10 @@
+<div class="accordion">
+  <div *ngFor="let accordionItem of accordionItems; let i = index" class="accordion-item">
+    <div class="accordion-item-header" (click)="onAccordionItemClicked(i)">
+      <ng-container [ngTemplateOutlet]="accordionItem.accordionItemHeader" [ngTemplateOutletContext]="this"></ng-container>
+    </div>
+    <div class="accordion-item-body" *ngIf="openedItemIndex === i">
+      <ng-container [ngTemplateOutlet]="accordionItem.accordionItemBody" [ngTemplateOutletContext]="this"></ng-container>
+    </div>
+  </div>
+</div>
