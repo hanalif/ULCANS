@@ -12,14 +12,15 @@ import { FtToMPipe } from './pipes/ft-to-m.pipe';
 import {RouterModule} from '@angular/router';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { AccordionItemComponent } from './components/accordion/accordion-item/accordion-item.component';
+import { UserSelectionsMenuComponent } from './components/user-selections-menu/user-selections-menu.component';
 
 
 
 
 @NgModule({
-  declarations: [HeaderComponent,MainBtnComponent, FtToMPipe, AccordionComponent, AccordionItemComponent],
+  declarations: [HeaderComponent,MainBtnComponent, FtToMPipe, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent],
   imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule ],
-  exports: [HeaderComponent, MainBtnComponent, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent],
+  exports: [HeaderComponent, MainBtnComponent, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent],
   providers:[ FtToMPipe]
 })
 export class SharedModule {}

@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { catchError, map, Observable, of } from 'rxjs';
 import { MenuCategory } from '../models/menu-category.model';
 import { StartBtn } from '../models/start-btn.model';
+import { EnviormentCategory } from '../models/enviorment-category.model';
 
 
 
@@ -20,9 +21,17 @@ export class MenuCategoriesService {
     return this._getMenuCategories();
   }
 
+  getEnviormentCategories(){
+    return this._getEnviormentsCategories();
+  }
+
 
   _getMenuCategories(){
     return this.http.get<MenuCategory[]>('assets/menu-categories.json');
+  }
+
+  _getEnviormentsCategories(){
+    return this.http.get<EnviormentCategory[]>('assets/enviorments-types.json');
   }
 
 

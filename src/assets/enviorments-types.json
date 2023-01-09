@@ -1,0 +1,32 @@
+[
+  {
+    "id": "11aa",
+    "typeName": "Woodland",
+    "imgUrl": "../../../../assets/imgs/enviorments/woodland.jpg",
+    "classType": "Class 1"
+  },
+  {
+    "id": "12bb",
+    "typeName": "Desert",
+    "imgUrl": "../../../../assets/imgs/enviorments/desert.jpg",
+    "classType": "Class 2"
+  },
+  {
+    "id": "13cc",
+    "typeName": "Urban",
+    "imgUrl": "../../../../assets/imgs/enviorments/urban.jpg",
+    "classType": "Class 2"
+  },
+  {
+    "id": "14dd",
+    "typeName": "Rocky",
+    "imgUrl": "../../../../assets/imgs/enviorments/rocky.jpg",
+    "classType": "Class 2"
+  },
+  {
+    "id": "15ee",
+    "typeName": "Snowy",
+    "imgUrl": "../../../../assets/imgs/enviorments/snowy.jpg",
+    "classType": "Class 3"
+  }
+]

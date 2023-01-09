@@ -10,6 +10,41 @@
     height: 70px;
     align-items: center;
 
+    .header-inline-start{
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+
+
+    }
+
+    .reader-icon{
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+
+      &.mobile{
+        display: none;
+      }
+
+      &.wide-screen{
+        display: block;
+      }
+
+      @include for-bpoint-mobile{
+       &.mobile{
+        display: block;
+       }
+
+       &.wide-screen{
+        display: none;
+       }
+    }
+
+
+    }
+
 
     .logo{
         cursor: pointer;
@@ -36,6 +71,9 @@
       @include for-bpoint-tablet-landscape{
         flex-direction: row-reverse;
         gap: 10px;
+
+        justify-content: center;
+        align-items: center;
       }
 
         .hamburger-btn{

@@ -5,6 +5,7 @@ import { Animations } from 'src/app/angular-animations/animations';
 import { MenuCategory } from '../../models/menu-category.model';
 import { StartBtn } from '../../models/start-btn.model';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
+import { UserSelectionService } from '../../services/user-selection.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
   public openMenuLinksMaping: any = {};
   startBtn!: StartBtn;
 
-  constructor(private route: Router, private menuCategoriesServive: MenuCategoriesService) { }
+  constructor(private route: Router, private menuCategoriesServive: MenuCategoriesService, private userSelectionsService: UserSelectionService) { }
 
   ngOnInit() {
       this.menuCategories$ = this.menuCategoriesServive.getMenuCategories();
@@ -54,6 +55,10 @@ export class HeaderComponent implements OnInit {
 
   onAccordionItemHeader(){
     this.isDropdownMenuOpen = false;
+  }
+
+  onReaderIcon(val:boolean){
+    this.userSelectionsService.setIsUserSelectionsMenuOpen(val);
   }
 
 }

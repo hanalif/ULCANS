@@ -3,6 +3,7 @@
 
 
   .asset{
+
     &-container{
       background-color: black;
       border-radius: 8px;
@@ -34,8 +35,20 @@
         align-self: baseline;
         padding-block-start: 20px;
         display: flex;
-        gap: 5px;
-        padding-inline-start: 5px;
+        width: 100%;
+        justify-content: space-between;
+        padding-inline-end: 10px;
+        padding-block-start: 10px;
+
+
+
+        .btns-section{
+          display: flex;
+          gap: 5px;
+          margin-inline-start: 10px;
+        }
+
+
       }
 
 
@@ -58,6 +71,14 @@
     &-inline-end{
       flex: 7;
 
+      ion-buttons{
+        display: flex;
+        justify-content: end;
+        padding-block-start: 20px;
+      }
+
+
+
       .card{
         font-family: Light-font, sans-serif;
 
@@ -66,7 +87,9 @@
           margin-block-end: 20px;
           margin-block-start: 20px;
           display: flex;
-
+          font-family: Light-font, sans-serif;
+          padding-inline-end: 10px;
+            padding-inline-start: 10px;
           align-items: center;
           gap: 10px;
 
@@ -77,8 +100,7 @@
           &.sub-title{
             justify-content: space-between;
             font-size: 14px;
-            padding-inline-end: 10px;
-            padding-inline-start: 10px;
+
 
             @include for-bpoint-tablet{
               h1{
@@ -158,13 +180,126 @@
     }
   }
 
-
-
   ion-icon{
     cursor: pointer;
 
-    &.arrow-down{
+    &.arrow-down, &.color-palette{
       font-size: 20px;
+    }
+
+    &.arrow-down{
+      transition:.5s ease-in-out;
+
+      &.icon-spins{
+        rotate: 180deg;
+      }
     }
   }
 
+  .enviorments-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(97px, 100px));
+    justify-items: center;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    gap: 10px;
+    margin-block-end: 20px;
+    .enviorment-link{
+      width: auto;
+      cursor: pointer;
+      background-color: #1f1f1f;
+      padding: 6px;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      height: fit-content;
+
+      img{
+        border-radius: 2px;
+        height: 70px;
+        width: 100%;
+      }
+
+      .title{
+        text-align: center;
+        font-family: Light-font, sans-serif;
+        color: #9b9b9b;;
+      }
+
+      &:hover, &.selected{
+        outline: 2px solid white;
+      }
+    }
+
+  }
+
+  .add-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+  }
+
+  .add-icon{
+    display: none;
+    align-items: center;
+    font-size: 18px;
+    background-color: #00a9ff;
+    color: black;
+    border-radius: 30px;
+    font-family: Light-font, sans-serif;
+
+
+
+    ion-icon{
+      font-size: 25px;
+    }
+
+    &.mobile{
+      display: none;
+    }
+
+    &.wide-screen{
+      display: flex;
+    }
+
+    @include for-bpoint-tablet{
+
+      &.m-buttom{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-inline-end: 10px;
+        margin-inline-start: 10px;
+        gap: 6px;
+      }
+
+        span{
+          display: none;
+        }
+
+        span.mobile-buttom{
+          display: block;
+
+        }
+
+      &.mobile{
+        display: flex;
+      }
+
+
+      &.wide-screen{
+        display: none;
+      }
+
+    }
+
+
+
+
+    &:hover{
+      background-color: white;
+    }
+  }

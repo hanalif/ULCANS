@@ -1,25 +1,30 @@
 <ion-header>
 </ion-header>
-
 <ion-content>
   <div class="assets-page">
     <div class="asset-container main-layout">
       <div class="asset-inline-start">
         <ion-buttons slot="start">
-          <button  title="Back" routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
-          <button  title="Equipment Information" class="icon-btn"><ion-icon name="information-outline"></ion-icon></button>
-          <button title="Camouflage Instructions" class="icon-btn"><ion-icon name="book-outline"></ion-icon></button>
-          <button routerLink="/configurations" title="Configurations List" class="icon-btn"><ion-icon name="prism-outline"></ion-icon></button>
-          <div class="select-btns">
-            <button [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
-            <button [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
+          <div class="btns-section">
+            <button  title="Back" routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+            <button  title="Equipment Information" class="icon-btn"><ion-icon name="information-outline"></ion-icon></button>
+            <button title="Camouflage Instructions" class="icon-btn"><ion-icon name="book-outline"></ion-icon></button>
+            <button routerLink="/configurations" title="Configurations List" class="icon-btn"><ion-icon name="prism-outline"></ion-icon></button>
+            <div class="select-btns">
+              <button [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+              <button [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
+            </div>
           </div>
+          <button class="icon-btn add-icon mobile"><ion-icon name="add-outline"></ion-icon></button>
         </ion-buttons>
         <div class="asset-img">
           <img [src]="asset.assetImgUrl" alt="asset-pic">
         </div>
       </div>
       <div class="asset-inline-end">
+        <ion-buttons slot="start">
+          <button class="icon-btn add-icon wide-screen"><ion-icon name="add-outline"></ion-icon>Add To Your Selections</button>
+        </ion-buttons>
         <div class="card">
           <div class="card-title justify-center">
             <h1>{{asset.name}}</h1>
@@ -43,15 +48,15 @@
           <app-accordion>
             <app-accordion-item>
               <div accordionItemHeader>
-                <div class="card-title sub-title">
+                <div class="card-title sub-title" (click)="onConfigurationType()">
                   <div>
                     <ion-icon routerLink="/configurations" size="small" name="prism-outline"></ion-icon>
-                    <h1>Suitble Configuration: Type {{configuration.name}}</h1>
+                    <h1>Configuration: Type {{configuration.name}}</h1>
                   </div>
-                  <ion-icon class="arrow-down" name="chevron-down-outline"></ion-icon>
+                  <ion-icon [ngClass]="{ 'icon-spins': openConfigurationType}"  class="arrow-down" name="chevron-down-outline"></ion-icon>
                 </div>
               </div>
-              <div accordionItemBody>
+              <div accordionItemBody >
                 <div class="card-content">
                   <div class="card-row">
                     <h3>Image:</h3>
@@ -74,16 +79,35 @@
         </div>
 
         <div class="card-buttom">
+          <div class="card-title sub-title">
+            <div>
+              <ion-icon class="color-palette" name="color-filter-outline"></ion-icon>
+              <h1>Choose Your Enviorment:</h1>
+            </div>
+          </div>
           <div class="enviorments-container">
-            <ion-avatar>
-              <img alt="Silhouette of a person's head" src="../../../../assets/imgs/enviorments/forest-g09d718299_1920.jpg" />
-            </ion-avatar>
+              <div class="enviorment-link"
+                  *ngFor="let enviorment of enviormentCategories$ | async"
+                  (click)="onEnviormentLink(enviorment.id)"
+                  [ngClass]="{'selected': selectEnviormentLinksMaping[enviorment.id]}">
+                <div class="img-wrapper">
+                  <img [src]="enviorment.imgUrl" alt="">
+                </div>
+                <div class="title">
+                  <h3>{{enviorment.typeName}}</h3>
+                </div>
+              </div>
+          </div>
+          <div class="add-button-wrapper">
+            <button class="icon-btn add-icon mobile m-buttom"><ion-icon name="add-outline"></ion-icon><span class="mobile-buttom">Add To Your Selections</span></button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </ion-content>
+
+
 
 
 

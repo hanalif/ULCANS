@@ -1,9 +1,14 @@
 <div class="header-wrapper">
   <div class="header-container main-layout">
-    <div (click)="onLogo()" class="logo">
-      <ion-img
-        src="https://fibrotexusa.com/wp-content/uploads/2021/12/fibro-white-logo.png"
-      ></ion-img>
+    <div class="header-inline-start">
+      <div (click)="onLogo()" class="logo">
+        <ion-img
+          src="https://fibrotexusa.com/wp-content/uploads/2021/12/fibro-white-logo.png"
+        ></ion-img>
+      </div>
+      <div (click)="onReaderIcon(true)" class="user-selections-menu-icon">
+        <ion-icon class="reader-icon wide-screen" name="reader-outline"></ion-icon>
+      </div>
     </div>
     <div class="top-nav">
       <!-- Hamburger Icon For Mobile -->
@@ -21,6 +26,10 @@
         style="color: white"
         name="close-outline"
       ></ion-icon>
+      <div (click)="onReaderIcon(true)" class="user-selections-menu-icon">
+        <ion-icon class="reader-icon mobile" name="reader-outline"></ion-icon>
+      </div>
+
 
       <!-- Menu For Wide Screens -->
       <div class="top-nav-wrapper">

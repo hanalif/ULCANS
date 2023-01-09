@@ -1,4 +1,8 @@
 <ion-app>
+  <app-user-selections-menu
+    *ngIf="isUserSelectionsMenuOpen$ | async"
+    [@slidesFromLeft]></app-user-selections-menu>
+  <div (click)="onBackdropClicked(false)" *ngIf="isUserSelectionsMenuOpen$ | async" class="backdrop"></div>
   <ion-header>
     <app-header></app-header>
   </ion-header>
@@ -6,5 +10,4 @@
   <ion-content>
     <ion-router-outlet [animation]="myCustomPageTransition"></ion-router-outlet>
   </ion-content>
-
 </ion-app>
