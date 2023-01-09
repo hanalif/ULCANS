@@ -2,66 +2,72 @@
 </ion-header>
 
 <ion-content>
-  <div class="asset-container main-layout">
-    <div class="asset-inline-start">
-      <ion-buttons slot="start">
-        <button  title="Back" routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
-        <button  title="Equipment Information" class="icon-btn"><ion-icon name="information-outline"></ion-icon></button>
-        <button title="Camouflage Instructions" class="icon-btn"><ion-icon name="book-outline"></ion-icon></button>
-        <button routerLink="/configurations" title="Configurations List" class="icon-btn"><ion-icon name="prism-outline"></ion-icon></button>
-        <div class="select-btns">
-          <button [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
-          <button [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
-        </div>
-      </ion-buttons>
-      <div class="asset-img">
-        <img [src]="asset.assetImgUrl" alt="asset-pic">
-      </div>
-    </div>
-    <div class="asset-inline-end">
-      <div class="card">
-        <div class="card-title">
-          <h1>{{asset.name}}</h1>
-        </div>
-        <div class="card-content">
-          <div class="card-row">
-            <h3>Width:</h3>
-            <h3>{{asset.measures.widthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
+  <div class="assets-page">
+    <div class="asset-container main-layout">
+      <div class="asset-inline-start">
+        <ion-buttons slot="start">
+          <button  title="Back" routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+          <button  title="Equipment Information" class="icon-btn"><ion-icon name="information-outline"></ion-icon></button>
+          <button title="Camouflage Instructions" class="icon-btn"><ion-icon name="book-outline"></ion-icon></button>
+          <button routerLink="/configurations" title="Configurations List" class="icon-btn"><ion-icon name="prism-outline"></ion-icon></button>
+          <div class="select-btns">
+            <button [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+            <button [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
           </div>
-          <div class="card-row">
-            <h3>Height:</h3>
-            <h3>{{asset.measures.heightFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
-          </div>
-          <div class="card-row">
-            <h3>Length:</h3>
-            <h3>{{asset.measures.lengthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
-          </div>
+        </ion-buttons>
+        <div class="asset-img">
+          <img [src]="asset.assetImgUrl" alt="asset-pic">
         </div>
       </div>
-      <div class="card">
-        <div class="card-title">
-          <ion-icon routerLink="/configurations" size="small" name="prism-outline"></ion-icon>
-          <h1>Suitble Configuration: Type {{configuration.name}}</h1>
-        </div>
-        <div class="card-content">
-          <div class="card-row">
-            <h3>Image:</h3>
-            <div class="card-row-img">
-              <img [src]="configuration.imgUrl" alt="config-pic">
+      <div class="asset-inline-end">
+        <div class="card">
+          <div class="card-title">
+            <h1>{{asset.name}}</h1>
+          </div>
+          <div class="card-content">
+            <div class="card-row">
+              <h3>Width:</h3>
+              <h3>{{asset.measures.widthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
+            </div>
+            <div class="card-row">
+              <h3>Height:</h3>
+              <h3>{{asset.measures.heightFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
+            </div>
+            <div class="card-row">
+              <h3>Length:</h3>
+              <h3>{{asset.measures.lengthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</h3>
             </div>
           </div>
-          <div class="card-row">
-            <h3>Hexagon:</h3>
-            <h3>{{configuration.hexagon}}</h3>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            <ion-icon routerLink="/configurations" size="small" name="prism-outline"></ion-icon>
+            <h1>Suitble Configuration: Type {{configuration.name}}</h1>
           </div>
-          <div class="card-row">
-            <h3>Rhombus:</h3>
-            <h3>{{configuration.rhombus}}</h3>
+          <div class="card-content">
+            <div class="card-row">
+              <h3>Image:</h3>
+              <div class="card-row-img">
+                <img [src]="configuration.imgUrl" alt="config-pic">
+              </div>
+            </div>
+            <div class="card-row">
+              <h3>Hexagon:</h3>
+              <h3>{{configuration.hexagon}}</h3>
+            </div>
+            <div class="card-row">
+              <h3>Rhombus:</h3>
+              <h3>{{configuration.rhombus}}</h3>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card-buttom">
-
+        <div class="card-buttom">
+          <div class="enviorments-container">
+            <ion-avatar>
+              <img alt="Silhouette of a person's head" src="../../../../assets/imgs/enviorments/forest-g09d718299_1920.jpg" />
+            </ion-avatar>
+          </div>
+        </div>
       </div>
     </div>
   </div>

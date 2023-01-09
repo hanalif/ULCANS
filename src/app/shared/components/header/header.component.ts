@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Animations } from 'src/app/angular-animations/animations';
 import { MenuCategory } from '../../models/menu-category.model';
+import { StartBtn } from '../../models/start-btn.model';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 
 @Component({
@@ -16,11 +17,13 @@ export class HeaderComponent implements OnInit {
   menuCategories$!: Observable<MenuCategory[]>
   isDropdownMenuOpen: boolean = false;
   public openMenuLinksMaping: any = {};
+  startBtn!: StartBtn;
 
   constructor(private route: Router, private menuCategoriesServive: MenuCategoriesService) { }
 
   ngOnInit() {
-      this.menuCategories$ = this.menuCategoriesServive.getMenuCategories()
+      this.menuCategories$ = this.menuCategoriesServive.getMenuCategories();
+      this.startBtn = this.menuCategoriesServive.START_BTN;
   }
 
   onLogo(){

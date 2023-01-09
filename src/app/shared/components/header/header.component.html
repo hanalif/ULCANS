@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <app-main-btn class="top-nav-btn">{{ 'start using ULCANS' | uppercase }}</app-main-btn>
+      <app-main-btn routerLink={{startBtn.btnLink}} routerLinkActive="is-active" class="top-nav-btn">{{ startBtn.btnTitle | uppercase }}</app-main-btn>
     </div>
   </div>
 
@@ -92,11 +92,11 @@
       </div>
     </div>
     <div class="accordion-item dropdown-get-ulcans-btn">
-      <div class="accordion-item-header">
+      <div class="accordion-item-header" (click)="onAccordionItemHeader()"  routerLinkActive="is-active" routerLink={{startBtn.btnLink}}>
           <a>
             <div>
               <ion-icon name="checkmark-done-outline"></ion-icon>
-              {{'start using ULCANS' | uppercase}}
+              {{startBtn.btnTitle| uppercase}}
             </div>
           </a>
       </div>

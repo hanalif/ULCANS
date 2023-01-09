@@ -6,16 +6,16 @@
     "iconName": "prism-outline",
     "subCategories": [
       {
-        "subTitle": "configurations list",
-        "subRouterLink": "/configurations/configurations-list"
-      },
-      {
-        "subTitle": "typical configurations",
+        "subTitle": "assets",
         "subRouterLink": "/configurations/typical-configurations"
       },
       {
         "subTitle": "configuration calculator",
         "subRouterLink": "/configurations/configuration-calaulator"
+      },
+      {
+        "subTitle": "configurations list",
+        "subRouterLink": "/configurations/configurations-list"
       }
     ]
   },

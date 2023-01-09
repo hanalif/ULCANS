@@ -1,6 +1,6 @@
 @import '../../../styles/setup/mixins';
 @import '../../../styles/setup/variables';
-:host {
+
 
   .asset{
     &-container{
@@ -140,4 +140,4 @@
   ion-icon{
     cursor: pointer;
   }
-}
+

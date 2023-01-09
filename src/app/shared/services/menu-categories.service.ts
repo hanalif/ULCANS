@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { catchError, map, Observable, of } from 'rxjs';
 import { MenuCategory } from '../models/menu-category.model';
+import { StartBtn } from '../models/start-btn.model';
 
 
 
@@ -10,6 +11,8 @@ import { MenuCategory } from '../models/menu-category.model';
   providedIn: 'root'
 })
 export class MenuCategoriesService {
+
+  public START_BTN: StartBtn = { btnTitle: 'start using ulcans', btnLink: '/configurations/typical-configurations'}
 
   constructor(private http: HttpClient) { }
 
@@ -21,4 +24,11 @@ export class MenuCategoriesService {
   _getMenuCategories(){
     return this.http.get<MenuCategory[]>('assets/menu-categories.json');
   }
+
+
+
+
+
+
+
 }

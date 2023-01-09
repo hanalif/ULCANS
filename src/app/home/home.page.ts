@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StartBtn } from '../shared/models/start-btn.model';
+import { MenuCategoriesService } from '../shared/services/menu-categories.service';
 
 
 @Component({
@@ -6,8 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  startBtn!: StartBtn;
 
-  constructor() {}
+  constructor(private menuCategoriesService: MenuCategoriesService) {}
+
+  ngOnInit(): void {
+    this.startBtn = this.menuCategoriesService.START_BTN;
+  }
+
+
 
 }
