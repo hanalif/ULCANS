@@ -10,7 +10,7 @@ import { Configuration } from '../../models/configuration.model';
   templateUrl: './asset.page.html',
   styleUrls: ['./asset.page.scss'],
 })
-export class AssetPage implements OnInit {
+export class AssetPage implements OnInit{
   public asset!: Asset;
   public configuration!: Configuration;
   public measureType: MeasureType = MeasureType.METERS;

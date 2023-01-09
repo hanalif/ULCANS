@@ -14,6 +14,7 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
   public assetsList!: Asset[];
   @ViewChild(IonSearchbar) searchBarEl!: IonSearchbar;
   private searchBarElSub!: Subscription;
+  areAssetsFound: boolean = true;
 
 
   constructor(private assetsService:AssetsService, private route: Router, private navCntrl: NavController) { }
@@ -38,6 +39,8 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
       const target = res.target as HTMLInputElement;
       this.assetsService.getSearchResultAssets(target.value).subscribe(fetchedAssets=>{
         this.assetsList = fetchedAssets;
+        this.areAssetsFound = fetchedAssets.length === 0? false : true;
+        console.log(this.areAssetsFound)
       })
     })
   }

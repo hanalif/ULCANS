@@ -22,7 +22,14 @@
       </div>
     </div>
     <div class="tc-buttom">
-      <app-main-btn routerLink="/configurations/configuration-calaulator">Your asset is not in the list?</app-main-btn>
+      <h1 *ngIf="!areAssetsFound">Couldn't Find Asset(s)</h1>
     </div>
   </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container main-layout">
+      <app-main-btn routerLink="/configurations/configuration-calaulator">Your asset is not in the list?</app-main-btn>
+    </div>
+  </ion-toolbar>
+</ion-footer>

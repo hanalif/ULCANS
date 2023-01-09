@@ -121,3 +121,11 @@ ion-content{
 app-main-btn:hover{
   color: black;
 }
+
+.footer-container{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block-end: 20px;
+    margin-block-start: 20px;
+}
