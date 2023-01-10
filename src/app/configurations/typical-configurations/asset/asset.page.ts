@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { EnviormentCategory } from 'src/app/shared/models/enviorment-category.model';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.service';
+import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
 
@@ -19,11 +21,16 @@ export class AssetPage implements OnInit{
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
   openConfigurationType:boolean = false;
+  openMeasurments:boolean = false;
   enviormentCategories$!: Observable<EnviormentCategory[]>
   isEnviormentSelected: boolean = false;
   public selectEnviormentLinksMaping: any = {"11aa": true};
+  enviormentId:string = "11aa";
 
-  constructor(private router: ActivatedRoute, private menuCategoriesServive: MenuCategoriesService) { }
+  constructor(
+    private router: ActivatedRoute,
+    private menuCategoriesServive: MenuCategoriesService,
+    private userSelectionsService: UserSelectionService) { }
 
   ngOnInit() {
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
@@ -44,8 +51,12 @@ export class AssetPage implements OnInit{
     this.openConfigurationType = !this.openConfigurationType;
   }
 
-  onEnviormentLink(id:string){
+  onMeasurments(){
+    this.openMeasurments = !this.openMeasurments;
+  }
 
+  onEnviormentLink(id:string){
+    this.enviormentId = id;
     for(let key in this.selectEnviormentLinksMaping) {
       if(key !== id) {
         this.selectEnviormentLinksMaping[key] = false;
@@ -57,9 +68,15 @@ export class AssetPage implements OnInit{
     } else{
       this.selectEnviormentLinksMaping[id] = true;
     }
+  }
 
+  onAddToSelections(){
+    const assetForPdf:AssetForPdf = {
+      assetId: this.asset.id,
+      measureType: this.measureType,
+      enviormentId: this.enviormentId
+    }
 
-
-
+    this.userSelectionsService.addAssetForPdf(assetForPdf);
   }
 }

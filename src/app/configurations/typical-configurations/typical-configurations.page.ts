@@ -40,7 +40,7 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
       this.assetsService.getSearchResultAssets(target.value).subscribe(fetchedAssets=>{
         this.assetsList = fetchedAssets;
         this.areAssetsFound = fetchedAssets.length === 0? false : true;
-        console.log(this.areAssetsFound)
+
       })
     })
   }
