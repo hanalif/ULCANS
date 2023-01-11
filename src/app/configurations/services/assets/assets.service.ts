@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Asset } from '../../models/asset.model';
-import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 
 
 
@@ -60,7 +60,7 @@ export class AssetsService {
   }
 
   getAssets(){
-    return this.assets$
+    return this.assets$.asObservable();
   }
 
   _getassetsValue(){

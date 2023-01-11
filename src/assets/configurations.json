@@ -6,9 +6,9 @@
         "hexagon": 0,
         "rhombus": 1,
         "measures": {
-            "widthFs": 16.1,
-            "lengthFs": 27.8,
-            "areaSqFs": 224.5
+            "widthFt": 16.1,
+            "lengthFt": 27.8,
+            "areaSqFt": 224.5
         }
     },
     {
@@ -18,9 +18,9 @@
         "hexagon": 0,
         "rhombus": 2,
         "measures": {
-            "widthFs": 13.9,
-            "lengthFs": 40.2,
-            "areaSqFs": 449.0
+            "widthFt": 13.9,
+            "lengthFt": 40.2,
+            "areaSqFt": 449.0
         }
     },
     {
@@ -30,9 +30,9 @@
         "hexagon": 1,
         "rhombus": 0,
         "measures": {
-            "widthFs": 27.8,
-            "lengthFs": 32.2,
-            "areaSqFs": 673.6
+            "widthFt": 27.8,
+            "lengthFt": 32.2,
+            "areaSqFt": 673.6
         }
     },{
         "id": "c4",
@@ -41,9 +41,9 @@
         "hexagon": 1,
         "rhombus": 2,
         "measures": {
-            "widthFs": 27.8,
-            "lengthFs": 48.3,
-            "areaSqFs": 1122.6
+            "widthFt": 27.8,
+            "lengthFt": 48.3,
+            "areaSqFt": 1122.6
         }
     },
     {
@@ -53,9 +53,9 @@
         "hexagon": 1,
         "rhombus": 4,
         "measures": {
-            "widthFs": 27.8,
-            "lengthFs": 64.4,
-            "areaSqFs": 1571.7
+            "widthFt": 27.8,
+            "lengthFt": 64.4,
+            "areaSqFt": 1571.7
         }
     },
     {
@@ -65,9 +65,9 @@
         "hexagon": 2,
         "rhombus": 2,
         "measures": {
-            "widthFs": 48.3,
-            "lengthFs": 55.8,
-            "areaSqFs": 1796.2
+            "widthFt": 48.3,
+            "lengthFt": 55.8,
+            "areaSqFt": 1796.2
         }
     },
     {
@@ -77,9 +77,9 @@
         "hexagon": 3,
         "rhombus": 3,
         "measures": {
-            "widthFs": 55.8,
-            "lengthFs": 64.4,
-            "areaSqFs": 2694.3
+            "widthFt": 55.8,
+            "lengthFt": 64.4,
+            "areaSqFt": 2694.3
         }
     },
     {
@@ -89,9 +89,9 @@
         "hexagon": 4,
         "rhombus": 4,
         "measures": {
-            "widthFs": 55.8,
-            "lengthFs": 80.5,
-            "areaSqFs": 3592.4
+            "widthFt": 55.8,
+            "lengthFt": 80.5,
+            "areaSqFt": 3592.4
         }
     },
     {
@@ -101,9 +101,9 @@
         "hexagon": 5,
         "rhombus": 6,
         "measures": {
-            "widthFs": 80.5,
-            "lengthFs": 83.7,
-            "areaSqFs": 4715.0
+            "widthFt": 80.5,
+            "lengthFt": 83.7,
+            "areaSqFt": 4715.0
         }
     },
     {
@@ -113,9 +113,9 @@
         "hexagon": 6,
         "rhombus": 8,
         "measures": {
-            "widthFs": 69.7,
-            "lengthFs": 104.7,
-            "areaSqFs": 5837.5
+            "widthFt": 69.7,
+            "lengthFt": 104.7,
+            "areaSqFt": 5837.5
         }
     },
     {
@@ -125,9 +125,9 @@
         "hexagon": 7,
         "rhombus": 6,
         "measures": {
-            "widthFs": 83.7,
-            "lengthFs": 96.9,
-            "areaSqFs": 6021.1
+            "widthFt": 83.7,
+            "lengthFt": 96.9,
+            "areaSqFt": 6021.1
         }
     },
     {
@@ -137,9 +137,9 @@
         "hexagon": 7,
         "rhombus": 11,
         "measures": {
-            "widthFs": 96.9,
-            "lengthFs": 111.6,
-            "areaSqFs": 7184.7
+            "widthFt": 96.9,
+            "lengthFt": 111.6,
+            "areaSqFt": 7184.7
         }
     },
     {
@@ -149,9 +149,9 @@
         "hexagon": 8,
         "rhombus": 9,
         "measures": {
-            "widthFs": 83.7,
-            "lengthFs": 112.7,
-            "areaSqFs": 7409.2
+            "widthFt": 83.7,
+            "lengthFt": 112.7,
+            "areaSqFt": 7409.2
         }
     },
     {
@@ -161,9 +161,9 @@
         "hexagon": 9,
         "rhombus": 12,
         "measures": {
-            "widthFs": 83.7,
-            "lengthFs": 128.8,
-            "areaSqFs": 8756.4
+            "widthFt": 83.7,
+            "lengthFt": 128.8,
+            "areaSqFt": 8756.4
         }
     },
     {
@@ -173,9 +173,9 @@
         "hexagon": 10,
         "rhombus": 10,
         "measures": {
-            "widthFs": 111.6,
-            "lengthFs": 112.7,
-            "areaSqFs": 8980.9
+            "widthFt": 111.6,
+            "lengthFt": 112.7,
+            "areaSqFt": 8980.9
         }
     }
 ]

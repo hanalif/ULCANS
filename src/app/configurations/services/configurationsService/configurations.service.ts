@@ -26,6 +26,20 @@ export class ConfigurationsService {
     return this.configurations$.getValue()
   }
 
+  getConfigurationsByIds(configurationsIds: string[]){
+    let configurations = this.getConfigurations();
+    let conigurationsByIds: Configuration[] = [];
+    for(let i = 0; i <configurations.length; i++){
+      let isconfiguraionIdFound = configurationsIds.find(id=> id === configurations[i].id);
+      if(isconfiguraionIdFound){
+        conigurationsByIds.push(configurations[i]);
+      }
+    }
+
+    return conigurationsByIds;
+  }
+
+
   _getConfugurations(){
      return this.http.get<Configuration[]>('assets/configurations.json').pipe(map(configurations => { this.configurations$.next(configurations)}));
   }

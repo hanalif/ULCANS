@@ -19,6 +19,37 @@
 
     }
 
+    .user-selections-menu-icon{
+      position: relative;
+
+    }
+
+    .badge-icon{
+      position: absolute;
+      z-index: 99;
+      &.mobile{
+        display: none;
+      }
+
+      &.wide-screen{
+        display: block;
+        left: 25px;
+        top: -5px;
+      }
+
+      @include for-bpoint-mobile{
+        &.mobile{
+         display: block;
+         left: 23px;
+         top: -5px;
+        }
+
+        &.wide-screen{
+         display: none;
+        }
+     }
+    }
+
     .reader-icon{
       font-size: 40px;
       color: white;
@@ -33,14 +64,14 @@
       }
 
       @include for-bpoint-mobile{
-       &.mobile{
-        display: block;
-       }
+        &.mobile{
+         display: block;
+        }
 
-       &.wide-screen{
-        display: none;
-       }
-    }
+        &.wide-screen{
+         display: none;
+        }
+     }
 
 
     }

@@ -266,25 +266,26 @@
       font-size: 25px;
     }
 
-    &.mobile{
-      display: none;
-    }
+    // &.mobile{
+    //   display: none;
+    // }
 
-    &.wide-screen{
+    // &.wide-screen{
+    //   display: flex;
+    // }
+
+    &.m-buttom{
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-inline-end: 10px;
+      margin-inline-start: 10px;
+      gap: 6px;
       display: flex;
-    }
 
+    }
     @include for-bpoint-tablet{
 
-      &.m-buttom{
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        margin-inline-end: 10px;
-        margin-inline-start: 10px;
-        gap: 6px;
-
-      }
 
         span{
           display: none;
@@ -295,14 +296,14 @@
 
         }
 
-      &.mobile{
-        display: flex;
-      }
+      // &.mobile{
+      //   display: flex;
+      // }
 
 
-      &.wide-screen{
-        display: none;
-      }
+      // &.wide-screen{
+      //   display: none;
+      // }
 
     }
 

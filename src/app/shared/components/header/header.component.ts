@@ -19,12 +19,14 @@ export class HeaderComponent implements OnInit {
   isDropdownMenuOpen: boolean = false;
   public openMenuLinksMaping: any = {};
   startBtn!: StartBtn;
+  numsOfUserSelections$!: Observable<number>;
 
   constructor(private route: Router, private menuCategoriesServive: MenuCategoriesService, private userSelectionsService: UserSelectionService) { }
 
   ngOnInit() {
       this.menuCategories$ = this.menuCategoriesServive.getMenuCategories();
       this.startBtn = this.menuCategoriesServive.START_BTN;
+      this.numsOfUserSelections$ = this.userSelectionsService.getnumOfSelections();
   }
 
   onLogo(){

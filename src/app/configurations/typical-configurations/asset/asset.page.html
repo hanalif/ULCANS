@@ -10,7 +10,6 @@
             <button  title="Equipment Information" class="icon-btn"><ion-icon name="information-outline"></ion-icon></button>
             <button title="Camouflage Instructions" class="icon-btn"><ion-icon name="book-outline"></ion-icon></button>
             <button routerLink="/configurations" title="Configurations List" class="icon-btn"><ion-icon name="prism-outline"></ion-icon></button>
-
           </div>
           <button class="icon-btn add-icon mobile"><ion-icon name="add-outline"></ion-icon></button>
         </ion-buttons>
@@ -19,9 +18,6 @@
         </div>
       </div>
       <div class="asset-inline-end">
-        <ion-buttons slot="start">
-          <button (click)="onAddToSelections()" class="icon-btn add-icon wide-screen"><ion-icon name="add-outline"></ion-icon>Add To Your Selections</button>
-        </ion-buttons>
         <div class="card">
           <div class="card-title justify-center">
             <h1>{{asset.name}}</h1>
@@ -113,7 +109,7 @@
               </div>
           </div>
           <div class="add-button-wrapper">
-            <button (click)="onAddToSelections()" class="icon-btn add-icon mobile m-buttom"><ion-icon name="add-outline"></ion-icon><span class="mobile-buttom">Add To Your Selections</span></button>
+            <button (click)="onAddToSelections()" class="icon-btn add-icon wide-screen m-buttom"><ion-icon name="add-outline"></ion-icon><span class="mobile-buttom">Add To Your Selections</span></button>
           </div>
         </div>
       </div>

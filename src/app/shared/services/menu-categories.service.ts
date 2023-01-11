@@ -23,17 +23,26 @@ export class MenuCategoriesService {
     return this._getMenuCategories();
   }
 
-  getEnviormentCategories(){
-    return this._getEnviormentsCategories();
-  }
-
-
   _getMenuCategories(){
     return this.http.get<MenuCategory[]>('assets/menu-categories.json');
   }
 
   getConfigurationsClassesCategories(){
     return this.configurationsClassesCategories$.getValue();
+  }
+
+  getConfigurationsClassesCategoriesByIds(classesIds: string[]){
+    let classesList = this.getConfigurationsClassesCategories();
+    let classesByIds: EnviormentCategory[] = [];
+    for(let i = 0; i <classesList.length; i++){
+      let isClassIdFound = classesIds.find(id=> id === classesIds[i]);
+
+      if(isClassIdFound){
+        classesByIds.push(classesByIds[i]);
+      }
+    }
+
+    return classesByIds;
   }
   _getEnviormentsCategories(){
     return this.http.get<EnviormentCategory[]>('assets/enviorments-types.json').pipe(map(categories => this.configurationsClassesCategories$.next(categories)));;

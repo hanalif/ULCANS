@@ -74,7 +74,9 @@ export class AssetPage implements OnInit{
     const assetForPdf:AssetForPdf = {
       assetId: this.asset.id,
       measureType: this.measureType,
-      enviormentId: this.enviormentId
+      enviormentId: this.enviormentId,
+      configuraionId: this.asset.configurationId,
+      quantity: 0
     }
 
     this.userSelectionsService.addAssetForPdf(assetForPdf);

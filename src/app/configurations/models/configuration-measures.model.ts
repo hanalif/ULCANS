@@ -1,5 +1,6 @@
 export interface ConfigurationMeasures {
-    widthFs: number,
-    lengthFs: number,
-    areaSqFs: number
+    widthFt: number,
+    lengthFt: number,
+    areaSqFt: number,
+
 }

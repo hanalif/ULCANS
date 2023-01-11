@@ -7,10 +7,12 @@
         ></ion-img>
       </div>
       <div (click)="onReaderIcon(true)" class="user-selections-menu-icon">
+        <ion-badge class="badge-icon wide-screen" slot="end">{{numsOfUserSelections$ | async}}</ion-badge>
         <ion-icon class="reader-icon wide-screen" name="reader-outline"></ion-icon>
       </div>
     </div>
     <div class="top-nav">
+
       <!-- Hamburger Icon For Mobile -->
       <ion-icon
         *ngIf="!isDropdownMenuOpen"
@@ -27,6 +29,7 @@
         name="close-outline"
       ></ion-icon>
       <div (click)="onReaderIcon(true)" class="user-selections-menu-icon">
+        <ion-badge class="badge-icon mobile" slot="end">{{numsOfUserSelections$ | async}}</ion-badge>
         <ion-icon class="reader-icon mobile" name="reader-outline"></ion-icon>
       </div>
 
