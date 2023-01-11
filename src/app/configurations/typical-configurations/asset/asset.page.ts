@@ -22,7 +22,7 @@ export class AssetPage implements OnInit{
   public MeasureType = MeasureType;
   openConfigurationType:boolean = false;
   openMeasurments:boolean = false;
-  enviormentCategories$!: Observable<EnviormentCategory[]>
+  enviormentCategories!:EnviormentCategory[];
   isEnviormentSelected: boolean = false;
   public selectEnviormentLinksMaping: any = {"11aa": true};
   enviormentId:string = "11aa";
@@ -36,7 +36,7 @@ export class AssetPage implements OnInit{
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
     this.asset = assetForPreview.asset;
     this.configuration = assetForPreview.configuration;
-    this.enviormentCategories$ = this.menuCategoriesServive._getEnviormentsCategories();
+    this.enviormentCategories = this.menuCategoriesServive.getConfigurationsClassesCategories();
   }
 
   onSelectBtn(measureType:MeasureType){

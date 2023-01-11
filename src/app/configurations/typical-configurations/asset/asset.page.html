@@ -33,7 +33,7 @@
                   <div>
                     <h1>measurements:</h1>
                   </div>
-                  <ion-icon [ngClass]="{ 'icon-spins': openMeasurments}"  class="arrow-down" name="chevron-down-outline"></ion-icon>
+                  <ion-icon [ngClass]="{ 'icon-spins': openMeasurments}"  class="arrow-down" name="caret-down-outline"></ion-icon>
                 </div>
 
               </div>
@@ -68,7 +68,7 @@
                   <div>
                     <h1>Configuration: Type {{configuration.name}}</h1>
                   </div>
-                  <ion-icon [ngClass]="{ 'icon-spins': openConfigurationType}"  class="arrow-down" name="chevron-down-outline"></ion-icon>
+                  <ion-icon [ngClass]="{ 'icon-spins': openConfigurationType}"  class="arrow-down" name="caret-down-outline"></ion-icon>
                 </div>
               </div>
               <div accordionItemBody >
@@ -101,7 +101,7 @@
           </div>
           <div class="enviorments-container">
               <div class="enviorment-link"
-                  *ngFor="let enviorment of enviormentCategories$ | async"
+                  *ngFor="let enviorment of enviormentCategories"
                   (click)="onEnviormentLink(enviorment.id)"
                   >
                 <div class="img-wrapper">

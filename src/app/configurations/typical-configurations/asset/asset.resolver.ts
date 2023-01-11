@@ -17,25 +17,19 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
   constructor(
     private assetsService: AssetsService, private configsService: ConfigurationsService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<AssetForPreview | undefined> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): AssetForPreview | undefined {
     const assetId = route.params['assetId'];
-    const assetForPreview$ = this.assetsService.getAssetById(assetId).pipe(
-      switchMap(asset=>{
-        if(!asset){
-          return of(undefined);
-        }else{
-          return this.configsService.getConfigurationById(asset.configurationId).pipe(
-            map(config=>{
-              let assetForPreview: AssetForPreview = {
-                asset: asset,
-                configuration: config
-              }
-              return assetForPreview;
-            })
-          )
-        }
-      })
-    )
-    return assetForPreview$;
+    let asset = this.assetsService.getAssetById(assetId);
+    if(!asset){
+      return undefined;
+    }else{
+      let config = this.configsService.getConfigurationById(asset.configurationId);
+      let assetForPreview: AssetForPreview = {
+        asset: asset,
+        configuration: config
+      }
+      return assetForPreview;
+    }
+
   }
 }

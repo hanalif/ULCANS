@@ -21,6 +21,10 @@ export class UserSelectionService {
      return this.isUserSelectionsMenuOpen$
   }
 
+  getAssetsForPdf(){
+    return this.assetsForPdf$
+  }
+
   setIsUserSelectionsMenuOpen(val:boolean){
     this.isUserSelectionsMenuOpen$.next(val);
   }
@@ -32,8 +36,6 @@ export class UserSelectionService {
     this.assetsForPdf$.next(assetsForPdf);
 
   }
-
-
 
 
 

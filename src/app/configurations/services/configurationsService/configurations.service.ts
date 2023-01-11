@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { Configuration } from '../../models/configuration.model';
 
 @Injectable({
@@ -10,15 +10,23 @@ export class ConfigurationsService {
 
   constructor(private http: HttpClient) { }
 
+  private configurations$: BehaviorSubject<Configuration[]> = new BehaviorSubject<Configuration[]>([]);
+
+
+
   getConfigurationById(configurationId: string){
-    return this._getConfugurations().pipe(map(configurations=>{
-      const configuration = configurations.find(c=>
-        {return c.id === configurationId})
-      return configuration;
-    }))
+    let configurations = this.getConfigurations();
+    const configuration = configurations.find(c=>
+      {return c.id === configurationId})
+    return configuration;
+
+  }
+
+  getConfigurations(){
+    return this.configurations$.getValue()
   }
 
   _getConfugurations(){
-    return this.http.get<Configuration[]>('assets/configurations.json');
+     return this.http.get<Configuration[]>('assets/configurations.json').pipe(map(configurations => { this.configurations$.next(configurations)}));
   }
 }

@@ -13,8 +13,8 @@ import { AssetsService } from '../services/assets/assets.service';
 export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestroy {
   public assetsList!: Asset[];
   @ViewChild(IonSearchbar) searchBarEl!: IonSearchbar;
-  private searchBarElSub!: Subscription;
   areAssetsFound: boolean = true;
+  assetsSubscription!: Subscription;
 
 
   constructor(private assetsService:AssetsService, private route: Router, private navCntrl: NavController) { }
@@ -22,9 +22,10 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
 
 
   ngOnInit() {
-    this.assetsService._getAssetes().subscribe(assets=>{
-      this.assetsList = assets;
-    })
+      this.assetsService.getAssets().subscribe(assets =>{
+      this.assetsList = assets
+    });
+
   }
 
   onAssetLink(assetId: string){
@@ -37,15 +38,13 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
       debounceTime(300)
     ).subscribe(res => {
       const target = res.target as HTMLInputElement;
-      this.assetsService.getSearchResultAssets(target.value).subscribe(fetchedAssets=>{
-        this.assetsList = fetchedAssets;
-        this.areAssetsFound = fetchedAssets.length === 0? false : true;
-
-      })
+      this.assetsList = this.assetsService.getSearchResultAssets(target.value);
+      this.areAssetsFound = this.assetsList.length === 0? false : true;
     })
   }
 
   ngOnDestroy(): void {
-    this.searchBarElSub?.unsubscribe()
+    this.assetsSubscription.unsubscribe()
+
   }
 }

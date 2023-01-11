@@ -251,9 +251,14 @@
     align-items: center;
     font-size: 18px;
     background-color: #00a9ff;
-    color: black;
     border-radius: 30px;
     font-family: Light-font, sans-serif;
+    color: white;
+    font-weight: 700;
+
+    &:hover{
+      color: black;
+    }
 
 
 
@@ -278,6 +283,7 @@
         margin-inline-end: 10px;
         margin-inline-start: 10px;
         gap: 6px;
+
       }
 
         span{
@@ -307,3 +313,5 @@
       background-color: white;
     }
   }
+
+
