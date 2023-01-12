@@ -1,13 +1,10 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, switchMap } from 'rxjs';
-import { Asset } from 'src/app/configurations/models/asset.model';
-import { AssetForPreview } from 'src/app/configurations/models/assetForPreview.model';
-import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
-import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
+import { Component, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { AssetForDisplay } from '../../models/asset-for-display';
 import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
-import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { UserSelectionService } from '../../services/user-selection.service';
+import { PdfPageComponent } from '../pdf-page/pdf-page.component';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -18,11 +15,16 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForPdfSubscription!: Subscription;
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
+  currPlatform!: string | string[];
+
 
 
   constructor(
     private userSelectionService: UserSelectionService,
-    private measurmentsPipe: FtToMPipe) { }
+    private measurmentsPipe: FtToMPipe,
+    private viewContainerRef: ViewContainerRef,
+    public plt: Platform,
+    ) { }
 
   ngOnInit() {
     this.assetsForPdfSubscription = this.userSelectionService.getAssetsForPdf().subscribe(assetsForPdf=>{
@@ -34,10 +36,28 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         this.assetsForDisplay = assetsForDisplay;
       }
     });
+
+    this.currPlatform = this.plt.platforms();
+
+
   }
 
   ngOnDestroy(): void {
     this.assetsForPdfSubscription?.unsubscribe()
 
+  }
+
+  onDownloadPdf(){
+
+    console.log('from cmp:', this.currPlatform)
+
+    if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
+      return
+    }
+
+    let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
+       htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
+
+   this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatform);
   }
 }
