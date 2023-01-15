@@ -1,6 +1,7 @@
 <ion-header>
 </ion-header>
 <ion-content>
+  <ng-scrollbar class="scrollbar">
   <div class="assets-page">
     <div class="asset-container main-layout">
       <div class="asset-inline-start">
@@ -27,7 +28,7 @@
               <div accordionItemHeader>
                 <div class="card-title sub-title" (click)="onMeasurments()">
                   <div>
-                    <h1>measurements:</h1>
+                    <h1>Asset Measurements:</h1>
                   </div>
                   <ion-icon [ngClass]="{ 'icon-spins': openMeasurments}"  class="arrow-down" name="caret-down-outline"></ion-icon>
                 </div>
@@ -92,7 +93,8 @@
         <div class="card-buttom">
           <div class="card-title sub-title">
             <div>
-              <h1>Choose Your Enviorment:</h1>
+              <h1>Choose Your Environment:</h1>
+              <h1>Side A:</h1>
             </div>
           </div>
           <div class="enviorments-container">
@@ -115,6 +117,7 @@
       </div>
     </div>
   </div>
+</ng-scrollbar>
 </ion-content>
 
 

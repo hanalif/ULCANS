@@ -26,16 +26,16 @@
     "iconName": "book-outline",
     "subCategories": [
       {
+        "subTitle": "critical considerations",
+        "subRouterLink": "/camouflage-instructions/critical-considerations"
+      },
+      {
         "subTitle": "setting up system",
         "subRouterLink": "/camouflage-instructions/setting-up-system"
       },
       {
         "subTitle": "folding up system",
         "subRouterLink": "/camouflage-instructions/folding-system"
-      },
-      {
-        "subTitle": "critical considerations",
-        "subRouterLink": "/camouflage-instructions/critical-considerations"
       }
     ]
   },
@@ -53,10 +53,6 @@
       {
         "subTitle": "maintenance",
         "subRouterLink": "/useful-information/maintenance"
-      },
-      {
-        "subTitle": "refrences",
-        "subRouterLink": "/useful-information/refrences"
       }
     ]
   }

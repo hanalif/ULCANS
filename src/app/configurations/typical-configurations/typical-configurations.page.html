@@ -1,9 +1,10 @@
 <ion-header>
 </ion-header>
 <ion-content >
+  <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
   <div class="tc-container main-layout">
     <div class="tc-top">
-      <h1>Choose an asset you want to camouflage</h1>
+      <h1>Choose an asset to camouflage</h1>
       <div class="search-container main-layout">
         <ion-searchbar show-clear-button="focus"></ion-searchbar>
       </div>
@@ -25,6 +26,7 @@
       <h1 *ngIf="!areAssetsFound">Couldn't Find Asset(s)</h1>
     </div>
   </div>
+</ng-scrollbar>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

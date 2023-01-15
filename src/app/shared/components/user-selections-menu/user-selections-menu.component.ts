@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AssetForDisplay } from '../../models/asset-for-display';
 import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
 import { UserSelectionService } from '../../services/user-selection.service';
@@ -15,7 +15,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForPdfSubscription!: Subscription;
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
-  currPlatform!: string | string[];
+  currPlatforms!: string[];
+  isProcessingPdf$!: Observable<boolean>
 
 
 
@@ -24,6 +25,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private measurmentsPipe: FtToMPipe,
     private viewContainerRef: ViewContainerRef,
     public plt: Platform,
+
     ) { }
 
   ngOnInit() {
@@ -36,10 +38,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         this.assetsForDisplay = assetsForDisplay;
       }
     });
-
-    this.currPlatform = this.plt.platforms();
-
-
+      this.currPlatforms = this.plt.platforms();
+      this.isProcessingPdf$ = this.userSelectionService.getIsProcessingPdf()
   }
 
   ngOnDestroy(): void {
@@ -49,7 +49,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   onDownloadPdf(){
 
-    console.log('from cmp:', this.currPlatform)
 
     if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
       return
@@ -58,6 +57,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
        htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
 
-   this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatform);
+   this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatforms);
   }
 }

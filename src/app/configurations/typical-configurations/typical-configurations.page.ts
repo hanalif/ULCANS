@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSearchbar, NavController } from '@ionic/angular';
 import { debounceTime, Subscription } from 'rxjs';
+import { HomePage } from 'src/app/home/home.page';
 import { Asset } from '../models/asset.model';
 import { AssetsService } from '../services/assets/assets.service';
 
@@ -13,6 +14,7 @@ import { AssetsService } from '../services/assets/assets.service';
 export class TypicalConfigurationsPage implements OnInit, AfterViewInit {
   public assetsList!: Asset[];
   @ViewChild(IonSearchbar) searchBarEl!: IonSearchbar;
+  @ViewChild(HomePage, { read: ElementRef }) private homePageEl!: ElementRef;
   areAssetsFound: boolean = true;
 
 
@@ -31,6 +33,7 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit {
       this.cd.detectChanges();
     });
 
+
   }
 
   onAssetLink(assetId: string){
@@ -46,6 +49,24 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit {
       this.assetsList = this.assetsService.getSearchResultAssets(target.value);
       this.areAssetsFound = this.assetsList.length === 0? false : true;
     })
+
+  }
+
+  ionViewWillEnter(){
+    console.log('ionViewWillEnter')
+
+
+  }
+  ionViewDidEnter(){
+    console.log('ionViewDidEnter')
+  }
+
+  ionViewWillLeave(){
+    console.log('ionViewWillLeave')
+  }
+
+  ionViewDidLeave(){
+    console.log('ionViewDidLeave')
   }
 
 

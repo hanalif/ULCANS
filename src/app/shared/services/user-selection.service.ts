@@ -25,6 +25,7 @@ export class UserSelectionService {
   private isUserSelectionsMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
   private assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
+  private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private measurmentsPipe: FtToMPipe,
@@ -46,6 +47,10 @@ export class UserSelectionService {
 
   getAssetsForPdf(){
     return this.assetsForPdf$.asObservable();
+  }
+
+  getIsProcessingPdf(){
+    return this.isProcessingPdf$.asObservable();
   }
 
   setIsUserSelectionsMenuOpen(val:boolean){
@@ -100,26 +105,25 @@ export class UserSelectionService {
   }
 
 
-  downloadPdf(htmlToPdfContent: ComponentRef<PdfPageComponent>, currPlatform: string | string[]) {
-    console.log(currPlatform)
-    this.setNumberOfNewSelections(0);
-    this.assetsForPdf$.next([]);
-
-
-
+  downloadPdf(htmlToPdfContent: ComponentRef<PdfPageComponent>, currPlatforms: string[]) {
        asyncScheduler.schedule(() => {
+        this.isProcessingPdf$.next(true);
          const htmlString = htmlToPdfContent.location.nativeElement.innerHTML;
          htmlToPdfContent.destroy();
+
+         let isCurrPlatformDesktopOrMobileweb: boolean = this.checkPlatform(currPlatforms);
 
          var doc = new JSPDF();
          doc.html(htmlString, {
          callback: ((doc: JSPDF) => {
-           if(currPlatform[0] === 'desktop'){
+           if(isCurrPlatformDesktopOrMobileweb){
              doc.save("output.pdf");
+             this.isProcessingPdf$.next(false);
            }else{
              let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
-             this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blobPdf, { replace: true }).then(fileEntry => {
-             this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+             this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, { replace: true }).then(fileEntry => {
+              this.isProcessingPdf$.next(false);
+             this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
              })
            }
          }).bind(this),
@@ -131,6 +135,27 @@ export class UserSelectionService {
          windowWidth: 675
        });
      });
+
+     this.setNumberOfNewSelections(0);
+      this.assetsForPdf$.next([]);
+   }
+
+
+   checkPlatform(currPlatforms: string[]){
+    let isCurrPlatformDesktopOrMobileweb: boolean = false;
+    for(let i = 0; i< currPlatforms.length; i++){
+      console.log(currPlatforms[i]);
+        if(currPlatforms[i] === "desktop"){
+          isCurrPlatformDesktopOrMobileweb = true;
+        } else if(currPlatforms[i] === "mobileweb"){
+          isCurrPlatformDesktopOrMobileweb = true;
+        }
+        else{
+          isCurrPlatformDesktopOrMobileweb = false;
+        }
+      }
+      return isCurrPlatformDesktopOrMobileweb;
+
    }
 }
 
