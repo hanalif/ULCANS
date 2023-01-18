@@ -20,8 +20,6 @@ export class AssetPage implements OnInit{
   public configuration!: Configuration;
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
-  openConfigurationType:boolean = false;
-  openMeasurments:boolean = false;
   enviormentCategories!:EnviormentCategory[];
   isEnviormentSelected: boolean = false;
   public selectEnviormentLinksMaping: any = {"11aa": true};
@@ -45,14 +43,6 @@ export class AssetPage implements OnInit{
     }
 
     this.measureType = measureType;
-  }
-
-  onConfigurationType(){
-    this.openConfigurationType = !this.openConfigurationType;
-  }
-
-  onMeasurments(){
-    this.openMeasurments = !this.openMeasurments;
   }
 
   onEnviormentLink(id:string){
