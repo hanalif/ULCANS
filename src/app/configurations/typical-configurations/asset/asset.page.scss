@@ -5,36 +5,35 @@
     --scrollbar-thumb-color: #7a7a7a;
   }
 
-  ion-buttons{
-    align-self: baseline;
-    padding-block-start: 20px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding-inline-end: 10px;
-    padding-block-start: 10px;
-
-
-
-    .btns-section{
-      display: flex;
-      gap: 5px;
-      margin-inline-start: 10px;
-    }
-
-
+  .card-inline-end{
+    flex: 7;
   }
 
+  .card-inline-start{
+    flex: 5;
+  }
   .asset-img{
     width: 100%;
 
     @include for-bpoint-tablet{
-      width: 65%;
       display: flex;
       justify-content: center;
+
+      & img{
+        width: 65%;
+      }
     }
 
+  }
 
+  .config-pic{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+
+    img{
+      width: 65%;
+    }
   }
 
   .select-btns{
@@ -55,46 +54,6 @@
       }
 
     }
-  }
-
-
-  .environments-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(97px, 100px));
-    justify-items: center;
-    padding-inline-start: 10px;
-    padding-inline-end: 10px;
-    gap: 10px;
-    margin-block-end: 20px;
-    .environment-link{
-      width: auto;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 2px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      height: fit-content;
-
-      img{
-        border-radius: 50%;
-        height: 70px;
-        width: 70px;
-        border: 1px solid black;
-
-        &:hover, &.selected{
-          outline: 2px solid #9b9b9b;
-          outline-offset: 4px;
-        }
-      }
-
-      .title{
-        text-align: center;
-        font-family: Light-font, sans-serif;
-        color: #9b9b9b;
-      }
-    }
-
   }
 
   .add-button-wrapper{

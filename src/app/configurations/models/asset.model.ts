@@ -6,5 +6,6 @@ export interface Asset{
     assetImgUrl: string,
     name: string,
     configurationId: string,
-    measures: AssetMeasures
+    measures: AssetMeasures,
+    isInList: boolean
 }

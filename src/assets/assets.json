@@ -8,7 +8,8 @@
             "widthFt": 8.2,
             "heightFt": 8.6,
             "lengthFt": 20.4
-        }
+        },
+        "isInList": true
     },
     {
         "id": "YtWnE",
@@ -19,7 +20,8 @@
             "widthFt": 8.25,
             "heightFt": 10,
             "lengthFt": 22.3
-        }
+        },
+        "isInList": true
     },
     {
         "id": "bRB9n",
@@ -30,7 +32,8 @@
             "widthFt": 8.11,
             "heightFt": 22.1,
             "lengthFt": 8.8
-        }
+        },
+        "isInList": true
     },
     {
         "id": "COIiz",
@@ -41,7 +44,8 @@
             "widthFt": 3.6,
             "heightFt": 6.55,
             "lengthFt": 6.55
-        }
+        },
+        "isInList": true
     },
     {
         "id": "mK7YI",
@@ -52,7 +56,8 @@
             "widthFt": 12,
             "heightFt": 8,
             "lengthFt": 32.04
-        }
+        },
+        "isInList": true
     },
     {
         "id": "aSlVh",
@@ -63,7 +68,8 @@
             "widthFt": 7.3,
             "heightFt": 5.8,
             "lengthFt": 19.6
-        }
+        },
+        "isInList": true
     },
     {
         "id": "Hjpj1",
@@ -74,7 +80,8 @@
             "widthFt": 8,
             "heightFt": 5.11,
             "lengthFt": 20
-        }
+        },
+        "isInList": true
     },
     {
         "id": "iO9WF",
@@ -85,7 +92,8 @@
             "widthFt": 10.4,
             "heightFt": 10.8,
             "lengthFt": 30
-        }
+        },
+        "isInList": true
     },
     {
         "id": "92SHl",
@@ -96,7 +104,8 @@
             "widthFt": 96,
             "heightFt": 145,
             "lengthFt": 390
-        }
+        },
+        "isInList": true
     },
     {
         "id": "EAE1C",
@@ -107,7 +116,8 @@
             "widthFt": 8,
             "heightFt": 9.3,
             "lengthFt": 33.4
-        }
+        },
+        "isInList": true
     },
     {
         "id": "Ybq3Y",
@@ -118,6 +128,7 @@
             "widthFt": 34,
             "heightFt": 12,
             "lengthFt": 34
-        }
+        },
+        "isInList": true
     }
 ]

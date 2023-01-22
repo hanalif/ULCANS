@@ -21,7 +21,7 @@
       <div class="card-inline-end">
         <div class="card">
           <div class="card-title justify-center">
-            <h1>{{asset.name}}</h1>
+            <h1>{{asset.name | uppercase}}</h1>
           </div>
           <div class="card-title sub-title">
             <div>
@@ -57,7 +57,9 @@
             <div class="card-row">
               <h3>Image:</h3>
               <div class="card-row-img">
-                <img [src]="configuration.imgUrl" alt="config-pic">
+                <div class="config-pic">
+                  <img [src]="configuration.imgUrl" alt="config-pic">
+                </div>
               </div>
             </div>
             <div class="card-row">
@@ -71,27 +73,8 @@
           </div>
        </div>
         <div class="card-buttom">
-          <div class="card-title sub-title">
-            <div>
-              <h1>Choose Your Environment:</h1>
-              <h1>Side A:</h1>
-            </div>
-          </div>
-          <div class="environments-container">
-              <div class="environment-link"
-                  *ngFor="let environment of environmentsCategories"
-                  (click)="onEnvironmentLink(environment.id)"
-                  >
-                <div class="img-wrapper">
-                  <img [ngClass]="{'selected': selectEnvironmentLinksMaping[environment.id]}" [src]="environment.imgUrl" alt="">
-                </div>
-                <div class="title">
-                  <h3>{{environment.typeName}}</h3>
-                </div>
-              </div>
-          </div>
           <div class="add-button-wrapper">
-            <button (click)="onAddToSelections()" class="icon-btn add-icon wide-screen m-buttom"><ion-icon name="add-outline"></ion-icon><span class="mobile-buttom">Add To Your Selections</span></button>
+            <button (click)="onChooseYourEnvironment()" class="icon-btn add-icon wide-screen m-buttom"><span class="mobile-buttom">Choose your environment</span></button>
           </div>
         </div>
       </div>

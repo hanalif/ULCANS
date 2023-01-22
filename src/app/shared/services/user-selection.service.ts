@@ -75,7 +75,7 @@ export class UserSelectionService {
         const configurationsIds = assetsForPdf.map(asset => asset.configuraionId);
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
-        const classes = this.menuCategoriesService.getConfigurationsClassesCategories();
+        const classes = this.menuCategoriesService.getConfigurationsClassesCategoriesValue();
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
 
         let assetsForDisplay: AssetForDisplay[] = [];

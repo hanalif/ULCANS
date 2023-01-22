@@ -1,0 +1,39 @@
+
+  .environments-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(97px, 100px));
+    justify-items: center;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    gap: 10px;
+    margin-block-end: 20px;
+    .environment-link{
+      width: auto;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: fit-content;
+
+      img{
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        border: 1px solid black;
+
+        &:hover, &.selected{
+          outline: 2px solid #9b9b9b;
+          outline-offset: 4px;
+        }
+      }
+
+      .title{
+        text-align: center;
+        font-family: Light-font, sans-serif;
+        color: #9b9b9b;
+      }
+    }
+
+  }

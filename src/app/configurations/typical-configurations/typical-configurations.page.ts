@@ -52,22 +52,5 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit {
 
   }
 
-  ionViewWillEnter(){
-    console.log('ionViewWillEnter')
-
-
-  }
-  ionViewDidEnter(){
-    console.log('ionViewDidEnter')
-  }
-
-  ionViewWillLeave(){
-    console.log('ionViewWillLeave')
-  }
-
-  ionViewDidLeave(){
-    console.log('ionViewDidLeave')
-  }
-
 
 }

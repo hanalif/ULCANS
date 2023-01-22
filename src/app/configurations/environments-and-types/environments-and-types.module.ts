@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { EnvironmentsAndTypesPageRoutingModule } from './environments-and-types-routing.module';
+
+import { EnvironmentsAndTypesPage } from './environments-and-types.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    EnvironmentsAndTypesPageRoutingModule,
+    SharedModule
+  ],
+  declarations: [EnvironmentsAndTypesPage]
+})
+export class EnvironmentsAndTypesPageModule {}

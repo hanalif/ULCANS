@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
 import { MenuCategory } from '../models/menu-category.model';
 import { StartBtn } from '../models/start-btn.model';
 import { EnvironmentCategory } from '../models/environment-category.model';
@@ -17,7 +17,7 @@ export class MenuCategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  private configurationsClassesCategories$: BehaviorSubject<EnvironmentCategory[]> = new BehaviorSubject<EnvironmentCategory[]>([]);
+  public configurationsClassesCategories$: BehaviorSubject<EnvironmentCategory[]> = new BehaviorSubject<EnvironmentCategory[]>([]);
 
   getMenuCategories(){
     return this._getMenuCategories();
@@ -28,11 +28,17 @@ export class MenuCategoriesService {
   }
 
   getConfigurationsClassesCategories(){
+    return this.configurationsClassesCategories$.asObservable();
+  }
+
+  getConfigurationsClassesCategoriesValue(){
     return this.configurationsClassesCategories$.getValue();
   }
 
+
+
   getConfigurationsClassesCategoriesByIds(classesIds: string[]){
-    let classesList = this.getConfigurationsClassesCategories();
+    let classesList = this.configurationsClassesCategories$.getValue();
     let classesByIds: EnvironmentCategory[] = [];
     for(let i = 0; i <classesList.length; i++){
       let isClassIdFound = classesIds.find(id=> id === classesIds[i]);

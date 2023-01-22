@@ -4,7 +4,6 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { map, Observable, of, switchMap } from 'rxjs';
 import { AssetForPreview } from '../../models/assetForPreview.model';
 import { AssetsService } from '../../services/assets/assets.service';
 import { ConfigurationsService } from '../../services/configurationsService/configurations.service';

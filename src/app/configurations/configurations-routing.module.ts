@@ -13,19 +13,18 @@ const routes: Routes = [
         },
         {
             path: 'typical-configurations',
-            loadChildren: () => import('./typical-configurations/typical-configurations-routing.module').then( m => m.TypicalConfigurationsPageRoutingModule),
+            loadChildren: () => import('./typical-configurations/typical-configurations-routing.module').then( m => m.TypicalConfigurationsPageRoutingModule)
         },
         {
             path: 'configuration-calaulator',
             loadChildren: () => import('./configuration-calculator/configuration-calculator-routing.module').then(m=> m.ConfigurationCalculatorPageRoutingModule)
+        },
+        {
+          path: 'environments-and-types',
+          loadChildren: () => import('./environments-and-types/environments-and-types-routing.module').then(m => m.EnvironmentsAndTypesPageRoutingModule)
         }
     ]
-  },
-
-
-
-
-
+  }
 ];
 
 @NgModule({

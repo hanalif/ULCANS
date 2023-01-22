@@ -2,6 +2,9 @@
 @import '../setup/variables';
 
   .card{
+    font-family: Babas-pro, sans-serif;
+    color: white;
+    letter-spacing: 1.5px;
 
     &-container{
       background-color: black;
@@ -20,105 +23,98 @@
       }
     }
 
-    &-inline-start{
+
+    &-title{
+      margin-block-end: 20px;
+      margin-block-start: 20px;
       display: flex;
-      flex-direction: column;
+      padding-inline-end: 10px;
+      padding-inline-start: 10px;
       align-items: center;
-      flex: 5;
-      gap: 9px;
+      gap: 10px;
 
-
-      @include for-bpoint-tablet{
+      &.justify-center{
         justify-content: center;
       }
 
-    }
-
-    &-inline-end{
-      flex: 7;
-
-      .card{
-        font-family: Light-font, sans-serif;
-
-        &-title{
-          color: #9b9b9b;
-          margin-block-end: 20px;
-          margin-block-start: 20px;
-          display: flex;
-          font-family: Light-font, sans-serif;
-          padding-inline-end: 10px;
-            padding-inline-start: 10px;
-          align-items: center;
-          gap: 10px;
-
-          &.justify-center{
-            justify-content: center;
-          }
-
-          &.sub-title{
-            justify-content: space-between;
-            font-size: 14px;
+      &.sub-title{
+        justify-content: space-between;
+        font-size: 14px;
 
 
-            @include for-bpoint-tablet{
-              h1{
-                font-size: 20px;
-              }
-          }
-
-              div{
-                display: flex;
-                gap: 10px;
-                align-items: center;
-              }
-          }
-
+        @include for-bpoint-tablet{
           h1{
-            @include for-bpoint-tablet{
-                font-size: 23px;
-            }
+            font-size: 20px;
           }
+      }
 
-        }
-
-        &-content{
-          display: flex;
-          flex-direction: column;
-        }
-
-        &-row{
-          color: #9b9b9b;
-          border-style: solid;
-          border-width: 0px 0px 1px 0px;
-          border-color: #00A9FF;
-          background-color: black;
-          padding: 10px;
-          display: flex;
-          justify-content: space-between;
-          font-size: 20px;
-          color: #9b9b9b;
-          align-items: center;
-          gap: 10px;
-
-
-          h3{
-            @include for-bpoint-tablet{
-                font-size: 22px;
-            }
+          div{
+            display: flex;
+            gap: 10px;
+            align-items: center;
           }
+      }
 
-          &-img{
-            width: 80px;
-
-              @include for-bpoint-tablet{
-                  width: 60px;
-              }
-          }
-
+      h1{
+        @include for-bpoint-tablet{
+            font-size: 23px;
         }
       }
+
+    }
+
+    &-content{
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    &-row{
+      border-style: solid;
+      border-width: 0px 0px 1px 0px;
+      border-color: #00A9FF;
+      background-color: black;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      align-items: center;
+      gap: 10px;
+
+
+      h3{
+        @include for-bpoint-tablet{
+            font-size: 22px;
+        }
+      }
+
+      &-img{
+        width: 80px;
+
+          @include for-bpoint-tablet{
+              width: 60px;
+          }
+      }
+
     }
   }
+
+  ion-buttons{
+    align-self: baseline;
+    padding-block-start: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-inline-end: 10px;
+    padding-block-start: 10px;
+
+    .btns-section{
+      display: flex;
+      gap: 5px;
+      margin-inline-start: 10px;
+    }
+  }
+
 
 
 

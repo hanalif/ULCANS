@@ -8,6 +8,7 @@ import { ConfigurationCalculatorPageModule } from './configuration-calculator/co
 import { TypicalConfigurationsPageModule } from './typical-configurations/typical-configurations.module';
 import { ConfigurationListPageModule } from './configuration-list/configuration-list.module';
 import { SharedModule } from '../shared/shared.module';
+import { EnvironmentsAndTypesPageModule } from './environments-and-types/environments-and-types.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     ConfigurationCalculatorPageModule,
     TypicalConfigurationsPageModule,
     ConfigurationListPageModule,
+    EnvironmentsAndTypesPageModule,
     SharedModule
 
   ],
