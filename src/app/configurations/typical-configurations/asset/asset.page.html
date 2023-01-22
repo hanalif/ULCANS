@@ -3,8 +3,8 @@
 <ion-content>
   <ng-scrollbar class="scrollbar">
   <div class="assets-page">
-    <div class="asset-container main-layout">
-      <div class="asset-inline-start">
+    <div class="card-container main-layout">
+      <div class="card-inline-start">
         <ion-buttons slot="start">
           <div class="btns-section">
             <button  title="Back" routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
@@ -18,7 +18,7 @@
           <img [src]="asset.assetImgUrl" alt="asset-pic">
         </div>
       </div>
-      <div class="asset-inline-end">
+      <div class="card-inline-end">
         <div class="card">
           <div class="card-title justify-center">
             <h1>{{asset.name}}</h1>
