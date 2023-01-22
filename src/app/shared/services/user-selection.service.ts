@@ -71,7 +71,7 @@ export class UserSelectionService {
 
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
         const assetIds = assetsForPdf.map(asset => asset.assetId);
-        const classesIds = assetsForPdf.map(asset => asset.enviormentId);
+        const classesIds = assetsForPdf.map(asset => asset.environmentId);
         const configurationsIds = assetsForPdf.map(asset => asset.configuraionId);
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
@@ -84,7 +84,7 @@ export class UserSelectionService {
           let assetForDisplay = {
           asset: assets.find(a=> a.id === assetsForPdf[i].assetId),
           configuratoin: configurations.find(c => c.id === assetsForPdf[i].configuraionId),
-          enviorment: classes.find( e => e.id === assetsForPdf[i].enviormentId),
+          environment: classes.find( e => e.id === assetsForPdf[i].environmentId),
           measureType: assetsForPdf[i].measureType
         }
 

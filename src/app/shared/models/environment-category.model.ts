@@ -1,4 +1,4 @@
-export interface EnviormentCategory{
+export interface EnvironmentCategory{
   id: string,
   typeName: string,
   imgUrl: string,

@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
     this.assetsService._getAssetesFromJson().pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
-    this.menuCategoriesService._getEnviormentsCategories().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.menuCategoriesService._getEnvironmentsCategories().pipe(takeUntil(this.destroyed$)).subscribe();
 
 
   }

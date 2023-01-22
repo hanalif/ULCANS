@@ -58,7 +58,7 @@
   }
 
 
-  .enviorments-container{
+  .environments-container{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(97px, 100px));
     justify-items: center;
@@ -66,7 +66,7 @@
     padding-inline-end: 10px;
     gap: 10px;
     margin-block-end: 20px;
-    .enviorment-link{
+    .environment-link{
       width: auto;
       cursor: pointer;
       padding: 6px;

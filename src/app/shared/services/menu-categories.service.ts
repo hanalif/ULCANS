@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
-import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { MenuCategory } from '../models/menu-category.model';
 import { StartBtn } from '../models/start-btn.model';
-import { EnviormentCategory } from '../models/enviorment-category.model';
+import { EnvironmentCategory } from '../models/environment-category.model';
 
 
 
@@ -17,7 +17,7 @@ export class MenuCategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  private configurationsClassesCategories$: BehaviorSubject<EnviormentCategory[]> = new BehaviorSubject<EnviormentCategory[]>([]);
+  private configurationsClassesCategories$: BehaviorSubject<EnvironmentCategory[]> = new BehaviorSubject<EnvironmentCategory[]>([]);
 
   getMenuCategories(){
     return this._getMenuCategories();
@@ -33,7 +33,7 @@ export class MenuCategoriesService {
 
   getConfigurationsClassesCategoriesByIds(classesIds: string[]){
     let classesList = this.getConfigurationsClassesCategories();
-    let classesByIds: EnviormentCategory[] = [];
+    let classesByIds: EnvironmentCategory[] = [];
     for(let i = 0; i <classesList.length; i++){
       let isClassIdFound = classesIds.find(id=> id === classesIds[i]);
 
@@ -44,8 +44,8 @@ export class MenuCategoriesService {
 
     return classesByIds;
   }
-  _getEnviormentsCategories(){
-    return this.http.get<EnviormentCategory[]>('assets/enviorments-types.json').pipe(map(categories => this.configurationsClassesCategories$.next(categories)));;
+  _getEnvironmentsCategories(){
+    return this.http.get<EnvironmentCategory[]>('assets/environments-types.json').pipe(map(categories => this.configurationsClassesCategories$.next(categories)));;
   }
 
 

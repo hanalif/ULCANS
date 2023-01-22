@@ -77,16 +77,16 @@
               <h1>Side A:</h1>
             </div>
           </div>
-          <div class="enviorments-container">
-              <div class="enviorment-link"
-                  *ngFor="let enviorment of enviormentCategories"
-                  (click)="onEnviormentLink(enviorment.id)"
+          <div class="environments-container">
+              <div class="environment-link"
+                  *ngFor="let environment of environmentsCategories"
+                  (click)="onEnvironmentLink(environment.id)"
                   >
                 <div class="img-wrapper">
-                  <img [ngClass]="{'selected': selectEnviormentLinksMaping[enviorment.id]}" [src]="enviorment.imgUrl" alt="">
+                  <img [ngClass]="{'selected': selectEnvironmentLinksMaping[environment.id]}" [src]="environment.imgUrl" alt="">
                 </div>
                 <div class="title">
-                  <h3>{{enviorment.typeName}}</h3>
+                  <h3>{{environment.typeName}}</h3>
                 </div>
               </div>
           </div>

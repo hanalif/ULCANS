@@ -2,31 +2,31 @@
   {
     "id": "11aa",
     "typeName": "Woodland",
-    "imgUrl": "../../../../assets/imgs/enviorments/woodland.jpg",
+    "imgUrl": "../../../../assets/imgs/evironments/woodland.jpg",
     "classType": "Class 1"
   },
   {
     "id": "12bb",
     "typeName": "Desert",
-    "imgUrl": "../../../../assets/imgs/enviorments/desert.jpg",
+    "imgUrl": "../../../../assets/imgs/evironments/desert.jpg",
     "classType": "Class 2"
   },
   {
     "id": "13cc",
     "typeName": "Urban",
-    "imgUrl": "../../../../assets/imgs/enviorments/urban.jpg",
+    "imgUrl": "../../../../assets/imgs/evironments/urban.jpg",
     "classType": "Class 2"
   },
   {
     "id": "14dd",
     "typeName": "Rocky",
-    "imgUrl": "../../../../assets/imgs/enviorments/rocky.jpg",
+    "imgUrl": "../../../../assets/imgs/evironments/rocky.jpg",
     "classType": "Class 2"
   },
   {
     "id": "15ee",
     "typeName": "Snowy",
-    "imgUrl": "../../../../assets/imgs/enviorments/snowy.jpg",
+    "imgUrl": "../../../../assets/imgs/evironments/snowy.jpg",
     "classType": "Class 3"
   }
 ]

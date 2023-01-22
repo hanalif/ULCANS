@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
-import { EnviormentCategory } from 'src/app/shared/models/enviorment-category.model';
+import { EnvironmentCategory } from 'src/app/shared/models/environment-category.model';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.service';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
@@ -20,10 +19,10 @@ export class AssetPage implements OnInit{
   public configuration!: Configuration;
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
-  enviormentCategories!:EnviormentCategory[];
-  isEnviormentSelected: boolean = false;
-  public selectEnviormentLinksMaping: any = {"11aa": true};
-  enviormentId:string = "11aa";
+  environmentsCategories!:EnvironmentCategory[];
+  isEnvironmentSelected: boolean = false;
+  public selectEnvironmentLinksMaping: any = {"11aa": true};
+  environmentId:string = "11aa";
 
   constructor(
     private router: ActivatedRoute,
@@ -34,7 +33,7 @@ export class AssetPage implements OnInit{
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
     this.asset = assetForPreview.asset;
     this.configuration = assetForPreview.configuration;
-    this.enviormentCategories = this.menuCategoriesServive.getConfigurationsClassesCategories();
+    this.environmentsCategories = this.menuCategoriesServive.getConfigurationsClassesCategories();
   }
 
   onSelectBtn(measureType:MeasureType){
@@ -45,18 +44,18 @@ export class AssetPage implements OnInit{
     this.measureType = measureType;
   }
 
-  onEnviormentLink(id:string){
-    this.enviormentId = id;
-    for(let key in this.selectEnviormentLinksMaping) {
+  onEnvironmentLink(id:string){
+    this.environmentId = id;
+    for(let key in this.selectEnvironmentLinksMaping) {
       if(key !== id) {
-        this.selectEnviormentLinksMaping[key] = false;
+        this.selectEnvironmentLinksMaping[key] = false;
       }
     }
 
-    if(this.selectEnviormentLinksMaping[id]){
-      this.selectEnviormentLinksMaping[id] = !this.selectEnviormentLinksMaping[id];
+    if(this.selectEnvironmentLinksMaping[id]){
+      this.selectEnvironmentLinksMaping[id] = !this.selectEnvironmentLinksMaping[id];
     } else{
-      this.selectEnviormentLinksMaping[id] = true;
+      this.selectEnvironmentLinksMaping[id] = true;
     }
   }
 
@@ -64,7 +63,7 @@ export class AssetPage implements OnInit{
     const assetForPdf:AssetForPdf = {
       assetId: this.asset.id,
       measureType: this.measureType,
-      enviormentId: this.enviormentId,
+      environmentId: this.environmentId,
       configuraionId: this.asset.configurationId,
       quantity: 0
     }
