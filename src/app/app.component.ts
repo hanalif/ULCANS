@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
 import { Observable, ReplaySubject, takeUntil } from 'rxjs';
 import { Animations } from './angular-animations/animations';
+import { EnvironmentsService } from './configurations/environments-and-types/services/environments.service';
 import { AssetsService } from './configurations/services/assets/assets.service';
 import { ConfigurationsService } from './configurations/services/configurationsService/configurations.service';
 import { MenuCategoriesService } from './shared/services/menu-categories.service';
@@ -22,7 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private userSelectionsService: UserSelectionService,
     private configurationsService:ConfigurationsService,
     private assetsService: AssetsService,
-    private menuCategoriesService: MenuCategoriesService
+    private menuCategoriesService: MenuCategoriesService,
+    private environmetsService: EnvironmentsService
     ) {}
 
 
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
     this.assetsService._getAssetesFromJson().pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
-    this.menuCategoriesService._getEnvironmentsCategories().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
 
 
   }

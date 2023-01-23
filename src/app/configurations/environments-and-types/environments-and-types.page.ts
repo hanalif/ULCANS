@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EnvironmentCategory } from 'src/app/shared/models/environment-category.model';
+import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.service';
 import { Asset } from '../models/asset.model';
 import { Configuration } from '../models/configuration.model';
+import { EnvironmentsService } from './services/environments.service';
 
 @Component({
   selector: 'app-environments-and-types',
@@ -12,45 +13,44 @@ import { Configuration } from '../models/configuration.model';
   styleUrls: ['./environments-and-types.page.scss'],
 })
 export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
-  environmentsCategories!:EnvironmentCategory[];
+  environments!:Environment[];
   environmentId:string = "11aa";
   isEnvironmentSelected: boolean = false;
-  public selectEnvironmentLinksMaping: any = {"11aa": true};
   enviromentSubscription!: Subscription;
 
   asset!: Asset;
   configuration!: Configuration;
 
+  sideASelection: string = "11aa";
+  sideBSelection: string = "11aa";
 
-  constructor(private menuCategoriesServive: MenuCategoriesService,  private router: ActivatedRoute,) { }
+
+  constructor( private router: ActivatedRoute, private route: Router, private environmentsSetvice: EnvironmentsService) { }
 
 
   ngOnInit() {
-     this.enviromentSubscription = this.menuCategoriesServive.configurationsClassesCategories$.subscribe(enviroments=>{
-      this.environmentsCategories = enviroments;
+     this.enviromentSubscription = this.environmentsSetvice.environments$.subscribe(enviroments=>{
+      this.environments = enviroments;
     })
     const environmentPageInputForDisplay = this.router.snapshot.data['EnvironmentPageInputForDisplay'];
-    this.asset = environmentPageInputForDisplay.asset;
-    this.configuration = environmentPageInputForDisplay.configuration;
-    console.log('asset',this.asset, 'confuguration', this.configuration);
+    if(!environmentPageInputForDisplay){
+      this.route.navigate(['configurations/typical-configurations']);
+    }else{
+      this.asset = environmentPageInputForDisplay.asset;
+      this.configuration = environmentPageInputForDisplay.configuration;
+    }
 
 
 
   }
 
-  onEnvironmentLink(id:string){
-    this.environmentId = id;
-    for(let key in this.selectEnvironmentLinksMaping) {
-      if(key !== id) {
-        this.selectEnvironmentLinksMaping[key] = false;
-      }
-    }
+  onEnvironmentLinkSideA(id:string){
+    this.sideASelection = id;
 
-    if(this.selectEnvironmentLinksMaping[id]){
-      this.selectEnvironmentLinksMaping[id] = !this.selectEnvironmentLinksMaping[id];
-    } else{
-      this.selectEnvironmentLinksMaping[id] = true;
-    }
+  }
+
+  onEnvironmentLinkSideB(id:string){
+    this.sideBSelection = id;
   }
 
   onBack(){

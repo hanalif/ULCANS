@@ -5,6 +5,7 @@ export interface AssetForPdf{
   measureType: MeasureType,
   environmentId: string,
   configuraionId: string,
-  quantity: number
+  quantity: number,
+  systemTypeId: string
 
 }

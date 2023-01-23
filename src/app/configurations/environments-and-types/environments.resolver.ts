@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   Resolve,
   RouterStateSnapshot,
-  ActivatedRouteSnapshot
+  ActivatedRouteSnapshot,
+  Router
 } from '@angular/router';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { Configuration } from '../models/configuration.model';
@@ -16,7 +17,7 @@ import { ConfigurationsService } from '../services/configurationsService/configu
 })
 export class EnvironmentsResolver implements Resolve<EnvironmentPageInputForDisplay | undefined>  {
 
-  constructor(private assetsService: AssetsService, private configsService: ConfigurationsService) { }
+  constructor(private assetsService: AssetsService, private router: Router, private configsService: ConfigurationsService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): EnvironmentPageInputForDisplay | undefined {
     const assetId = route.queryParamMap.get('assetId');

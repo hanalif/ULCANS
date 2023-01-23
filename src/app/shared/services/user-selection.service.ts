@@ -11,6 +11,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Platform } from '@ionic/angular';
 import { PdfPageComponent } from '../components/pdf-page/pdf-page.component';
+import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 
 
 
@@ -35,6 +36,7 @@ export class UserSelectionService {
     private file: File,
     private fileOpener: FileOpener,
     public plt: Platform,
+    public environmentsService: EnvironmentsService
     ) { }
 
   getIsUserSelectionsMenuOpen() {
@@ -71,11 +73,11 @@ export class UserSelectionService {
 
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
         const assetIds = assetsForPdf.map(asset => asset.assetId);
-        const classesIds = assetsForPdf.map(asset => asset.environmentId);
+        const environmentsIds = assetsForPdf.map(asset => asset.environmentId);
         const configurationsIds = assetsForPdf.map(asset => asset.configuraionId);
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
-        const classes = this.menuCategoriesService.getConfigurationsClassesCategoriesValue();
+        const classes = this.environmentsService.getEnvironmentsByIds(environmentsIds);
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
 
         let assetsForDisplay: AssetForDisplay[] = [];

@@ -3,7 +3,8 @@
 <ion-content>
 
 <ion-content>
-  <div class="evironment-page">
+<ng-scrollbar class="scrollbar">
+  <div class="environment-page">
     <div class="card-container main-layout">
       <div class="card-inline-start">
         <ion-buttons slot="start">
@@ -21,40 +22,50 @@
           </div>
         </div>
         <div class="environments-container">
-          <div class="environment-link"
-              *ngFor="let environment of environmentsCategories"
-              (click)="onEnvironmentLink(environment.id)"
-              >
-            <div class="img-wrapper">
-              <img [ngClass]="{'selected': selectEnvironmentLinksMaping[environment.id]}" [src]="environment.imgUrl" alt="">
-            </div>
-            <div class="title">
-              <h3>{{environment.typeName}}</h3>
+          <div class="grid-wrapper">
+            <div class="environment-link"
+                *ngFor="let environment of environments"
+                (click)="onEnvironmentLinkSideA(environment.id)"
+                >
+              <div class="img-wrapper">
+                <img [ngClass]="{'selected': sideASelection === environment.id}" [src]="environment.imgUrl" alt="">
+              </div>
+              <div class="title">
+                <h3>{{environment.typeName}}</h3>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="card-inline-end">
          <div class="card-title sub-title">
           <div>
             <h1>Choose Your Environment:</h1>
-            <h1>Side A:</h1>
+            <h1>Side B:</h1>
           </div>
         </div>
         <div class="environments-container">
-          <div class="environment-link"
-              *ngFor="let environment of environmentsCategories"
-              (click)="onEnvironmentLink(environment.id)"
-              >
-            <div class="img-wrapper">
-              <img [ngClass]="{'selected': selectEnvironmentLinksMaping[environment.id]}" [src]="environment.imgUrl" alt="">
+          <div class="grid-wrapper">
+            <div class="environment-link"
+                *ngFor="let environment of environments"
+                (click)="onEnvironmentLinkSideB(environment.id)"
+                >
+              <div class="img-wrapper">
+                <img [ngClass]="{'selected': sideBSelection === environment.id}" [src]="environment.imgUrl" alt="">
+              </div>
+              <div class="title">
+                <h3>{{environment.typeName}}</h3>
+              </div>
             </div>
-            <div class="title">
-              <h3>{{environment.typeName}}</h3>
-            </div>
+          </div>
+          </div>
+      </div>
+      <div class="card-inline-end">
+        <div class="card-title sub-title">
+          <div>
+            <h1>Choose System Type:</h1>
           </div>
         </div>
       </div>
     </div>
   </div>
+</ng-scrollbar>
 </ion-content>

@@ -54,9 +54,7 @@ export class AssetPage implements OnInit{
   // }
 
   onChooseYourEnvironment(){
-    console.log('measurment', this.measureType);
-
-    this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id, measureType:1}});
+    this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id, measureType:this.measureType}});
   }
 
 }
