@@ -17,19 +17,20 @@ import { UserSelectionService } from './shared/services/user-selection.service';
 export class AppComponent implements OnInit, OnDestroy {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   isUserSelectionsMenuOpen$!: Observable<boolean>;
+  isClothPatternsMenuOpen$!: Observable<boolean>;
 
   constructor(
     private animationCtrl: AnimationController,
     private userSelectionsService: UserSelectionService,
     private configurationsService:ConfigurationsService,
     private assetsService: AssetsService,
-    private menuCategoriesService: MenuCategoriesService,
     private environmetsService: EnvironmentsService
     ) {}
 
 
   ngOnInit(): void {
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
+    this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();
     this.assetsService._getAssetesFromJson().pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onBackdropClicked(val:boolean){
       this.userSelectionsService.setIsUserSelectionsMenuOpen(val);
+      // this.environmetsService.setIsClothPatternsMenuOpen(val);
   }
 
   myCustomPageTransition = ((baseEl: any, opts?: any) => {

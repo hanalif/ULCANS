@@ -39,14 +39,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
       this.asset = environmentPageInputForDisplay.asset;
       this.configuration = environmentPageInputForDisplay.configuration;
     }
-
-
-
   }
 
   onEnvironmentLinkSideA(id:string){
     this.sideASelection = id;
-
+    this.environmentsSetvice.setIsClothPatternsMenuOpen(true);
   }
 
   onEnvironmentLinkSideB(id:string){

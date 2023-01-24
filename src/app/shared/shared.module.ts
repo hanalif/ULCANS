@@ -18,15 +18,16 @@ import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { PdfPageComponent } from './components/pdf-page/pdf-page.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { ClothPatternsMenuComponent } from './components/cloth-patterns-menu/cloth-patterns-menu.component';
 
 
 
 
 
 @NgModule({
-  declarations: [HeaderComponent,MainBtnComponent, FtToMPipe, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent],
+  declarations: [HeaderComponent,MainBtnComponent, FtToMPipe, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent, ClothPatternsMenuComponent],
   imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule, NgScrollbarModule ],
-  exports: [HeaderComponent, MainBtnComponent, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent,NgScrollbarModule],
+  exports: [HeaderComponent, MainBtnComponent, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent,NgScrollbarModule, ClothPatternsMenuComponent],
   providers:[ FtToMPipe, FileOpener, File]
 })
 export class SharedModule {}

@@ -17,6 +17,7 @@ export class EnvironmentsService {
   constructor(private http: HttpClient) { }
 
   public environments$: BehaviorSubject<Environment[]> = new BehaviorSubject<Environment[]>([]);
+  private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 
   getEvironments(){
@@ -39,6 +40,16 @@ export class EnvironmentsService {
     }
     return environmentsByIds;
   }
+
+  getIsClothPatternMenuOpen() {
+    return this.isClothPatternMenuOpen$;
+ }
+
+ setIsClothPatternsMenuOpen(val:boolean){
+  this.isClothPatternMenuOpen$.next(val);
+}
+
+
 
   getConfigurationsClassesCategoriesByIds(classesIds: string[]){
     let classesList = this.environments$.getValue();
