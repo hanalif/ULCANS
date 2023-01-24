@@ -25,11 +25,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   sideBSelection: string = "11aa";
 
 
-  constructor( private router: ActivatedRoute, private route: Router, private environmentsSetvice: EnvironmentsService) { }
+  constructor( private router: ActivatedRoute, private route: Router, private environmentsService: EnvironmentsService) { }
 
 
   ngOnInit() {
-     this.enviromentSubscription = this.environmentsSetvice.environments$.subscribe(enviroments=>{
+     this.enviromentSubscription = this.environmentsService.environments$.subscribe(enviroments=>{
       this.environments = enviroments;
     })
     const environmentPageInputForDisplay = this.router.snapshot.data['EnvironmentPageInputForDisplay'];
@@ -41,13 +41,16 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     }
   }
 
-  onEnvironmentLinkSideA(id:string){
+  onEnvironmentLinkSideA(id:string, currSide:string){
     this.sideASelection = id;
-    this.environmentsSetvice.setIsClothPatternsMenuOpen(true);
+    this.environmentsService.setIsClothPatternsMenuOpen(true);
+    this.environmentsService.setCurrClothPatterns(id, currSide);
   }
 
-  onEnvironmentLinkSideB(id:string){
+  onEnvironmentLinkSideB(id:string, currSide:string){
     this.sideBSelection = id;
+    this.environmentsService.setIsClothPatternsMenuOpen(true);
+    this.environmentsService.setCurrClothPatterns(id, currSide);
   }
 
   onBack(){

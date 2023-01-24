@@ -25,7 +25,7 @@
           <div class="grid-wrapper">
             <div class="environment-link"
                 *ngFor="let environment of environments"
-                (click)="onEnvironmentLinkSideA(environment.id)"
+                (click)="onEnvironmentLinkSideA(environment.id, 'sideA')"
                 >
               <div class="img-wrapper">
                 <img [ngClass]="{'selected': sideASelection === environment.id}" [src]="environment.imgUrl" alt="">
@@ -46,7 +46,7 @@
           <div class="grid-wrapper">
             <div class="environment-link"
                 *ngFor="let environment of environments"
-                (click)="onEnvironmentLinkSideB(environment.id)"
+                (click)="onEnvironmentLinkSideB(environment.id, 'sideA')"
                 >
               <div class="img-wrapper">
                 <img [ngClass]="{'selected': sideBSelection === environment.id}" [src]="environment.imgUrl" alt="">

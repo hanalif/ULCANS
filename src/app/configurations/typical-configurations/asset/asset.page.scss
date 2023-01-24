@@ -78,8 +78,6 @@
       color: black;
     }
 
-
-
     ion-icon{
       font-size: 25px;
     }
@@ -95,15 +93,12 @@
 
     }
     @include for-bpoint-tablet{
-
-
         span{
           display: none;
         }
 
         span.mobile-buttom{
           display: block;
-
         }
     }
 

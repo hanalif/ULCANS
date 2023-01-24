@@ -1,5 +1,18 @@
 <div class="cloth-patterns-menu">
-  <button (click)="onClose()">Close</button>
-  <h1>Hello Cloth Patterns</h1>
+  <div class="menu-top">
+    <button class="icon-btn" (click)="onClose()"><ion-icon name="close-outline"></ion-icon></button>
+    <h1>Choose Pattern For Side </h1>
+  </div>
+  <div class="menu-body">
+    <div class="cloth-patterns-container">
+      <div class="colth-pattern-link" (click)="onClothPatternLink(i)" *ngFor="let pattern of clothPatterns; let i = index">
+        <img [src]="pattern" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="menu-bottom">
+    <div (click)="onSave()" class="regular-btn">Save</div>
+
+  </div>
 </div>
 

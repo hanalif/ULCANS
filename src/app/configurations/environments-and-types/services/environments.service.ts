@@ -19,10 +19,7 @@ export class EnvironmentsService {
   public environments$: BehaviorSubject<Environment[]> = new BehaviorSubject<Environment[]>([]);
   private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-
-  getEvironments(){
-    return this.environments$.asObservable();
-  }
+  public currClothPatterns$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   getEnvironmentsValue(){
     return this.environments$.getValue();
@@ -49,7 +46,12 @@ export class EnvironmentsService {
   this.isClothPatternMenuOpen$.next(val);
 }
 
-
+setCurrClothPatterns(environmentId: string, currSide:string){
+  let environments = this.getEnvironmentsValue();
+  let currEnvironment = environments.find(e=> e.id === environmentId);
+  console.log('evironment service', currEnvironment);
+  this.currClothPatterns$.next(currEnvironment?.clothPatterns ? currEnvironment?.clothPatterns : []);
+}
 
   getConfigurationsClassesCategoriesByIds(classesIds: string[]){
     let classesList = this.environments$.getValue();

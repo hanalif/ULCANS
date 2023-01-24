@@ -31,7 +31,6 @@ export class UserSelectionService {
   constructor(
     private measurmentsPipe: FtToMPipe,
     private assetsService: AssetsService,
-    private menuCategoriesService: MenuCategoriesService,
     private configurationsService: ConfigurationsService,
     private file: File,
     private fileOpener: FileOpener,
