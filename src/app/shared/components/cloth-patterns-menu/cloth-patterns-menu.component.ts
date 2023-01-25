@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
+import { UserSelectionService } from '../../services/user-selection.service';
 
 
 @Component({
@@ -11,16 +12,17 @@ import { EnvironmentsService } from 'src/app/configurations/environments-and-typ
 export class ClothPatternsMenuComponent implements OnInit, OnDestroy {
   clothPatterns: string[] = [];
   clothPatternsSubscription!: Subscription;
-  currSide!: string;
+  currSide$!: Observable<string>;
+  selectedPatternIndex: number = 0
 
-  constructor(private environmentsService: EnvironmentsService) { }
+  constructor(private environmentsService: EnvironmentsService, private userSelectionService: UserSelectionService) { }
 
 
   ngOnInit() {
     this.clothPatternsSubscription = this.environmentsService.currClothPatterns$.subscribe(currClothPatterns=>{
       this.clothPatterns = currClothPatterns;
-      console.log(this.clothPatterns);
     })
+    this.currSide$ = this.environmentsService.currSide$
   }
 
   onClose(){
@@ -28,11 +30,14 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy {
   }
 
   onClothPatternLink(index: number){
-
-
+    console.log(index);
+    this.selectedPatternIndex = index;
   }
 
   onSave(){
+
+
+
 
   }
 

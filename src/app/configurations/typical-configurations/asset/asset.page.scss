@@ -64,47 +64,5 @@
     margin-block-end: 10px;
   }
 
-  .add-icon{
-    display: none;
-    align-items: center;
-    font-size: 18px;
-    background-color: #00a9ff;
-    border-radius: 30px;
-    font-family: Light-font, sans-serif;
-    color: white;
-    font-weight: 700;
-
-    &:hover{
-      color: black;
-    }
-
-    ion-icon{
-      font-size: 25px;
-    }
-
-    &.m-buttom{
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      margin-inline-end: 10px;
-      margin-inline-start: 10px;
-      gap: 6px;
-      display: flex;
-
-    }
-    @include for-bpoint-tablet{
-        span{
-          display: none;
-        }
-
-        span.mobile-buttom{
-          display: block;
-        }
-    }
-
-    &:hover{
-      background-color: white;
-    }
-  }
 
 

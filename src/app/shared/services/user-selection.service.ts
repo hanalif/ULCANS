@@ -5,7 +5,6 @@ import { ConfigurationsService } from 'src/app/configurations/services/configura
 import { AssetForDisplay } from '../models/asset-for-display';
 import { AssetForPdf } from '../models/asset-for-pdf.model';
 import { FtToMPipe } from '../pipes/ft-to-m.pipe';
-import { MenuCategoriesService } from './menu-categories.service';
 import JSPDF from 'jspdf';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -27,6 +26,8 @@ export class UserSelectionService {
   private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
   private assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  public userCurrSelection$: BehaviorSubject<AssetForPdf> = new BehaviorSubject<AssetForPdf>({});
 
   constructor(
     private measurmentsPipe: FtToMPipe,
@@ -71,9 +72,9 @@ export class UserSelectionService {
   }
 
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
-        const assetIds = assetsForPdf.map(asset => asset.assetId);
-        const environmentsIds = assetsForPdf.map(asset => asset.environmentId);
-        const configurationsIds = assetsForPdf.map(asset => asset.configuraionId);
+        const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
+        const environmentsIds = (assetsForPdf.map(asset => asset.environmentId)) as string[];
+        const configurationsIds = (assetsForPdf.map(asset => asset.configuraionId)) as string[];
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
         const classes = this.environmentsService.getEnvironmentsByIds(environmentsIds);

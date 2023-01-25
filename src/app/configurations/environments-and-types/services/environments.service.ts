@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { BehaviorSubject, map, } from 'rxjs';
 import { Environment} from 'src/app/configurations/environments-and-types/models/environment.model';
-import { environment } from 'src/environments/environment';
+
 
 
 
@@ -20,6 +20,7 @@ export class EnvironmentsService {
   private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public currClothPatterns$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  public currSide$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   getEnvironmentsValue(){
     return this.environments$.getValue();
@@ -51,6 +52,7 @@ setCurrClothPatterns(environmentId: string, currSide:string){
   let currEnvironment = environments.find(e=> e.id === environmentId);
   console.log('evironment service', currEnvironment);
   this.currClothPatterns$.next(currEnvironment?.clothPatterns ? currEnvironment?.clothPatterns : []);
+  this.currSide$.next(currSide);
 }
 
   getConfigurationsClassesCategoriesByIds(classesIds: string[]){

@@ -1,18 +1,17 @@
 <div class="cloth-patterns-menu">
   <div class="menu-top">
     <button class="icon-btn" (click)="onClose()"><ion-icon name="close-outline"></ion-icon></button>
-    <h1>Choose Pattern For Side </h1>
+    <h1>Choose Pattern For Side {{currSide$ | async}} </h1>
   </div>
   <div class="menu-body">
     <div class="cloth-patterns-container">
       <div class="colth-pattern-link" (click)="onClothPatternLink(i)" *ngFor="let pattern of clothPatterns; let i = index">
-        <img [src]="pattern" alt="">
+        <img [src]="pattern" alt="patten">
       </div>
     </div>
   </div>
   <div class="menu-bottom">
-    <div (click)="onSave()" class="regular-btn">Save</div>
-
+    <div (click)="onSave()" class="regular-btn"><span>Save</span></div>
   </div>
 </div>
 

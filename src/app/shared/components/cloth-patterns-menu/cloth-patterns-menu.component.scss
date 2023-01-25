@@ -33,16 +33,6 @@
     display: flex;
     justify-content: center;
     margin-block-start: 13px;
-
-    .regular-btn{
-      border-radius: 42px;
-      width: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: none;
-      padding: 0px 0px;
-    }
   }
 
 }
@@ -53,7 +43,7 @@
 
 .cloth-patterns-container{
   display: grid;
-  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  grid-template-columns: repeat(3, minmax(100px, 100px));
   grid-gap: 11px;
   justify-items: center;
 
@@ -63,6 +53,19 @@
 
   .colth-pattern-link{
     cursor: pointer;
+
+    img{
+      border: 1px solid black;
+
+      &:hover, &.selected{
+        outline: 2px solid #9b9b9b;
+        outline-offset: 4px;
+
+      }
+
+    }
+
+
   }
 
 }

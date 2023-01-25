@@ -84,3 +84,41 @@
   }
 
 
+  .types-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+    .type-box{
+      background-color: #a8a8a8;
+      color: black;
+      padding: 20px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      width: 100%;
+      gap: 15px;
+      h3{
+        font-size: 22px;
+      }
+
+      p{
+        font-size: 20px;
+      }
+
+      &:hover, &.selected{
+        background-color: white;
+      }
+    }
+
+  }
+
+
+  .card-content{
+    gap: 10px;
+    margin-block-start: 10px;
+  }
+
+

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "TRS",
+    "name": "Type I, General Purpose (R/S)",
+    "description": " Type I is radar scattering and used for concealing non-radar ground equipment and tactical systems."
+  },
+  {
+    "id": "TRT",
+    "name": "Type II, Communications (R/T)",
+    "description": "Type II is radar transparent and used for concealing ground radar equipment."
+  }
+]

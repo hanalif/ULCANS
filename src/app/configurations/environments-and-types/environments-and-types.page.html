@@ -25,7 +25,7 @@
           <div class="grid-wrapper">
             <div class="environment-link"
                 *ngFor="let environment of environments"
-                (click)="onEnvironmentLinkSideA(environment.id, 'sideA')"
+                (click)="onEnvironmentLinkSideA(environment.id, 'A')"
                 >
               <div class="img-wrapper">
                 <img [ngClass]="{'selected': sideASelection === environment.id}" [src]="environment.imgUrl" alt="">
@@ -46,7 +46,7 @@
           <div class="grid-wrapper">
             <div class="environment-link"
                 *ngFor="let environment of environments"
-                (click)="onEnvironmentLinkSideB(environment.id, 'sideA')"
+                (click)="onEnvironmentLinkSideB(environment.id, 'B')"
                 >
               <div class="img-wrapper">
                 <img [ngClass]="{'selected': sideBSelection === environment.id}" [src]="environment.imgUrl" alt="">
@@ -59,9 +59,23 @@
           </div>
       </div>
       <div class="card-inline-end">
-        <div class="card-title sub-title">
-          <div>
-            <h1>Choose System Type:</h1>
+        <div class="types-container">
+          <div class="card-title sub-title">
+            <div>
+              <h1>Choose System Type:</h1>
+            </div>
+          </div>
+          <div (click)="onType(type.id)" class="type-box" *ngFor="let type of systemTypes$ | async">
+            <div class="type-title"><h3>{{type.name}}</h3></div>
+            <div class="type-description">
+              <p>{{type.description}}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card-content">
+            <button class="regular-btn">Add To Your Selections</button>
+            <button class="regular-btn">Use Your Ulcans</button>
           </div>
         </div>
       </div>

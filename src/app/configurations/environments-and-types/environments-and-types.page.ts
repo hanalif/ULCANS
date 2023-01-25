@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.service';
 import { Asset } from '../models/asset.model';
 import { Configuration } from '../models/configuration.model';
+import { SystemType } from './models/type.model';
 import { EnvironmentsService } from './services/environments.service';
+import { SystemTypesService } from './services/system-types.service';
 
 @Component({
   selector: 'app-environments-and-types',
@@ -18,20 +20,32 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   isEnvironmentSelected: boolean = false;
   enviromentSubscription!: Subscription;
 
+  systemTypes$!: Observable<SystemType[]>;
+
   asset!: Asset;
   configuration!: Configuration;
 
   sideASelection: string = "11aa";
   sideBSelection: string = "11aa";
 
+  sideAClothPatternIndex: number = 0;
+  sideBClothPatternIndex: number = 0;
 
-  constructor( private router: ActivatedRoute, private route: Router, private environmentsService: EnvironmentsService) { }
+
+  constructor(
+    private router: ActivatedRoute,
+    private route: Router,
+    private environmentsService: EnvironmentsService,
+    private systemTypesService: SystemTypesService) { }
 
 
   ngOnInit() {
      this.enviromentSubscription = this.environmentsService.environments$.subscribe(enviroments=>{
       this.environments = enviroments;
     })
+
+    this.systemTypes$ = this.systemTypesService.systemTypes$
+
     const environmentPageInputForDisplay = this.router.snapshot.data['EnvironmentPageInputForDisplay'];
     if(!environmentPageInputForDisplay){
       this.route.navigate(['configurations/typical-configurations']);
@@ -55,6 +69,10 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   onBack(){
     console.log('on back')
+  }
+
+  onType(id:string){
+    console.log('on type', id);
   }
 
   ngOnDestroy(): void {

@@ -12,7 +12,6 @@
             <button title="Camouflage Instructions" class="icon-btn"><ion-icon name="book-outline"></ion-icon></button>
             <button routerLink="/configurations" title="Configurations List" class="icon-btn"><ion-icon name="prism-outline"></ion-icon></button>
           </div>
-          <button class="icon-btn add-icon mobile"><ion-icon name="add-outline"></ion-icon></button>
         </ion-buttons>
         <div class="asset-img">
           <img [src]="asset.assetImgUrl" alt="asset-pic">
@@ -74,7 +73,7 @@
        </div>
         <div class="card-buttom">
           <div class="add-button-wrapper">
-            <button (click)="onChooseYourEnvironment()" class="icon-btn add-icon wide-screen m-buttom"><span class="mobile-buttom">Choose your environment</span></button>
+            <button (click)="onChooseYourEnvironment()" class="regular-btn"><span class="mobile-buttom">Choose your environment</span></button>
           </div>
         </div>
       </div>
