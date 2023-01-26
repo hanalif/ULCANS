@@ -56,9 +56,9 @@ export class AssetPage implements OnInit{
   onChooseYourEnvironment(){
     let userSelections: Partial<AssetForPdf> = {
       assetId: this.asset.id,
-      measureType: this.measureType
+      measureType: this.measureType,
+      configuraionId: this.asset.configurationId
     }
-
 
 
     this.userSelectionsService.updateCurrUserSelections(userSelections);

@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { EnvironmentsAndTypesPage } from './environments-and-types.page';
-import { EnvironmentsResolver } from './environments.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: EnvironmentsAndTypesPage,
-    resolve: {EnvironmentPageInputForDisplay: EnvironmentsResolver}
+    component: EnvironmentsAndTypesPage
   }
 ];
 

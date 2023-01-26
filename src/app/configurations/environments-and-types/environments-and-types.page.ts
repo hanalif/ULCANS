@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.service';
+import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../models/asset.model';
 import { Configuration } from '../models/configuration.model';
 import { SystemType } from './models/type.model';
@@ -22,21 +23,21 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   systemTypes$!: Observable<SystemType[]>;
 
-  asset!: Asset;
-  configuration!: Configuration;
-
   sideASelection: string = "11aa";
   sideBSelection: string = "11aa";
 
   sideAClothPatternIndex: number = 0;
   sideBClothPatternIndex: number = 0;
 
+  currUserSelectionSubscription!: Subscription;
+
 
   constructor(
     private router: ActivatedRoute,
     private route: Router,
     private environmentsService: EnvironmentsService,
-    private systemTypesService: SystemTypesService,) { }
+    private systemTypesService: SystemTypesService,
+    private userSelectionsService: UserSelectionService) { }
 
 
   ngOnInit() {
@@ -46,13 +47,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
     this.systemTypes$ = this.systemTypesService.systemTypes$
 
-    const environmentPageInputForDisplay = this.router.snapshot.data['EnvironmentPageInputForDisplay'];
-    if(!environmentPageInputForDisplay){
-      this.route.navigate(['configurations/typical-configurations']);
-    }else{
-      this.asset = environmentPageInputForDisplay.asset;
-      this.configuration = environmentPageInputForDisplay.configuration;
-    }
+    this.currUserSelectionSubscription = this.userSelectionsService.userCurrSelection$.subscribe(currSelection=>{
+      if(!currSelection){
+        this.route.navigate(['configurations/typical-configurations']);
+      }
+    })
   }
 
   onEnvironmentLinkSideA(id:string, currSide:string){
@@ -78,6 +77,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.enviromentSubscription.unsubscribe();
+    this.currUserSelectionSubscription.unsubscribe();
   }
 
 
