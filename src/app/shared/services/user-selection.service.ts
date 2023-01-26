@@ -12,6 +12,7 @@ import { Platform } from '@ionic/angular';
 import { PdfPageComponent } from '../components/pdf-page/pdf-page.component';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import { KeyObject } from 'crypto';
+import { SystemSide } from '../models/system-side.model';
 
 
 
@@ -84,12 +85,13 @@ export class UserSelectionService {
   }
 
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
-        const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
-        const environmentsIds = (assetsForPdf.map(asset => asset.environmentId)) as string[];
-        const configurationsIds = (assetsForPdf.map(asset => asset.configuraionId)) as string[];
 
+        const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
+
+        // const environmentsIds = (assetsForPdf.map(asset => asset.environmentId)) as string[];
+        const configurationsIds = (assetsForPdf.map(asset => asset.configuraionId)) as string[];
         const assets = this.assetsService.getAssetsByIds(assetIds);
-        const classes = this.environmentsService.getEnvironmentsByIds(environmentsIds);
+        // const classes = this.environmentsService.getEnvironmentsByIds(environmentsIds);
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
 
         let assetsForDisplay: AssetForDisplay[] = [];
@@ -98,11 +100,11 @@ export class UserSelectionService {
           let assetForDisplay = {
           asset: assets.find(a=> a.id === assetsForPdf[i].assetId),
           configuratoin: configurations.find(c => c.id === assetsForPdf[i].configuraionId),
-          environment: classes.find( e => e.id === assetsForPdf[i].environmentId),
+          // environment: classes.find( e => e.id === assetsForPdf[i].environmentId),
           measureType: assetsForPdf[i].measureType
         }
 
-        assetsForDisplay.push(assetForDisplay);
+        // assetsForDisplay.push(assetForDisplay);
       }
 
       return assetsForDisplay;

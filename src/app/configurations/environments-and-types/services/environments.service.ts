@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { BehaviorSubject, map, } from 'rxjs';
 import { Environment} from 'src/app/configurations/environments-and-types/models/environment.model';
+import { CurrEnvironmentIdAndSide } from '../models/curr-environmentId-and-side.model';
 
 
 
@@ -20,7 +21,7 @@ export class EnvironmentsService {
   private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public currClothPatterns$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-  public currSide$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public currEnvironmentIdAndSide$: BehaviorSubject<CurrEnvironmentIdAndSide | null> = new BehaviorSubject<CurrEnvironmentIdAndSide | null>(null);
 
   getEnvironmentsValue(){
     return this.environments$.getValue();
@@ -51,7 +52,11 @@ setCurrClothPatterns(environmentId: string, currSide:string){
   let environments = this.getEnvironmentsValue();
   let currEnvironment = environments.find(e=> e.id === environmentId);
   this.currClothPatterns$.next(currEnvironment?.clothPatterns ? currEnvironment?.clothPatterns : []);
-  this.currSide$.next(currSide);
+  const currEnvironmentIdAndSide: CurrEnvironmentIdAndSide = {
+    currSide: currSide,
+    currEnvironmentId: environmentId
+  }
+  this.currEnvironmentIdAndSide$.next(currEnvironmentIdAndSide);
 }
 
   getConfigurationsClassesCategoriesByIds(classesIds: string[]){
