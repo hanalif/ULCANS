@@ -54,6 +54,15 @@ export class AssetPage implements OnInit{
   // }
 
   onChooseYourEnvironment(){
+    let userSelections: Partial<AssetForPdf> = {
+      assetId: this.asset.id,
+      measureType: this.measureType
+    }
+
+
+
+    this.userSelectionsService.updateCurrUserSelections(userSelections);
+
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id, measureType:this.measureType}});
   }
 

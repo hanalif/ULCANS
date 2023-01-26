@@ -21,7 +21,10 @@ export class HeaderComponent implements OnInit {
   startBtn!: StartBtn;
   numsOfUserSelections$!: Observable<number>;
 
-  constructor(private route: Router, private menuCategoriesServive: MenuCategoriesService, private userSelectionsService: UserSelectionService) { }
+  constructor(
+    private route: Router,
+    private menuCategoriesServive: MenuCategoriesService,
+    private userSelectionsService: UserSelectionService) { }
 
   ngOnInit() {
       this.menuCategories$ = this.menuCategoriesServive.getMenuCategories();

@@ -36,7 +36,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     private router: ActivatedRoute,
     private route: Router,
     private environmentsService: EnvironmentsService,
-    private systemTypesService: SystemTypesService) { }
+    private systemTypesService: SystemTypesService,) { }
 
 
   ngOnInit() {
@@ -63,6 +63,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   onEnvironmentLinkSideB(id:string, currSide:string){
     this.sideBSelection = id;
+
     this.environmentsService.setIsClothPatternsMenuOpen(true);
     this.environmentsService.setCurrClothPatterns(id, currSide);
   }

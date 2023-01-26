@@ -11,6 +11,7 @@ import { File } from '@ionic-native/file/ngx';
 import { Platform } from '@ionic/angular';
 import { PdfPageComponent } from '../components/pdf-page/pdf-page.component';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
+import { KeyObject } from 'crypto';
 
 
 
@@ -27,7 +28,9 @@ export class UserSelectionService {
   private assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  public userCurrSelection$: BehaviorSubject<AssetForPdf> = new BehaviorSubject<AssetForPdf>({});
+
+  public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
+
 
   constructor(
     private measurmentsPipe: FtToMPipe,
@@ -57,6 +60,15 @@ export class UserSelectionService {
 
   setIsUserSelectionsMenuOpen(val:boolean){
     this.isUserSelectionsMenuOpen$.next(val);
+  }
+
+  updateCurrUserSelections(userSelections: Partial<AssetForPdf>){
+    let currSelctionValue = this.userCurrSelection$.getValue();
+
+    currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
+
+    console.log(currSelctionValue);
+    this.userCurrSelection$.next(currSelctionValue);
   }
 
   addAssetForPdf(assetForPdf:AssetForPdf){

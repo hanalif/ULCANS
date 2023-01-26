@@ -50,7 +50,6 @@ export class EnvironmentsService {
 setCurrClothPatterns(environmentId: string, currSide:string){
   let environments = this.getEnvironmentsValue();
   let currEnvironment = environments.find(e=> e.id === environmentId);
-  console.log('evironment service', currEnvironment);
   this.currClothPatterns$.next(currEnvironment?.clothPatterns ? currEnvironment?.clothPatterns : []);
   this.currSide$.next(currSide);
 }
