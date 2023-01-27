@@ -65,7 +65,11 @@
               <h1>Choose System Type:</h1>
             </div>
           </div>
-          <div (click)="onType(type.id)" class="type-box" *ngFor="let type of systemTypes$ | async">
+          <div
+            (click)="onType(type.id)"
+            class="type-box"
+            *ngFor="let type of systemTypes$ | async"
+            [ngClass]="{'selected': systemTypeId === type.id }">
             <div class="type-title"><h3>{{type.name}}</h3></div>
             <div class="type-description">
               <p>{{type.description}}</p>
@@ -74,7 +78,7 @@
         </div>
         <div>
           <div class="card-content">
-            <button class="regular-btn">Add To Your Selections</button>
+            <button (click)="onAddToYourSelections()" class="regular-btn">Add To Your Selections</button>
             <button class="regular-btn">Use Your Ulcans</button>
           </div>
         </div>

@@ -41,17 +41,6 @@ export class AssetPage implements OnInit{
   }
 
 
-  // onAddToSelections(){
-  //   const assetForPdf:AssetForPdf = {
-  //     assetId: this.asset.id,
-  //     measureType: this.measureType,
-  //     environmentId: '',
-  //     configuraionId: this.asset.configurationId,
-  //     quantity: 0
-  //   }
-
-  //   this.userSelectionsService.addAssetForPdf(assetForPdf);
-  // }
 
   onChooseYourEnvironment(){
     let userSelections: Partial<AssetForPdf> = {

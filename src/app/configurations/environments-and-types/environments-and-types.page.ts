@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
+import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.service';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../models/asset.model';
@@ -29,11 +30,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   sideAClothPatternIndex: number = 0;
   sideBClothPatternIndex: number = 0;
 
+  systemTypeId: string = 'TRS'
   currUserSelectionSubscription!: Subscription;
 
 
   constructor(
-    private router: ActivatedRoute,
     private route: Router,
     private environmentsService: EnvironmentsService,
     private systemTypesService: SystemTypesService,
@@ -72,7 +73,17 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   }
 
   onType(id:string){
-    console.log('on type', id);
+    this.systemTypeId = id;
+    let userSelectios: Partial<AssetForPdf> = {
+      systemTypeId: id
+    }
+    this.userSelectionsService.updateCurrUserSelections(userSelectios)
+  }
+
+
+  onAddToYourSelections(){
+    this.userSelectionsService.addAssetForPdf();
+
   }
 
   ngOnDestroy(): void {

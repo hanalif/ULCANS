@@ -52,18 +52,11 @@
     "typeName": "Snowy",
     "imgUrl": "../../../../assets/imgs/environments/snowy.jpg",
     "clothPatterns": [
-      "../../../../assets/imgs/environments/cloth-patterns/63-2/1.png",
-      "../../../../assets/imgs/environments/cloth-patterns/63-2/2.png",
-      "../../../../assets/imgs/environments/cloth-patterns/63-2/3.png",
-      "../../../../assets/imgs/environments/cloth-patterns/63-2/4.png",
-      "../../../../assets/imgs/environments/cloth-patterns/63-2/5.png",
-      "../../../../assets/imgs/environments/cloth-patterns/63-2/6.png",
-      "../../../../assets/imgs/environments/cloth-patterns/64-2/1.png",
-      "../../../../assets/imgs/environments/cloth-patterns/64-2/2.png",
-      "../../../../assets/imgs/environments/cloth-patterns/64-2/3.png",
-      "../../../../assets/imgs/environments/cloth-patterns/64-2/4.png",
-      "../../../../assets/imgs/environments/cloth-patterns/64-2/5.png",
-      "../../../../assets/imgs/environments/cloth-patterns/64-2/6.png"
+      "../../../../assets/imgs/environments/cloth-patterns/Snow/1.jpg",
+      "../../../../assets/imgs/environments/cloth-patterns/Snow/2.jpg",
+      "../../../../assets/imgs/environments/cloth-patterns/Snow/3.jpg",
+      "../../../../assets/imgs/environments/cloth-patterns/Snow/4.jpg",
+      "../../../../assets/imgs/environments/cloth-patterns/Snow/5.jpg"
     ]
   }
 ]

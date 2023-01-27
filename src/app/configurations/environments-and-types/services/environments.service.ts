@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, map, } from 'rxjs';
 import { Environment} from 'src/app/configurations/environments-and-types/models/environment.model';
 import { CurrEnvironmentIdAndSide } from '../models/curr-environmentId-and-side.model';
+import { SystemSideForDisplay } from 'src/app/shared/models/system-side-for-display.mode';
 
 
 
@@ -40,6 +41,19 @@ export class EnvironmentsService {
     return environmentsByIds;
   }
 
+  getEnvironmentById(id: string){
+    const environments = this.environments$.getValue();
+    const environment: Environment = environments.find(e=> e.id === id) as Environment;
+    return environment
+  }
+
+  getSystemSideForDisplay(environmentId: string, index: number){
+    const environment = this.getEnvironmentById(environmentId);
+    const systemSideForDisplay: SystemSideForDisplay = {environment: environment, clothPatternUrl: environment.clothPatterns[index]};
+    return systemSideForDisplay;
+
+  }
+
   getIsClothPatternMenuOpen() {
     return this.isClothPatternMenuOpen$;
  }
@@ -59,19 +73,6 @@ setCurrClothPatterns(environmentId: string, currSide:string){
   this.currEnvironmentIdAndSide$.next(currEnvironmentIdAndSide);
 }
 
-  getConfigurationsClassesCategoriesByIds(classesIds: string[]){
-    let classesList = this.environments$.getValue();
-    let classesByIds: Environment[] = [];
-    for(let i = 0; i <classesList.length; i++){
-      let isClassIdFound = classesIds.find(id=> id === classesIds[i]);
-
-      if(isClassIdFound){
-        classesByIds.push(classesByIds[i]);
-      }
-    }
-
-    return classesByIds;
-  }
   _setEnvironments(){
     return this.http.get<Environment[]>('../../../../assets/environments.json').pipe(map(environments => this.environments$.next(environments)));;
   }

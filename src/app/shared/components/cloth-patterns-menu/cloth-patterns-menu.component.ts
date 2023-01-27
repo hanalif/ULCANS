@@ -43,7 +43,6 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy {
   }
 
   onSave(){
-
     let systemSide: SystemSide = {
       environmentId: this.currEnvironmentId,
       clothPatternIndex: this.selectedPatternIndex

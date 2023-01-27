@@ -13,6 +13,7 @@ import { PdfPageComponent } from '../components/pdf-page/pdf-page.component';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import { KeyObject } from 'crypto';
 import { SystemSide } from '../models/system-side.model';
+import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
 
 
 
@@ -65,14 +66,12 @@ export class UserSelectionService {
 
   updateCurrUserSelections(userSelections: Partial<AssetForPdf>){
     let currSelctionValue = this.userCurrSelection$.getValue();
-
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
-
-    console.log(currSelctionValue);
     this.userCurrSelection$.next(currSelctionValue);
   }
 
-  addAssetForPdf(assetForPdf:AssetForPdf){
+  addAssetForPdf(){
+    const assetForPdf = this.userCurrSelection$.getValue() as AssetForPdf;
     const assetsForPdf = this.assetsForPdf$.getValue();
     const foundAssetIndex = assetsForPdf.findIndex(a=> a.assetId === assetForPdf.assetId);
     if(foundAssetIndex !== -1){
@@ -80,6 +79,7 @@ export class UserSelectionService {
     }else{
       assetsForPdf.push(assetForPdf);
       this.setNumberOfNewSelections(1);
+      this.userCurrSelection$.next(null)
     }
     this.assetsForPdf$.next(assetsForPdf);
   }
@@ -87,11 +87,13 @@ export class UserSelectionService {
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
 
         const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
-
-        // const environmentsIds = (assetsForPdf.map(asset => asset.environmentId)) as string[];
         const configurationsIds = (assetsForPdf.map(asset => asset.configuraionId)) as string[];
+        const sidesA = (assetsForPdf.map(asset => asset.sideA));
+        const sidesB = (assetsForPdf.map(asset => asset.sideB));
+
         const assets = this.assetsService.getAssetsByIds(assetIds);
-        // const classes = this.environmentsService.getEnvironmentsByIds(environmentsIds);
+        const sidesAForDisplay = this.getSidesForDisplay(sidesA);
+        const sidesBForDisplay = this.getSidesForDisplay(sidesB);
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
 
         let assetsForDisplay: AssetForDisplay[] = [];
@@ -100,18 +102,26 @@ export class UserSelectionService {
           let assetForDisplay = {
           asset: assets.find(a=> a.id === assetsForPdf[i].assetId),
           configuratoin: configurations.find(c => c.id === assetsForPdf[i].configuraionId),
-          // environment: classes.find( e => e.id === assetsForPdf[i].environmentId),
+          sideA: sidesAForDisplay[i],
+          sideB: sidesBForDisplay[i],
           measureType: assetsForPdf[i].measureType
         }
 
-        // assetsForDisplay.push(assetForDisplay);
+        assetsForDisplay.push(assetForDisplay);
       }
 
       return assetsForDisplay;
   }
 
-  setNumberOfNewSelections(num: number){
+  getSidesForDisplay(sidesArr: SystemSide[]){
+      return sidesArr.map(side => {
+      const sideForDispaly: SystemSideForDisplay = this.environmentsService.getSystemSideForDisplay(side.environmentId, side.clothPatternIndex);
+      return sideForDispaly;
+    })
+  }
 
+
+  setNumberOfNewSelections(num: number){
     let currNum = this.numOfSelections$.getValue();
     if( num == 0){
       this.numOfSelections$.next(0);
