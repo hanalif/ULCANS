@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { from } from 'rxjs';
-import { threadId } from 'worker_threads';
-import { Asset } from '../models/asset.model';
 import { AssetsService } from '../services/assets/assets.service';
 import { CalculatorService } from '../services/calculator/calculator.service';
 import { CalculatorFormValue } from './calculator-form-value.model';
@@ -45,10 +42,7 @@ export class ConfigurationCalculatorPage implements OnInit {
     let formOutput = this.getCalculatorFormValue();
     let calculatorValue = formOutput.calculatorFormValue as CalculatorFormValue;
     const configurayionId = this.calculatorService.getCalculatedConfigurationId(calculatorValue);
-    console.log(configurayionId);
-    console.log(formOutput.assetName)
     this.assetService.generataAndAddNewAsset(formOutput.assetName, calculatorValue, configurayionId);
   }
-
 
 }
