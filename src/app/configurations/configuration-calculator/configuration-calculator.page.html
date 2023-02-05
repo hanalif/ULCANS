@@ -4,24 +4,38 @@
 
 <ion-content>
 <div class="card-wrapper main-layout">
-  <div class="card-section-two">
-    <div class="card">
-      <div class="card-title">
-        <h1>Calculator</h1>
-      </div>
-      <div class="card-content">
-        <div class="card-row">
-          <h3>Width:</h3>
+  <form [formGroup]="calculatorForm" (ngSubmit)="onCalculateConfiguration()">
+    <div class="card-section-two">
+      <div class="card">
+        <div class="card-title">
+          <h1>Calculator</h1>
         </div>
-        <div class="card-row">
-          <h3>Height:</h3>
+        <div class="card-content">
+          <div class="card-row">
+            <h3>Asset Name:</h3>
+            <input formControlName="assetName" type="text">
+          </div>
+          <div formGroupName="calculatorFormValue">
+            <div class="card-row">
+              <h3>Width:</h3>
+              <input formControlName="width" type="text">
+            </div>
+            <div class="card-row">
+              <h3>Height:</h3>
+              <input formControlName="height" type="text">
+            </div>
+            <div class="card-row">
+              <h3>Length: </h3>
+              <input formControlName="length" type="text">
+            </div>
+          </div>
         </div>
-        <div class="card-row">
-          <h3>Length: </h3>
+        <div class="card-bottom">
+          <button type="submit" class="regular-btn">Calculate Configuration</button>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
 </ion-content>
 

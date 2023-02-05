@@ -72,15 +72,21 @@
           </div>
        </div>
         <div class="card-buttom">
-          <div class="add-button-wrapper">
-            <button (click)="onChooseYourEnvironment()" class="regular-btn"><span class="mobile-buttom">Choose your environment</span></button>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </ng-scrollbar>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container main-layout">
+      <div class="add-button-wrapper">
+        <button (click)="onChooseYourEnvironment()" class="regular-btn"><span class="mobile-buttom">{{'continue' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
 
 
 

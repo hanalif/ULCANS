@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
 import { Configuration } from '../../models/configuration.model';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class ConfigurationsService {
 
   constructor(private http: HttpClient) { }
 
-  private configurations$: BehaviorSubject<Configuration[]> = new BehaviorSubject<Configuration[]>([]);
+  public configurations$: BehaviorSubject<Configuration[]> = new BehaviorSubject<Configuration[]>([]);
 
 
 
@@ -19,11 +19,11 @@ export class ConfigurationsService {
     const configuration = configurations.find(c=>
       {return c.id === configurationId})
     return configuration;
-
   }
 
   getConfigurations(){
-    return this.configurations$.getValue()
+    let configurations = this.configurations$.getValue()
+    return configurations;
   }
 
   getConfigurationsByIds(configurationsIds: string[]){
@@ -37,6 +37,24 @@ export class ConfigurationsService {
     }
 
     return conigurationsByIds;
+  }
+
+  getConfgurationIdByNetDimention(netDmention:number){
+    let configurations = this.getConfigurations();
+    let configurationId!: string;
+
+    for(let i = 0; i<configurations.length; i++){
+      if(netDmention >= configurations[i].measures.areaSqFt){
+        if(!configurations[i+1]){
+          configurationId = configurations[i].id
+        }else{
+          configurationId = configurations[i+1].id
+        }
+      }
+    }
+
+    return configurationId;
+
   }
 
 

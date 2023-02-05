@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Asset } from '../../models/asset.model';
-import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
+import { UtilService } from 'src/app/shared/services/util.service';
+import { CalculatorFormValue } from '../../configuration-calculator/calculator-form-value.model';
+import { MeasureType } from 'src/app/shared/models/measure-type.enum';
+import { MToFtPipe } from 'src/app/shared/pipes/m-to-ft.pipe';
 
 
 
@@ -9,10 +13,11 @@ import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AssetsService {
+  private MeasureType = MeasureType;
 
   private assets$: BehaviorSubject<Asset[]> = new BehaviorSubject<Asset[]>([]);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private utilService:UtilService, private mToFtPipe: MToFtPipe) { }
 
   getSearchResultAssets(searchKey: string){
     let assets = this._getassetsValue();
@@ -41,6 +46,36 @@ export class AssetsService {
     }
 
     return assetsByIds;
+  }
+
+  generataAndAddNewAsset(assetName:string, calculatorFormValue: CalculatorFormValue, configuraionId: string){
+    let widhtFt: number;
+    let heightFt:number;
+    let lengthFt: number;
+
+    if(this.MeasureType.METERS === calculatorFormValue.measureType){
+       widhtFt =this.mToFtPipe.transform(calculatorFormValue.width);
+       heightFt = this.mToFtPipe.transform(calculatorFormValue.height);
+       lengthFt = this.mToFtPipe.transform(calculatorFormValue.length);
+    } else{
+      widhtFt = calculatorFormValue.width;
+      heightFt = calculatorFormValue.height;
+      lengthFt = calculatorFormValue.length;
+    }
+    const newAsset:Asset = {
+      id: this.utilService._makeId(),
+      assetImgUrl: '../../../../assets/imgs/hexagon-bg/3.jpg',
+      name: assetName,
+      configurationId: configuraionId,
+      measures: {
+        widthFt: widhtFt,
+        heightFt: heightFt,
+        lengthFt: lengthFt,
+      },
+      isInList: false
+    }
+
+    this.addAsset(newAsset);
   }
 
   addAsset(assetToAdd: Asset){

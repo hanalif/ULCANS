@@ -6,7 +6,6 @@ import { EnvironmentsService } from './configurations/environments-and-types/ser
 import { SystemTypesService } from './configurations/environments-and-types/services/system-types.service';
 import { AssetsService } from './configurations/services/assets/assets.service';
 import { ConfigurationsService } from './configurations/services/configurationsService/configurations.service';
-import { MenuCategoriesService } from './shared/services/menu-categories.service';
 import { UserSelectionService } from './shared/services/user-selection.service';
 
 @Component({

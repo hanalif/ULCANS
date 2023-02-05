@@ -163,7 +163,6 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-          align-items: flex-start;
           gap: 5px;
           font-family: Light-font, sans-serif;
           font-weight: bold;
@@ -186,6 +185,8 @@
           width: 100%;
 
           &-item {
+            font-weight: 600;
+            font-size: 26px;
             border-bottom: 1px solid #2D79A5;
             a {
               padding: 13px 20px;

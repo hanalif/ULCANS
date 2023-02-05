@@ -1,5 +1,5 @@
-@import "../setup/variables";
-@import "../setup/mixins";
+@import '../setup/mixins';
+@import '../setup/variables';
 
 *,
 *::before,
@@ -67,7 +67,7 @@ a{
 }
 
 .main-btn{
-  font-size: 1em;
+  font-size: 26px;
   text-transform: uppercase;
   background-color: #0091FF;
   border-radius: 0px 0px 0px 0px;
@@ -91,6 +91,10 @@ a{
    .main-btn-txt{
     display: inline-block;
    }
+
+   @include for-bpoint-tablet{
+    font-size: 22px;
+}
 }
 
 a.main-btn{

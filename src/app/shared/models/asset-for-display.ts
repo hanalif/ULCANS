@@ -7,6 +7,7 @@ import { SystemSideForDisplay } from "./system-side-for-display.mode";
 import { SystemSide } from "./system-side.model";
 
 export interface AssetForDisplay {
+  id?: string,
   asset?: Asset,
   configuratoin?: Configuration,
   sideA: SystemSideForDisplay,

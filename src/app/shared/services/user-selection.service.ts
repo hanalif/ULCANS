@@ -4,20 +4,15 @@ import { AssetsService } from 'src/app/configurations/services/assets/assets.ser
 import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
 import { AssetForDisplay } from '../models/asset-for-display';
 import { AssetForPdf } from '../models/asset-for-pdf.model';
-import { FtToMPipe } from '../pipes/ft-to-m.pipe';
 import JSPDF from 'jspdf';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Platform } from '@ionic/angular';
 import { PdfPageComponent } from '../components/pdf-page/pdf-page.component';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
-import { KeyObject } from 'crypto';
 import { SystemSide } from '../models/system-side.model';
 import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
-
-
-
-
+import { UtilService } from './util.service';
 
 
 @Injectable({
@@ -35,13 +30,13 @@ export class UserSelectionService {
 
 
   constructor(
-    private measurmentsPipe: FtToMPipe,
     private assetsService: AssetsService,
     private configurationsService: ConfigurationsService,
     private file: File,
     private fileOpener: FileOpener,
     public plt: Platform,
-    public environmentsService: EnvironmentsService
+    public environmentsService: EnvironmentsService,
+    public utilService: UtilService
     ) { }
 
   getIsUserSelectionsMenuOpen() {
@@ -72,8 +67,11 @@ export class UserSelectionService {
 
   addAssetForPdf(){
     const assetForPdf = this.userCurrSelection$.getValue() as AssetForPdf;
+    if(!assetForPdf.id){
+      assetForPdf.id = this.utilService._makeId();
+    }
     const assetsForPdf = this.assetsForPdf$.getValue();
-    const foundAssetIndex = assetsForPdf.findIndex(a=> a.assetId === assetForPdf.assetId);
+    const foundAssetIndex = assetsForPdf.findIndex(a=> a.id === assetForPdf.assetId);
     if(foundAssetIndex !== -1){
       assetsForPdf.splice(foundAssetIndex, 1, assetForPdf);
     }else{
@@ -100,6 +98,7 @@ export class UserSelectionService {
 
         for(let i = 0; i< assetsForPdf.length; i++){
           let assetForDisplay = {
+          id: assetsForPdf[i].id,
           asset: assets.find(a=> a.id === assetsForPdf[i].assetId),
           configuratoin: configurations.find(c => c.id === assetsForPdf[i].configuraionId),
           sideA: sidesAForDisplay[i],
@@ -109,7 +108,7 @@ export class UserSelectionService {
 
         assetsForDisplay.push(assetForDisplay);
       }
-
+      console.log(assetsForDisplay);
       return assetsForDisplay;
   }
 
@@ -183,7 +182,13 @@ export class UserSelectionService {
       return isCurrPlatformDesktopOrMobileweb;
 
    }
+
+
+
 }
+
+
+
 
 
 
