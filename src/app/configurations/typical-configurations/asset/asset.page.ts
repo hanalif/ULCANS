@@ -40,6 +40,10 @@ export class AssetPage implements OnInit{
     this.measureType = measureType;
   }
 
+  onMeasureType(measureType:MeasureType){
+    console.log(measureType);
+  }
+
 
 
   onChooseYourEnvironment(){

@@ -1,44 +1,69 @@
 <ion-header>
-
 </ion-header>
-
 <ion-content>
-<div class="card-wrapper main-layout">
-  <form [formGroup]="calculatorForm" (ngSubmit)="onCalculateConfiguration()">
-    <div class="card-section-two">
-      <div class="card">
-        <div class="card-title">
-          <h1>Calculator</h1>
-        </div>
-        <div class="card-content">
-          <div class="card-row">
-            <h3>Asset Name:</h3>
-            <input formControlName="assetName" type="text">
-          </div>
-          <div formGroupName="calculatorFormValue">
-            <div class="card-row">
-              <h3>Width:</h3>
-              <input formControlName="width" type="text">
-            </div>
-            <div class="card-row">
-              <h3>Height:</h3>
-              <input formControlName="height" type="text">
-            </div>
-            <div class="card-row">
-              <h3>Length: </h3>
-              <input formControlName="length" type="text">
-            </div>
+  <div class="main-layout">
+    <div class="page-container">
+      <div class="top">
+        <div class="btns-section">
+          <button routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+          <div>
+            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
           </div>
         </div>
-        <div class="card-bottom">
-          <button type="submit" class="regular-btn">Calculate Configuration</button>
+        <div class="title">
+          <span>Calculator For Net Dimentions</span>
+          <span>Based On Your Asset Measurments</span>
+        </div>
+      </div>
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <form [formGroup]="calculatorForm" (ngSubmit)="onCalculate()">
+                <div class="card-row">
+                  <span>Your Asset Name:</span>
+                  <span>
+                    <ion-input formControlName="assetName"></ion-input>
+                  </span>
+                </div>
+                <div formGroupName="calculatorFormValue">
+                  <div class="card-row">
+                    <span>Its Width:</span>
+                    <span>
+                      <ion-input type="number" formControlName="width"></ion-input>
+                    </span>
+                  </div>
+                  <div class="card-row">
+                    <span>Its Height:</span>
+                    <span>
+                      <ion-input type="number" formControlName="height"></ion-input>
+                    </span>
+                  </div>
+                  <div class="card-row calc-input">
+                    <span>Its Length:</span>
+                    <span>
+                      <ion-input type="number" formControlName="length"></ion-input>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </form>
 </div>
 </ion-content>
-
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container main-layout">
+      <div class="next-button-wrapper">
+        <button type="submit" [formGroup]="calculatorForm" (click)="onCalculate()" class="regular-btn"><span class="mobile-buttom">{{'calculate' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
 
 
 

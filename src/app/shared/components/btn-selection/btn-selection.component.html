@@ -1,0 +1,4 @@
+<div>
+  <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+  <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
+</div>

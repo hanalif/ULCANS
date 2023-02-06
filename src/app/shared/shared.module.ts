@@ -21,15 +21,16 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ClothPatternsMenuComponent } from './components/cloth-patterns-menu/cloth-patterns-menu.component';
 import { MToFtPipe } from './pipes/m-to-ft.pipe';
 import { SqftToSqmPipe } from './pipes/sqft-to-sqm.pipe';
+import { BtnSelectionComponent } from './components/btn-selection/btn-selection.component';
 
 
 
 
 
 @NgModule({
-  declarations: [HeaderComponent,MainBtnComponent, SqftToSqmPipe ,FtToMPipe, MToFtPipe,AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent, ClothPatternsMenuComponent],
+  declarations: [HeaderComponent, BtnSelectionComponent,MainBtnComponent, SqftToSqmPipe ,FtToMPipe, MToFtPipe,AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent, ClothPatternsMenuComponent],
   imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule, NgScrollbarModule ],
-  exports: [HeaderComponent, MainBtnComponent,SqftToSqmPipe, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent,NgScrollbarModule, ClothPatternsMenuComponent],
+  exports: [HeaderComponent,BtnSelectionComponent, MainBtnComponent,SqftToSqmPipe, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent,NgScrollbarModule, ClothPatternsMenuComponent],
   providers:[ FtToMPipe ,MToFtPipe, SqftToSqmPipe,FileOpener, File]
 })
 export class SharedModule {}

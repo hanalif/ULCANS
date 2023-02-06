@@ -1,0 +1,44 @@
+@import '../setup/mixins';
+@import '../setup/variables';
+
+.page-container{
+  display: flex;
+  flex-direction: column;
+
+  .top{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    .title{
+      display: flex;
+      align-self: center;
+      font-size: 40px;
+      font-family: Babas-pro, sans-serif;
+      text-align: center;
+      gap: 5px;
+
+      @include for-bpoint-tablet{
+        font-size: 30px;
+        margin-block-end: 20px;
+        flex-direction: column;
+      }
+
+    }
+  }
+}
+
+
+.btns-section{
+display: flex;
+gap: 5px;
+margin-block-start: 20px;
+margin-block-end: 20px;
+
+@include for-bpoint-tablet{
+
+}
+
+}
+

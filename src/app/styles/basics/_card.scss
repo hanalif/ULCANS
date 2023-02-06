@@ -76,6 +76,10 @@
     &-title{
       font-size: 30px;
 
+      @include for-bpoint-tablet{
+        font-size: 25px;
+      }
+
       &.sub-title{
         font-size: 25px;
 
