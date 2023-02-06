@@ -143,7 +143,7 @@
 
         &-item{
           position: relative;
-          font-family: Light-font, sans-serif;
+          font-family: Babas-pro, sans-serif;
 
           &:hover{
             .top-nav-header{
@@ -185,7 +185,6 @@
           width: 100%;
 
           &-item {
-            font-weight: 600;
             font-size: 26px;
             border-bottom: 1px solid #2D79A5;
             a {
@@ -301,6 +300,23 @@
     @include for-bpoint-mobile{
      display: block;
   }
+
+  }
+}
+
+.stepper-container{
+  display: flex;
+  width: 100%;
+  height: 10px;
+
+  .progress{
+    background-color: #2D79A5;
+    height: 100%;
+  }
+
+  .completion{
+    background-color: #55595c;
+    height: 100%;
 
   }
 }

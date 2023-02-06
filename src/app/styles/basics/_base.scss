@@ -77,7 +77,7 @@ a{
   text-align: center;
   transition: all .3s;
   cursor: pointer;
-  font-family: Light-font, sans-serif;
+  font-family: Babas-pro, sans-serif;
 
   &:hover{
     background-color: #fff;
@@ -107,16 +107,24 @@ a.main-btn{
   }
 }
 
+
 .icon-btn{
-  background-color: black;
-  color: white;
-  font-size: 22px;
+  height: 35px;
+  width: 35px;
+  font-size: 18px;
   padding: 7px;
   border-radius: 2px;
+  color: white;
+  background-color: black;
 
   &:hover{
     background-color: #1f1f1f
   }
+
+  &.active{
+        background-color: #00A9FF;
+  }
+
 }
 
 .regular-btn{
@@ -149,6 +157,17 @@ a.main-btn{
 
 main{
   overflow: hidden;
+}
+
+.next-button-wrapper{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  .regular-btn{
+    width: fit-content;
+    font-size: 20px;
+  }
 }
 
 
