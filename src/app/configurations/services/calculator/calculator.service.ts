@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { ConfigurationsService } from '../configurationsService/configurations.service';
 import { CalculatorFormValue } from '../../configuration-calculator/calculator-form-value.model';
-import { UtilService } from 'src/app/shared/services/util.service';
+
 
 
 

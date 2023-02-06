@@ -30,8 +30,7 @@ export class ConfigurationCalculatorPage implements OnInit {
         'calculatorFormValue': new FormGroup({
           'length': new FormControl(),
           'width': new FormControl(),
-          'height': new FormControl(),
-          'measureType': new FormControl(),
+          'height': new FormControl()
         })
     })
 
@@ -51,10 +50,17 @@ export class ConfigurationCalculatorPage implements OnInit {
 
   onCalculate(){
     let formOutput = this.getCalculatorFormValue();
-    console.log(formOutput)
     let calculatorValue = formOutput.calculatorFormValue as CalculatorFormValue;
+    calculatorValue.measureType = this.measureType;
+    console.log(calculatorValue);
     const configurayionId = this.calculatorService.getCalculatedConfigurationId(calculatorValue);
     this.assetService.generataAndAddNewAsset(formOutput.assetName, calculatorValue, configurayionId);
+
+
+  }
+
+  onRadioBtn(){
+    console.log('radio btn')
   }
 
 }

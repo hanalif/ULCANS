@@ -6,13 +6,9 @@
       <div class="top">
         <div class="btns-section">
           <button routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
-          <div>
-            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
-            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
-          </div>
         </div>
         <div class="title">
-          <span>Calculator For Net Dimentions</span>
+          <span>Net's Dimentions Calculator</span>
           <span>Based On Your Asset Measurments</span>
         </div>
       </div>
@@ -20,7 +16,14 @@
         <div class="card">
           <div class="card-content">
             <div class="card-body">
-              <form [formGroup]="calculatorForm" (ngSubmit)="onCalculate()">
+              <form [formGroup]="calculatorForm">
+                <div class="card-row">
+                  <span>Meters Or Feet:</span>
+                  <span class="selection-btns">
+                    <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+                    <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
+                  </span>
+                </div>
                 <div class="card-row">
                   <span>Your Asset Name:</span>
                   <span>

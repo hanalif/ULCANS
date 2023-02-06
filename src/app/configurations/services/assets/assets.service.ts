@@ -64,7 +64,7 @@ export class AssetsService {
     }
     const newAsset:Asset = {
       id: this.utilService._makeId(),
-      assetImgUrl: '../../../../assets/imgs/hexagon-bg/3.jpg',
+      assetImgUrl: '../../../../assets/imgs/hexagon-bg/pngBg.png',
       name: assetName,
       configurationId: configuraionId,
       measures: {
@@ -86,7 +86,6 @@ export class AssetsService {
     }else{
       assets.push(assetToAdd);
     }
-
     this.addAssets(assets);
   }
 
