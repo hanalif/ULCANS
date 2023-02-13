@@ -18,8 +18,9 @@
       font-family: Babas-pro, sans-serif;
       text-align: center;
       gap: 5px;
+      margin-block-end: 20px;
 
-      @include for-bpoint-tablet{
+      @include for-bpoint-min-tablet{
         font-size: 30px;
         margin-block-end: 20px;
         flex-direction: column;
@@ -35,10 +36,6 @@ display: flex;
 gap: 5px;
 margin-block-start: 20px;
 margin-block-end: 20px;
-
-@include for-bpoint-tablet{
-
-}
 
 }
 

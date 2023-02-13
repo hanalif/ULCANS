@@ -16,7 +16,11 @@
 }
 
 .card-img{
-  width: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
 
   @include for-bpoint-tablet{
     width: 100px;
@@ -75,6 +79,11 @@
 
     &-title{
       font-size: 30px;
+      width: 100%;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      height: 120px;
 
       @include for-bpoint-tablet{
         font-size: 25px;

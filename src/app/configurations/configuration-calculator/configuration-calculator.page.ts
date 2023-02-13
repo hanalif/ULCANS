@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { AssetsService } from '../services/assets/assets.service';
 import { CalculatorService } from '../services/calculator/calculator.service';
@@ -18,7 +19,8 @@ export class ConfigurationCalculatorPage implements OnInit {
 
   constructor(
     private calculatorService: CalculatorService,
-    private assetService: AssetsService) { }
+    private assetService: AssetsService,
+    private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -26,11 +28,11 @@ export class ConfigurationCalculatorPage implements OnInit {
 
   initForm(){
     this.calculatorForm = new FormGroup({
-        'assetName': new FormControl(),
+        'assetName': new FormControl(null,[Validators.required]),
         'calculatorFormValue': new FormGroup({
-          'length': new FormControl(),
-          'width': new FormControl(),
-          'height': new FormControl()
+          'length': new FormControl(null,[Validators.required, Validators.min(0)]),
+          'width': new FormControl(null,[Validators.required, Validators.min(0)]),
+          'height': new FormControl(null,[Validators.required, Validators.min(0)])
         })
     })
 
@@ -49,14 +51,17 @@ export class ConfigurationCalculatorPage implements OnInit {
   }
 
   onCalculate(){
+    if(this.calculatorForm.invalid){
+      return;
+    }
+
     let formOutput = this.getCalculatorFormValue();
     let calculatorValue = formOutput.calculatorFormValue as CalculatorFormValue;
     calculatorValue.measureType = this.measureType;
     console.log(calculatorValue);
     const configurayionId = this.calculatorService.getCalculatedConfigurationId(calculatorValue);
-    this.assetService.generataAndAddNewAsset(formOutput.assetName, calculatorValue, configurayionId);
-
-
+    let newId = this.assetService.generataAndAddNewAsset(formOutput.assetName, calculatorValue, configurayionId);
+    this.router.navigate(['configurations/typical-configurations', newId]);
   }
 
   onRadioBtn(){

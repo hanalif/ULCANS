@@ -76,9 +76,11 @@
     }
 
     .img-wrapper{
-      height: 127px;
+      width: 100%;
       display: flex;
       align-items: center;
+      justify-content: center;
+      height: 127px;
 
       img{
         max-width: 100%;
@@ -89,13 +91,21 @@
     }
 
     .title{
+      width: 100%;
       font-size: 20px;
       color: #ffff;
       margin: 0 0 20px;
-      display: inline-flex;
-      align-items: center;
-      text-align: center;
+      display: flex;
+      margin-inline-start: 10px;
+      justify-content: center;
       padding: 0 7px ;
+      height: 80px;
+
+      span{
+        height: fit-content;
+        display: flex;
+        align-items: center;
+      }
 
       &.not-in-list{
         font-size: 20px;

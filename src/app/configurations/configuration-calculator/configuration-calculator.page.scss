@@ -5,6 +5,10 @@ ion-input{
   background-color: #1f1f1f;
 }
 
+.scrollbar {
+  --scrollbar-thumb-color: #7a7a7a;
+}
+
 
 .selection-btns{
   display: flex;
@@ -12,7 +16,8 @@ ion-input{
 }
 
 .card{
-  background-color: black;
+  background-color: #0000008a;
+
 
   .calc-input{
     border-style: solid;
@@ -28,6 +33,11 @@ ion-input{
   }
 }
 
+.disabled{
+  background-color: #96a7b0;
+  color: #1f1f1f;
+  cursor:not-allowed;
+}
 
 
 

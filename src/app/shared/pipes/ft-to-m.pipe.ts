@@ -10,7 +10,7 @@ export class FtToMPipe implements PipeTransform {
     let calcNumber: number;
     switch(measureType) {
       case MeasureType.METERS:
-        calcNumber = number * 3.280
+        calcNumber = number * 0.304
         return calcNumber;
       case MeasureType.FEET:
         calcNumber =  number;

@@ -5,6 +5,15 @@
     --scrollbar-thumb-color: #7a7a7a;
   }
 
+  .card-top{
+    height: 283px;
+
+    @include for-bpoint-tablet{
+      height: 100%;
+    }
+  }
+
+
 
 
 

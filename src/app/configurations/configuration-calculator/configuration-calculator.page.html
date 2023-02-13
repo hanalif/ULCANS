@@ -1,6 +1,7 @@
 <ion-header>
 </ion-header>
 <ion-content>
+  <ng-scrollbar class="scrollbar">
   <div class="main-layout">
     <div class="page-container">
       <div class="top">
@@ -8,8 +9,8 @@
           <button routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
         </div>
         <div class="title">
-          <span>Net's Dimentions Calculator</span>
-          <span>Based On Your Asset Measurments</span>
+          <span>Calculate Your ULCANS Configuration</span>
+          <span>Using Your Asset Measurments</span>
         </div>
       </div>
       <div class="cards-container">
@@ -57,12 +58,13 @@
       </div>
     </div>
 </div>
+</ng-scrollbar>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <div class="footer-container main-layout">
       <div class="next-button-wrapper">
-        <button type="submit" [formGroup]="calculatorForm" (click)="onCalculate()" class="regular-btn"><span class="mobile-buttom">{{'calculate' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
+        <button [ngClass]="{'disabled': calculatorForm.invalid}" type="submit" [formGroup]="calculatorForm" (click)="onCalculate()" class="regular-btn"><span class="mobile-buttom">{{'calculate' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
       </div>
     </div>
   </ion-toolbar>

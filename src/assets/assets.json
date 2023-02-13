@@ -41,9 +41,9 @@
         "name": "Bradley",
         "configurationId": "c6",
         "measures": {
-            "widthFt": 3.6,
-            "heightFt": 6.55,
-            "lengthFt": 6.55
+            "widthFt": 12,
+            "heightFt": 9.8,
+            "lengthFt": 21.5
         },
         "isInList": true
     },

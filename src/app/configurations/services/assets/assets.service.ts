@@ -52,6 +52,7 @@ export class AssetsService {
     let widhtFt: number;
     let heightFt:number;
     let lengthFt: number;
+    let id: string = this.utilService._makeId();
 
     if(this.MeasureType.METERS === calculatorFormValue.measureType){
        widhtFt =this.mToFtPipe.transform(calculatorFormValue.width);
@@ -63,8 +64,8 @@ export class AssetsService {
       lengthFt = calculatorFormValue.length;
     }
     const newAsset:Asset = {
-      id: this.utilService._makeId(),
-      assetImgUrl: '../../../../assets/imgs/hexagon-bg/pngBg.png',
+      id: id,
+      assetImgUrl: '../../../../assets/imgs/hexagon-bg/8-small.png',
       name: assetName,
       configurationId: configuraionId,
       measures: {
@@ -76,6 +77,7 @@ export class AssetsService {
     }
 
     this.addAsset(newAsset);
+    return id;
   }
 
   addAsset(assetToAdd: Asset){

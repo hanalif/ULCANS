@@ -28,6 +28,9 @@ export class AssetPage implements OnInit{
 
   ngOnInit() {
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
+    if(!assetForPreview){
+      this.route.navigate(['']);
+    }
     this.asset = assetForPreview.asset;
     this.configuration = assetForPreview.configuration;
   }

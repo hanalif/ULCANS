@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { ConfigurationsService } from '../configurationsService/configurations.service';
 import { CalculatorFormValue } from '../../configuration-calculator/calculator-form-value.model';
+import { SqftToSqmPipe } from 'src/app/shared/pipes/sqft-to-sqm.pipe';
 
 
 
@@ -33,7 +34,7 @@ export class CalculatorService {
 
     if(MeasureType.METERS === measureType){
       let netDimentionsCalc = this.calculateNetDimentions(length, width, height, this.GAP_METERS);
-      netDimentions = netDimentionsCalc / 10.76391042;
+      netDimentions = netDimentionsCalc / 0.092903003;
     }else{
       netDimentions = this.calculateNetDimentions(length, width, height, this.GAP_FEET);
     }

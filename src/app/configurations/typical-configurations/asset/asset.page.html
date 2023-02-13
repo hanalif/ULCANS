@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="title">
-          <span>Chosen Net Type </span>
-          <span>Based On Asset Measurements</span>
+          <span>ULCANS Configuration</span>
+          <span>Based On Your Asset Measurements</span>
         </div>
       </div>
       <div class="cards-container">
@@ -25,7 +25,7 @@
                 <img [src]="configuration.imgUrl" alt="asset-pic">
               </div>
               <div class="card-title">
-                Net Type: {{configuration.name | uppercase}}
+                ULCANS Configuration Type: {{configuration.name | uppercase}}
               </div>
             </div>
             <div class="card-body">
@@ -79,7 +79,7 @@
   <ion-toolbar>
     <div class="footer-container main-layout">
       <div class="next-button-wrapper">
-        <button  (click)="onChooseYourEnvironment()" class="regular-btn"><span class="mobile-buttom">{{'continue to choose your environment' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
+        <button  (click)="onChooseYourEnvironment()" class="regular-btn"><span class="mobile-buttom">{{'continue to choose your environment and type' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
       </div>
     </div>
   </ion-toolbar>

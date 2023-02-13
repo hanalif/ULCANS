@@ -10,7 +10,7 @@ export class SqftToSqmPipe implements PipeTransform {
     let calcNumber: number;
     switch(measureType) {
       case MeasureType.METERS:
-        calcNumber = number / 10.76391042
+        calcNumber = number * 0.092903003
         return calcNumber;
       case MeasureType.FEET:
         calcNumber =  number;

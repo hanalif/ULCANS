@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
-import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.service';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../models/asset.model';
 import { Configuration } from '../models/configuration.model';
@@ -33,6 +32,9 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   systemTypeId: string = 'TRS'
   currUserSelectionSubscription!: Subscription;
 
+  currAssetId!: string;
+  currEnvironment!: Environment;
+
 
   constructor(
     private route: Router,
@@ -44,6 +46,8 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   ngOnInit() {
      this.enviromentSubscription = this.environmentsService.environments$.subscribe(enviroments=>{
       this.environments = enviroments;
+      this.currEnvironment = (enviroments.find(e=> e.id === '11aa')) as Environment;
+
     })
 
     this.systemTypes$ = this.systemTypesService.systemTypes$
@@ -51,11 +55,15 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     this.currUserSelectionSubscription = this.userSelectionsService.userCurrSelection$.subscribe(currSelection=>{
       if(!currSelection){
         this.route.navigate(['configurations/typical-configurations']);
+      }else{
+        this.currAssetId = currSelection.assetId;
       }
+
     })
   }
 
   onEnvironmentLinkSideA(id:string, currSide:string){
+    this.currEnvironment = (this.environments.find(e => e.id === id)) as Environment;
     this.sideASelection = id;
     this.environmentsService.setIsClothPatternsMenuOpen(true);
     this.environmentsService.setCurrClothPatterns(id, currSide);
@@ -69,7 +77,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   }
 
   onBack(){
-    console.log('on back')
+    this.route.navigate(['configurations/typical-configurations', this.currAssetId ])
   }
 
   onType(id:string){
