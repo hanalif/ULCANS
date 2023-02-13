@@ -6,16 +6,56 @@
     --scrollbar-thumb-color: #7a7a7a;
   }
 
-  .card-content{
+  .page-row{
+    display: flex;
+
     @include for-bpoint-tablet{
       flex-direction: column;
     }
   }
 
+  .page-content{
+    margin-block-end: 20px;
+  }
+
+  .cards-container{
+
+    .card{
+      padding: 0px;
+    }
+  }
+
+
+.page-row{
+  .top{
+    .title{
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      width: 180px;
+
+      @include for-bpoint-tablet{
+        width: 100%;
+        align-items: baseline;
+      }
+
+      span{
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+}
+
+  .card-title{
+    height: fit-content;
+  }
+
   .environments-container{
     .grid-wrapper{
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(97px, 100px));
+      grid-template-columns: repeat(auto-fill, minmax(70px, 70px));
+      justify-content: center;
       justify-items: center;
       padding-inline-start: 10px;
       padding-inline-end: 10px;
@@ -24,7 +64,6 @@
       width: 100%;
       justify-items: center;
       grid-auto-flow: dense;
-      justify-content: space-evenly;
     }
 
     .environment-link{
@@ -62,7 +101,7 @@
 
       .title{
         text-align: center;
-        font-family: Light-font, sans-serif;
+        font-family: Babas-pro, sans-serif;
         color: #9b9b9b;
       }
     }
@@ -76,16 +115,28 @@
     border-radius: 17px;
   }
 
+  .system-card-body{
+    width: 100%;
+    display: flex;
+  }
 
   .types-container{
     display: flex;
-    // flex-direction: column;
     gap: 10px;
+    text-align: center;
+    font-family: Babas-pro, sans-serif;
+    padding: 20px;
+
+    @include for-bpoint-tablet{
+      flex-direction: column;
+      padding: 0px;
+    }
+
 
 
     .type-box{
-      background-color: #a8a8a8;
-      color: black;
+      background-color: #393939;
+      color: white;
       padding: 20px;
       border-radius: 6px;
       display: flex;
@@ -93,6 +144,7 @@
       cursor: pointer;
       width: 100%;
       gap: 15px;
+
       h3{
         font-size: 22px;
       }
@@ -101,8 +153,9 @@
         font-size: 20px;
       }
 
-      &:hover, &.selected{
-        background-color: white;
+      &:hover{
+
+
       }
     }
 

@@ -24,6 +24,7 @@
 
   @include for-bpoint-tablet{
     width: 100px;
+    height: fit-content;
   }
 
 }
@@ -66,8 +67,6 @@
       @include for-bpoint-tablet{
         align-items: center;
         justify-content: flex-start;
-        width: 30%;
-        text-align: center;
       }
     }
 
@@ -83,10 +82,11 @@
       display: flex;
       text-align: center;
       justify-content: center;
-      height: 120px;
+      height: 70px;
 
       @include for-bpoint-tablet{
         font-size: 25px;
+        height: fit-content;
       }
 
       &.sub-title{

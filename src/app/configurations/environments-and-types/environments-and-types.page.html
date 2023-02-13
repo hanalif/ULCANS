@@ -8,58 +8,67 @@
           <div class="btns-section">
             <button title="Back" (click)="onBack()" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
           </div>
-          <div class="title">
-            <span>Choose Your Environment</span>
-            <span></span>
-          </div>
-        </div>
-        <div class="cards-container">
-          <div class="card">
-            <div class="card-content">
-              <div class="card-top">
-                <div class="card-title">
-                  Side A:
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="environments-container">
-                  <div class="grid-wrapper">
-                    <div class="environment-link"
-                      *ngFor="let environment of environments"
-                      (click)="onEnvironmentLinkSideA(environment.id, 'A')"
-                      >
-                      <div class="img-wrapper">
-                      <img [ngClass]="{'selected': sideASelection === environment.id}" [src]="environment.imgUrl" alt="">
-                      </div>
-                      <div class="title">
-                      <h3>{{environment.typeName}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="top">
+            <div class="title">
+             Environment And Type
             </div>
           </div>
-          <div class="card">
-            <div class="card-content">
-              <div class="card-top">
-                <div class="card-title">
-                  Side B:
+        </div>
+        <div class="page-row">
+          <div class="top">
+            <div class="title">
+              Choose Your Environment:
+            </div>
+          </div>
+
+          <div class="cards-container">
+            <div class="card">
+              <div class="card-content">
+                <div class="card-top">
+                  <div class="card-title">
+                    Side A:
+                  </div>
                 </div>
-              </div>
-              <div class="card-body">
-                <div class="environments-container">
-                  <div class="grid-wrapper">
-                    <div class="environment-link"
-                      *ngFor="let environment of environments"
-                      (click)="onEnvironmentLinkSideB(environment.id, 'B')"
-                      >
-                      <div class="img-wrapper">
-                        <img class="white-border" *ngIf="sideBSelection === environment.id" src="../../../assets/imgs/environments/png-small/white-border.png" alt="">
-                        <img [src]="environment.imgUrl" alt="">
-                      </div>
-                      <div class="title">
+                <div class="card-body">
+                  <div class="environments-container">
+                    <div class="grid-wrapper">
+                      <div class="environment-link"
+                        *ngFor="let environment of environments"
+                        (click)="onEnvironmentLinkSideA(environment.id, 'A')"
+                        >
+                        <div class="img-wrapper">
+                        <img [ngClass]="{'selected': sideASelection === environment.id}" [src]="environment.imgUrl" alt="">
+                        </div>
+                        <div class="title">
                         <h3>{{environment.typeName}}</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-content">
+                <div class="card-top">
+                  <div class="card-title">
+                    Side B:
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="environments-container">
+                    <div class="grid-wrapper">
+                      <div class="environment-link"
+                        *ngFor="let environment of environments"
+                        (click)="onEnvironmentLinkSideB(environment.id, 'B')"
+                        >
+                        <div class="img-wrapper">
+                          <img class="white-border" *ngIf="sideBSelection === environment.id" src="../../../assets/imgs/environments/png-small/white-border.png" alt="">
+                          <img [src]="environment.imgUrl" alt="">
+                        </div>
+                        <div class="title">
+                          <h3>{{environment.typeName}}</h3>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -68,25 +77,26 @@
             </div>
           </div>
         </div>
-        <div class="top">
-          <div class="title">
-            <span> Choose System Type:</span>
-            <span></span>
+        <div class="page-row">
+          <div class="top">
+            <div class="title">
+              Choose Your System Type:
+            </div>
           </div>
-        </div>
-        <div class="cards-container">
-          <div class="card system-card">
-            <div class="card-content">
-              <div class="card-body">
-                <div class="types-container">
-                  <div
-                    (click)="onType(type.id)"
-                    class="type-box"
-                    *ngFor="let type of systemTypes$ | async"
-                    [ngClass]="{'selected': systemTypeId === type.id }">
-                    <div class="type-title"><h3>{{type.name}}</h3></div>
-                    <div class="type-description">
-                      <p>{{type.description}}</p>
+          <div class="cards-container">
+            <div class="card system-card">
+              <div class="card-content">
+                <div class="card-body system-card-body">
+                  <div class="types-container">
+                    <div
+                      (click)="onType(type.id)"
+                      class="type-box"
+                      *ngFor="let type of systemTypes$ | async"
+                      [ngClass]="{'selected': systemTypeId === type.id }">
+                      <div class="type-title"><h3>{{type.name}}</h3></div>
+                      <div class="type-description">
+                        <p>{{type.description}}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
