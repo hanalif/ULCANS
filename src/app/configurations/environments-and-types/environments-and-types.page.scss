@@ -67,14 +67,12 @@
     }
 
     .environment-link{
-      width: auto;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 2px;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
       flex-direction: column;
-      gap: 12px;
-      height: fit-content;
+
 
       .img-wrapper{
         position: relative;
@@ -82,21 +80,12 @@
 
       .white-border{
         position: absolute;
-        top: 0;
+        top: -1;
       }
 
       img{
-        // border-radius: 50%;
         height: 70px;
         width: 70px;
-        // border: 1px solid black;
-
-
-
-        // &:hover, &.selected{
-        //   outline: 2px solid #9b9b9b;
-        //   outline-offset: 4px;
-        // }
       }
 
       .title{

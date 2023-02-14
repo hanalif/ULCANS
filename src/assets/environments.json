@@ -2,7 +2,7 @@
   {
     "id": "11aa",
     "typeName": "Woodland",
-    "imgUrl": "../../../../assets/imgs/environments/woodland.jpg",
+    "imgUrl": "../../../../assets/imgs/environments/png-small/woodland.png",
     "clothPatterns": [
       "../../../../assets/imgs/environments/cloth-patterns/Woodland/1.png",
       "../../../../assets/imgs/environments/cloth-patterns/Woodland/2.png",
@@ -14,7 +14,7 @@
   {
     "id": "12bb",
     "typeName": "Desert",
-    "imgUrl": "../../../../assets/imgs/environments/png-small/desert.png",
+    "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
     "clothPatterns": [
       "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
       "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
@@ -26,7 +26,7 @@
   {
     "id": "13cc",
     "typeName": "Urban",
-    "imgUrl": "../../../../assets/imgs/environments/urban.jpg",
+    "imgUrl": "../../../../assets/imgs/environments/png-small/urban.png",
     "clothPatterns": [
       "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
       "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
@@ -38,7 +38,7 @@
   {
     "id": "14dd",
     "typeName": "Rocky",
-    "imgUrl": "../../../../assets/imgs/environments/rocky.jpg",
+    "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
     "clothPatterns": [
       "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
       "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
@@ -50,7 +50,7 @@
   {
     "id": "15ee",
     "typeName": "Snowy",
-    "imgUrl": "../../../../assets/imgs/environments/snowy.jpg",
+    "imgUrl": "../../../../assets/imgs/environments/png-small/snowy.png",
     "clothPatterns": [
       "../../../../assets/imgs/environments/cloth-patterns/Snow/1.png",
       "../../../../assets/imgs/environments/cloth-patterns/Snow/2.png",

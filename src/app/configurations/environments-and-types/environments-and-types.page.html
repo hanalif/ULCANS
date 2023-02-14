@@ -37,7 +37,8 @@
                         (click)="onEnvironmentLinkSideA(environment.id, 'A')"
                         >
                         <div class="img-wrapper">
-                        <img [ngClass]="{'selected': sideASelection === environment.id}" [src]="environment.imgUrl" alt="">
+                          <img class="white-border" *ngIf="sideBSelection === environment.id" src="../../../assets/imgs/environments/png-small/border2.png" alt="">
+                          <img [src]="environment.imgUrl" alt="">
                         </div>
                         <div class="title">
                         <h3>{{environment.typeName}}</h3>
@@ -63,7 +64,7 @@
                         (click)="onEnvironmentLinkSideB(environment.id, 'B')"
                         >
                         <div class="img-wrapper">
-                          <img class="white-border" *ngIf="sideBSelection === environment.id" src="../../../assets/imgs/environments/png-small/white-border.png" alt="">
+                          <img class="white-border" *ngIf="sideBSelection === environment.id" src="../../../assets/imgs/environments/png-small/border2.png" alt="">
                           <img [src]="environment.imgUrl" alt="">
                         </div>
                         <div class="title">
