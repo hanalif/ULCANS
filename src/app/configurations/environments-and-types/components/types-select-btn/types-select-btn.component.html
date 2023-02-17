@@ -1,0 +1,15 @@
+<div class="types-container">
+  <div
+    class="type-box"
+    *ngFor="let type of systemTypes$ | async">
+    <div class="check-mark" [ngClass]="{'selected': systemTypeId === type.id}" (click)="onType(type.id)">
+      <div class="check-mark-icon">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="type-title"><h3>{{type.name}}</h3></div>
+    <div class="type-description">
+      <p>{{type.description}}</p>
+    </div>
+  </div>
+</div>

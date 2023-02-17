@@ -15,12 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
-
-
-
-
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ConfigurationsModule, UsefulInformationModule, CamouflageInstructionsModule, SharedModule, BrowserAnimationsModule],

@@ -18,9 +18,6 @@ export class AssetPage implements OnInit{
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
 
-
-
-
   constructor(
     private router: ActivatedRoute,
     private route: Router,
@@ -43,12 +40,6 @@ export class AssetPage implements OnInit{
     this.measureType = measureType;
   }
 
-  onMeasureType(measureType:MeasureType){
-    console.log(measureType);
-  }
-
-
-
   onChooseYourEnvironment(){
     let userSelections: Partial<AssetForPdf> = {
       assetId: this.asset.id,
@@ -56,9 +47,7 @@ export class AssetPage implements OnInit{
       configuraionId: this.asset.configurationId
     }
 
-
     this.userSelectionsService.updateCurrUserSelections(userSelections);
-
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id, measureType:this.measureType}});
   }
 

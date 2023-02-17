@@ -30,22 +30,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="environments-container">
-                    <div class="grid-wrapper">
-                      <div class="environment-link"
-                        *ngFor="let environment of environments"
-                        (click)="onEnvironmentLinkSideA(environment.id, 'A')"
-                        >
-                        <div class="img-wrapper">
-                          <img class="white-border" *ngIf="sideBSelection === environment.id" src="../../../assets/imgs/environments/png-small/border2.png" alt="">
-                          <img [src]="environment.imgUrl" alt="">
-                        </div>
-                        <div class="title">
-                        <h3>{{environment.typeName}}</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <app-environments-radio-btn [currSide]="'A'"></app-environments-radio-btn>
                 </div>
               </div>
             </div>
@@ -57,22 +42,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="environments-container">
-                    <div class="grid-wrapper">
-                      <div class="environment-link"
-                        *ngFor="let environment of environments"
-                        (click)="onEnvironmentLinkSideB(environment.id, 'B')"
-                        >
-                        <div class="img-wrapper">
-                          <img class="white-border" *ngIf="sideBSelection === environment.id" src="../../../assets/imgs/environments/png-small/border2.png" alt="">
-                          <img [src]="environment.imgUrl" alt="">
-                        </div>
-                        <div class="title">
-                          <h3>{{environment.typeName}}</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <app-environments-radio-btn [currSide]="'B'"></app-environments-radio-btn>
                 </div>
               </div>
             </div>
@@ -88,18 +58,7 @@
             <div class="card system-card">
               <div class="card-content">
                 <div class="card-body system-card-body">
-                  <div class="types-container">
-                    <div
-                      (click)="onType(type.id)"
-                      class="type-box"
-                      *ngFor="let type of systemTypes$ | async"
-                      [ngClass]="{'selected': systemTypeId === type.id }">
-                      <div class="type-title"><h3>{{type.name}}</h3></div>
-                      <div class="type-description">
-                        <p>{{type.description}}</p>
-                      </div>
-                    </div>
-                  </div>
+                  <app-types-select-btn></app-types-select-btn>
                 </div>
               </div>
             </div>
@@ -115,8 +74,9 @@
       <div class="buttons-wrapper">
         <!-- <button type="submit"  class="regular-btn"><span class="mobile-buttom">{{'continue' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button> -->
           <button (click)="onAddToYourSelections()" class="regular-btn">Add To Your Selections</button>
-          <button class="regular-btn">Use Your Ulcans</button>
       </div>
     </div>
   </ion-toolbar>
 </ion-footer>
+
+

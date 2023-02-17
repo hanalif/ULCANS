@@ -62,6 +62,8 @@ export class UserSelectionService {
   updateCurrUserSelections(userSelections: Partial<AssetForPdf>){
     let currSelctionValue = this.userCurrSelection$.getValue();
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
+    //Object.values(currSelctionValue);
+    console.log(currSelctionValue);
     this.userCurrSelection$.next(currSelctionValue);
   }
 

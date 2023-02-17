@@ -4,8 +4,6 @@ import { Observable, Subscription } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
-import { Asset } from '../models/asset.model';
-import { Configuration } from '../models/configuration.model';
 import { SystemType } from './models/type.model';
 import { EnvironmentsService } from './services/environments.service';
 import { SystemTypesService } from './services/system-types.service';
@@ -16,6 +14,7 @@ import { SystemTypesService } from './services/system-types.service';
   styleUrls: ['./environments-and-types.page.scss'],
 })
 export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
+
   environments!:Environment[];
   environmentId:string = "11aa";
   isEnvironmentSelected: boolean = false;
@@ -51,14 +50,12 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     })
 
     this.systemTypes$ = this.systemTypesService.systemTypes$
-
     this.currUserSelectionSubscription = this.userSelectionsService.userCurrSelection$.subscribe(currSelection=>{
       if(!currSelection){
         this.route.navigate(['configurations/typical-configurations']);
       }else{
         this.currAssetId = currSelection.assetId;
       }
-
     })
   }
 
@@ -71,6 +68,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   onEnvironmentLinkSideB(id:string, currSide:string){
     this.sideBSelection = id;
+    console.log(this.sideBSelection);
 
     this.environmentsService.setIsClothPatternsMenuOpen(true);
     this.environmentsService.setCurrClothPatterns(id, currSide);
@@ -98,6 +96,4 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     this.enviromentSubscription.unsubscribe();
     this.currUserSelectionSubscription.unsubscribe();
   }
-
-
 }

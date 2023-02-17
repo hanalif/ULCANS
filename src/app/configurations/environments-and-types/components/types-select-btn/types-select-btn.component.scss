@@ -1,0 +1,72 @@
+@import '../../../../styles/setup/mixins';
+@import '../../../../styles/setup/variables';
+
+.types-container{
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  font-family: Babas-pro, sans-serif;
+  padding: 20px;
+
+  @include for-bpoint-tablet{
+    flex-direction: column;
+    padding: 0px;
+  }
+
+
+
+  .type-box{
+    position: relative;
+    background-color: #393939;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+
+    h3{
+      font-size: 22px;
+    }
+
+    p{
+      font-size: 20px;
+    }
+
+    .check-mark{
+      cursor: pointer;
+      position: absolute;
+      background-color: #0091ff;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      border: 1px solid white;
+      top: -5px;
+      left: -5px;
+
+
+      &.selected{
+        .check-mark-icon{
+          opacity: 1;
+        }
+    }
+
+      .check-mark-icon{
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        font-size: 25px;
+        top: 3px;
+        left: 0px;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+    }
+
+
+
+  }
+
+}

@@ -8,6 +8,8 @@ import { EnvironmentsAndTypesPageRoutingModule } from './environments-and-types-
 
 import { EnvironmentsAndTypesPage } from './environments-and-types.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { EnvironmentsRadioBtnComponent } from './components/environments-radio-btn/environments-radio-btn.component';
+import { TypesSelectBtnComponent } from './components/types-select-btn/types-select-btn.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     EnvironmentsAndTypesPageRoutingModule,
     SharedModule
   ],
-  declarations: [EnvironmentsAndTypesPage]
+  declarations: [
+    EnvironmentsAndTypesPage,
+    EnvironmentsRadioBtnComponent,
+    TypesSelectBtnComponent
+  ]
 })
 export class EnvironmentsAndTypesPageModule {}

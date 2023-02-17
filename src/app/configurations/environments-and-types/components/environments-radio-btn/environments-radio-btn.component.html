@@ -1,0 +1,16 @@
+<div class="environments-container">
+  <div class="grid-wrapper">
+    <div class="environment-link"
+      *ngFor="let environment of environments"
+      (click)="onEnvironmentLink(environment.id)"
+      >
+      <div class="img-wrapper">
+        <img class="white-border" *ngIf="environmentIdSelection === environment.id" src="../../../assets/imgs/environments/png-small/border2.png" alt="">
+        <img [src]="environment.imgUrl" alt="">
+      </div>
+      <div class="title">
+        <h3>{{environment.typeName}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
