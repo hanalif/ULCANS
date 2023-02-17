@@ -24,6 +24,7 @@ export class UserSelectionService {
   private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
   private assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
 
   public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
@@ -41,6 +42,10 @@ export class UserSelectionService {
 
   getIsUserSelectionsMenuOpen() {
      return this.isUserSelectionsMenuOpen$;
+  }
+
+  getisDisabled(){
+    return this.isDisabled$.asObservable();
   }
 
   getnumOfSelections(){
@@ -62,8 +67,11 @@ export class UserSelectionService {
   updateCurrUserSelections(userSelections: Partial<AssetForPdf>){
     let currSelctionValue = this.userCurrSelection$.getValue();
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
-    //Object.values(currSelctionValue);
-    console.log(currSelctionValue);
+    let numsOfKeys = Object.values(currSelctionValue).length;
+    if(numsOfKeys === 6){
+      this.isDisabled$.next(false);
+    }
+    console.log(numsOfKeys);
     this.userCurrSelection$.next(currSelctionValue);
   }
 
@@ -79,7 +87,8 @@ export class UserSelectionService {
     }else{
       assetsForPdf.push(assetForPdf);
       this.setNumberOfNewSelections(1);
-      this.userCurrSelection$.next(null)
+      this.userCurrSelection$.next(null);
+      this.isDisabled$.next(true);
     }
     this.assetsForPdf$.next(assetsForPdf);
   }

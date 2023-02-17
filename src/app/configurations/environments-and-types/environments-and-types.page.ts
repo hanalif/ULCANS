@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
@@ -34,6 +34,8 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   currAssetId!: string;
   currEnvironment!: Environment;
 
+  isDiabled$!: Observable<boolean>;
+
 
   constructor(
     private route: Router,
@@ -46,7 +48,6 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
      this.enviromentSubscription = this.environmentsService.environments$.subscribe(enviroments=>{
       this.environments = enviroments;
       this.currEnvironment = (enviroments.find(e=> e.id === '11aa')) as Environment;
-
     })
 
     this.systemTypes$ = this.systemTypesService.systemTypes$
@@ -57,39 +58,17 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
         this.currAssetId = currSelection.assetId;
       }
     })
-  }
 
-  onEnvironmentLinkSideA(id:string, currSide:string){
-    this.currEnvironment = (this.environments.find(e => e.id === id)) as Environment;
-    this.sideASelection = id;
-    this.environmentsService.setIsClothPatternsMenuOpen(true);
-    this.environmentsService.setCurrClothPatterns(id, currSide);
-  }
-
-  onEnvironmentLinkSideB(id:string, currSide:string){
-    this.sideBSelection = id;
-    console.log(this.sideBSelection);
-
-    this.environmentsService.setIsClothPatternsMenuOpen(true);
-    this.environmentsService.setCurrClothPatterns(id, currSide);
+    this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(res=> console.log(res)));
   }
 
   onBack(){
     this.route.navigate(['configurations/typical-configurations', this.currAssetId ])
   }
 
-  onType(id:string){
-    this.systemTypeId = id;
-    let userSelectios: Partial<AssetForPdf> = {
-      systemTypeId: id
-    }
-    this.userSelectionsService.updateCurrUserSelections(userSelectios)
-  }
-
-
   onAddToYourSelections(){
-    this.userSelectionsService.addAssetForPdf();
 
+    this.userSelectionsService.addAssetForPdf();
   }
 
   ngOnDestroy(): void {

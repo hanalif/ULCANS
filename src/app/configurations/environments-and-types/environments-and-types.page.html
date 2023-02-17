@@ -71,9 +71,9 @@
 <ion-footer>
   <ion-toolbar>
     <div class="footer-container main-layout">
-      <div class="buttons-wrapper">
+      <div class="next-button-wrapper">
         <!-- <button type="submit"  class="regular-btn"><span class="mobile-buttom">{{'continue' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button> -->
-          <button (click)="onAddToYourSelections()" class="regular-btn">Add To Your Selections</button>
+          <button (click)="onAddToYourSelections()" class="regular-btn" [ngClass]="{'disabled': isDiabled$ | async}" > <span>Add To Your Selections</span><ion-icon name="add-outline"></ion-icon> </button>
       </div>
     </div>
   </ion-toolbar>
