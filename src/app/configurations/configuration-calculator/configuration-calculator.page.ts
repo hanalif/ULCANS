@@ -58,14 +58,10 @@ export class ConfigurationCalculatorPage implements OnInit {
     let formOutput = this.getCalculatorFormValue();
     let calculatorValue = formOutput.calculatorFormValue as CalculatorFormValue;
     calculatorValue.measureType = this.measureType;
-    console.log(calculatorValue);
     const configurayionId = this.calculatorService.getCalculatedConfigurationId(calculatorValue);
     let newId = this.assetService.generataAndAddNewAsset(formOutput.assetName, calculatorValue, configurayionId);
     this.router.navigate(['configurations/typical-configurations', newId]);
   }
 
-  onRadioBtn(){
-    console.log('radio btn')
-  }
 
 }

@@ -35,6 +35,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   currEnvironment!: Environment;
 
   isDiabled$!: Observable<boolean>;
+  isDisabled!: boolean;
 
 
   constructor(
@@ -59,7 +60,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
       }
     })
 
-    this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(res=> console.log(res)));
+    this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
   }
 
   onBack(){
@@ -67,8 +68,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   }
 
   onAddToYourSelections(){
-
-    this.userSelectionsService.addAssetForPdf();
+    if(this.isDisabled){
+      return;
+    }else{
+      this.userSelectionsService.addAssetForPdf();
+    }
   }
 
   ngOnDestroy(): void {

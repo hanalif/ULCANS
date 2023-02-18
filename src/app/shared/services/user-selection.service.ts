@@ -71,7 +71,6 @@ export class UserSelectionService {
     if(numsOfKeys === 6){
       this.isDisabled$.next(false);
     }
-    console.log(numsOfKeys);
     this.userCurrSelection$.next(currSelctionValue);
   }
 
@@ -119,7 +118,6 @@ export class UserSelectionService {
 
         assetsForDisplay.push(assetForDisplay);
       }
-      console.log(assetsForDisplay);
       return assetsForDisplay;
   }
 
@@ -180,7 +178,6 @@ export class UserSelectionService {
    checkPlatform(currPlatforms: string[]){
     let isCurrPlatformDesktopOrMobileweb: boolean = false;
     for(let i = 0; i< currPlatforms.length; i++){
-      console.log(currPlatforms[i]);
         if(currPlatforms[i] === "desktop"){
           isCurrPlatformDesktopOrMobileweb = true;
         } else if(currPlatforms[i] === "mobileweb"){
