@@ -1,15 +1,26 @@
+
 <div class="cloth-patterns-menu">
   <div class="menu-top">
     <button class="icon-btn" (click)="onClose()"><ion-icon name="close-outline"></ion-icon></button>
     <h1>Choose Pattern For Side {{currSide}} </h1>
   </div>
   <div class="menu-body">
-    <div class="cloth-patterns-container">
-      <div
-        class="colth-pattern-link"
-        (click)="onClothPatternLink(i)"
-        *ngFor="let pattern of clothPatterns; let i = index">
-        <img [ngClass]="{'selected': i === selectedPatternIndex}" [src]="pattern" alt="patten">
+    <div class="slider-container">
+      <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+          <div *ngFor="let url of clothPatterns" class="swiper-slide">
+            <img [src]="url" />
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div *ngFor="let url of clothPatterns; let i = index" class="swiper-slide">
+            <img [src]="url" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -17,4 +28,18 @@
     <div (click)="onSave()" class="regular-btn"><span>Save</span></div>
   </div>
 </div>
+
+
+
+
+<!-- <div class="menu-body">
+  <div class="cloth-patterns-container">
+    <div
+      class="colth-pattern-link"
+      (click)="onClothPatternLink(i)"
+      *ngFor="let pattern of clothPatterns; let i = index">
+      <img [ngClass]="{'selected': i === selectedPatternIndex}" [src]="pattern" alt="patten">
+    </div>
+  </div>
+</div> -->
 

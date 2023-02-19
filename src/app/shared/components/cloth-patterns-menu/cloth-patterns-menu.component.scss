@@ -1,6 +1,77 @@
 @import '../../../styles/setup/mixins';
 @import '../../../styles/setup/variables';
 
+
+//swiper style
+
+
+.mySwiper{
+  &.swiper{
+    height: 100px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  padding: 10px 0;
+  .swiper-wrapper{
+
+    .swiper-slide{
+      opacity: 0.4;
+
+      &.swiper-slide-thumb-active {
+        opacity: 1;
+      }
+      img{
+        background-image: url('../../../../assets/imgs/environments/desert.jpg');
+
+      }
+    }
+  }
+
+}
+
+
+
+.mySwiper2{
+  &.swiper{
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+  }
+  .swiper-wrapper{
+    width: 100%;
+    .swiper-slide{
+      background-size: cover;
+      background-position: center;
+      img{
+
+      }
+    }
+  }
+
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper{
+  img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Page style
 .cloth-patterns-menu{
   color: white;
   display: flex;

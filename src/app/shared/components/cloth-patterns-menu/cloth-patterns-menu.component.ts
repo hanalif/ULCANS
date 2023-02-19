@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { SystemType } from 'src/app/configurations/environments-and-types/models/type.model';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
+import Swiper, { Navigation, Thumbs } from 'swiper';
 import { AssetForPdf } from '../../models/asset-for-pdf.model';
 import { SystemSide } from '../../models/system-side.model';
 import { UserSelectionService } from '../../services/user-selection.service';
@@ -12,7 +12,13 @@ import { UserSelectionService } from '../../services/user-selection.service';
   templateUrl: './cloth-patterns-menu.component.html',
   styleUrls: ['./cloth-patterns-menu.component.scss'],
 })
-export class ClothPatternsMenuComponent implements OnInit, OnDestroy {
+export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  swiper!: Swiper;
+  swiper2!: Swiper;
+
+
+
   clothPatterns: string[] = [];
   clothPatternsSubscription!: Subscription;
   currSide!: string;
@@ -33,6 +39,32 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy {
 
     })
   }
+
+  ngAfterViewInit() {
+    this.swiper = new Swiper(".mySwiper", {
+      modules: [Navigation, Thumbs],
+
+      loop: true,
+      spaceBetween: 10,
+      slidesPerView: 5,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
+
+    this.swiper2 = new Swiper(".mySwiper2", {
+      modules: [Navigation, Thumbs],
+      loop: true,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: this.swiper,
+      },
+    });
+ }
+
 
   onClose(){
     this.environmentsService.setIsClothPatternsMenuOpen(false);
