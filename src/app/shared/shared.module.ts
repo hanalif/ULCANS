@@ -22,6 +22,7 @@ import { ClothPatternsMenuComponent } from './components/cloth-patterns-menu/clo
 import { MToFtPipe } from './pipes/m-to-ft.pipe';
 import { SqftToSqmPipe } from './pipes/sqft-to-sqm.pipe';
 import { BtnSelectionComponent } from './components/btn-selection/btn-selection.component';
+import {Swiper} from 'swiper';
 
 
 
@@ -31,6 +32,6 @@ import { BtnSelectionComponent } from './components/btn-selection/btn-selection.
   declarations: [HeaderComponent, BtnSelectionComponent,MainBtnComponent, SqftToSqmPipe ,FtToMPipe, MToFtPipe,AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent, ClothPatternsMenuComponent],
   imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule, NgScrollbarModule ],
   exports: [HeaderComponent,BtnSelectionComponent, MainBtnComponent,SqftToSqmPipe, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, PdfPageComponent,NgScrollbarModule, ClothPatternsMenuComponent],
-  providers:[ FtToMPipe ,MToFtPipe, SqftToSqmPipe,FileOpener, File]
+  providers:[ FtToMPipe ,MToFtPipe, SqftToSqmPipe,FileOpener, File, Swiper]
 })
 export class SharedModule {}
