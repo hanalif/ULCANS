@@ -37,13 +37,14 @@
     .check-mark{
       cursor: pointer;
       position: absolute;
-      background-color: #0091ff;
-      border-radius: 50%;
+      // background-color: #0091ff;
+      // border-radius: 50%;
       height: 40px;
       width: 40px;
-      border: 1px solid white;
+      // border: 1px solid white;
       top: -5px;
       left: -5px;
+      // clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 
 
       &.selected{
