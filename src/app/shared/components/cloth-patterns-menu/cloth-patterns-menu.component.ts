@@ -42,7 +42,6 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
     })
 
     this.userSelectionService.userCurrSelection$.pipe(takeUntil(this.destroyed$)).subscribe(currSelection=>{
-      console.log(this.currSide)
       if(this.currSide === 'A'){
         if(currSelection!.sideA){
           if(this.currEnvironmentId === currSelection!.sideA.environmentId){

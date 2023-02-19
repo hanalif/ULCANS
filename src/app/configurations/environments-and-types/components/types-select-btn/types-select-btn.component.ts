@@ -16,6 +16,8 @@ export class TypesSelectBtnComponent implements OnInit {
   systemTypeId!: string;
   currUserSelectionSubscription!: Subscription;
 
+
+
   constructor(private systemTypesService: SystemTypesService, private route: Router,private userSelectionsService: UserSelectionService) { }
 
   ngOnInit() {
