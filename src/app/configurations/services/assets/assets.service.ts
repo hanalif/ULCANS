@@ -65,7 +65,7 @@ export class AssetsService {
     }
     const newAsset:Asset = {
       id: id,
-      assetImgUrl: '../../../../assets/imgs/hexagon-bg/8-small.png',
+      assetImgUrl: '../../../../assets/imgs/hexagon-bg/asset-bg.png',
       name: assetName,
       configurationId: configuraionId,
       measures: {

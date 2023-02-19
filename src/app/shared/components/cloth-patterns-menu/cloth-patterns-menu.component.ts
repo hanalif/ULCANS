@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ClothPatternsUrls } from 'src/app/configurations/environments-and-types/models/cloth-patterns-url.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import Swiper, { Navigation, Thumbs } from 'swiper';
 import { AssetForPdf } from '../../models/asset-for-pdf.model';
@@ -19,24 +20,24 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
 
 
-  clothPatterns: string[] = [];
+  clothPatternsUrls!: ClothPatternsUrls | null;
   clothPatternsSubscription!: Subscription;
   currSide!: string;
   currEnvironmentId!: string;
-  selectedPatternIndex: number = 0
+  selectedPatternIndex: number = -1;
   currSideSelection!: Subscription;
 
   constructor(private environmentsService: EnvironmentsService, private userSelectionService: UserSelectionService) { }
 
 
   ngOnInit() {
-    this.clothPatternsSubscription = this.environmentsService.currClothPatterns$.subscribe(currClothPatterns=>{
-      this.clothPatterns = currClothPatterns;
+    this.clothPatternsSubscription = this.environmentsService.currClothPatterns$.subscribe(currClothPatternsUrls=>{
+      this.clothPatternsUrls = currClothPatternsUrls;
+
     })
     this.clothPatternsSubscription = this.environmentsService.currEnvironmentIdAndSide$.subscribe(environmentIdAndSide=>{
       this.currSide = environmentIdAndSide?.currSide as string;
       this.currEnvironmentId = environmentIdAndSide?.currEnvironmentId as string;
-
     })
   }
 
@@ -75,25 +76,29 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   onSave(){
-    let systemSide: SystemSide = {
-      environmentId: this.currEnvironmentId,
-      clothPatternIndex: this.selectedPatternIndex
-    }
-
-    let userSelections: Partial<AssetForPdf>;
-
-    if(this.currSide === 'A'){
-      userSelections ={
-        sideA: systemSide
-      }
+    if(this.selectedPatternIndex === -1){
+      return;
     }else{
-      userSelections ={
-        sideB: systemSide
+      let systemSide: SystemSide = {
+        environmentId: this.currEnvironmentId,
+        clothPatternIndex: this.selectedPatternIndex
       }
-    }
 
-    this.userSelectionService.updateCurrUserSelections(userSelections);
-    this.onClose();
+      let userSelections: Partial<AssetForPdf>;
+
+      if(this.currSide === 'A'){
+        userSelections ={
+          sideA: systemSide
+        }
+      }else{
+        userSelections ={
+          sideB: systemSide
+        }
+      }
+
+      this.userSelectionService.updateCurrUserSelections(userSelections);
+      this.onClose();
+    }
   }
 
   ngOnDestroy(): void {

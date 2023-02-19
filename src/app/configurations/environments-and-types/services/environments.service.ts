@@ -5,6 +5,7 @@ import { BehaviorSubject, map, } from 'rxjs';
 import { Environment} from 'src/app/configurations/environments-and-types/models/environment.model';
 import { CurrEnvironmentIdAndSide } from '../models/curr-environmentId-and-side.model';
 import { SystemSideForDisplay } from 'src/app/shared/models/system-side-for-display.mode';
+import { ClothPatternsUrls } from '../models/cloth-patterns-url.model';
 
 
 
@@ -21,7 +22,7 @@ export class EnvironmentsService {
   public environments$: BehaviorSubject<Environment[]> = new BehaviorSubject<Environment[]>([]);
   private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  public currClothPatterns$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  public currClothPatterns$: BehaviorSubject<ClothPatternsUrls | null> = new BehaviorSubject<ClothPatternsUrls | null>(null);
   public currEnvironmentIdAndSide$: BehaviorSubject<CurrEnvironmentIdAndSide | null> = new BehaviorSubject<CurrEnvironmentIdAndSide | null>(null);
 
   getEnvironmentsValue(){
@@ -65,7 +66,11 @@ export class EnvironmentsService {
 setCurrClothPatterns(environmentId: string, currSide:string){
   let environments = this.getEnvironmentsValue();
   let currEnvironment = environments.find(e=> e.id === environmentId);
-  this.currClothPatterns$.next(currEnvironment?.clothPatterns ? currEnvironment?.clothPatterns : []);
+  let clothPatternsUrls: ClothPatternsUrls = {
+    clothPatterns: currEnvironment?.clothPatterns,
+    shapes: currEnvironment?.shapes
+  }
+  this.currClothPatterns$.next(clothPatternsUrls);
   const currEnvironmentIdAndSide: CurrEnvironmentIdAndSide = {
     currSide: currSide,
     currEnvironmentId: environmentId

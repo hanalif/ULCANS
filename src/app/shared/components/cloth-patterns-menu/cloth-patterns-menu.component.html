@@ -6,9 +6,9 @@
   </div>
   <div class="menu-body">
     <div class="slider-container">
-      <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+      <div style="--swiper-navigation-color: #fff" class="swiper mySwiper2">
         <div class="swiper-wrapper">
-          <div *ngFor="let url of clothPatterns" class="swiper-slide">
+          <div *ngFor="let url of clothPatternsUrls?.clothPatterns" class="swiper-slide">
             <img [src]="url" />
           </div>
         </div>
@@ -17,29 +17,20 @@
       </div>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div *ngFor="let url of clothPatterns; let i = index" class="swiper-slide">
-            <img [src]="url" />
+          <div *ngFor="let url of clothPatternsUrls?.shapes; let i = index" class="swiper-slide">
+            <img class="white-border" *ngIf="selectedPatternIndex === i" src="../../../../assets/imgs/environments/png-small/border2.png" alt="">
+            <img (click)="onClothPatternLink(i)" [src]="url" />
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="menu-bottom">
-    <div (click)="onSave()" class="regular-btn"><span>Save</span></div>
+    <div class="next-button-wrapper">
+      <div (click)="onSave()" [ngClass]="{'disabled': selectedPatternIndex === -1}" class="regular-btn"><span>Save</span></div>
+    </div>
   </div>
 </div>
 
 
-
-
-<!-- <div class="menu-body">
-  <div class="cloth-patterns-container">
-    <div
-      class="colth-pattern-link"
-      (click)="onClothPatternLink(i)"
-      *ngFor="let pattern of clothPatterns; let i = index">
-      <img [ngClass]="{'selected': i === selectedPatternIndex}" [src]="pattern" alt="patten">
-    </div>
-  </div>
-</div> -->
 
