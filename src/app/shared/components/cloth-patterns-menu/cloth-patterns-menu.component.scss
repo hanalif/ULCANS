@@ -21,19 +21,18 @@
         position: absolute;
       }
       background-color: transparent;
-      opacity: 0.4;
+      opacity: 1;
 
-      &.swiper-slide-thumb-active {
-        opacity: 1;
-      }
+      // &.swiper-slide-thumb-active {
+      //   opacity: 1;
+      // }
+
       img{
         background-color: transparent;
       }
     }
   }
-
 }
-
 
 
 .mySwiper2{

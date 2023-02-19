@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, Subscription, takeUntil } from 'rxjs';
 import { ClothPatternsUrls } from 'src/app/configurations/environments-and-types/models/cloth-patterns-url.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import Swiper, { Navigation, Thumbs } from 'swiper';
@@ -14,6 +14,7 @@ import { UserSelectionService } from '../../services/user-selection.service';
   styleUrls: ['./cloth-patterns-menu.component.scss'],
 })
 export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewInit {
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   swiper!: Swiper;
   swiper2!: Swiper;
@@ -21,7 +22,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
 
   clothPatternsUrls!: ClothPatternsUrls | null;
-  clothPatternsSubscription!: Subscription;
+
   currSide!: string;
   currEnvironmentId!: string;
   selectedPatternIndex: number = -1;
@@ -31,13 +32,32 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
 
   ngOnInit() {
-    this.clothPatternsSubscription = this.environmentsService.currClothPatterns$.subscribe(currClothPatternsUrls=>{
+    this.environmentsService.currClothPatterns$.pipe(takeUntil(this.destroyed$)).subscribe(currClothPatternsUrls=>{
       this.clothPatternsUrls = currClothPatternsUrls;
 
     })
-    this.clothPatternsSubscription = this.environmentsService.currEnvironmentIdAndSide$.subscribe(environmentIdAndSide=>{
+    this.environmentsService.currEnvironmentIdAndSide$.pipe(takeUntil(this.destroyed$)).subscribe(environmentIdAndSide=>{
       this.currSide = environmentIdAndSide?.currSide as string;
       this.currEnvironmentId = environmentIdAndSide?.currEnvironmentId as string;
+    })
+
+    this.userSelectionService.userCurrSelection$.pipe(takeUntil(this.destroyed$)).subscribe(currSelection=>{
+      console.log(this.currSide)
+      if(this.currSide === 'A'){
+        if(currSelection!.sideA){
+          if(this.currEnvironmentId === currSelection!.sideA.environmentId){
+            this.selectedPatternIndex = currSelection!.sideA.clothPatternIndex;
+          }
+        }
+      }
+
+      if(this.currSide === 'B'){
+        if(currSelection!.sideB){
+          if(this.currEnvironmentId === currSelection!.sideB.environmentId){
+            this.selectedPatternIndex = currSelection!.sideB.clothPatternIndex;
+          }
+        }
+      }
     })
   }
 
@@ -50,6 +70,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
       slidesPerView: 5,
       freeMode: true,
       watchSlidesProgress: true,
+
     });
 
     this.swiper2 = new Swiper(".mySwiper2", {
@@ -60,6 +81,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
+
       thumbs: {
         swiper: this.swiper,
       },
@@ -102,7 +124,8 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   ngOnDestroy(): void {
-    this.clothPatternsSubscription?.unsubscribe()
+    this.destroyed$.next(true);
+  this.destroyed$.unsubscribe();
   }
 
 }
