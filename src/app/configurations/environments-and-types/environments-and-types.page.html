@@ -29,7 +29,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <app-environments-radio-btn [currUserSelection]="currUserSelection" [currSide]="side"></app-environments-radio-btn>
+                  <app-environments-radio-btn [currSide]="side"></app-environments-radio-btn>
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="card system-card">
               <div class="card-content">
                 <div class="card-body system-card-body">
-                  <app-types-select-btn ></app-types-select-btn>
+                  <app-types-select-btn [currUserSelection]="currUserSelection" ></app-types-select-btn>
                 </div>
               </div>
             </div>

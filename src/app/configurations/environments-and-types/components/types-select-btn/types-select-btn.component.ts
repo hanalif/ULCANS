@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
@@ -11,22 +11,19 @@ import { SystemTypesService } from '../../services/system-types.service';
   templateUrl: './types-select-btn.component.html',
   styleUrls: ['./types-select-btn.component.scss'],
 })
-export class TypesSelectBtnComponent implements OnInit {
+export class TypesSelectBtnComponent implements OnInit, OnChanges {
   systemTypes$!: Observable<SystemType[]>;
   systemTypeId!: string;
-  currUserSelectionSubscription!: Subscription;
+  @Input() currUserSelection!: AssetForPdf;
+
 
 
 
   constructor(private systemTypesService: SystemTypesService, private route: Router,private userSelectionsService: UserSelectionService) { }
 
+
   ngOnInit() {
     this.systemTypes$ = this.systemTypesService.systemTypes$
-    this.currUserSelectionSubscription = this.userSelectionsService.userCurrSelection$.subscribe(currSelection=>{
-      if(!currSelection){
-        this.route.navigate(['configurations/typical-configurations']);
-      }
-    })
   }
 
   onType(id:string){
@@ -35,6 +32,13 @@ export class TypesSelectBtnComponent implements OnInit {
       systemTypeId: id
     }
     this.userSelectionsService.updateCurrUserSelections(userSelectios);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue
+    if(currUserSelection.systemTypeId){
+      this.systemTypeId = currUserSelection.systemTypeId
+    }
   }
 
 }

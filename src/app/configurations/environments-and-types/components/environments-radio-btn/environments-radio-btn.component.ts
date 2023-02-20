@@ -15,7 +15,6 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy {
   environmentIdSelection!: string;
   @Input() currSide!:string;
   environments!:Environment[];
-  @Input() currUserSelection!: AssetForPdf;
 
   constructor(private environmentsService: EnvironmentsService) { }
 
