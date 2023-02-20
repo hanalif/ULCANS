@@ -25,7 +25,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
   currSide!: string;
   currEnvironmentId!: string;
-  selectedPatternIndex: number = -1;
+  selectedPatternIndex: number = 0;
   currSideSelection!: Subscription;
 
   constructor(private environmentsService: EnvironmentsService, private userSelectionService: UserSelectionService) { }
@@ -34,7 +34,6 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
   ngOnInit() {
     this.environmentsService.currClothPatterns$.pipe(takeUntil(this.destroyed$)).subscribe(currClothPatternsUrls=>{
       this.clothPatternsUrls = currClothPatternsUrls;
-
     })
     this.environmentsService.currEnvironmentIdAndSide$.pipe(takeUntil(this.destroyed$)).subscribe(environmentIdAndSide=>{
       this.currSide = environmentIdAndSide?.currSide as string;
@@ -58,6 +57,8 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
         }
       }
     })
+
+    this.onSave();
   }
 
   ngAfterViewInit() {
@@ -73,6 +74,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
     });
 
     this.swiper2 = new Swiper(".mySwiper2", {
+
       modules: [Navigation, Thumbs],
       loop: true,
       spaceBetween: 10,
@@ -85,6 +87,12 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
         swiper: this.swiper,
       },
     });
+
+    this.swiper2.on('activeIndexChange',(swiper) => {
+      this.selectedPatternIndex = swiper.activeIndex;
+    });
+
+    this.swiper2.slideToLoop(this.selectedPatternIndex);
  }
 
 
@@ -96,10 +104,12 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
     this.selectedPatternIndex = index;
   }
 
+  onSaveBtn(){
+    this.onSave();
+    this.onClose();
+  }
+
   onSave(){
-    if(this.selectedPatternIndex === -1){
-      return;
-    }else{
       let systemSide: SystemSide = {
         environmentId: this.currEnvironmentId,
         clothPatternIndex: this.selectedPatternIndex
@@ -118,8 +128,6 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
       }
 
       this.userSelectionService.updateCurrUserSelections(userSelections);
-      this.onClose();
-    }
   }
 
   ngOnDestroy(): void {

@@ -1,7 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ReplaySubject, Subscription, takeUntil } from 'rxjs';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
-import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Environment } from '../../models/environment.model';
 import { EnvironmentsService } from '../../services/environments.service';
 
@@ -18,39 +17,29 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy {
   environments!:Environment[];
   @Input() currUserSelection!: AssetForPdf;
 
-  constructor(private environmentsService: EnvironmentsService, private userSelectionService:UserSelectionService) { }
-
+  constructor(private environmentsService: EnvironmentsService) { }
 
   ngOnInit() {
     this.environmentsService.environments$.pipe(takeUntil(this.destroyed$)).subscribe(enviroments=>{
       this.environments = enviroments;
     })
-      if(this.currSide){
-        if(this.currSide === 'A'){
-          if(this.currUserSelection!.sideA){
-            if(this.environmentIdSelection === this.currUserSelection!.sideA.environmentId){
-              this.environmentIdSelection = this.currUserSelection!.sideA.environmentId;
-            }
-          }
-        }
-        if(this.currSide === 'B'){
-          if(this.currUserSelection!.sideB){
-            if(this.environmentIdSelection === this.currUserSelection!.sideB.environmentId){
-              this.environmentIdSelection = this.currUserSelection!.sideB.environmentId;
-            }
-          }
-        }
-      }
 
+    this.environmentsService.currEnvironmentIdAndSide$.asObservable().pipe(takeUntil(this.destroyed$)).subscribe(currEnvironmentIdAndSide=>{
+      if(currEnvironmentIdAndSide!.currSide === this.currSide){
+        this.environmentIdSelection = currEnvironmentIdAndSide!.currEnvironmentId;
+      }
+    })
   }
 
   onEnvironmentLink(id:string){
     this.environmentIdSelection = id;
+
     setTimeout(()=>{
       this.environmentsService.setIsClothPatternsMenuOpen(true);
       this.environmentsService.setCurrClothPatterns(id, this.currSide);
     },1000)
   }
+
 
   ngOnDestroy(): void {
     this.destroyed$.next(true);

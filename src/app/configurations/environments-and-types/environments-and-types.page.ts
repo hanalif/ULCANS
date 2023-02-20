@@ -14,6 +14,7 @@ import { SystemTypesService } from './services/system-types.service';
   styleUrls: ['./environments-and-types.page.scss'],
 })
 export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
+  sides: string[] =['A','B']
 
 
   isDiabled$!: Observable<boolean>;
@@ -30,8 +31,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currUserSelectionSubscription = this.userSelectionsService.userCurrSelection$.subscribe(currSelection=>{
-      console.log(this.currUserSelection);
-      if(!currSelection){
+      if(currSelection === null){
         this.route.navigate(['configurations/typical-configurations']);
       }else{
         this.currUserSelection = currSelection;

@@ -21,27 +21,15 @@
             </div>
           </div>
           <div class="cards-container">
-            <div class="card">
+            <div *ngFor="let side of sides" class="card">
               <div class="card-content">
                 <div class="card-top">
                   <div class="card-title">
-                    Side A:
+                    Side {{side}}:
                   </div>
                 </div>
                 <div class="card-body">
-                  <app-environments-radio-btn [currUserSelection]="currUserSelection" [currSide]="'A'"></app-environments-radio-btn>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content">
-                <div class="card-top">
-                  <div class="card-title">
-                    Side B:
-                  </div>
-                </div>
-                <div class="card-body">
-                  <app-environments-radio-btn [currSide]="'B'"></app-environments-radio-btn>
+                  <app-environments-radio-btn [currUserSelection]="currUserSelection" [currSide]="side"></app-environments-radio-btn>
                 </div>
               </div>
             </div>
@@ -57,7 +45,7 @@
             <div class="card system-card">
               <div class="card-content">
                 <div class="card-body system-card-body">
-                  <app-types-select-btn></app-types-select-btn>
+                  <app-types-select-btn ></app-types-select-btn>
                 </div>
               </div>
             </div>
