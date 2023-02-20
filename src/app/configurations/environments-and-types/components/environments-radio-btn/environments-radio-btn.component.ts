@@ -9,25 +9,40 @@ import { EnvironmentsService } from '../../services/environments.service';
   templateUrl: './environments-radio-btn.component.html',
   styleUrls: ['./environments-radio-btn.component.scss'],
 })
-export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy {
+export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy, OnChanges {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   environmentIdSelection!: string;
   @Input() currSide!:string;
+  @Input() currUserSelection!: AssetForPdf
   environments!:Environment[];
 
   constructor(private environmentsService: EnvironmentsService) { }
+
 
   ngOnInit() {
     this.environmentsService.environments$.pipe(takeUntil(this.destroyed$)).subscribe(enviroments=>{
       this.environments = enviroments;
     })
 
-    this.environmentsService.currEnvironmentIdAndSide$.asObservable().pipe(takeUntil(this.destroyed$)).subscribe(currEnvironmentIdAndSide=>{
-      if(currEnvironmentIdAndSide!.currSide === this.currSide){
-        this.environmentIdSelection = currEnvironmentIdAndSide!.currEnvironmentId;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue;
+    let currSide: string = changes['currSide'].currentValue;
+    console.log(currUserSelection.sideA);
+    console.log(currUserSelection.sideB)
+    if(currUserSelection.sideA !== undefined){
+      if(this.currSide === 'A'){
+        this.environmentIdSelection = currUserSelection.sideA.environmentId;
       }
-    })
+    }
+    if(currUserSelection.sideB !== undefined){
+      if(this.currSide === 'B'){
+        this.environmentIdSelection = currUserSelection.sideB.environmentId;
+      }
+    }
+
   }
 
   onEnvironmentLink(id:string){
@@ -36,7 +51,8 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy {
     setTimeout(()=>{
       this.environmentsService.setIsClothPatternsMenuOpen(true);
       this.environmentsService.setCurrClothPatterns(id, this.currSide);
-    },1000)
+    }, 1000)
+
   }
 
 

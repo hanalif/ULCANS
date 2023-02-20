@@ -2,6 +2,10 @@
 <div class="cloth-patterns-menu">
   <div class="menu-top">
     <button class="icon-btn" (click)="onClose()"><ion-icon name="close-outline"></ion-icon></button>
+    <div class="environment-title">
+      <img [src]="currEnvironment.imgUrl" alt="environment-img">
+      <h1>{{currEnvironment.typeName}}</h1>
+    </div>
     <h1>Choose Pattern For Side {{currSide}} </h1>
   </div>
   <div class="menu-body">

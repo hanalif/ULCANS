@@ -87,12 +87,27 @@
     margin-block-end: 20px;
     align-items: baseline;
 
+    .environment-title{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 10px;
+
+      img{
+        width: 60px;
+      }
+
+      h1{
+        width: fit-content;
+      }
+    }
+
 
     h1{
       font-size: 30px;
       text-align: center;
       width: 100%;
-
     }
   }
 

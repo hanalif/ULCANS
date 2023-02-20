@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ReplaySubject, Subscription, takeUntil } from 'rxjs';
 import { ClothPatternsUrls } from 'src/app/configurations/environments-and-types/models/cloth-patterns-url.model';
+import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import Swiper, { Navigation, Thumbs } from 'swiper';
 import { AssetForPdf } from '../../models/asset-for-pdf.model';
@@ -19,14 +20,12 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
   swiper!: Swiper;
   swiper2!: Swiper;
 
-
-
   clothPatternsUrls!: ClothPatternsUrls | null;
+  currEnvironment!: Environment;
 
   currSide!: string;
   currEnvironmentId!: string;
   selectedPatternIndex: number = 0;
-  currSideSelection!: Subscription;
 
   constructor(private environmentsService: EnvironmentsService, private userSelectionService: UserSelectionService) { }
 
@@ -35,10 +34,15 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
     this.environmentsService.currClothPatterns$.pipe(takeUntil(this.destroyed$)).subscribe(currClothPatternsUrls=>{
       this.clothPatternsUrls = currClothPatternsUrls;
     })
+
     this.environmentsService.currEnvironmentIdAndSide$.pipe(takeUntil(this.destroyed$)).subscribe(environmentIdAndSide=>{
       this.currSide = environmentIdAndSide?.currSide as string;
       this.currEnvironmentId = environmentIdAndSide?.currEnvironmentId as string;
     })
+
+    this.currEnvironment = this.environmentsService.getEnvironmentById(this.currEnvironmentId);
+
+
 
     this.userSelectionService.userCurrSelection$.pipe(takeUntil(this.destroyed$)).subscribe(currSelection=>{
       if(this.currSide === 'A'){
