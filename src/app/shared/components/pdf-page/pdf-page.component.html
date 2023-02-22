@@ -1,5 +1,7 @@
-<h1>{{assetsForDisplay[0].asset?.name}}</h1>
-<p>
-  pdf-page works!
 
-</p>
+<div [hidden]="isHidden" class="print-wrapper" id="content" #content>
+  <!-- <h1 style="color: blue;">{{assetsForDisplay[0].asset!.name}}</h1> -->
+  <p style="font-size: 16px;">{{description}}</p>
+  <!-- <img width="200px" [src]="assetsForDisplay[0].asset!.assetImgUrl" alt=""> -->
+</div>
+

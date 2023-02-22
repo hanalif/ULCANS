@@ -19,5 +19,7 @@
   <h1>platform:</h1>
   <h1 *ngIf="isProcessingPdf$ | async">Processing....</h1>
   <h1 *ngFor="let plt of currPlatforms"> {{plt}}</h1>
-  <button *ngIf="areThereAssetsToDisplay" (click)="onDownloadPdf()" class="regular-btn">Download</button>
+  <!-- <button *ngIf="areThereAssetsToDisplay" (click)="onDownloadPdf()" class="regular-btn">Download</button> -->
+  <button (click)="onDownloadPdf()" class="regular-btn">Download</button>
 </ion-content>
+

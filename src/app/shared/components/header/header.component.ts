@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Animations } from 'src/app/angular-animations/animations';
 import { MenuCategory } from '../../models/menu-category.model';
 import { StartBtn } from '../../models/start-btn.model';
@@ -14,28 +14,34 @@ import { UserSelectionService } from '../../services/user-selection.service';
   animations: [Animations.slidesDownAnimation]
 
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   menuCategories$!: Observable<MenuCategory[]>
   isDropdownMenuOpen: boolean = false;
   public openMenuLinksMaping: any = {};
   startBtn!: StartBtn;
   numsOfUserSelections$!: Observable<number>;
+  progressBarSubscription!: Subscription;
+  progressBar: number = 0;
+
 
   constructor(
     private route: Router,
     private menuCategoriesServive: MenuCategoriesService,
     private userSelectionsService: UserSelectionService) { }
 
+
   ngOnInit() {
       this.menuCategories$ = this.menuCategoriesServive.getMenuCategories();
       this.startBtn = this.menuCategoriesServive.START_BTN;
       this.numsOfUserSelections$ = this.userSelectionsService.getnumOfSelections();
+      this.progressBarSubscription = this.userSelectionsService.getprogressBar().subscribe(progressBar=>{
+        this.progressBar = progressBar;
+      })
   }
 
   onLogo(){
     this.route.navigate(['home']);
     this.isDropdownMenuOpen = false;
-
   }
 
   onHamburgerIcon(){
@@ -64,6 +70,10 @@ export class HeaderComponent implements OnInit {
 
   onReaderIcon(val:boolean){
     this.userSelectionsService.setIsUserSelectionsMenuOpen(val);
+  }
+
+  ngOnDestroy(): void {
+   this.progressBarSubscription?.unsubscribe()
   }
 
 }

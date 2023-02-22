@@ -6,7 +6,7 @@
     <div class="page-container">
       <div class="top">
         <div class="btns-section">
-          <button routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+          <button (click)="onBack()" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
           <div>
             <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
             <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
@@ -50,7 +50,7 @@
                 <div class="card-title">
                   {{asset.name | uppercase}}
                 </div>
-                <div class="card-img">
+                <div class="card-img" *ngIf="asset.assetImgUrl !== '../../../../assets/imgs/hexagon-bg/asset-bg.png'">
                   <img [src]="asset.assetImgUrl" alt="asset-pic">
                 </div>
               </div>

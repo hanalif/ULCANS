@@ -29,9 +29,7 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy, OnChang
 
   ngOnChanges(changes: SimpleChanges): void {
     let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue;
-    let currSide: string = changes['currSide'].currentValue;
-    console.log(currUserSelection.sideA);
-    console.log(currUserSelection.sideB)
+
     if(currUserSelection.sideA !== undefined){
       if(this.currSide === 'A'){
         this.environmentIdSelection = currUserSelection.sideA.environmentId;

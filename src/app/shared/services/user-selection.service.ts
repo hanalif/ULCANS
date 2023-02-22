@@ -25,6 +25,7 @@ export class UserSelectionService {
   private assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  private progressBar$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
   public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
@@ -60,6 +61,10 @@ export class UserSelectionService {
     return this.isProcessingPdf$.asObservable();
   }
 
+  getprogressBar(){
+    return this.progressBar$.asObservable();
+  }
+
   setIsUserSelectionsMenuOpen(val:boolean){
     this.isUserSelectionsMenuOpen$.next(val);
   }
@@ -68,16 +73,24 @@ export class UserSelectionService {
     let currSelctionValue = this.userCurrSelection$.getValue();
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
     let numsOfKeys = Object.values(currSelctionValue).length;
+    let progressNum = numsOfKeys * 16.666;
+    this.progressBar$.next(progressNum);
     if(numsOfKeys === 6){
       this.isDisabled$.next(false);
     }
     this.userCurrSelection$.next(currSelctionValue);
   }
 
+  resetCurrUserSelection(){
+    this.userCurrSelection$.next(null);
+    this.progressBar$.next(0);
+  }
+
   addAssetForPdf(){
     const assetForPdf = this.userCurrSelection$.getValue() as AssetForPdf;
     if(!assetForPdf.id){
       assetForPdf.id = this.utilService._makeId();
+      this.progressBar$.next(0);
     }
     const assetsForPdf = this.assetsForPdf$.getValue();
     const foundAssetIndex = assetsForPdf.findIndex(a=> a.id === assetForPdf.assetId);
@@ -190,8 +203,6 @@ export class UserSelectionService {
       return isCurrPlatformDesktopOrMobileweb;
 
    }
-
-
 
 }
 

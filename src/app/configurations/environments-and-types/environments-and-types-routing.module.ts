@@ -6,6 +6,7 @@ import { EnvironmentsAndTypesPage } from './environments-and-types.page';
 const routes: Routes = [
   {
     path: '',
+    canDeactivate:[],
     component: EnvironmentsAndTypesPage
   }
 ];

@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Observable, Subscription } from 'rxjs';
+import { asyncScheduler, Observable, Subscription } from 'rxjs';
 import { AssetForDisplay } from '../../models/asset-for-display';
 import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
 import { UserSelectionService } from '../../services/user-selection.service';
 import { PdfPageComponent } from '../pdf-page/pdf-page.component';
+import JSPDF from 'jspdf';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -25,6 +28,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private measurmentsPipe: FtToMPipe,
     private viewContainerRef: ViewContainerRef,
     public plt: Platform,
+
+    private file: File,
+    private fileOpener: FileOpener,
 
     ) { }
 
@@ -47,16 +53,53 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   }
 
-  onDownloadPdf(){
+  // onDownloadPdf(){
 
 
-    if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
-      return
-    }
+  //   if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
+  //     return
+  //   }
 
+  //   let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
+  //      htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
+
+  //  this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatforms);
+  // }
+
+  onDownloadPdf() {
     let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
-       htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
+      //  htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
+       htmlToPdfContent.setInput('description', 'lorem hrejkf ejrkl vjekl ejfkl fjekl fjrtkl rjtkl rtjkl')
 
-   this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatforms);
-  }
-}
+
+       asyncScheduler.schedule(() => {
+         const htmlString = htmlToPdfContent.location.nativeElement.innerHTML;
+         htmlToPdfContent.destroy();
+
+         var doc = new JSPDF();
+         doc.html(htmlString, {
+         callback: ((doc: JSPDF) => {
+           if(this.plt.is("desktop" || "mobileweb")){
+             doc.save("output.pdf");
+           }else{
+             let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
+             this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blobPdf, { replace: true }).then(fileEntry => {
+             this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+             })
+           }
+         }).bind(this),
+         margin: [10,10,10,10],
+         autoPaging: 'text',
+         x: 0,
+         y: 0,
+         width: 190,
+         windowWidth: 675
+       });
+     });
+
+
+   }
+
+ }
+
+

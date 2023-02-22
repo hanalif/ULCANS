@@ -2,7 +2,7 @@
     {
         "id": "c1",
         "name": "0A",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/0A.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/OA.png",
         "hexagon": 0,
         "rhombus": 1,
         "measures": {
@@ -14,7 +14,7 @@
     {
         "id": "c2",
         "name": "0B",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/0B.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/OB.png",
         "hexagon": 0,
         "rhombus": 2,
         "measures": {
@@ -26,7 +26,7 @@
     {
         "id": "c3",
         "name": "1A",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/1A.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/1A.png",
         "hexagon": 1,
         "rhombus": 0,
         "measures": {
@@ -37,7 +37,7 @@
     },{
         "id": "c4",
         "name": "1B",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/1B.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
         "hexagon": 1,
         "rhombus": 2,
         "measures": {
@@ -49,7 +49,7 @@
     {
         "id": "c5",
         "name": "1C",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/1C.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/1C.png",
         "hexagon": 1,
         "rhombus": 4,
         "measures": {
@@ -61,7 +61,7 @@
     {
         "id": "c6",
         "name": "2",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/2.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/2.png",
         "hexagon": 2,
         "rhombus": 2,
         "measures": {
@@ -73,7 +73,7 @@
     {
         "id": "c7",
         "name": "3",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/3.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/3.png",
         "hexagon": 3,
         "rhombus": 3,
         "measures": {
@@ -85,7 +85,7 @@
     {
         "id": "c8",
         "name": "4",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/4.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/4.png",
         "hexagon": 4,
         "rhombus": 4,
         "measures": {
@@ -97,7 +97,7 @@
     {
         "id": "c9",
         "name": "5",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/5.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/5.png",
         "hexagon": 5,
         "rhombus": 6,
         "measures": {
@@ -109,7 +109,7 @@
     {
         "id": "c10",
         "name": "6",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/6.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/6.png",
         "hexagon": 6,
         "rhombus": 8,
         "measures": {
@@ -121,7 +121,7 @@
     {
         "id": "c11",
         "name": "7A",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/7A.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/7A.png",
         "hexagon": 7,
         "rhombus": 6,
         "measures": {
@@ -133,7 +133,7 @@
     {
         "id": "c12",
         "name": "7B",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/7B.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/7B.png",
         "hexagon": 7,
         "rhombus": 11,
         "measures": {
@@ -145,7 +145,7 @@
     {
         "id": "c13",
         "name": "8",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/8.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/8.png",
         "hexagon": 8,
         "rhombus": 9,
         "measures": {
@@ -157,7 +157,7 @@
     {
         "id": "c14",
         "name": "9",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/9.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/9.png",
         "hexagon": 9,
         "rhombus": 12,
         "measures": {
@@ -169,7 +169,7 @@
     {
         "id": "c15",
         "name": "10",
-        "imgUrl": "https://fibrotexusa.com/ulcans-qrg/images/configuration/table/10.png",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/10.png",
         "hexagon": 10,
         "rhombus": 10,
         "measures": {

@@ -7,15 +7,24 @@ import { AssetForDisplay } from '../../models/asset-for-display';
   styleUrls: ['./pdf-page.component.scss'],
 })
 export class PdfPageComponent implements OnInit, OnChanges {
-  @Input() assetsForDisplay!: AssetForDisplay[];
+  // @Input() assetsForDisplay!: AssetForDisplay[];
+  @Input() description!: string;
+  isHidden: boolean = false;
+  STYLES: any = {
+    MAIN_CONTAINER: 'background:red;',
+    ITEM_BOX: 'color:red;',
+  };
 
   constructor(private cd: ChangeDetectorRef) { }
 
 
   ngOnChanges(changes: SimpleChanges): void {
     this.cd.detectChanges();
+
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('pdf page')
+  }
 
 }
