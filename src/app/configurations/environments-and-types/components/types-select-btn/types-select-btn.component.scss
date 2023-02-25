@@ -25,6 +25,12 @@
     flex-direction: column;
     width: 100%;
     gap: 15px;
+    cursor: pointer;
+
+    &.selected{
+      border: 1px solid white;
+      outline-offset: -30px;
+    }
 
     h3{
       font-size: 22px;

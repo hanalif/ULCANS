@@ -5,6 +5,7 @@ import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
+import { UserSelectionsGuardInterface } from '../../services/guards/user-selections-guard.interface';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Configuration } from '../../models/configuration.model';
   templateUrl: './asset.page.html',
   styleUrls: ['./asset.page.scss'],
 })
-export class AssetPage implements OnInit{
+export class AssetPage implements OnInit {
   public asset!: Asset;
   public configuration!: Configuration;
   public measureType: MeasureType = MeasureType.METERS;
@@ -22,6 +23,7 @@ export class AssetPage implements OnInit{
     private router: ActivatedRoute,
     private route: Router,
     private userSelectionsService: UserSelectionService) { }
+
 
   ngOnInit() {
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
@@ -41,6 +43,7 @@ export class AssetPage implements OnInit{
   }
 
   onChooseYourEnvironment(){
+
     let userSelections: Partial<AssetForPdf> = {
       measureType: this.measureType,
     }
@@ -50,7 +53,5 @@ export class AssetPage implements OnInit{
 
   onBack(){
     this.route.navigate(['/configurations/typical-configurations']);
-    this.userSelectionsService.resetCurrUserSelection();
   }
-
 }

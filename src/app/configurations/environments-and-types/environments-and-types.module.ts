@@ -10,6 +10,7 @@ import { EnvironmentsAndTypesPage } from './environments-and-types.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EnvironmentsRadioBtnComponent } from './components/environments-radio-btn/environments-radio-btn.component';
 import { TypesSelectBtnComponent } from './components/types-select-btn/types-select-btn.component';
+import { UserSelectionGuard } from '../services/guards/user-selection.guard';
 
 @NgModule({
   imports: [
@@ -17,12 +18,13 @@ import { TypesSelectBtnComponent } from './components/types-select-btn/types-sel
     FormsModule,
     IonicModule,
     EnvironmentsAndTypesPageRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     EnvironmentsAndTypesPage,
     EnvironmentsRadioBtnComponent,
     TypesSelectBtnComponent
-  ]
+  ],
+
 })
 export class EnvironmentsAndTypesPageModule {}

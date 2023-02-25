@@ -1,8 +1,10 @@
 <div class="types-container">
   <div
     class="type-box"
-    *ngFor="let type of systemTypes$ | async">
-    <div class="check-mark" [ngClass]="{'selected': systemTypeId === type.id}" (click)="onType(type.id)">
+    *ngFor="let type of systemTypes$ | async"
+    (click)="onType(type.id)"
+    [ngClass]="{'selected': systemTypeId === type.id}">
+    <div class="check-mark" [ngClass]="{'selected': systemTypeId === type.id}">
       <img src="../../../../../assets/imgs/environments/png-small/check-mark.png" alt="">
       <div class="check-mark-icon">
         <ion-icon name="checkmark-outline"></ion-icon>
