@@ -12,63 +12,113 @@
         <!-- <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div> -->
 
          <!-- Table For Wide Screens -->
-         <div class="table-container">
-          <div class="table-header">
-            <div class="table-row">
-              <div class="title t-header"></div>
+
+
+         <div class="cards-container wide-screen">
+          <div class="card wide-screen">
+            <div class="card-body wide-screen">
+              <div class="row-wide-screen">
+                <span class="card-row_title wide-screen">
+                  Configuration Type
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_title wide-screen">
+                 Asset
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_title wide-screen">
+                  Side A
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_title wide-screen">
+                  Side B
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_title wide-screen">
+                  Type
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_title wide-screen">
+                </span>
+              </div>
             </div>
           </div>
-          <div class="table-item">
-            <div class="table-row">
-              <div class="title"></div>
-              <div class="img-container"></div>
-              <div class="content"></div>
-            </div>
-            <div class="table-row">
-              <div class="title"></div>
-              <div class="img-container"></div>
-              <div class="content"></div>
-            </div>
-            <div class="table-row">
-              <div class="title"></div>
-              <div class="img-container"></div>
-              <div class="content"></div>
-            </div>
-            <div class="table-row">
-              <div class="title"></div>
-              <div class="img-container"></div>
-              <div class="content"></div>
-            </div>
-            <div class="table-row">
-              <div class="title"></div>
-              <div class="img-container"></div>
-              <div class="content"></div>
-            </div>
-            <div class="table-row">
-              <div class="title"></div>
-              <div class="img-container"></div>
-              <div class="content"></div>
+          <div class="card wide-screen">
+            <div class="card-body wide-screen">
+              <div class="row-wide-screen">
+                <span class="card-row_content wide-screen">
+                  OA
+                  <div class="card-img wide-screen">
+                    <img src="../../../../assets/imgs/configurations-imgs/5.png" alt="">
+                  </div>
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_content wide-screen">
+                  Tank
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_content wide-screen">
+                  Desert
+                  <div class="card-img wide-screen">
+                    <img src="../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png" alt="">
+                  </div>
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_content wide-screen">
+                  Urban
+                  <div class="card-img wide-screen">
+                    <img src="../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png" alt="">
+                  </div>
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_content wide-screen">
+                  Type 1 [r/s]
+                </span>
+              </div>
+              <div class="row-wide-screen">
+                <span class="card-row_content wide-screen">
+                  <div class="selection-btns">
+                    <button class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+                  </div>
+                </span>
+              </div>
             </div>
           </div>
-         </div>
+        </div>
+
 
         <!-- Cards For Mobile Screens -->
 
-        <div class="cards-container">
+        <div class="cards-container mobile">
           <div class="card">
             <div class="card-body">
               <div class="card-row">
                 <span class="card-row_title">Configuration Type</span>
-                <span class="card-row_content">
+                <span class="card-row_content mobile">
                   OA
                   <div class="card-img">
-                    <img src="../../../../assets/imgs/configurations-imgs/0A.png" alt="">
+                    <img src="../../../../assets/imgs/configurations-imgs/5.png" alt="">
                   </div>
                 </span>
               </div>
               <div class="card-row">
+                <span class="card-row_title">Asset</span>
+                <span class="card-row_content mobile">
+                  Tank
+                </span>
+              </div>
+              <div class="card-row">
                 <span class="card-row_title">Side A</span>
-                <span class="card-row_content">
+                <span class="card-row_content mobile">
                   Desert
                   <div class="card-img">
                     <img src="../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png" alt="">
@@ -77,7 +127,7 @@
               </div>
               <div class="card-row">
                 <span class="card-row_title">Side B</span>
-                <span class="card-row_content">
+                <span class="card-row_content mobile">
                   Urban
                   <div class="card-img">
                     <img src="../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png" alt="">
@@ -85,14 +135,8 @@
                 </span>
               </div>
               <div class="card-row">
-                <span class="card-row_title">Asset</span>
-                <span class="card-row_content">
-                  Tank
-                </span>
-              </div>
-              <div class="card-row">
                 <span class="card-row_title">Type</span>
-                <span class="card-row_content">
+                <span class="card-row_content mobile">
                   Type 1 [r/s]
                 </span>
               </div>
@@ -103,83 +147,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Ulcans<br>Config</th>
-                <th scope="col">Side A</th>
-                <th scope="col">Side B</th>
-                <th scope="col">Asset</th>
-                <th scope="col">Type</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td scope="row" data-label="Configuratoin">
-                  <div class="row-content">
-                    Type: OA
-                    <img src="../../../../assets/imgs/configurations-imgs/0A.png" alt="configpic">
-                  </div>
-                </td>
-                <td data-label="Side A">
-                  <div class="row-content">
-                    Urban
-                    <img src="../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png" alt="">
-                  </div>
-                </td>
-                <td data-label="Side B">
-                  <div class="row-content">
-                    Desert
-                    <img src="../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png" alt="">
-                  </div>
-                </td>
-                <td data-label="Asset">Tank</td>
-                <td data-label="Type">Radar Scatter</td>
-                <td>
-                  <div>
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
         </div>
       </div>
     </ng-scrollbar>
