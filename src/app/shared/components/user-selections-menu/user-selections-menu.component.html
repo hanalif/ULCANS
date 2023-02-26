@@ -1,25 +1,196 @@
 
 <ion-content>
-  <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div>
-  <div class="user-selections-container" *ngIf="areThereAssetsToDisplay">
-    <div class="user-item" *ngFor="let afd of assetsForDisplay">
-        <div class="asset">
-          <h1>{{afd.asset?.name}}</h1>
+
+    <div class="page-container main-layout">
+      <div class="top">
+         <div class="title">
+          <span>{{'user selections list' | uppercase}}</span>
         </div>
-        <div class="configuration">
-          <h1>{{afd.configuratoin?.name}}</h1>
+      </div>
+      <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
+      <div class="body">
+        <!-- <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div> -->
+
+         <!-- Table For Wide Screens -->
+         <div class="table-container">
+          <div class="table-header">
+            <div class="table-row">
+              <div class="title t-header"></div>
+            </div>
+          </div>
+          <div class="table-item">
+            <div class="table-row">
+              <div class="title"></div>
+              <div class="img-container"></div>
+              <div class="content"></div>
+            </div>
+            <div class="table-row">
+              <div class="title"></div>
+              <div class="img-container"></div>
+              <div class="content"></div>
+            </div>
+            <div class="table-row">
+              <div class="title"></div>
+              <div class="img-container"></div>
+              <div class="content"></div>
+            </div>
+            <div class="table-row">
+              <div class="title"></div>
+              <div class="img-container"></div>
+              <div class="content"></div>
+            </div>
+            <div class="table-row">
+              <div class="title"></div>
+              <div class="img-container"></div>
+              <div class="content"></div>
+            </div>
+            <div class="table-row">
+              <div class="title"></div>
+              <div class="img-container"></div>
+              <div class="content"></div>
+            </div>
+          </div>
+         </div>
+
+        <!-- Cards For Mobile Screens -->
+
+        <div class="cards-container">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-row">
+                <span class="card-row_title">Configuration Type</span>
+                <span class="card-row_content">
+                  OA
+                  <div class="card-img">
+                    <img src="../../../../assets/imgs/configurations-imgs/0A.png" alt="">
+                  </div>
+                </span>
+              </div>
+              <div class="card-row">
+                <span class="card-row_title">Side A</span>
+                <span class="card-row_content">
+                  Desert
+                  <div class="card-img">
+                    <img src="../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png" alt="">
+                  </div>
+                </span>
+              </div>
+              <div class="card-row">
+                <span class="card-row_title">Side B</span>
+                <span class="card-row_content">
+                  Urban
+                  <div class="card-img">
+                    <img src="../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png" alt="">
+                  </div>
+                </span>
+              </div>
+              <div class="card-row">
+                <span class="card-row_title">Asset</span>
+                <span class="card-row_content">
+                  Tank
+                </span>
+              </div>
+              <div class="card-row">
+                <span class="card-row_title">Type</span>
+                <span class="card-row_content">
+                  Type 1 [r/s]
+                </span>
+              </div>
+            </div>
+            <div class="card-top">
+              <div class="selection-btns">
+                <button class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="class-name">
-          <h1>Side A:</h1>
-          <img [src]="afd.sideA.clothPatternUrl" alt="">
-          <div>{{afd.sideA.environment.typeName}}</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Ulcans<br>Config</th>
+                <th scope="col">Side A</th>
+                <th scope="col">Side B</th>
+                <th scope="col">Asset</th>
+                <th scope="col">Type</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row" data-label="Configuratoin">
+                  <div class="row-content">
+                    Type: OA
+                    <img src="../../../../assets/imgs/configurations-imgs/0A.png" alt="configpic">
+                  </div>
+                </td>
+                <td data-label="Side A">
+                  <div class="row-content">
+                    Urban
+                    <img src="../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png" alt="">
+                  </div>
+                </td>
+                <td data-label="Side B">
+                  <div class="row-content">
+                    Desert
+                    <img src="../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png" alt="">
+                  </div>
+                </td>
+                <td data-label="Asset">Tank</td>
+                <td data-label="Type">Radar Scatter</td>
+                <td>
+                  <div>
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
+      </div>
+    </ng-scrollbar>
+      <div class="bottom">
+        <div class="next-button-wrapper">
+          <button (click)="onDownloadPdf()" class="regular-btn"> <span>Download</span> </button>
+        </div>
+      </div>
     </div>
-  </div>
-  <h1>platform:</h1>
-  <h1 *ngIf="isProcessingPdf$ | async">Processing....</h1>
-  <h1 *ngFor="let plt of currPlatforms"> {{plt}}</h1>
-  <!-- <button *ngIf="areThereAssetsToDisplay" (click)="onDownloadPdf()" class="regular-btn">Download</button> -->
-  <button (click)="onDownloadPdf()" class="regular-btn">Download</button>
 </ion-content>
+
+
+
 

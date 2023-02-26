@@ -28,10 +28,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private measurmentsPipe: FtToMPipe,
     private viewContainerRef: ViewContainerRef,
     public plt: Platform,
-
-    private file: File,
-    private fileOpener: FileOpener,
-
     ) { }
 
   ngOnInit() {
@@ -53,52 +49,19 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   }
 
-  // onDownloadPdf(){
+  onDownloadPdf(){
 
 
-  //   if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
-  //     return
-  //   }
+    if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
+      return
+    }
 
-  //   let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
-  //      htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
-
-  //  this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatforms);
-  // }
-
-  onDownloadPdf() {
     let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
-      //  htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
-       htmlToPdfContent.setInput('description', 'lorem hrejkf ejrkl vjekl ejfkl fjekl fjrtkl rjtkl rtjkl')
+       htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
 
+   this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatforms);
+  }
 
-       asyncScheduler.schedule(() => {
-         const htmlString = htmlToPdfContent.location.nativeElement.innerHTML;
-         htmlToPdfContent.destroy();
-
-         var doc = new JSPDF();
-         doc.html(htmlString, {
-         callback: ((doc: JSPDF) => {
-           if(this.plt.is("desktop" || "mobileweb")){
-             doc.save("output.pdf");
-           }else{
-             let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
-             this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blobPdf, { replace: true }).then(fileEntry => {
-             this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
-             })
-           }
-         }).bind(this),
-         margin: [10,10,10,10],
-         autoPaging: 'text',
-         x: 0,
-         y: 0,
-         width: 190,
-         windowWidth: 675
-       });
-     });
-
-
-   }
 
  }
 
