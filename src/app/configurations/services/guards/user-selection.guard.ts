@@ -38,9 +38,11 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
 
 
   canDeactivate(component: unknown, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const assetId: string = (this.userSelectionsService.userCurrSelection$.value)!.assetId;
-    if((nextState.url.includes('environments-and-types')) || (nextState.url.includes(assetId))){
-      return true;
+    const assetId: string | undefined = (this.userSelectionsService.userCurrSelection$.value)?.assetId;
+    if(assetId){
+      if((nextState.url.includes('environments-and-types')) || (nextState.url.includes(assetId))){
+        return true;
+      }
     }
 
     return from(this.presentAlert()).pipe(
