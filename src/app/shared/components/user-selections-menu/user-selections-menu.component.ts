@@ -20,7 +20,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
   isProcessingPdf$!: Observable<boolean>;
-  tableHeaderTitles: string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B', ' Type', '']
+  tableHeaderTitles: string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B', ' Type', ''];
 
 
 

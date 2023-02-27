@@ -1,22 +1,21 @@
 
 <ion-content>
-
-    <div class="page-container main-layout">
+  <div class="page-container main-layout">
       <div class="top">
          <div class="title">
           <span>{{'user selections list' | uppercase}}</span>
         </div>
       </div>
-      <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
+    <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
       <div class="body">
         <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div>
 
          <!-- Table For Wide Screens -->
 
          <div *ngIf="areThereAssetsToDisplay" class="cards-container wide-screen">
-          <div class="card wide-screen">
+          <div *ngFor="let headerTitle of tableHeaderTitles" class="card wide-screen">
             <div class="card-body wide-screen">
-              <div  *ngFor="let headerTitle of tableHeaderTitles" class="row-wide-screen">
+              <div class="row-wide-screen">
                 <span class="card-row_title wide-screen">
                   {{headerTitle}}
                 </span>
@@ -74,47 +73,47 @@
         <!-- Cards For Mobile Screens -->
 
         <div class="cards-container mobile">
-          <div class="card">
+          <div *ngFor="let userSelection of assetsForDisplay" class="card">
             <div class="card-body">
               <div class="card-row">
-                <span class="card-row_title">Configuration Type</span>
+                <span class="card-row_title">{{tableHeaderTitles[0]}}</span>
                 <span class="card-row_content mobile">
-                  OA
+                  {{userSelection.configuratoin!.name}}
                   <div class="card-img">
-                    <img src="../../../../assets/imgs/configurations-imgs/5.png" alt="">
+                    <img [src]="userSelection.configuratoin!.imgUrl" alt="">
                   </div>
                 </span>
               </div>
               <div class="card-row">
-                <span class="card-row_title">Asset</span>
+                <span class="card-row_title">{{tableHeaderTitles[1]}}</span>
                 <span class="card-row_content mobile">
-                  Tank
+                  {{userSelection.asset!.name}}
                   <div class="card-img">
                   </div>
                 </span>
               </div>
               <div class="card-row">
-                <span class="card-row_title">Side A</span>
+                <span class="card-row_title">{{tableHeaderTitles[2]}}</span>
                 <span class="card-row_content mobile">
-                  Desert
+                  {{userSelection.sideA.environment.typeName}}
                   <div class="card-img">
-                    <img src="../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png" alt="">
+                    <img [src]="userSelection.sideA.clothPatternUrl" alt="">
                   </div>
                 </span>
               </div>
               <div class="card-row">
-                <span class="card-row_title">Side B</span>
+                <span class="card-row_title">{{tableHeaderTitles[3]}}</span>
                 <span class="card-row_content mobile">
-                  Urban
+                  {{userSelection.sideB.environment.typeName}}
                   <div class="card-img">
-                    <img src="../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png" alt="">
+                    <img [src]="userSelection.sideB.clothPatternUrl" alt="">
                   </div>
                 </span>
               </div>
               <div class="card-row">
-                <span class="card-row_title">Type</span>
+                <span class="card-row_title">{{tableHeaderTitles[4]}}</span>
                 <span class="card-row_content mobile">
-                  Type 1 [r/s]
+                  {{userSelection.ulcansType.name}}
                 </span>
               </div>
             </div>
@@ -132,8 +131,9 @@
           <button (click)="onDownloadPdf()" class="regular-btn"> <span>Download</span> </button>
         </div>
       </div>
-    </div>
+  </div>
 </ion-content>
+
 
 
 

@@ -6,16 +6,16 @@
 }
 
 .page-container{
-  height: 100vh;
   overflow: hidden;
   position: relative;
+
   .top{
     margin-block-start: 20px;
   }
 
   .body{
     margin-block-start: 20px;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 215px);
     .massege{
       display: flex;
       justify-content: center;
@@ -25,8 +25,7 @@
     }
   }
   .bottom{
-    width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
   }

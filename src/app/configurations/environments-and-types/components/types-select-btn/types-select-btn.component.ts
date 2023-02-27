@@ -27,6 +27,7 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges {
   }
 
   onType(id:string){
+    console.log('on type id')
     this.systemTypeId = id;
     let userSelectios: Partial<AssetForPdf> = {
       systemTypeId: id
@@ -35,7 +36,12 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue
+    let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue;
+    let prevUserSelection: AssetForPdf = changes['currUserSelection'].previousValue;
+    if(currUserSelection === prevUserSelection){
+      return;
+    }
+
     if(currUserSelection.systemTypeId){
       this.systemTypeId = currUserSelection.systemTypeId
     }
