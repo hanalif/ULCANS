@@ -39,6 +39,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       }else{
         this.areThereAssetsToDisplay = true;
         this.assetsForDisplay = assetsForDisplay;
+        console.log(assetsForDisplay)
       }
     });
       this.currPlatforms = this.plt.platforms();

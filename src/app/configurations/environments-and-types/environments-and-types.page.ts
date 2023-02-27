@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, tap } from 'rxjs';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
@@ -13,33 +13,26 @@ import { UserSelectionsGuardInterface } from '../services/guards/user-selections
   templateUrl: './environments-and-types.page.html',
   styleUrls: ['./environments-and-types.page.scss'],
 })
-export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
+export class EnvironmentsAndTypesPage implements OnInit {
   sides: string[] =['A','B']
 
   isDiabled$!: Observable<boolean>;
   isDisabled!: boolean;
 
   currUserSelection!:AssetForPdf;
-  currUserSelectionSubscription!: Subscription;
 
   constructor(
-    private route: Router,
-    private userSelectionsService: UserSelectionService) { }
+    private router: Router,
+    private userSelectionsService: UserSelectionService,
+    private route: ActivatedRoute,) { }
 
   ngOnInit() {
-    this.currUserSelectionSubscription = this.userSelectionsService.userCurrSelection$.subscribe(currSelection=>{
-      if(currSelection === null){
-        this.route.navigate(['configurations/typical-configurations']);
-      }else{
-        this.currUserSelection = currSelection;
-      }
-    })
-
+    this.currUserSelection = this.route.snapshot.data['currUserSelection'];
     this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
   }
 
   onBack(){
-    this.route.navigate(['configurations/typical-configurations', this.currUserSelection.assetId ])
+    this.router.navigate(['configurations/typical-configurations', this.currUserSelection.assetId ])
   }
 
   onAddToYourSelections(){
@@ -50,7 +43,5 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.currUserSelectionSubscription.unsubscribe();
-  }
+
 }
