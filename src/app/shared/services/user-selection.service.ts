@@ -13,6 +13,8 @@ import { EnvironmentsService } from 'src/app/configurations/environments-and-typ
 import { SystemSide } from '../models/system-side.model';
 import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
 import { UtilService } from './util.service';
+import { SystemType } from 'src/app/configurations/environments-and-types/models/type.model';
+import { SystemTypesService } from 'src/app/configurations/environments-and-types/services/system-types.service';
 
 
 @Injectable({
@@ -38,7 +40,8 @@ export class UserSelectionService {
     private fileOpener: FileOpener,
     public plt: Platform,
     public environmentsService: EnvironmentsService,
-    public utilService: UtilService
+    public utilService: UtilService,
+    public systemTypesService: SystemTypesService
     ) { }
 
   getIsUserSelectionsMenuOpen() {
@@ -111,11 +114,13 @@ export class UserSelectionService {
         const configurationsIds = (assetsForPdf.map(asset => asset.configuraionId)) as string[];
         const sidesA = (assetsForPdf.map(asset => asset.sideA));
         const sidesB = (assetsForPdf.map(asset => asset.sideB));
+        const ulcansTypesIds = (assetsForPdf.map(asset=> asset.systemTypeId));
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
         const sidesAForDisplay = this.getSidesForDisplay(sidesA);
         const sidesBForDisplay = this.getSidesForDisplay(sidesB);
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
+        const ulcansTypes = this.systemTypesService.getUlcansTypesByIds(ulcansTypesIds)
 
         let assetsForDisplay: AssetForDisplay[] = [];
 
@@ -126,7 +131,8 @@ export class UserSelectionService {
           configuratoin: configurations.find(c => c.id === assetsForPdf[i].configuraionId),
           sideA: sidesAForDisplay[i],
           sideB: sidesBForDisplay[i],
-          measureType: assetsForPdf[i].measureType
+          measureType: assetsForPdf[i].measureType,
+          ulcansType: ulcansTypes[i]
         }
 
         assetsForDisplay.push(assetForDisplay);

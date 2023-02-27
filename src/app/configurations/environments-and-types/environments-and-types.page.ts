@@ -13,7 +13,7 @@ import { UserSelectionsGuardInterface } from '../services/guards/user-selections
   templateUrl: './environments-and-types.page.html',
   styleUrls: ['./environments-and-types.page.scss'],
 })
-export class EnvironmentsAndTypesPage implements OnInit, UserSelectionsGuardInterface ,OnDestroy {
+export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   sides: string[] =['A','B']
 
   isDiabled$!: Observable<boolean>;
@@ -48,10 +48,6 @@ export class EnvironmentsAndTypesPage implements OnInit, UserSelectionsGuardInte
     }else{
       this.userSelectionsService.addAssetForPdf();
     }
-  }
-
-  isUserSelectionPage():boolean {
-    return true;
   }
 
   ngOnDestroy(): void {

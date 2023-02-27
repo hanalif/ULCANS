@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.assetsService._getAssetesFromJson().pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
-    this.systemTypesService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();
 
 
 

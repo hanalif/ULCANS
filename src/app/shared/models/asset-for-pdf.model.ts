@@ -10,4 +10,5 @@ export interface AssetForPdf{
   configuraionId: string,
   quantity: number,
   systemTypeId: string,
+
 }

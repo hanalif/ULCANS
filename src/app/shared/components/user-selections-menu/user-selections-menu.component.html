@@ -9,79 +9,54 @@
       </div>
       <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
       <div class="body">
-        <!-- <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div> -->
+        <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div>
 
          <!-- Table For Wide Screens -->
 
-
-         <div class="cards-container wide-screen">
+         <div *ngIf="areThereAssetsToDisplay" class="cards-container wide-screen">
           <div class="card wide-screen">
             <div class="card-body wide-screen">
-              <div class="row-wide-screen">
+              <div  *ngFor="let headerTitle of tableHeaderTitles" class="row-wide-screen">
                 <span class="card-row_title wide-screen">
-                  Configuration Type
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_title wide-screen">
-                 Asset
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_title wide-screen">
-                  Side A
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_title wide-screen">
-                  Side B
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_title wide-screen">
-                  Type
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_title wide-screen">
+                  {{headerTitle}}
                 </span>
               </div>
             </div>
           </div>
           <div class="card wide-screen">
-            <div class="card-body wide-screen">
+            <div *ngFor="let userSelection of assetsForDisplay" class="card-body wide-screen">
               <div class="row-wide-screen">
                 <span class="card-row_content wide-screen">
-                  OA
+                  {{userSelection.configuratoin!.name}}
                   <div class="card-img wide-screen">
-                    <img src="../../../../assets/imgs/configurations-imgs/5.png" alt="">
+                    <img [src]="userSelection.configuratoin!.imgUrl" alt="configuration">
                   </div>
                 </span>
               </div>
               <div class="row-wide-screen">
                 <span class="card-row_content wide-screen">
-                  Tank
+                  {{userSelection.asset!.name}}
                 </span>
               </div>
               <div class="row-wide-screen">
                 <span class="card-row_content wide-screen">
-                  Desert
+                  {{userSelection.sideA.environment.typeName}}
                   <div class="card-img wide-screen">
-                    <img src="../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png" alt="">
+                    <img [src]="userSelection.sideA.clothPatternUrl" alt="pattren-sideA">
                   </div>
                 </span>
               </div>
               <div class="row-wide-screen">
                 <span class="card-row_content wide-screen">
-                  Urban
+                  {{userSelection.sideB.environment.typeName}}
                   <div class="card-img wide-screen">
-                    <img src="../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png" alt="">
+                    <img [src]="userSelection.sideA.clothPatternUrl" alt="pattren-sideB">
                   </div>
                 </span>
               </div>
               <div class="row-wide-screen">
                 <span class="card-row_content wide-screen">
-                  Type 1 [r/s]
+                  {{userSelection.ulcansType.name}}
                 </span>
               </div>
               <div class="row-wide-screen">
@@ -114,6 +89,8 @@
                 <span class="card-row_title">Asset</span>
                 <span class="card-row_content mobile">
                   Tank
+                  <div class="card-img">
+                  </div>
                 </span>
               </div>
               <div class="card-row">

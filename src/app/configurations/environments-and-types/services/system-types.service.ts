@@ -17,8 +17,26 @@ export class SystemTypesService {
 
   constructor(private http: HttpClient) { }
 
+  getTypes(){
+    return this.systemTypes$.getValue()
+  }
 
-  _setEnvironments(){
+  getUlcansTypesByIds(typesIds: string[]){
+    let types = this.getTypes();
+    let typesByIds: SystemType[] = [];
+    for(let i = 0; i < typesIds.length; i++){
+      let isTypeIdFound = typesIds.find(id => id === types[i].id);
+      if(isTypeIdFound){
+        typesByIds.push(types[i]);
+      }
+    }
+
+    return typesByIds;
+
+  }
+
+
+  _setUlcansTypes(){
     return this.http.get<SystemType[]>('../../../../assets/types.json').pipe(map(types => this.systemTypes$.next(types)));;
   }
 

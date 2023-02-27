@@ -19,7 +19,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
-  isProcessingPdf$!: Observable<boolean>
+  isProcessingPdf$!: Observable<boolean>;
+  tableHeaderTitles: string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B', ' Type', '']
 
 
 
@@ -46,7 +47,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.assetsForPdfSubscription?.unsubscribe()
-
   }
 
   onDownloadPdf(){

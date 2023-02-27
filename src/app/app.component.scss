@@ -24,7 +24,7 @@ app-user-selections-menu{
     z-index: 1000;
 
     @include for-bpoint-mobile{
-      max-width: 400px;
+      width: 90%;
     }
 }
 
