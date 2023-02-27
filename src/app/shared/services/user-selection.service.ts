@@ -71,9 +71,12 @@ export class UserSelectionService {
   setIsUserSelectionsMenuOpen(val:boolean){
     this.isUserSelectionsMenuOpen$.next(val);
   }
+  getCurrUserSelectionValue(){
+    return this.userCurrSelection$.getValue();
+  }
 
   updateCurrUserSelections(userSelections: Partial<AssetForPdf>){
-    let currSelctionValue = this.userCurrSelection$.getValue();
+    let currSelctionValue = this.getCurrUserSelectionValue();
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
     let numsOfKeys = Object.values(currSelctionValue).length;
     let progressNum = numsOfKeys * 16.666;
@@ -90,7 +93,7 @@ export class UserSelectionService {
   }
 
   addAssetForPdf(){
-    const assetForPdf = this.userCurrSelection$.getValue() as AssetForPdf;
+    const assetForPdf = this.getCurrUserSelectionValue() as AssetForPdf;
     if(!assetForPdf.id){
       assetForPdf.id = this.utilService._makeId();
       this.progressBar$.next(0);
@@ -106,6 +109,7 @@ export class UserSelectionService {
       this.isDisabled$.next(true);
     }
     this.assetsForPdf$.next(assetsForPdf);
+    this.resetCurrUserSelection();
   }
 
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){

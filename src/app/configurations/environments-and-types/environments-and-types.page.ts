@@ -3,7 +3,6 @@ import {  ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, tap } from 'rxjs';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
-import { UserSelectionsGuardInterface } from '../services/guards/user-selections-guard.interface';
 
 
 
@@ -26,6 +25,7 @@ export class EnvironmentsAndTypesPage implements OnInit {
     private userSelectionsService: UserSelectionService,
     private route: ActivatedRoute,) { }
 
+
   ngOnInit() {
     this.currUserSelection = this.route.snapshot.data['currUserSelection'];
     this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
@@ -35,11 +35,13 @@ export class EnvironmentsAndTypesPage implements OnInit {
     this.router.navigate(['configurations/typical-configurations', this.currUserSelection.assetId ])
   }
 
+
   onAddToYourSelections(){
     if(this.isDisabled){
       return;
     }else{
       this.userSelectionsService.addAssetForPdf();
+      this.router.navigate(['/configurations/typical-configurations']);
     }
   }
 

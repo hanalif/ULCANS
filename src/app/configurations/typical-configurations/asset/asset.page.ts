@@ -5,7 +5,7 @@ import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
-import { UserSelectionsGuardInterface } from '../../services/guards/user-selections-guard.interface';
+
 
 
 @Component({
@@ -27,9 +27,6 @@ export class AssetPage implements OnInit {
 
   ngOnInit() {
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
-    if(!assetForPreview){
-      this.route.navigate(['']);
-    }
     this.asset = assetForPreview.asset;
     this.configuration = assetForPreview.configuration;
   }

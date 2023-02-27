@@ -14,6 +14,7 @@ const routes: Routes = [
     resolve: {currUserSelection: EnvironmentsAndTypesResolver},
     component: EnvironmentsAndTypesPage
   }
+
 ];
 
 @NgModule({
