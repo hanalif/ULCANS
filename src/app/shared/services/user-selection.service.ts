@@ -24,7 +24,7 @@ export class UserSelectionService {
 
   private isUserSelectionsMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
-  private assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
+  public assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   private progressBar$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
@@ -110,6 +110,16 @@ export class UserSelectionService {
     }
     this.assetsForPdf$.next(assetsForPdf);
     this.resetCurrUserSelection();
+  }
+
+  removeUserSelection(userSelectionId: string){
+    let userSelections = this.assetsForPdf$.getValue();
+    console.log('assetsForPdf',userSelections);
+    const index = userSelections.findIndex(selection=> selection.id === userSelectionId);
+    userSelections.splice(index, 1);
+    console.log('assetsForPdfAfterDelete',userSelections)
+    this.assetsForPdf$.next(userSelections);
+    this.setNumberOfNewSelections(-1);
   }
 
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){

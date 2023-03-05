@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { BehaviorSubject, map, } from 'rxjs';
 import { SystemType } from '../models/type.model';
+import { type } from 'os';
 
 
 
@@ -25,13 +26,13 @@ export class SystemTypesService {
     let types = this.getTypes();
     let typesByIds: SystemType[] = [];
     for(let i = 0; i < typesIds.length; i++){
-      let isTypeIdFound = typesIds.find(id => id === types[i].id);
+      let isTypeIdFound = types.find(type => type.id === typesIds[i]);
       if(isTypeIdFound){
-        typesByIds.push(types[i]);
+        typesByIds.push(isTypeIdFound);
       }
     }
-
-    return typesByIds;
+    let arr = typesByIds
+    return arr;
 
   }
 

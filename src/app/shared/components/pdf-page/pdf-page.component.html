@@ -1,7 +1,71 @@
-
+<!--
 <div [hidden]="isHidden" class="print-wrapper" id="content" #content>
   <h1 style="color: blue;">Hello</h1>
-  <img width="200px" src="../../../../assets/imgs/hexagon-bg/3.jpg" alt="">
-  <p style="background-color: aqua; width:200px; height: 200px; font-size: 16px;">{{description}}</p>
-</div>
+  <img width="200px" [src]="assetsForDisplay[0].configuratoin?.imgUrl" alt="">
+  <div style="background-color: aqua; font-size: 16px;">{{assetsForDisplay[0].asset?.name}}</div>
+</div> -->
 
+
+<div class="print-wrapper" #printWrapper>
+
+  <div class="cards-container">
+    <div class="card">
+      <div class="card-body">
+        <div *ngFor="let headerTitle of tableHeaderTitles" class="row">
+          <span class="card-row_title">
+            {{headerTitle}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let userSelection of assetsForDisplay" class="card">
+      <div class="card-body">
+        <div class="row">
+          <span class="card-row_content">
+            <div class="title">
+              {{userSelection.configuratoin!.name}}
+            </div>
+            <div class="card-img">
+              <img [src]="userSelection.configuratoin!.imgUrl" alt="configuration">
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <span class="card-row_content">
+            <div class="title">
+              {{userSelection.asset!.name}}
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <span class="card-row_content">
+            <div class="title">
+              {{userSelection.sideA.environment.typeName}}
+            </div>
+            <div class="card-img">
+              <img [src]="userSelection.sideA.clothPatternUrl" alt="pattren-sideA">
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <span class="card-row_content">
+            <div class="title">
+              {{userSelection.sideB.environment.typeName}}
+            </div>
+            <div class="card-img">
+              <img [src]="userSelection.sideB.clothPatternUrl" alt="pattren-sideB">
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <span class="card-row_content">
+            <div class="title">
+              {{userSelection.ulcansType.name}}
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="regular-btn" (click)="onDownloadPdf()">onDownload Pdf</button>

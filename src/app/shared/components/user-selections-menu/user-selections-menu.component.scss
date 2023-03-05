@@ -8,6 +8,7 @@
 .page-container{
   overflow: hidden;
   position: relative;
+  height: 100%;
 
   .top{
     margin-block-start: 20px;
@@ -24,18 +25,14 @@
       font-size: 25px;
     }
   }
-  .bottom{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
+
 }
 
 
 .cards-container{
+  width: 97%;
   &.wide-screen{
     flex-direction: column;
-    width: 98%;
     border-radius: 6px;
     gap: 0px;
 
@@ -62,7 +59,6 @@
     display: block;
 
     &.wide-screen{
-      width: 100%;
       border-block-end: 1px solid white;
       border-radius: 0px;
 
@@ -110,7 +106,7 @@
         gap: 7px;
         font-size: 20px;
         &.mobile{
-          width: 112px;
+          width: 135px;
         }
 
         &.wide-screen{

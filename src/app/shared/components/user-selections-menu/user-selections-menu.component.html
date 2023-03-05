@@ -1,138 +1,142 @@
-
+<ion-header></ion-header>
 <ion-content>
   <div class="page-container main-layout">
-      <div class="top">
-         <div class="title">
-          <span>{{'user selections list' | uppercase}}</span>
-        </div>
-      </div>
-    <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
-      <div class="body">
-        <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div>
+    <div class="top">
+      <div class="title">
+       <span>{{'user selections list' | uppercase}}</span>
+     </div>
+   </div>
+   <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
+   <div class="body">
+     <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div>
 
-         <!-- Table For Wide Screens -->
+      <!-- Table For Wide Screens -->
 
-         <div *ngIf="areThereAssetsToDisplay" class="cards-container wide-screen">
-          <div *ngFor="let headerTitle of tableHeaderTitles" class="card wide-screen">
-            <div class="card-body wide-screen">
-              <div class="row-wide-screen">
-                <span class="card-row_title wide-screen">
-                  {{headerTitle}}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="card wide-screen">
-            <div *ngFor="let userSelection of assetsForDisplay" class="card-body wide-screen">
-              <div class="row-wide-screen">
-                <span class="card-row_content wide-screen">
-                  {{userSelection.configuratoin!.name}}
-                  <div class="card-img wide-screen">
-                    <img [src]="userSelection.configuratoin!.imgUrl" alt="configuration">
-                  </div>
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_content wide-screen">
-                  {{userSelection.asset!.name}}
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_content wide-screen">
-                  {{userSelection.sideA.environment.typeName}}
-                  <div class="card-img wide-screen">
-                    <img [src]="userSelection.sideA.clothPatternUrl" alt="pattren-sideA">
-                  </div>
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_content wide-screen">
-                  {{userSelection.sideB.environment.typeName}}
-                  <div class="card-img wide-screen">
-                    <img [src]="userSelection.sideB.clothPatternUrl" alt="pattren-sideB">
-                  </div>
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_content wide-screen">
-                  {{userSelection.ulcansType.name}}
-                </span>
-              </div>
-              <div class="row-wide-screen">
-                <span class="card-row_content wide-screen">
-                  <div class="selection-btns">
-                    <button class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
-                  </div>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div *ngIf="areThereAssetsToDisplay" class="cards-container wide-screen" #wideScreenCardsWrapper>
+       <div class="card wide-screen">
+         <div class="card-body wide-screen">
+           <div *ngFor="let headerTitle of tableHeaderTitles" class="row-wide-screen">
+             <span class="card-row_title wide-screen">
+               {{headerTitle}}
+             </span>
+           </div>
+         </div>
+       </div>
+       <div *ngFor="let userSelection of assetsForDisplay" class="card wide-screen">
+         <div class="card-body wide-screen">
+           <div class="row-wide-screen">
+             <span class="card-row_content wide-screen">
+               {{userSelection.configuratoin!.name}}
+               <div class="card-img wide-screen">
+                 <img [src]="userSelection.configuratoin!.imgUrl" alt="configuration">
+               </div>
+             </span>
+           </div>
+           <div class="row-wide-screen">
+             <span class="card-row_content wide-screen">
+               {{userSelection.asset!.name}}
+             </span>
+           </div>
+           <div class="row-wide-screen">
+             <span class="card-row_content wide-screen">
+               {{userSelection.sideA.environment.typeName}}
+               <div class="card-img wide-screen">
+                 <img [src]="userSelection.sideA.clothPatternUrl" alt="pattren-sideA">
+               </div>
+             </span>
+           </div>
+           <div class="row-wide-screen">
+             <span class="card-row_content wide-screen">
+               {{userSelection.sideB.environment.typeName}}
+               <div class="card-img wide-screen">
+                 <img [src]="userSelection.sideB.clothPatternUrl" alt="pattren-sideB">
+               </div>
+             </span>
+           </div>
+           <div class="row-wide-screen">
+             <span class="card-row_content wide-screen">
+               {{userSelection.ulcansType.name}}
+             </span>
+           </div>
+           <div class="row-wide-screen">
+             <span class="card-row_content wide-screen">
+               <div class="selection-btns">
+                 <button (click)="onDeleteSelection(userSelection.id)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+               </div>
+             </span>
+           </div>
+         </div>
+       </div>
+     </div>
 
 
-        <!-- Cards For Mobile Screens -->
+     <!-- Cards For Mobile Screens -->
 
-        <div class="cards-container mobile">
-          <div *ngFor="let userSelection of assetsForDisplay" class="card">
-            <div class="card-body">
-              <div class="card-row">
-                <span class="card-row_title">{{tableHeaderTitles[0]}}</span>
-                <span class="card-row_content mobile">
-                  {{userSelection.configuratoin!.name}}
-                  <div class="card-img">
-                    <img [src]="userSelection.configuratoin!.imgUrl" alt="">
-                  </div>
-                </span>
-              </div>
-              <div class="card-row">
-                <span class="card-row_title">{{tableHeaderTitles[1]}}</span>
-                <span class="card-row_content mobile">
-                  {{userSelection.asset!.name}}
-                  <div class="card-img">
-                  </div>
-                </span>
-              </div>
-              <div class="card-row">
-                <span class="card-row_title">{{tableHeaderTitles[2]}}</span>
-                <span class="card-row_content mobile">
-                  {{userSelection.sideA.environment.typeName}}
-                  <div class="card-img">
-                    <img [src]="userSelection.sideA.clothPatternUrl" alt="">
-                  </div>
-                </span>
-              </div>
-              <div class="card-row">
-                <span class="card-row_title">{{tableHeaderTitles[3]}}</span>
-                <span class="card-row_content mobile">
-                  {{userSelection.sideB.environment.typeName}}
-                  <div class="card-img">
-                    <img [src]="userSelection.sideB.clothPatternUrl" alt="">
-                  </div>
-                </span>
-              </div>
-              <div class="card-row">
-                <span class="card-row_title">{{tableHeaderTitles[4]}}</span>
-                <span class="card-row_content mobile">
-                  {{userSelection.ulcansType.name}}
-                </span>
-              </div>
-            </div>
-            <div class="card-top">
-              <div class="selection-btns">
-                <button class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-scrollbar>
-      <div class="bottom">
-        <div class="next-button-wrapper">
-          <button (click)="onDownloadPdf()" class="regular-btn"> <span>Download</span> </button>
-        </div>
-      </div>
+     <div class="cards-container mobile" #mobileCardsWrapper>
+       <div *ngFor="let userSelection of assetsForDisplay" class="card">
+         <div class="card-body">
+           <div class="card-row">
+             <span class="card-row_title">{{tableHeaderTitles[0]}}</span>
+             <span class="card-row_content mobile">
+               {{userSelection.configuratoin!.name}}
+               <div class="card-img">
+                 <img [src]="userSelection.configuratoin!.imgUrl" alt="">
+               </div>
+             </span>
+           </div>
+           <div class="card-row">
+             <span class="card-row_title">{{tableHeaderTitles[1]}}</span>
+             <span class="card-row_content mobile">
+               {{userSelection.asset!.name}}
+               <div class="card-img">
+               </div>
+             </span>
+           </div>
+           <div class="card-row">
+             <span class="card-row_title">{{tableHeaderTitles[2]}}</span>
+             <span class="card-row_content mobile">
+               {{userSelection.sideA.environment.typeName}}
+               <div class="card-img">
+                 <img [src]="userSelection.sideA.clothPatternUrl" alt="">
+               </div>
+             </span>
+           </div>
+           <div class="card-row">
+             <span class="card-row_title">{{tableHeaderTitles[3]}}</span>
+             <span class="card-row_content mobile">
+               {{userSelection.sideB.environment.typeName}}
+               <div class="card-img">
+                 <img [src]="userSelection.sideB.clothPatternUrl" alt="">
+               </div>
+             </span>
+           </div>
+           <div class="card-row">
+             <span class="card-row_title">{{tableHeaderTitles[4]}}</span>
+             <span class="card-row_content mobile">
+               {{userSelection.ulcansType.name}}
+             </span>
+           </div>
+         </div>
+         <div class="card-top">
+           <div class="selection-btns">
+             <button (click)="onDeleteSelection(userSelection.id)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+           </div>
+         </div>
+       </div>
+     </div>
+    </div>
+  </ng-scrollbar>
+   <div class="bottom">
+     <div class="next-button-wrapper">
+       <button [ngClass]="{'disabled': !areThereAssetsToDisplay}" (click)="onDownloadPdf()" class="regular-btn"> <span>Download To Pdf</span> </button>
+     </div>
+   </div>
+
   </div>
 </ion-content>
+<ion-footer>
+  <h1>Hello</h1>
+</ion-footer>
 
 
 

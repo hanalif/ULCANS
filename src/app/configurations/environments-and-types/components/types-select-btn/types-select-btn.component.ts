@@ -27,7 +27,6 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges {
   }
 
   onType(id:string){
-    console.log('on type id')
     this.systemTypeId = id;
     let userSelectios: Partial<AssetForPdf> = {
       systemTypeId: id
