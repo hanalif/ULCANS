@@ -8,6 +8,7 @@ import { UserSelectionService } from '../../services/user-selection.service';
 import JSPDF from 'jspdf';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File, IWriteOptions } from '@ionic-native/file/ngx';
+import { PdfPageComponent } from '../pdf-page/pdf-page.component';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -78,14 +79,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
     }
 
-
-
-
-
-
-  //   if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
-  //     return
-  //   }
+    if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
+      return
+    }
 
   //   let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
   //      htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
@@ -114,14 +110,12 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
    createImgFromCanvas(el:any, isMobile: boolean){
     html2canvas(el.nativeElement).then((canvas=>{
       const imgData = canvas.toDataURL('image/jpeg');
-      const pdf = new JSPDF({
-        orientation: 'portrait'
-      })
+      const pdf = new JSPDF('p', 'px', [1600, 1131]);
 
       const imageProps = pdf.getImageProperties(imgData);
       const pdfw = pdf.internal.pageSize.getWidth();
       const pdfh = (imageProps.height * pdfw) / imageProps.width;
-      pdf.addImage(imgData, 'PNG', 0,0, pdfw, pdfh);
+      pdf.addImage(imgData, 'PNG', 15, 15, 1110, 360);
       if(!isMobile){
         pdf.save();
       }else{

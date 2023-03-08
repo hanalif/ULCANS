@@ -1,96 +1,257 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AssetForDisplay } from '../../models/asset-for-display';
-import JSPDF from 'jspdf';
+import JSPDF, { jsPDF } from 'jspdf';
 import domtoimage from 'dom-to-image';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File, IWriteOptions } from '@ionic-native/file/ngx';
 import { Platform } from '@ionic/angular';
 import html2canvas from 'html2canvas';
+import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-pdf-page',
   templateUrl: './pdf-page.component.html',
   styleUrls: ['./pdf-page.component.scss'],
+  providers: [DatePipe]
 })
 export class PdfPageComponent implements OnInit {
-  @ViewChild('printWrapper', {static: true}) el!: ElementRef<HTMLImageElement>
+  @ViewChild('logo', {static: true}) logoEl!: ElementRef<HTMLTableCellElement>
 
   assetsForDisplay!: AssetForDisplay[];
-  tableHeaderTitles: string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B', ' Type', ''];
+  tableHeaderTitles: string[] = ['Configuration Type', 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
   isHidden: boolean = false;
   currPlatforms!: string[];
 
 
   constructor(private file: File,
     private fileOpener: FileOpener,
-    public plt: Platform,) { }
+    public plt: Platform,
+    private datePipe: DatePipe) { }
 
 
   ngOnInit() {
     this.assetsForDisplay = this.demySelections;
     this.currPlatforms = this.plt.platforms();
   }
+  date = this.transformDate(new Date);
 
-  onDownloadPdf() {
-    console.log(this.el);
-    let isCurrPlatformDesktopOrMobileweb: boolean = this.checkPlatform(this.currPlatforms);
-    html2canvas(this.el.nativeElement).then((canvas)=>{
-      const imgData = canvas.toDataURL('image/jpeg');
+  transformDate(date: Date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
+  onDownloadPdf(){
 
-      const pdf = new JSPDF({
-        orientation: 'portrait'
-      })
+    const doc = new jsPDF();
 
-      const imageProps = pdf.getImageProperties(imgData);
+    autoTable(doc, {
+      html: '.table1',
+      didDrawCell: (data: any) => {
+        if(data.cell.raw.id === 'logo'){
+            console.log(data.cell.styles);
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 13, data.cell.contentHeight + 2);
+          }
+      },
+      theme: 'plain'
+    });
 
-      const pdfw = pdf.internal.pageSize.getWidth();
-      const pdfh = (imageProps.height * pdfw) / imageProps.width;
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: `${this.date}`,
+            styles: {
+              halign: 'left'
+            }
+          }
+        ],
+      ],
+      theme: 'plain'
+    });
 
-      pdf.addImage(imgData, 'PNG', 0,0, pdfw, pdfh);
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content:'Fibrotex'
+            +'\n8 Hasivim Street, Petach Tikvah, Israel'
+            +'\n+972 9 951 8830',
+            styles: {
+              halign: 'left'
+            }
+          }
+        ],
+      ],
+      theme: 'plain'
+    });
 
-      if(isCurrPlatformDesktopOrMobileweb){
-        pdf.save();
-      }else{
-        let blobPdf = new Blob([pdf.output('blob')], {type: 'application/pdf'});
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'ULCANS PREFERENCES',
+            styles: {
+              halign:'left',
+              fontSize: 12
+            }
+          }
+        ]
+      ],
+      theme: 'plain'
+    });
+
+    autoTable(doc, {
+      html: '.table',
+      bodyStyles: {
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'justify',
+        minCellHeight: 15,
+        minCellWidth: 20
+      },
+
+      didDrawCell: (data: any) => {
+        console.log(data)
+        var cellId = data.cell.raw.id;
+        if( cellId === 'imgEl'){
+          console.log(cellId);
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x + 10,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight + 2);
+        }
+        if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
+          console.log(cellId)
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 10, data.cell.contentHeight);
+        }
+      },
+      theme: 'striped'
+
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'Terms & notes',
+            styles: {
+              halign: 'left',
+              fontSize: 14
+            }
+          }
+        ],
+        [
+          {
+            content: 'orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia'
+            +'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum'
+            +'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+            styles: {
+              halign: 'left'
+            }
+          }
+        ],
+      ],
+      theme: "plain"
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'This is a centered footer',
+            styles: {
+              halign: 'center'
+            }
+          }
+        ]
+      ],
+      theme: "plain"
+    });
+
+    return doc.save("invoice");
+
+  }
+
+
+  onPdf() {
+
+    var doc = new jsPDF();
+
+    // doc.setFontSize(18);
+    // doc.text('My PDF Table', 14, 8);
+    // doc.setFontSize(11);
+    // doc.setTextColor(100);
+
+    (doc as any).autoTable({
+      html: '.table1',
+      useCss: true,
+      putOnlyUsedFonts:true,
+      didDrawCell: (data: any) => {
+        console.log(data.cell.raw.id)
+        if(data.cell.raw.id === 'logo'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 13, data.cell.contentHeight + 2);
+          }
+      }
+    })
+
+    var finalY = (doc as any).lastAutoTable.finalY
+    // doc.text('From HTML with CSS', 14, finalY + 15)
+    autoTable(doc,{
+      startY: finalY + 10,
+      html: '.table',
+      useCss: true,
+
+      didDrawCell: (data: any) => {
+        if(data.cell.raw.id === 'imgEl'){
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 13, data.cell.contentHeight + 2);
+          }
+      }
+    })
+
+    doc.save('table.pdf');
+
+    let platform = this.checkPlatform(this.currPlatforms);
+
+    if(platform.desktop || platform.mobileWeb){
+      // doc.output('dataurlnewwindow');
+      doc.save('table.pdf');
+    }
+
+    if(platform.mobile){
+      let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
         this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
           this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
         })
-      }
-    })
+    }
+
   }
 
 
   checkPlatform(currPlatforms: string[]){
-    let isCurrPlatformDesktopOrMobileweb: boolean = false;
+    let isCurrPlatformDesktop: boolean = false;
+    let isCurrPlatformMobileWeb: boolean = false;
+    let isCurrPlatformMobile: boolean = false;
     for(let i = 0; i< currPlatforms.length; i++){
         if(currPlatforms[i] === "desktop"){
-          isCurrPlatformDesktopOrMobileweb = true;
+          isCurrPlatformDesktop = true;
         } else if(currPlatforms[i] === "mobileweb"){
-          isCurrPlatformDesktopOrMobileweb = true;
+          isCurrPlatformMobileWeb = true;
         }
         else{
-          isCurrPlatformDesktopOrMobileweb = false;
+          isCurrPlatformMobile = true;
         }
       }
-      return isCurrPlatformDesktopOrMobileweb;
+      return {desktop: isCurrPlatformDesktop, mobileWeb: isCurrPlatformMobileWeb, mobile: isCurrPlatformMobile};
 
    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   demySelections: AssetForDisplay[] =

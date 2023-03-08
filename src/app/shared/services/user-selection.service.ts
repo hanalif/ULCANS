@@ -208,6 +208,8 @@ export class UserSelectionService {
    }
 
 
+
+
    checkPlatform(currPlatforms: string[]){
     let isCurrPlatformDesktopOrMobileweb: boolean = false;
     for(let i = 0; i< currPlatforms.length; i++){
