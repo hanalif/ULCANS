@@ -114,10 +114,8 @@ export class UserSelectionService {
 
   removeUserSelection(userSelectionId: string){
     let userSelections = this.assetsForPdf$.getValue();
-    console.log('assetsForPdf',userSelections);
     const index = userSelections.findIndex(selection=> selection.id === userSelectionId);
     userSelections.splice(index, 1);
-    console.log('assetsForPdfAfterDelete',userSelections)
     this.assetsForPdf$.next(userSelections);
     this.setNumberOfNewSelections(-1);
   }
@@ -172,59 +170,7 @@ export class UserSelectionService {
   }
 
 
-  downloadPdf(htmlToPdfContent: ComponentRef<PdfPageComponent>, currPlatforms: string[]) {
-       asyncScheduler.schedule(() => {
-        this.isProcessingPdf$.next(true);
-         const htmlString = htmlToPdfContent.location.nativeElement.innerHTML;
-         htmlToPdfContent.destroy();
 
-         let isCurrPlatformDesktopOrMobileweb: boolean = this.checkPlatform(currPlatforms);
-
-         var doc = new JSPDF();
-         doc.html(htmlString, {
-         callback: ((doc: JSPDF) => {
-           if(isCurrPlatformDesktopOrMobileweb){
-             doc.save("output.pdf");
-             this.isProcessingPdf$.next(false);
-           }else{
-             let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
-             this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, { replace: true }).then(fileEntry => {
-              this.isProcessingPdf$.next(false);
-             this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
-             })
-           }
-         }).bind(this),
-         margin: [10,10,10,10],
-         autoPaging: 'text',
-         x: 0,
-         y: 0,
-         width: 190,
-         windowWidth: 675
-       });
-     });
-
-     this.setNumberOfNewSelections(0);
-      this.assetsForPdf$.next([]);
-   }
-
-
-
-
-   checkPlatform(currPlatforms: string[]){
-    let isCurrPlatformDesktopOrMobileweb: boolean = false;
-    for(let i = 0; i< currPlatforms.length; i++){
-        if(currPlatforms[i] === "desktop"){
-          isCurrPlatformDesktopOrMobileweb = true;
-        } else if(currPlatforms[i] === "mobileweb"){
-          isCurrPlatformDesktopOrMobileweb = true;
-        }
-        else{
-          isCurrPlatformDesktopOrMobileweb = false;
-        }
-      }
-      return isCurrPlatformDesktopOrMobileweb;
-
-   }
 
 }
 

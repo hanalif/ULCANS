@@ -1,19 +1,21 @@
 import {  Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import html2canvas from 'html2canvas';
-import {  Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AssetForDisplay } from '../../models/asset-for-display';
 import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
 import { UserSelectionService } from '../../services/user-selection.service';
-import JSPDF from 'jspdf';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { File, IWriteOptions } from '@ionic-native/file/ngx';
-import { PdfPageComponent } from '../pdf-page/pdf-page.component';
+import { File } from '@ionic-native/file/ngx';
+import { DatePipe } from '@angular/common';
+import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
+import JSPDF, { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-user-selections-menu',
   templateUrl: './user-selections-menu.component.html',
   styleUrls: ['./user-selections-menu.component.scss'],
+  providers: [DatePipe]
 })
 export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   @ViewChild('mobileCardsWrapper') mobileEl!: ElementRef<HTMLImageElement>;
@@ -25,17 +27,23 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
   isProcessingPdf$!: Observable<boolean>;
-  tableHeaderTitles: string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B', ' Type', ''];
+  tableHeaderTitles:  string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B',' Type', ''];
+  tableHeaderTitlesForPdf: string[] = ['Configuration Type', 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
+  date = this.transformDate(new Date);
+
+  transformDate(date: Date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
 
 
 
   constructor(
     private userSelectionService: UserSelectionService,
     private measurmentsPipe: FtToMPipe,
-    private viewContainerRef: ViewContainerRef,
     public plt: Platform,
     private file: File,
     private fileOpener: FileOpener,
+    private datePipe: DatePipe
     ) { }
 
   ngOnInit() {
@@ -45,7 +53,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         this.assetsForDisplay = [];
         this.areThereAssetsToDisplay = false;
       }else{
-        console.log(assetsForDisplay);
         this.areThereAssetsToDisplay = true;
         this.assetsForDisplay = assetsForDisplay;
       }
@@ -67,26 +74,144 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
     let platform = this.checkPlatform(this.currPlatforms);
 
-    if(platform.desktop){
-      this.createImgFromCanvas(this.wideScreenEl, false);
+    const doc = new jsPDF();
+
+    autoTable(doc, {
+      html: '.table1',
+      didDrawCell: (data: any) => {
+        if(data.cell.raw.id === 'logo'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 13, data.cell.contentHeight + 2);
+          }
+      },
+      theme: 'plain'
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: `${this.date}`,
+            styles: {
+              halign: 'left'
+            }
+          }
+        ],
+      ],
+      theme: 'plain'
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content:'Fibrotex'
+            +'\n8 Hasivim Street, Petach Tikvah, Israel'
+            +'\n+972 9 951 8830',
+            styles: {
+              halign: 'left'
+            }
+          }
+        ],
+      ],
+      theme: 'plain'
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'ULCANS PREFERENCES',
+            styles: {
+              halign:'left',
+              fontSize: 12
+            }
+          }
+        ]
+      ],
+      theme: 'plain'
+    });
+
+    autoTable(doc, {
+      html: '.table',
+      bodyStyles: {
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'justify',
+        minCellHeight: 15,
+        minCellWidth: 20
+      },
+
+      didDrawCell: (data: any) => {
+        var cellId = data.cell.raw.id;
+        if( cellId === 'imgEl'){
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x + 10,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight + 2);
+        }
+        if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 10, data.cell.contentHeight);
+        }
+      },
+      theme: 'striped'
+
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'Terms & notes',
+            styles: {
+              halign: 'left',
+              fontSize: 14
+            }
+          }
+        ],
+        [
+          {
+            content: 'orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia'
+            +'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum'
+            +'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+            styles: {
+              halign: 'left'
+            }
+          }
+        ],
+      ],
+      theme: "plain"
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'This is a centered footer',
+            styles: {
+              halign: 'center'
+            }
+          }
+        ]
+      ],
+      theme: "plain"
+    });
+
+    if(platform.desktop || platform.mobileWeb){
+      return doc.save("output.pdf")
     }
-    if(platform.mobileWeb){
-      this.createImgFromCanvas(this.mobileEl, false);
-    }
+
 
     if(platform.mobile){
-      this.createImgFromCanvas(this.mobileEl, true);
-
+      let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
+        this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
+          this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
+        })
     }
 
-    if(this.assetsForDisplay.length === 0 || this.assetsForDisplay.length === -1){
-      return
-    }
-
-  //   let  htmlToPdfContent = this.viewContainerRef.createComponent(PdfPageComponent);
-  //      htmlToPdfContent.setInput('assetsForDisplay', this.assetsForDisplay);
-
-  //  this.userSelectionService.downloadPdf(htmlToPdfContent, this.currPlatforms);
+    return
   }
 
   checkPlatform(currPlatforms: string[]){
@@ -107,26 +232,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
    }
 
-   createImgFromCanvas(el:any, isMobile: boolean){
-    html2canvas(el.nativeElement).then((canvas=>{
-      const imgData = canvas.toDataURL('image/jpeg');
-      const pdf = new JSPDF('p', 'px', [1600, 1131]);
-
-      const imageProps = pdf.getImageProperties(imgData);
-      const pdfw = pdf.internal.pageSize.getWidth();
-      const pdfh = (imageProps.height * pdfw) / imageProps.width;
-      pdf.addImage(imgData, 'PNG', 15, 15, 1110, 360);
-      if(!isMobile){
-        pdf.save();
-      }else{
-        let blobPdf = new Blob([pdf.output('blob')], {type: 'application/pdf'});
-        this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
-          this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
-        })
-      }
-    }))
-
-   }
 
 
  }

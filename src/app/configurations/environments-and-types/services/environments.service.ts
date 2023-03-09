@@ -35,7 +35,6 @@ export class EnvironmentsService {
     for(let i = 0; i<environments.length; i++){
       let isEnvironmentFound = environmentsIds.find(id=> id === environments[i].id);
       if(isEnvironmentFound){
-        console.log('environment found', environments[i])
         environmentsByIds.push(environments[i])
       }
     }

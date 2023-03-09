@@ -334,6 +334,314 @@ export class PdfPageComponent implements OnInit {
         }
     },
     {
+      "id": "2OzGywzL",
+      "asset": {
+          "id": "ZRXgJ",
+          "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+          "name": "JLTV",
+          "configurationId": "c4",
+          "measures": {
+              "widthFt": 8.2,
+              "heightFt": 8.6,
+              "lengthFt": 20.4
+          },
+          "isInList": true
+      },
+      "configuratoin": {
+          "id": "c4",
+          "name": "1B",
+          "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+          "hexagon": 1,
+          "rhombus": 2,
+          "measures": {
+              "widthFt": 27.8,
+              "lengthFt": 48.3,
+              "areaSqFt": 1122.6
+          }
+      },
+      "sideA": {
+          "environment": {
+              "id": "12bb",
+              "typeName": "Desert",
+              "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+              "clothPatterns": [
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+              ],
+              "shapes": [
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+              ]
+          },
+          "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+      },
+      "sideB": {
+          "environment": {
+              "id": "14dd",
+              "typeName": "Rocky",
+              "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+              "clothPatterns": [
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+              ],
+              "shapes": [
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+              ]
+          },
+          "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+      },
+      "measureType": 1,
+      "ulcansType": {
+          "id": "TRT",
+          "name": "Type II, Communications (R/T)",
+          "description": "Type II is radar transparent and used for concealing ground radar equipment."
+      }
+  },
+  {
+    "id": "2OzGywzL",
+    "asset": {
+        "id": "ZRXgJ",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+        "name": "JLTV",
+        "configurationId": "c4",
+        "measures": {
+            "widthFt": 8.2,
+            "heightFt": 8.6,
+            "lengthFt": 20.4
+        },
+        "isInList": true
+    },
+    "configuratoin": {
+        "id": "c4",
+        "name": "1B",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+        "hexagon": 1,
+        "rhombus": 2,
+        "measures": {
+            "widthFt": 27.8,
+            "lengthFt": 48.3,
+            "areaSqFt": 1122.6
+        }
+    },
+    "sideA": {
+        "environment": {
+            "id": "12bb",
+            "typeName": "Desert",
+            "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+            "clothPatterns": [
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+            ],
+            "shapes": [
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+            ]
+        },
+        "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+    },
+    "sideB": {
+        "environment": {
+            "id": "14dd",
+            "typeName": "Rocky",
+            "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+            "clothPatterns": [
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+            ],
+            "shapes": [
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+            ]
+        },
+        "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+    },
+    "measureType": 1,
+    "ulcansType": {
+        "id": "TRT",
+        "name": "Type II, Communications (R/T)",
+        "description": "Type II is radar transparent and used for concealing ground radar equipment."
+    }
+},
+{
+  "id": "2OzGywzL",
+  "asset": {
+      "id": "ZRXgJ",
+      "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+      "name": "JLTV",
+      "configurationId": "c4",
+      "measures": {
+          "widthFt": 8.2,
+          "heightFt": 8.6,
+          "lengthFt": 20.4
+      },
+      "isInList": true
+  },
+  "configuratoin": {
+      "id": "c4",
+      "name": "1B",
+      "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+      "hexagon": 1,
+      "rhombus": 2,
+      "measures": {
+          "widthFt": 27.8,
+          "lengthFt": 48.3,
+          "areaSqFt": 1122.6
+      }
+  },
+  "sideA": {
+      "environment": {
+          "id": "12bb",
+          "typeName": "Desert",
+          "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+          "clothPatterns": [
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+          ],
+          "shapes": [
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+          ]
+      },
+      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+  },
+  "sideB": {
+      "environment": {
+          "id": "14dd",
+          "typeName": "Rocky",
+          "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+          "clothPatterns": [
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+          ],
+          "shapes": [
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+          ]
+      },
+      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+  },
+  "measureType": 1,
+  "ulcansType": {
+      "id": "TRT",
+      "name": "Type II, Communications (R/T)",
+      "description": "Type II is radar transparent and used for concealing ground radar equipment."
+  }
+},
+{
+  "id": "2OzGywzL",
+  "asset": {
+      "id": "ZRXgJ",
+      "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+      "name": "JLTV",
+      "configurationId": "c4",
+      "measures": {
+          "widthFt": 8.2,
+          "heightFt": 8.6,
+          "lengthFt": 20.4
+      },
+      "isInList": true
+  },
+  "configuratoin": {
+      "id": "c4",
+      "name": "1B",
+      "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+      "hexagon": 1,
+      "rhombus": 2,
+      "measures": {
+          "widthFt": 27.8,
+          "lengthFt": 48.3,
+          "areaSqFt": 1122.6
+      }
+  },
+  "sideA": {
+      "environment": {
+          "id": "12bb",
+          "typeName": "Desert",
+          "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+          "clothPatterns": [
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+          ],
+          "shapes": [
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+          ]
+      },
+      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+  },
+  "sideB": {
+      "environment": {
+          "id": "14dd",
+          "typeName": "Rocky",
+          "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+          "clothPatterns": [
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+          ],
+          "shapes": [
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+          ]
+      },
+      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+  },
+  "measureType": 1,
+  "ulcansType": {
+      "id": "TRT",
+      "name": "Type II, Communications (R/T)",
+      "description": "Type II is radar transparent and used for concealing ground radar equipment."
+  }
+},
+    {
         "id": "AM9oy20A",
         "asset": {
             "id": "pSt6X9P7",
