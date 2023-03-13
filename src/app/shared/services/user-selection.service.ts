@@ -1,19 +1,14 @@
-import { ComponentRef, Injectable } from '@angular/core';
-import { asyncScheduler, BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
 import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
 import { AssetForDisplay } from '../models/asset-for-display';
 import { AssetForPdf } from '../models/asset-for-pdf.model';
-import JSPDF from 'jspdf';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { File } from '@ionic-native/file/ngx';
 import { Platform } from '@ionic/angular';
-import { PdfPageComponent } from '../components/pdf-page/pdf-page.component';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import { SystemSide } from '../models/system-side.model';
 import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
 import { UtilService } from './util.service';
-import { SystemType } from 'src/app/configurations/environments-and-types/models/type.model';
 import { SystemTypesService } from 'src/app/configurations/environments-and-types/services/system-types.service';
 
 
@@ -36,8 +31,6 @@ export class UserSelectionService {
   constructor(
     private assetsService: AssetsService,
     private configurationsService: ConfigurationsService,
-    private file: File,
-    private fileOpener: FileOpener,
     public plt: Platform,
     public environmentsService: EnvironmentsService,
     public utilService: UtilService,
@@ -168,9 +161,6 @@ export class UserSelectionService {
       this.numOfSelections$.next(currNum + num);
     }
   }
-
-
-
 
 }
 

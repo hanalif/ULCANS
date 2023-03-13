@@ -126,9 +126,11 @@
      </div>
     </div>
   </ng-scrollbar>
+
    <div class="bottom">
      <div class="next-button-wrapper">
-       <button [ngClass]="{'disabled': !areThereAssetsToDisplay}" (click)="onDownloadPdf()" class="regular-btn"> <span>Download To Pdf</span> </button>
+      <ion-spinner *ngIf="isProcessingPdf"  class="spinner" name="circles"></ion-spinner>
+      <button  [ngClass]="{'disabled': !areThereAssetsToDisplay}" (click)="onDownloadPdf()" class="regular-btn"> <span>Download To Pdf</span> </button>
      </div>
    </div>
   </div>

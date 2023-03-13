@@ -1,6 +1,6 @@
 import {  Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Observable, Subscription } from 'rxjs';
+import { from, map, of, Subscription, tap } from 'rxjs';
 import { AssetForDisplay } from '../../models/asset-for-display';
 import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
 import { UserSelectionService } from '../../services/user-selection.service';
@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import 'jspdf-autotable';
 import autoTable from 'jspdf-autotable';
 import JSPDF, { jsPDF } from 'jspdf';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -26,7 +27,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
-  isProcessingPdf$!: Observable<boolean>;
+  isProcessingPdf: boolean = false;
   tableHeaderTitles:  string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B',' Type', ''];
   tableHeaderTitlesForPdf: string[] = ['Configuration Type', 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
   date = this.transformDate(new Date);
@@ -43,7 +44,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     public plt: Platform,
     private file: File,
     private fileOpener: FileOpener,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private alertController: AlertController
     ) { }
 
   ngOnInit() {
@@ -58,7 +60,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       }
     });
       this.currPlatforms = this.plt.platforms();
-      this.isProcessingPdf$ = this.userSelectionService.getIsProcessingPdf()
   }
 
   ngOnDestroy(): void {
@@ -70,11 +71,18 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     this.userSelectionService.removeUserSelection(userSelectionId);
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Your Pdf Is Generated.',
+      cssClass: 'custom-alert',
+    });
+  }
   onDownloadPdf(){
 
     let platform = this.checkPlatform(this.currPlatforms);
 
     const doc = new jsPDF();
+    this.isProcessingPdf = true;
 
     autoTable(doc, {
       html: '.table1',
@@ -164,7 +172,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       body: [
         [
           {
-            content: 'Terms & notes',
+            content: 'Important Note',
             styles: {
               halign: 'left',
               fontSize: 14
@@ -173,9 +181,10 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         ],
         [
           {
-            content: 'orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia'
-            +'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum'
-            +'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+
+            content: 'Thank you for selecting your ULCANS preferences.'
+            +'We would appreciate it if you could send the PDF to our office'
+            +'and  get in touch with our exceptional agent to discuss your choices further.',
             styles: {
               halign: 'left'
             }
@@ -189,7 +198,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       body: [
         [
           {
-            content: 'This is a centered footer',
+            content: 'Ultra Lightweight Camouflage Net System'
+            +'The ability to conceal and protect forces against multi-spectral sensor threats.',
             styles: {
               halign: 'center'
             }
@@ -199,14 +209,20 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       theme: "plain"
     });
 
+
     if(platform.desktop || platform.mobileWeb){
-      return doc.save("output.pdf")
+      return doc.save("output.pdf",{ returnPromise: true }).then(()=>{
+        console.log('hello')
+        this.isProcessingPdf = false;
+        console.log(this.isProcessingPdf)
+      })
     }
 
 
     if(platform.mobile){
       let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
         this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
+          this.isProcessingPdf = false;
           this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
         })
     }
