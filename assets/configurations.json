@@ -1,0 +1,181 @@
+[
+    {
+        "id": "c1",
+        "name": "0A",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/OA.png",
+        "hexagon": 0,
+        "rhombus": 1,
+        "measures": {
+            "widthFt": 16.1,
+            "lengthFt": 27.8,
+            "areaSqFt": 224.5
+        }
+    },
+    {
+        "id": "c2",
+        "name": "0B",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/OB.png",
+        "hexagon": 0,
+        "rhombus": 2,
+        "measures": {
+            "widthFt": 13.9,
+            "lengthFt": 40.2,
+            "areaSqFt": 449.0
+        }
+    },
+    {
+        "id": "c3",
+        "name": "1A",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/1A.png",
+        "hexagon": 1,
+        "rhombus": 0,
+        "measures": {
+            "widthFt": 27.8,
+            "lengthFt": 32.2,
+            "areaSqFt": 673.6
+        }
+    },{
+        "id": "c4",
+        "name": "1B",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+        "hexagon": 1,
+        "rhombus": 2,
+        "measures": {
+            "widthFt": 27.8,
+            "lengthFt": 48.3,
+            "areaSqFt": 1122.6
+        }
+    },
+    {
+        "id": "c5",
+        "name": "1C",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/1C.png",
+        "hexagon": 1,
+        "rhombus": 4,
+        "measures": {
+            "widthFt": 27.8,
+            "lengthFt": 64.4,
+            "areaSqFt": 1571.7
+        }
+    },
+    {
+        "id": "c6",
+        "name": "2",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/2.png",
+        "hexagon": 2,
+        "rhombus": 2,
+        "measures": {
+            "widthFt": 48.3,
+            "lengthFt": 55.8,
+            "areaSqFt": 1796.2
+        }
+    },
+    {
+        "id": "c7",
+        "name": "3",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/3.png",
+        "hexagon": 3,
+        "rhombus": 3,
+        "measures": {
+            "widthFt": 55.8,
+            "lengthFt": 64.4,
+            "areaSqFt": 2694.3
+        }
+    },
+    {
+        "id": "c8",
+        "name": "4",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/4.png",
+        "hexagon": 4,
+        "rhombus": 4,
+        "measures": {
+            "widthFt": 55.8,
+            "lengthFt": 80.5,
+            "areaSqFt": 3592.4
+        }
+    },
+    {
+        "id": "c9",
+        "name": "5",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/5.png",
+        "hexagon": 5,
+        "rhombus": 6,
+        "measures": {
+            "widthFt": 80.5,
+            "lengthFt": 83.7,
+            "areaSqFt": 4715.0
+        }
+    },
+    {
+        "id": "c10",
+        "name": "6",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/6.png",
+        "hexagon": 6,
+        "rhombus": 8,
+        "measures": {
+            "widthFt": 69.7,
+            "lengthFt": 104.7,
+            "areaSqFt": 5837.5
+        }
+    },
+    {
+        "id": "c11",
+        "name": "7A",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/7A.png",
+        "hexagon": 7,
+        "rhombus": 6,
+        "measures": {
+            "widthFt": 83.7,
+            "lengthFt": 96.9,
+            "areaSqFt": 6021.1
+        }
+    },
+    {
+        "id": "c12",
+        "name": "7B",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/7B.png",
+        "hexagon": 7,
+        "rhombus": 11,
+        "measures": {
+            "widthFt": 96.9,
+            "lengthFt": 111.6,
+            "areaSqFt": 7184.7
+        }
+    },
+    {
+        "id": "c13",
+        "name": "8",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/8.png",
+        "hexagon": 8,
+        "rhombus": 9,
+        "measures": {
+            "widthFt": 83.7,
+            "lengthFt": 112.7,
+            "areaSqFt": 7409.2
+        }
+    },
+    {
+        "id": "c14",
+        "name": "9",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/9.png",
+        "hexagon": 9,
+        "rhombus": 12,
+        "measures": {
+            "widthFt": 83.7,
+            "lengthFt": 128.8,
+            "areaSqFt": 8756.4
+        }
+    },
+    {
+        "id": "c15",
+        "name": "10",
+        "imgUrl": "../../../../assets/imgs/configurations-imgs/10.png",
+        "hexagon": 10,
+        "rhombus": 10,
+        "measures": {
+            "widthFt": 111.6,
+            "lengthFt": 112.7,
+            "areaSqFt": 8980.9
+        }
+    }
+]

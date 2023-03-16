@@ -1,0 +1,134 @@
+[
+    {
+        "id": "ZRXgJ",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+        "name": "JLTV",
+        "configurationId": "c4",
+        "measures": {
+            "widthFt": 8.2,
+            "heightFt": 8.6,
+            "lengthFt": 20.4
+        },
+        "isInList": true
+    },
+    {
+        "id": "YtWnE",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/MRAP.png",
+        "name": "MRAP/MATV",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 8.25,
+            "heightFt": 10,
+            "lengthFt": 22.3
+        },
+        "isInList": true
+    },
+    {
+        "id": "bRB9n",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/stryker.png",
+        "name": "Stryker",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 8.11,
+            "heightFt": 22.1,
+            "lengthFt": 8.8
+        },
+        "isInList": true
+    },
+    {
+        "id": "COIiz",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/Bradley.png",
+        "name": "Bradley",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 12,
+            "heightFt": 9.8,
+            "lengthFt": 21.5
+        },
+        "isInList": true
+    },
+    {
+        "id": "mK7YI",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/Abrams.png",
+        "name": "Abrams",
+        "configurationId": "c7",
+        "measures": {
+            "widthFt": 12,
+            "heightFt": 8,
+            "lengthFt": 32.04
+        },
+        "isInList": true
+    },
+    {
+        "id": "aSlVh",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/Howitzer105.png",
+        "name": "Howitzer 105",
+        "configurationId": "c4",
+        "measures": {
+            "widthFt": 7.3,
+            "heightFt": 5.8,
+            "lengthFt": 19.6
+        },
+        "isInList": true
+    },
+    {
+        "id": "Hjpj1",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/Howitzer155.png",
+        "name": "Howitzer 155",
+        "configurationId": "c6",
+        "measures": {
+            "widthFt": 8,
+            "heightFt": 5.11,
+            "lengthFt": 20
+        },
+        "isInList": true
+    },
+    {
+        "id": "iO9WF",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/Paladin2.png",
+        "name": "M109 Paladin",
+        "configurationId": "c7",
+        "measures": {
+            "widthFt": 10.4,
+            "heightFt": 10.8,
+            "lengthFt": 30
+        },
+        "isInList": true
+    },
+    {
+        "id": "92SHl",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/M1087.png",
+        "name": "M1087 Expandable Van",
+        "configurationId": "c8",
+        "measures": {
+            "widthFt": 96,
+            "heightFt": 145,
+            "lengthFt": 390
+        },
+        "isInList": true
+    },
+    {
+        "id": "EAE1C",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/HMMET.png",
+        "name": "HEMTT",
+        "configurationId": "c8",
+        "measures": {
+            "widthFt": 8,
+            "heightFt": 9.3,
+            "lengthFt": 33.4
+        },
+        "isInList": true
+    },
+    {
+        "id": "Ybq3Y",
+        "assetImgUrl": "../../../../assets/imgs/typical-assets/Tent.png",
+        "name": "Billeting Tent/GP Medium",
+        "configurationId": "c8",
+        "measures": {
+            "widthFt": 34,
+            "heightFt": 12,
+            "lengthFt": 34
+        },
+        "isInList": true
+    }
+]
