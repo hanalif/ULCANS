@@ -38,7 +38,7 @@ export class SystemTypesService {
 
 
   _setUlcansTypes(){
-    return this.http.get<SystemType[]>('../../../../assets/types.json').pipe(map(types => this.systemTypes$.next(types)));;
+    return this.http.get<SystemType[]>('assets/types.json').pipe(map(types => this.systemTypes$.next(types)));;
   }
 
 

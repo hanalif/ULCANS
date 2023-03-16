@@ -78,7 +78,7 @@ setCurrClothPatterns(environmentId: string, currSide:string){
 }
 
   _setEnvironments(){
-    return this.http.get<Environment[]>('../../../../assets/environments.json').pipe(map(environments => this.environments$.next(environments)));;
+    return this.http.get<Environment[]>('assets/environments.json').pipe(map(environments => this.environments$.next(environments)));;
   }
 
 

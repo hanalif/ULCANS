@@ -121,7 +121,7 @@
     &-img{
       height: 50px;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
 
       &.wide-screen{
         height: 70px;
