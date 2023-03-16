@@ -8,7 +8,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { DatePipe } from '@angular/common';
 import 'jspdf-autotable';
-import autoTable from 'jspdf-autotable';
+import autoTable, { CellHookData } from 'jspdf-autotable';
 import JSPDF, { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
 
@@ -93,7 +93,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
             doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 13, data.cell.contentHeight + 2);
           }
       },
-      theme: 'plain'
+      theme: 'plain',
     });
 
     autoTable(doc, {
@@ -156,7 +156,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         if( cellId === 'imgEl'){
           var td = data.cell.raw;
           var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x + 10,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight + 2);
+          doc.addImage(img.src, 'JPEG',data.cell.x + 10,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight);
         }
         if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
           var td = data.cell.raw;
@@ -184,7 +184,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
             content: 'Thank you for selecting your ULCANS preferences.'
             +'We would appreciate it if you could send the PDF to our office'
-            +'and  get in touch with our exceptional agent to discuss your choices further.',
+            +' and get in touch with our exceptional agent to discuss your choices further.',
             styles: {
               halign: 'left'
             }

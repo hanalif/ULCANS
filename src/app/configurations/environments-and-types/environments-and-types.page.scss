@@ -47,6 +47,10 @@
 
   .card-title{
     height: fit-content;
+
+    &.side-title{
+      justify-content: flex-start;
+    }
   }
 
   .selections{
