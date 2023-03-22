@@ -2,77 +2,77 @@
   {
     "id": "11aa",
     "typeName": "Woodland",
-    "imgUrl": "../../../../assets/imgs/environments/png-pics/woodland.png",
+    "imgUrl": "assets/imgs/environments/png-pics/woodland.png",
     "clothPatterns": [
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/low-resolution/1-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/low-resolution/2-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/low-resolution/3-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/low-resolution/4-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/low-resolution/5-copy.jpg"
+      "assets/imgs/environments/cloth-patterns/Woodland/low-resolution/1-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Woodland/low-resolution/2-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Woodland/low-resolution/3-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Woodland/low-resolution/4-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Woodland/low-resolution/5-copy.jpg"
     ],
     "shapes": [
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/shape-1.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/shape-2.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/shape-3.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/shape-4.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Woodland/shape-5.png"
+      "assets/imgs/environments/cloth-patterns/Woodland/shape-1.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/shape-2.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/shape-3.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/shape-4.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/shape-5.png"
     ]
   },
   {
     "id": "12bb",
     "typeName": "Desert",
-    "imgUrl": "../../../../assets/imgs/environments/png-pics/desert.png",
+    "imgUrl": "assets/imgs/environments/png-pics/desert.png",
     "clothPatterns": [
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/low-resolution/1-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/low-resolution/2-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/low-resolution/3-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/low-resolution/4-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/low-resolution/5-copy.jpg"
+      "assets/imgs/environments/cloth-patterns/Desert/low-resolution/1-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Desert/low-resolution/2-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Desert/low-resolution/3-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Desert/low-resolution/4-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Desert/low-resolution/5-copy.jpg"
     ],
     "shapes": [
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+      "assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+      "assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+      "assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+      "assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+      "assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
     ]
   },
   {
     "id": "13cc",
     "typeName": "Rocky Urban",
-    "imgUrl": "../../../../assets/imgs/environments/png-pics/urban-rocky.png",
+    "imgUrl": "assets/imgs/environments/png-pics/urban-rocky.png",
     "clothPatterns": [
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/1-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/2-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/3-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/4-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/5-copy.jpg"
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/1-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/2-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/3-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/4-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/5-copy.jpg"
     ],
     "shapes": [
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
     ]
   },
   {
     "id": "15ee",
     "typeName": "Snowy",
-    "imgUrl": "../../../../assets/imgs/environments/png-pics/snowy.png",
+    "imgUrl": "assets/imgs/environments/png-pics/snowy.png",
     "clothPatterns": [
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/low-resolution/1-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/low-resolution/2-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/low-resolution/3-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/low-resolution/4-copy.jpg",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/low-resolution/5-copy.jpg"
+      "assets/imgs/environments/cloth-patterns/Snow/low-resolution/1-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Snow/low-resolution/2-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Snow/low-resolution/3-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Snow/low-resolution/4-copy.jpg",
+      "assets/imgs/environments/cloth-patterns/Snow/low-resolution/5-copy.jpg"
     ],
     "shapes": [
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-1.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-2.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-3.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-4.png",
-      "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-5.png"
+      "assets/imgs/environments/cloth-patterns/Snow/shape-1.png",
+      "assets/imgs/environments/cloth-patterns/Snow/shape-2.png",
+      "assets/imgs/environments/cloth-patterns/Snow/shape-3.png",
+      "assets/imgs/environments/cloth-patterns/Snow/shape-4.png",
+      "assets/imgs/environments/cloth-patterns/Snow/shape-5.png"
     ]
   }
 ]

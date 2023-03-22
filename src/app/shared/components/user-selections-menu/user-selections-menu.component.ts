@@ -1,6 +1,6 @@
 import {  Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { from, map, of, Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AssetForDisplay } from '../../models/asset-for-display';
 import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
 import { UserSelectionService } from '../../services/user-selection.service';
@@ -81,7 +81,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
     let platform = this.checkPlatform(this.currPlatforms);
 
-    const doc = new jsPDF();
+    const doc = new jsPDF('p', 'pt','a4',true);
     this.isProcessingPdf = true;
 
     autoTable(doc, {
@@ -90,7 +90,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         if(data.cell.raw.id === 'logo'){
             var td = data.cell.raw;
             var img = td.getElementsByTagName('img')[0];
-            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 13, data.cell.contentHeight + 2);
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 30, data.cell.contentHeight);
           }
       },
       theme: 'plain',
@@ -103,7 +103,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
             content: `${this.date}`,
             styles: {
               halign: 'left'
-            }
+            },
           }
         ],
       ],
@@ -146,9 +146,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       bodyStyles: {
         valign: 'middle',
         cellWidth: 'wrap',
-        halign: 'justify',
-        minCellHeight: 15,
-        minCellWidth: 20
+        halign: 'center',
+        minCellHeight: 30,
+        minCellWidth: 35
       },
 
       didDrawCell: (data: any) => {
@@ -156,12 +156,12 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         if( cellId === 'imgEl'){
           var td = data.cell.raw;
           var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x + 10,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight);
+          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight, '', 'FAST' );
         }
         if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
           var td = data.cell.raw;
           var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 10, data.cell.contentHeight);
+          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 20, data.cell.contentHeight, '', 'FAST');
         }
       },
       theme: 'striped'

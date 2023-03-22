@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { asyncScheduler, BehaviorSubject } from 'rxjs';
 import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
 import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
 import { AssetForDisplay } from '../models/asset-for-display';
@@ -161,6 +161,39 @@ export class UserSelectionService {
       this.numOfSelections$.next(currNum + num);
     }
   }
+
+  // downloadPdf(htmlToPdfContent: ComponentRef<PdfPageComponent>, currPlatform: string | string[]) {
+  //   console.log(currPlatform)
+  //   this.setNumberOfNewSelections(0);
+  //   this.assetsForPdf$.next([]);
+
+
+
+  //      asyncScheduler.schedule(() => {
+  //        const htmlString = htmlToPdfContent.location.nativeElement.innerHTML;
+  //        htmlToPdfContent.destroy();
+
+  //        var doc = new JSPDF();
+  //        doc.html(htmlString, {
+  //        callback: ((doc: JSPDF) => {
+  //          if(currPlatform[0] === 'desktop'){
+  //            doc.save("output.pdf");
+  //          }else{
+  //            let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
+  //            this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blobPdf, { replace: true }).then(fileEntry => {
+  //            this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+  //            })
+  //          }
+  //        }).bind(this),
+  //        margin: [10,10,10,10],
+  //        autoPaging: 'text',
+  //        x: 0,
+  //        y: 0,
+  //        width: 190,
+  //        windowWidth: 675
+  //      });
+  //    });
+  //  }
 
 }
 

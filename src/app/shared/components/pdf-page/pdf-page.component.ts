@@ -260,7 +260,7 @@ export class PdfPageComponent implements OnInit {
         "id": "2OzGywzL",
         "asset": {
             "id": "ZRXgJ",
-            "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+            "assetImgUrl": "assets/imgs/typical-assets/JLTV.png",
             "name": "JLTV",
             "configurationId": "c4",
             "measures": {
@@ -273,7 +273,7 @@ export class PdfPageComponent implements OnInit {
         "configuratoin": {
             "id": "c4",
             "name": "1B",
-            "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+            "imgUrl": "assets/imgs/configurations-imgs/1B.png",
             "hexagon": 1,
             "rhombus": 2,
             "measures": {
@@ -286,45 +286,45 @@ export class PdfPageComponent implements OnInit {
             "environment": {
                 "id": "12bb",
                 "typeName": "Desert",
-                "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+                "imgUrl": "assets/imgs/environments/png-small/desert7.png",
                 "clothPatterns": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+                    "assets/imgs/environments/cloth-patterns/Desert/1.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/2.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/3.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/4.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/5.png"
                 ],
                 "shapes": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+                    "assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+                    "assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
                 ]
             },
-            "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+            "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
         },
         "sideB": {
             "environment": {
                 "id": "14dd",
                 "typeName": "Rocky",
-                "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+                "imgUrl": "assets/imgs/environments/png-small/rocky.png",
                 "clothPatterns": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
                 ],
                 "shapes": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
                 ]
             },
-            "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+            "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
         },
         "measureType": 1,
         "ulcansType": {
@@ -337,7 +337,7 @@ export class PdfPageComponent implements OnInit {
       "id": "2OzGywzL",
       "asset": {
           "id": "ZRXgJ",
-          "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+          "assetImgUrl": "assets/imgs/typical-assets/JLTV.png",
           "name": "JLTV",
           "configurationId": "c4",
           "measures": {
@@ -350,7 +350,7 @@ export class PdfPageComponent implements OnInit {
       "configuratoin": {
           "id": "c4",
           "name": "1B",
-          "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+          "imgUrl": "assets/imgs/configurations-imgs/1B.png",
           "hexagon": 1,
           "rhombus": 2,
           "measures": {
@@ -363,45 +363,45 @@ export class PdfPageComponent implements OnInit {
           "environment": {
               "id": "12bb",
               "typeName": "Desert",
-              "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+              "imgUrl": "assets/imgs/environments/png-small/desert7.png",
               "clothPatterns": [
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+                  "assets/imgs/environments/cloth-patterns/Desert/1.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/2.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/3.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/4.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/5.png"
               ],
               "shapes": [
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+                  "assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+                  "assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
               ]
           },
-          "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+          "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
       },
       "sideB": {
           "environment": {
               "id": "14dd",
               "typeName": "Rocky",
-              "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+              "imgUrl": "assets/imgs/environments/png-small/rocky.png",
               "clothPatterns": [
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
               ],
               "shapes": [
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
-                  "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+                  "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
               ]
           },
-          "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+          "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
       },
       "measureType": 1,
       "ulcansType": {
@@ -414,7 +414,7 @@ export class PdfPageComponent implements OnInit {
     "id": "2OzGywzL",
     "asset": {
         "id": "ZRXgJ",
-        "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+        "assetImgUrl": "assets/imgs/typical-assets/JLTV.png",
         "name": "JLTV",
         "configurationId": "c4",
         "measures": {
@@ -427,7 +427,7 @@ export class PdfPageComponent implements OnInit {
     "configuratoin": {
         "id": "c4",
         "name": "1B",
-        "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+        "imgUrl": "assets/imgs/configurations-imgs/1B.png",
         "hexagon": 1,
         "rhombus": 2,
         "measures": {
@@ -440,45 +440,45 @@ export class PdfPageComponent implements OnInit {
         "environment": {
             "id": "12bb",
             "typeName": "Desert",
-            "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+            "imgUrl": "assets/imgs/environments/png-small/desert7.png",
             "clothPatterns": [
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+                "assets/imgs/environments/cloth-patterns/Desert/1.png",
+                "assets/imgs/environments/cloth-patterns/Desert/2.png",
+                "assets/imgs/environments/cloth-patterns/Desert/3.png",
+                "assets/imgs/environments/cloth-patterns/Desert/4.png",
+                "assets/imgs/environments/cloth-patterns/Desert/5.png"
             ],
             "shapes": [
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+                "assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+                "assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+                "assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+                "assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+                "assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
             ]
         },
-        "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+        "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
     },
     "sideB": {
         "environment": {
             "id": "14dd",
             "typeName": "Rocky",
-            "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+            "imgUrl": "assets/imgs/environments/png-small/rocky.png",
             "clothPatterns": [
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
             ],
             "shapes": [
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
-                "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+                "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
             ]
         },
-        "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+        "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
     },
     "measureType": 1,
     "ulcansType": {
@@ -491,7 +491,7 @@ export class PdfPageComponent implements OnInit {
   "id": "2OzGywzL",
   "asset": {
       "id": "ZRXgJ",
-      "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+      "assetImgUrl": "assets/imgs/typical-assets/JLTV.png",
       "name": "JLTV",
       "configurationId": "c4",
       "measures": {
@@ -504,7 +504,7 @@ export class PdfPageComponent implements OnInit {
   "configuratoin": {
       "id": "c4",
       "name": "1B",
-      "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+      "imgUrl": "assets/imgs/configurations-imgs/1B.png",
       "hexagon": 1,
       "rhombus": 2,
       "measures": {
@@ -517,45 +517,45 @@ export class PdfPageComponent implements OnInit {
       "environment": {
           "id": "12bb",
           "typeName": "Desert",
-          "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+          "imgUrl": "assets/imgs/environments/png-small/desert7.png",
           "clothPatterns": [
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+              "assets/imgs/environments/cloth-patterns/Desert/1.png",
+              "assets/imgs/environments/cloth-patterns/Desert/2.png",
+              "assets/imgs/environments/cloth-patterns/Desert/3.png",
+              "assets/imgs/environments/cloth-patterns/Desert/4.png",
+              "assets/imgs/environments/cloth-patterns/Desert/5.png"
           ],
           "shapes": [
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+              "assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
           ]
       },
-      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+      "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
   },
   "sideB": {
       "environment": {
           "id": "14dd",
           "typeName": "Rocky",
-          "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+          "imgUrl": "assets/imgs/environments/png-small/rocky.png",
           "clothPatterns": [
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
           ],
           "shapes": [
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
           ]
       },
-      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+      "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
   },
   "measureType": 1,
   "ulcansType": {
@@ -568,7 +568,7 @@ export class PdfPageComponent implements OnInit {
   "id": "2OzGywzL",
   "asset": {
       "id": "ZRXgJ",
-      "assetImgUrl": "../../../../assets/imgs/typical-assets/JLTV.png",
+      "assetImgUrl": "assets/imgs/typical-assets/JLTV.png",
       "name": "JLTV",
       "configurationId": "c4",
       "measures": {
@@ -581,7 +581,7 @@ export class PdfPageComponent implements OnInit {
   "configuratoin": {
       "id": "c4",
       "name": "1B",
-      "imgUrl": "../../../../assets/imgs/configurations-imgs/1B.png",
+      "imgUrl": "assets/imgs/configurations-imgs/1B.png",
       "hexagon": 1,
       "rhombus": 2,
       "measures": {
@@ -594,45 +594,45 @@ export class PdfPageComponent implements OnInit {
       "environment": {
           "id": "12bb",
           "typeName": "Desert",
-          "imgUrl": "../../../../assets/imgs/environments/png-small/desert7.png",
+          "imgUrl": "assets/imgs/environments/png-small/desert7.png",
           "clothPatterns": [
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/5.png"
+              "assets/imgs/environments/cloth-patterns/Desert/1.png",
+              "assets/imgs/environments/cloth-patterns/Desert/2.png",
+              "assets/imgs/environments/cloth-patterns/Desert/3.png",
+              "assets/imgs/environments/cloth-patterns/Desert/4.png",
+              "assets/imgs/environments/cloth-patterns/Desert/5.png"
           ],
           "shapes": [
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+              "assets/imgs/environments/cloth-patterns/Desert/shape-1.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-2.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
+              "assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
           ]
       },
-      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
+      "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Desert/shape-3.png"
   },
   "sideB": {
       "environment": {
           "id": "14dd",
           "typeName": "Rocky",
-          "imgUrl": "../../../../assets/imgs/environments/png-small/rocky.png",
+          "imgUrl": "assets/imgs/environments/png-small/rocky.png",
           "clothPatterns": [
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
           ],
           "shapes": [
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
-              "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+              "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
           ]
       },
-      "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
+      "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png"
   },
   "measureType": 1,
   "ulcansType": {
@@ -645,7 +645,7 @@ export class PdfPageComponent implements OnInit {
         "id": "AM9oy20A",
         "asset": {
             "id": "pSt6X9P7",
-            "assetImgUrl": "../../../../assets/imgs/hexagon-bg/asset-bg.png",
+            "assetImgUrl": "assets/imgs/hexagon-bg/asset-bg.png",
             "name": "ff",
             "configurationId": "c8",
             "measures": {
@@ -658,7 +658,7 @@ export class PdfPageComponent implements OnInit {
         "configuratoin": {
             "id": "c8",
             "name": "4",
-            "imgUrl": "../../../../assets/imgs/configurations-imgs/4.png",
+            "imgUrl": "assets/imgs/configurations-imgs/4.png",
             "hexagon": 4,
             "rhombus": 4,
             "measures": {
@@ -671,45 +671,45 @@ export class PdfPageComponent implements OnInit {
             "environment": {
                 "id": "13cc",
                 "typeName": "Urban",
-                "imgUrl": "../../../../assets/imgs/environments/png-small/urban.png",
+                "imgUrl": "assets/imgs/environments/png-small/urban.png",
                 "clothPatterns": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/1.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/2.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/3.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/4.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/5.png"
                 ],
                 "shapes": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-1.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-2.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
+                    "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
                 ]
             },
-            "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png"
+            "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png"
         },
         "sideB": {
             "environment": {
                 "id": "15ee",
                 "typeName": "Snowy",
-                "imgUrl": "../../../../assets/imgs/environments/png-small/snowy.png",
+                "imgUrl": "assets/imgs/environments/png-small/snowy.png",
                 "clothPatterns": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/5.png"
+                    "assets/imgs/environments/cloth-patterns/Snow/1.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/2.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/3.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/4.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/5.png"
                 ],
                 "shapes": [
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-1.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-2.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-3.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-4.png",
-                    "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-5.png"
+                    "assets/imgs/environments/cloth-patterns/Snow/shape-1.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/shape-2.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/shape-3.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/shape-4.png",
+                    "assets/imgs/environments/cloth-patterns/Snow/shape-5.png"
                 ]
             },
-            "clothPatternUrl": "../../../../assets/imgs/environments/cloth-patterns/Snow/shape-3.png"
+            "clothPatternUrl": "assets/imgs/environments/cloth-patterns/Snow/shape-3.png"
         },
         "measureType": 1,
         "ulcansType": {
