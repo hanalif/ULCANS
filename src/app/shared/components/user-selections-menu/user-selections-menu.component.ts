@@ -1,6 +1,5 @@
 import {  Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Subscription } from 'rxjs';
 import { AssetForDisplay } from '../../models/asset-for-display';
 import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
 import { UserSelectionService } from '../../services/user-selection.service';
@@ -11,6 +10,7 @@ import 'jspdf-autotable';
 import autoTable, { CellHookData } from 'jspdf-autotable';
 import JSPDF, { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -79,155 +79,157 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   }
   onDownloadPdf(){
 
-    let platform = this.checkPlatform(this.currPlatforms);
 
-    const doc = new jsPDF('p', 'pt','a4',true);
-    this.isProcessingPdf = true;
+      let platform = this.checkPlatform(this.currPlatforms);
 
-    autoTable(doc, {
-      html: '.table1',
-      didDrawCell: (data: any) => {
-        if(data.cell.raw.id === 'logo'){
+      const doc = new jsPDF('p', 'pt','a4',true);
+      this.isProcessingPdf = true;
+
+      autoTable(doc, {
+        html: '.table1',
+        didDrawCell: (data: any) => {
+          if(data.cell.raw.id === 'logo'){
+              var td = data.cell.raw;
+              var img = td.getElementsByTagName('img')[0];
+              doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 30, data.cell.contentHeight);
+            }
+        },
+        theme: 'plain',
+      });
+
+      autoTable(doc, {
+        body: [
+          [
+            {
+              content: `${this.date}`,
+              styles: {
+                halign: 'left'
+              },
+            }
+          ],
+        ],
+        theme: 'plain'
+      });
+
+      autoTable(doc, {
+        body: [
+          [
+            {
+              content:'Fibrotex'
+              +'\n8 Hasivim Street, Petach Tikvah, Israel'
+              +'\n+972 9 951 8830',
+              styles: {
+                halign: 'left'
+              }
+            }
+          ],
+        ],
+        theme: 'plain'
+      });
+
+      autoTable(doc, {
+        body: [
+          [
+            {
+              content: 'ULCANS PREFERENCES',
+              styles: {
+                halign:'left',
+                fontSize: 12
+              }
+            }
+          ]
+        ],
+        theme: 'plain'
+      });
+
+      autoTable(doc, {
+        html: '.table',
+        bodyStyles: {
+          valign: 'middle',
+          cellWidth: 'wrap',
+          halign: 'center',
+          minCellHeight: 30,
+          minCellWidth: 35
+        },
+
+        didDrawCell: (data: any) => {
+          var cellId = data.cell.raw.id;
+          if( cellId === 'imgEl'){
             var td = data.cell.raw;
             var img = td.getElementsByTagName('img')[0];
-            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 30, data.cell.contentHeight);
+            doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight, '', 'FAST' );
           }
-      },
-      theme: 'plain',
-    });
+          if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 20, data.cell.contentHeight, '', 'FAST');
+          }
+        },
+        theme: 'striped'
 
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: `${this.date}`,
-            styles: {
-              halign: 'left'
-            },
-          }
+      });
+
+      autoTable(doc, {
+        body: [
+          [
+            {
+              content: 'Important Note',
+              styles: {
+                halign: 'left',
+                fontSize: 14
+              }
+            }
+          ],
+          [
+            {
+
+              content: 'Thank you for selecting your ULCANS preferences.'
+              +'We would appreciate it if you could send the PDF to our office'
+              +' and get in touch with our exceptional agent to discuss your choices further.',
+              styles: {
+                halign: 'left'
+              }
+            }
+          ],
         ],
-      ],
-      theme: 'plain'
-    });
+        theme: "plain"
+      });
 
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content:'Fibrotex'
-            +'\n8 Hasivim Street, Petach Tikvah, Israel'
-            +'\n+972 9 951 8830',
-            styles: {
-              halign: 'left'
+      autoTable(doc, {
+        body: [
+          [
+            {
+              content: 'Ultra Lightweight Camouflage Net System'
+              +'The ability to conceal and protect forces against multi-spectral sensor threats.',
+              styles: {
+                halign: 'center'
+              }
             }
-          }
+          ]
         ],
-      ],
-      theme: 'plain'
-    });
-
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: 'ULCANS PREFERENCES',
-            styles: {
-              halign:'left',
-              fontSize: 12
-            }
-          }
-        ]
-      ],
-      theme: 'plain'
-    });
-
-    autoTable(doc, {
-      html: '.table',
-      bodyStyles: {
-        valign: 'middle',
-        cellWidth: 'wrap',
-        halign: 'center',
-        minCellHeight: 30,
-        minCellWidth: 35
-      },
-
-      didDrawCell: (data: any) => {
-        var cellId = data.cell.raw.id;
-        if( cellId === 'imgEl'){
-          var td = data.cell.raw;
-          var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight, '', 'FAST' );
-        }
-        if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
-          var td = data.cell.raw;
-          var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 20, data.cell.contentHeight, '', 'FAST');
-        }
-      },
-      theme: 'striped'
-
-    });
-
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: 'Important Note',
-            styles: {
-              halign: 'left',
-              fontSize: 14
-            }
-          }
-        ],
-        [
-          {
-
-            content: 'Thank you for selecting your ULCANS preferences.'
-            +'We would appreciate it if you could send the PDF to our office'
-            +' and get in touch with our exceptional agent to discuss your choices further.',
-            styles: {
-              halign: 'left'
-            }
-          }
-        ],
-      ],
-      theme: "plain"
-    });
-
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: 'Ultra Lightweight Camouflage Net System'
-            +'The ability to conceal and protect forces against multi-spectral sensor threats.',
-            styles: {
-              halign: 'center'
-            }
-          }
-        ]
-      ],
-      theme: "plain"
-    });
+        theme: "plain"
+      });
 
 
-    if(platform.desktop || platform.mobileWeb){
-      return doc.save("output.pdf",{ returnPromise: true }).then(()=>{
-        console.log('hello')
-        this.isProcessingPdf = false;
-        console.log(this.isProcessingPdf)
-      })
-    }
-
-
-    if(platform.mobile){
-      let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
-        this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
+      if(platform.desktop || platform.mobileWeb){
+        return doc.save("output.pdf",{ returnPromise: true }).then(()=>{
+          console.log('hello')
           this.isProcessingPdf = false;
-          this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
+          console.log(this.isProcessingPdf)
         })
-    }
+      }
 
-    return
+
+      if(platform.mobile){
+        let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
+          this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
+            this.isProcessingPdf = false;
+            this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
+          })
+      }
+
+      return
+
   }
 
   checkPlatform(currPlatforms: string[]){

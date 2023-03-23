@@ -151,29 +151,29 @@
     <table class="table">
       <thead>
       <tr class="row header blue">
-        <th class="cell" *ngFor="let headerTitle of tableHeaderTitlesForPdf">{{headerTitle}}</th>
+        <th *ngFor="let headerTitle of tableHeaderTitlesForPdf">{{headerTitle}}</th>
       </tr>
       </thead>
       <tbody>
       <tr class="row" *ngFor="let userSelection of assetsForDisplay" >
-          <td class="cell" id="imgEl">
+          <td id="imgEl">
               <img [src]="userSelection.configuratoin!.imgUrl" alt="">
               <h3>{{userSelection.configuratoin!.name}}</h3>
           </td>
-          <td class="cell">{{userSelection.asset!.name}}</td>
-          <td class="cell">
+          <td>{{userSelection.asset!.name}}</td>
+          <td>
             <h3>{{userSelection.sideA.environment.typeName}}</h3>
           </td>
-          <td class="cell" id="imgElSideA">
+          <td id="imgElSideA">
             <img [src]="userSelection.sideA.clothPatternUrl" alt="pattern">
           </td>
-          <td class="cell" >
+          <td >
             <h3>{{userSelection.sideB.environment.typeName}}</h3>
           </td>
-          <td class="cell" id="imgElSideB">
+          <td id="imgElSideB">
             <img [src]="userSelection.sideB.clothPatternUrl" alt="pattern">
           </td>
-          <td class="cell">
+          <td>
             <h3>{{userSelection.ulcansType.name}}</h3>
           </td>
       </tr>

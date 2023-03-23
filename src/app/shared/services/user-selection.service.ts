@@ -142,6 +142,7 @@ export class UserSelectionService {
 
         assetsForDisplay.push(assetForDisplay);
       }
+      console.log(assetsForDisplay)
       return assetsForDisplay;
   }
 

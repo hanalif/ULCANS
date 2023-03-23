@@ -16,6 +16,13 @@
       "assets/imgs/environments/cloth-patterns/Woodland/shape-3.png",
       "assets/imgs/environments/cloth-patterns/Woodland/shape-4.png",
       "assets/imgs/environments/cloth-patterns/Woodland/shape-5.png"
+    ],
+    "forPdf":[
+      "assets/imgs/environments/cloth-patterns/Woodland/for-pdf/1.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/for-pdf/2.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/for-pdf/3.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/for-pdf/4.png",
+      "assets/imgs/environments/cloth-patterns/Woodland/for-pdf/5.png"
     ]
   },
   {
@@ -35,6 +42,13 @@
       "assets/imgs/environments/cloth-patterns/Desert/shape-3.png",
       "assets/imgs/environments/cloth-patterns/Desert/shape-4.png",
       "assets/imgs/environments/cloth-patterns/Desert/shape-5.png"
+    ],
+    "forPdf":[
+      "assets/imgs/environments/cloth-patterns/Desert/for-pdf/1.png",
+      "assets/imgs/environments/cloth-patterns/Desert/for-pdf/2.png",
+      "assets/imgs/environments/cloth-patterns/Desert/for-pdf/3.png",
+      "assets/imgs/environments/cloth-patterns/Desert/for-pdf/4.png",
+      "assets/imgs/environments/cloth-patterns/Desert/for-pdf/5.png"
     ]
   },
   {
@@ -54,6 +68,13 @@
       "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-3.png",
       "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-4.png",
       "assets/imgs/environments/cloth-patterns/Urban-Rocky/shape-5.png"
+    ],
+    "forPdf":[
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/1.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/2.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/3.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/4.png",
+      "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/5.png"
     ]
   },
   {
@@ -73,6 +94,13 @@
       "assets/imgs/environments/cloth-patterns/Snow/shape-3.png",
       "assets/imgs/environments/cloth-patterns/Snow/shape-4.png",
       "assets/imgs/environments/cloth-patterns/Snow/shape-5.png"
+    ],
+    "forPdf":[
+      "assets/imgs/environments/cloth-patterns/Snow/for-pdf/1.png",
+      "assets/imgs/environments/cloth-patterns/Snow/for-pdf/2.png",
+      "assets/imgs/environments/cloth-patterns/Snow/for-pdf/3.png",
+      "assets/imgs/environments/cloth-patterns/Snow/for-pdf/4.png",
+      "assets/imgs/environments/cloth-patterns/Snow/for-pdf/5.png"
     ]
   }
 ]

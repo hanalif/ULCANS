@@ -3,5 +3,5 @@ export interface Environment{
   typeName: string,
   imgUrl: string,
   clothPatterns: string[],
-  shapes: string[]
+  shapes: string[],
 }
