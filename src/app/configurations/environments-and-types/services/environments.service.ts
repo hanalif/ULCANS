@@ -49,7 +49,7 @@ export class EnvironmentsService {
 
   getSystemSideForDisplay(environmentId: string, index: number){
     const environment = this.getEnvironmentById(environmentId);
-    const systemSideForDisplay: SystemSideForDisplay = {environment: environment, clothPatternUrl: environment.shapes[index]};
+    const systemSideForDisplay: SystemSideForDisplay = {environment: environment, indexForPatternUrl: index};
     return systemSideForDisplay;
 
   }

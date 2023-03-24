@@ -41,7 +41,7 @@
              <span class="card-row_content wide-screen">
                {{userSelection.sideA.environment.typeName}}
                <div class="card-img wide-screen">
-                 <img [src]="userSelection.sideA.clothPatternUrl" alt="pattren-sideA">
+                 <img [src]="userSelection.sideA.environment.shapes[userSelection.sideA.indexForPatternUrl]" alt="pattren-sideA">
                </div>
              </span>
            </div>
@@ -49,7 +49,7 @@
              <span class="card-row_content wide-screen">
                {{userSelection.sideB.environment.typeName}}
                <div class="card-img wide-screen">
-                 <img [src]="userSelection.sideB.clothPatternUrl" alt="pattren-sideB">
+                 <img [src]="userSelection.sideB.environment.shapes[userSelection.sideB.indexForPatternUrl]" alt="pattren-sideB">
                </div>
              </span>
            </div>
@@ -97,7 +97,7 @@
              <span class="card-row_content mobile">
                {{userSelection.sideA.environment.typeName}}
                <div class="card-img">
-                 <img [src]="userSelection.sideA.clothPatternUrl" alt="">
+                 <img [src]="userSelection.sideA.environment.shapes[userSelection.sideA.indexForPatternUrl]" alt="">
                </div>
              </span>
            </div>
@@ -106,7 +106,7 @@
              <span class="card-row_content mobile">
                {{userSelection.sideB.environment.typeName}}
                <div class="card-img">
-                 <img [src]="userSelection.sideB.clothPatternUrl" alt="">
+                 <img [src]="userSelection.sideB.environment.shapes[userSelection.sideB.indexForPatternUrl]" alt="">
                </div>
              </span>
            </div>
@@ -165,13 +165,13 @@
             <h3>{{userSelection.sideA.environment.typeName}}</h3>
           </td>
           <td id="imgElSideA">
-            <img [src]="userSelection.sideA.clothPatternUrl" alt="pattern">
+            <img [src]="userSelection.sideA.environment.shapes[userSelection.sideA.indexForPatternUrl]" alt="pattern">
           </td>
           <td >
             <h3>{{userSelection.sideB.environment.typeName}}</h3>
           </td>
           <td id="imgElSideB">
-            <img [src]="userSelection.sideB.clothPatternUrl" alt="pattern">
+            <img [src]="userSelection.sideB.environment.shapes[userSelection.sideB.indexForPatternUrl]" alt="pattern">
           </td>
           <td>
             <h3>{{userSelection.ulcansType.name}}</h3>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { combineLatest } from 'rxjs';
-import { PdfPageComponent } from './shared/components/pdf-page/pdf-page.component';
 
 const routes: Routes = [
   {
@@ -24,13 +23,7 @@ const routes: Routes = [
   {
     path: 'useful-information',
     loadChildren: () => import('./useful-information/useful-information-routing.module').then(m => m.UsefulInformationRoutingModule)
-  },
-  {
-    path:'pdf-page',
-    component: PdfPageComponent
-
   }
-
 
 ];
 

@@ -4,4 +4,5 @@ export interface Environment{
   imgUrl: string,
   clothPatterns: string[],
   shapes: string[],
+  forPdf: string[]
 }
