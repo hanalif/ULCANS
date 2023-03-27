@@ -67,7 +67,8 @@ setCurrClothPatterns(environmentId: string, currSide:string){
   let currEnvironment = environments.find(e=> e.id === environmentId);
   let clothPatternsUrls: ClothPatternsUrls = {
     clothPatterns: currEnvironment?.clothPatterns,
-    shapes: currEnvironment?.shapes
+    shapes: currEnvironment?.shapes,
+    forPdf: currEnvironment?.forPdf
   }
   this.currClothPatterns$.next(clothPatternsUrls);
   const currEnvironmentIdAndSide: CurrEnvironmentIdAndSide = {
@@ -77,9 +78,11 @@ setCurrClothPatterns(environmentId: string, currSide:string){
   this.currEnvironmentIdAndSide$.next(currEnvironmentIdAndSide);
 }
 
+
   _setEnvironments(){
-    return this.http.get<Environment[]>('assets/environments.json').pipe(map(environments => this.environments$.next(environments)));;
+    return this.http.get<Environment[]>('assets/environments.json').pipe(map(environments => this.environments$.next(environments)));
   }
+
 
 
 }

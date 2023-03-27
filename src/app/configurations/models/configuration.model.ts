@@ -4,6 +4,7 @@ export interface Configuration{
     id: string,
     name: string,
     imgUrl: string,
+    imgUrlForPdf: string,
     hexagon: number,
     rhombus: number,
     measures: ConfigurationMeasures

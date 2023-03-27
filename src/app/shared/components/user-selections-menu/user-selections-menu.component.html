@@ -129,11 +129,12 @@
 
    <div class="bottom">
      <div class="next-button-wrapper">
-      <ion-spinner *ngIf="isProcessingPdf"  class="spinner" name="circles"></ion-spinner>
       <button  [ngClass]="{'disabled': !areThereAssetsToDisplay}" (click)="onDownloadPdf()" class="regular-btn"> <span>Download To Pdf</span> </button>
      </div>
    </div>
   </div>
+
+
 
 
   <!-- Tables For Pdf -->
@@ -157,7 +158,7 @@
       <tbody>
       <tr class="row" *ngFor="let userSelection of assetsForDisplay" >
           <td id="imgEl">
-              <img [src]="userSelection.configuratoin!.imgUrl" alt="">
+              <img [src]="userSelection.configuratoin!.imgUrlForPdf" alt="">
               <h3>{{userSelection.configuratoin!.name}}</h3>
           </td>
           <td>{{userSelection.asset!.name}}</td>
@@ -165,13 +166,13 @@
             <h3>{{userSelection.sideA.environment.typeName}}</h3>
           </td>
           <td id="imgElSideA">
-            <img [src]="userSelection.sideA.environment.shapes[userSelection.sideA.indexForPatternUrl]" alt="pattern">
+            <img [src]="userSelection.sideA.environment.forPdf[userSelection.sideA.indexForPatternUrl]" alt="pattern">
           </td>
           <td >
             <h3>{{userSelection.sideB.environment.typeName}}</h3>
           </td>
           <td id="imgElSideB">
-            <img [src]="userSelection.sideB.environment.shapes[userSelection.sideB.indexForPatternUrl]" alt="pattern">
+            <img [src]="userSelection.sideB.environment.forPdf[userSelection.sideB.indexForPatternUrl]" alt="pattern">
           </td>
           <td>
             <h3>{{userSelection.ulcansType.name}}</h3>

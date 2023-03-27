@@ -27,7 +27,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
-  isProcessingPdf: boolean = false;
   tableHeaderTitles:  string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B',' Type', ''];
   tableHeaderTitlesForPdf: string[] = ['Configuration Type', 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
   date = this.transformDate(new Date);
@@ -83,7 +82,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       let platform = this.checkPlatform(this.currPlatforms);
 
       const doc = new jsPDF('p', 'pt','a4',true);
-      this.isProcessingPdf = true;
+
 
       autoTable(doc, {
         html: '.table1',
@@ -213,9 +212,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
       if(platform.desktop || platform.mobileWeb){
         return doc.save("output.pdf",{ returnPromise: true }).then(()=>{
-          console.log('hello')
-          this.isProcessingPdf = false;
-          console.log(this.isProcessingPdf)
         })
       }
 
@@ -223,7 +219,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       if(platform.mobile){
         let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
           this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
-            this.isProcessingPdf = false;
             this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
           })
       }

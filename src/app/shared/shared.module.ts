@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule} from '@ionic/angular';
 
-
-
 import { HeaderComponent } from './components/header/header.component';
 import { MainBtnComponent } from './components/main-btn/main-btn.component';
 import { FtToMPipe } from './pipes/ft-to-m.pipe';

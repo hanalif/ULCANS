@@ -1,5 +1,6 @@
 export interface ClothPatternsUrls{
   clothPatterns?: string[],
-  shapes?: string[]
+  shapes?: string[],
+  forPdf?: string[]
 
 }

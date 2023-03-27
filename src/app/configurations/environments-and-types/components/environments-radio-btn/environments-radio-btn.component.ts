@@ -45,12 +45,8 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy, OnChang
 
   onEnvironmentLink(id:string){
     this.environmentIdSelection = id;
-
-    setTimeout(()=>{
-      this.environmentsService.setIsClothPatternsMenuOpen(true);
-      this.environmentsService.setCurrClothPatterns(id, this.currSide);
-    }, 1000)
-
+    this.environmentsService.setIsClothPatternsMenuOpen(true);
+    this.environmentsService.setCurrClothPatterns(id, this.currSide);
   }
 
 
@@ -58,4 +54,8 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy, OnChang
     this.destroyed$.next(true);
     this.destroyed$.unsubscribe();
   }
+
+
 }
+
+
