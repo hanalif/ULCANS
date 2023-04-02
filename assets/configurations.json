@@ -3,7 +3,7 @@
         "id": "c1",
         "name": "0A",
         "imgUrl": "assets/imgs/configurations-imgs/OA.png",
-        "imgUrlForPdf": "assets/imgs/configurations-imgs/for-pdf/OA.png",
+        "imgUrlForPdf": "assets/imgs/configurations-imgs/for-pdf/0A.png",
         "hexagon": 0,
         "rhombus": 1,
         "measures": {
@@ -16,7 +16,7 @@
         "id": "c2",
         "name": "0B",
         "imgUrl": "assets/imgs/configurations-imgs/OB.png",
-        "imgUrlForPdf": "assets/imgs/configurations-imgs/for-pdf/OB.png",
+        "imgUrlForPdf": "assets/imgs/configurations-imgs/for-pdf/0B.png",
         "hexagon": 0,
         "rhombus": 2,
         "measures": {
