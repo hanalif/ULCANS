@@ -101,9 +101,9 @@
         "name": "M1087 Expandable Van",
         "configurationId": "c8",
         "measures": {
-            "widthFt": 96,
-            "heightFt": 145,
-            "lengthFt": 390
+            "widthFt": 7.9,
+            "heightFt": 20.9,
+            "lengthFt": 32.5
         },
         "isInList": true
     },

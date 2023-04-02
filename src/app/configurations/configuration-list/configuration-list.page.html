@@ -1,8 +1,25 @@
 <ion-header>
 </ion-header>
 <ion-content>
-  <div class="configuration-list-container main-layout">
-    <ion-title>configuration-list</ion-title>
-    <ion-button routerLink="/configurations/typical-configurations">To Assets</ion-button>
+  <div class="main-layout">
+    <div class="page-container">
+      <div class="top">
+        <div class="btns-section">
+          <button routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+        </div>
+        <div class="title">
+          <span>configuration-list</span>
+        </div>
+      </div>
+      <div class="cards-container">
+        <div *ngFor="let configuration of configurationsList" class="card">
+          <div class="card-img">
+            <img [src]="configuration.imgUrl" alt="configuration-pic">
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </ion-content>
+
