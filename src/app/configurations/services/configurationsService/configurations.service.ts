@@ -15,19 +15,23 @@ export class ConfigurationsService {
 
 
   getConfigurationById(configurationId: string){
-    let configurations = this.getConfigurations();
+    let configurations = this._getConfigurationsValue();
     const configuration = configurations.find(c=>
       {return c.id === configurationId})
     return configuration;
   }
 
-  getConfigurations(){
+  _getConfigurationsValue(){
     let configurations = this.configurations$.getValue()
     return configurations;
   }
 
+  getConfigurations(){
+    return this.configurations$.asObservable();
+  }
+
   getConfigurationsByIds(configurationsIds: string[]){
-    let configurations = this.getConfigurations();
+    let configurations = this._getConfigurationsValue();
     let conigurationsByIds: Configuration[] = [];
     for(let i = 0; i <configurations.length; i++){
       let isconfiguraionIdFound = configurationsIds.find(id=> id === configurations[i].id);
@@ -40,7 +44,7 @@ export class ConfigurationsService {
   }
 
   getConfgurationIdByNetDimention(netDmention:number){
-    let configurations = this.getConfigurations();
+    let configurations = this._getConfigurationsValue();
     let configurationId!: string;
 
     for(let i = 0; i<configurations.length; i++){

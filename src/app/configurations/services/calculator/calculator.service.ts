@@ -47,6 +47,8 @@ export class CalculatorService {
       let netLength: number = this.calculateNetLenthOrWidth(height, gap, length);
       let netWidth: number = this.calculateNetLenthOrWidth(height, gap, width);
       netDimentions = netLength * netWidth;
+
+      console.log(netDimentions);
       return netDimentions;
   }
 

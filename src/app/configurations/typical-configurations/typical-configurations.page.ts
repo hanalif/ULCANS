@@ -11,11 +11,11 @@ import { AssetsService } from '../services/assets/assets.service';
   templateUrl: './typical-configurations.page.html',
   styleUrls: ['./typical-configurations.page.scss'],
 })
-export class TypicalConfigurationsPage implements OnInit, AfterViewInit {
+export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestroy {
   public assetsList!: Asset[];
   @ViewChild(IonSearchbar) searchBarEl!: IonSearchbar;
-  @ViewChild(HomePage, { read: ElementRef }) private homePageEl!: ElementRef;
   areAssetsFound: boolean = true;
+  assetsSuscription!: Subscription;
 
 
 
@@ -27,30 +27,33 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit {
 
 
 
-  ngOnInit() {
-      this.assetsService.getAssets().subscribe(assets =>{
-      this.assetsList = assets;
-      this.cd.detectChanges();
-    });
+    ngOnInit() {
+      this.assetsSuscription = this.assetsService.getAssets().subscribe(assets =>{
+        this.assetsList = assets;
+        this.cd.detectChanges();
+      });
 
 
-  }
+    }
 
-  onAssetLink(assetId: string){
+    ngOnDestroy(): void {
+      this.assetsSuscription.unsubscribe();
+    }
+
+    onAssetLink(assetId: string){
     this.route.navigate(['configurations', 'typical-configurations', assetId]);
+    }
 
-  }
+    ngAfterViewInit(): void {
+      this.searchBarEl.ionInput.pipe(
+        debounceTime(300)
+      ).subscribe(res => {
+        const target = res.target as HTMLInputElement;
+        this.assetsList = this.assetsService.getSearchResultAssets(target.value);
+        this.areAssetsFound = this.assetsList.length === 0? false : true;
+      })
 
-  ngAfterViewInit(): void {
-    this.searchBarEl.ionInput.pipe(
-      debounceTime(300)
-    ).subscribe(res => {
-      const target = res.target as HTMLInputElement;
-      this.assetsList = this.assetsService.getSearchResultAssets(target.value);
-      this.areAssetsFound = this.assetsList.length === 0? false : true;
-    })
-
-  }
+    }
 
 
 }

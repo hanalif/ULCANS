@@ -109,14 +109,15 @@
       font-size: 25px;
       align-items: center;
       gap: 10px;
+      &:last-child{
+        border: none;
+      }
 
 
 
       @include for-bpoint-tablet{
           font-size: 20px;
-          &:last-child{
-          border: none;
-        }
+
       }
 
     }

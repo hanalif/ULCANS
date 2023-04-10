@@ -1,25 +1,47 @@
 <ion-header>
 </ion-header>
 <ion-content>
-  <div class="main-layout">
-    <div class="page-container">
+  <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
+    <div class="page-container style1 main-layout">
       <div class="top">
-        <div class="btns-section">
-          <button routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
-        </div>
         <div class="title">
-          <span>configuration-list</span>
+          <span>
+            configuration-list
+          </span>
+        </div>
+        <div class="search-container main-layout">
+          <ion-searchbar show-clear-button="focus"></ion-searchbar>
         </div>
       </div>
-      <div class="cards-container">
-        <div *ngFor="let configuration of configurationsList" class="card">
-          <div class="card-img">
-            <img [src]="configuration.imgUrl" alt="configuration-pic">
+      <div class="middle">
+        <div class="grid-container main-layout">
+          <div *ngFor="let configuration of configurationsList" class="card">
+            <div class="card-top">
+              <div class="card-title">
+                {{configuration.name}}
+              </div>
+              <div class="card-img">
+                <img [src]="configuration.imgUrl" alt="configuration-pic">
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-row">
+                <span>{{'size:' | uppercase}}</span>
+                <span>{{configuration.measures.areaSqFt}}</span>
+              </div>
+              <div class="card-row">
+                <span>Hexagon:</span>
+                <span>{{configuration.hexagon}}</span>
+              </div>
+              <div class="card-row">
+                <span>Rhombus:</span>
+                <span>{{configuration.rhombus}}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-  </div>
+  </ng-scrollbar>
 </ion-content>
 

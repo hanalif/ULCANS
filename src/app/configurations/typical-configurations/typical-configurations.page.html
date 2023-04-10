@@ -2,15 +2,19 @@
 </ion-header>
 <ion-content >
   <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
-  <div class="tc-container main-layout">
-    <div class="tc-top">
-      <h1>Choose an asset to camouflage</h1>
+  <div class="page-container style1 main-layout">
+    <div class="top">
+      <div class="title">
+        <span>
+          Choose an asset to camouflage
+        </span>
+      </div>
       <div class="search-container main-layout">
         <ion-searchbar show-clear-button="focus"></ion-searchbar>
       </div>
     </div>
-    <div class="tc-middle">
-      <div class="assets-container main-layout">
+    <div class="middle">
+      <div class="grid-container main-layout">
         <a class="single-link" *ngFor="let asset of assetsList" (click)="onAssetLink(asset.id)">
           <div class="img-wrapper">
             <img [src]="asset.assetImgUrl">
@@ -24,7 +28,7 @@
         </a>
       </div>
     </div>
-    <div class="tc-buttom">
+    <div class="buttom">
       <h1 *ngIf="!areAssetsFound">Couldn't Find Asset(s)</h1>
     </div>
   </div>
