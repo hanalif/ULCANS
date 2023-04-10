@@ -4,13 +4,19 @@
   <ng-scrollbar  class="scrollbar" [autoHeightDisabled]="false">
     <div class="page-container style1 main-layout">
       <div class="top">
+        <div class="btns-section">
+          <div>
+            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
+          </div>
+        </div>
         <div class="title">
           <span>
             configuration-list
           </span>
-        </div>
-        <div class="search-container main-layout">
-          <ion-searchbar show-clear-button="focus"></ion-searchbar>
+          <div class="search-container main-layout">
+            <ion-searchbar show-clear-button="focus"></ion-searchbar>
+          </div>
         </div>
       </div>
       <div class="middle">
@@ -26,8 +32,8 @@
             </div>
             <div class="card-content">
               <div class="card-row">
-                <span>{{'size:' | uppercase}}</span>
-                <span>{{configuration.measures.areaSqFt}}</span>
+                <span>Area:</span>
+                <span>{{configuration.measures.areaSqFt}}{{' '}}{{measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</span>
               </div>
               <div class="card-row">
                 <span>Hexagon:</span>

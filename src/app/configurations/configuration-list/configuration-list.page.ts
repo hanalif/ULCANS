@@ -3,6 +3,7 @@ import { Observable, Subscription, debounceTime } from 'rxjs';
 import { Configuration } from '../models/configuration.model';
 import { ConfigurationsService } from '../services/configurationsService/configurations.service';
 import { IonSearchbar } from '@ionic/angular';
+import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 
 @Component({
   selector: 'app-configuration-list',
@@ -14,6 +15,8 @@ export class ConfigurationListPage implements OnInit, OnDestroy, AfterViewInit {
   configurationsSubscription!: Subscription;
   @ViewChild(IonSearchbar) searchBarEl!: IonSearchbar;
   areConfigurationsFound: boolean = true;
+  public measureType: MeasureType = MeasureType.METERS;
+  public MeasureType = MeasureType;
 
   constructor(private configurationsService: ConfigurationsService) { }
 
@@ -33,6 +36,13 @@ export class ConfigurationListPage implements OnInit, OnDestroy, AfterViewInit {
       this.areConfigurationsFound = this.configurationsList.length === 0? false : true;
     })
 
+  }
+
+  onSelectBtn(measureType:MeasureType){
+    if(this.measureType === measureType){
+      return;
+    }
+    this.measureType = measureType;
   }
 
   ngOnDestroy(): void {

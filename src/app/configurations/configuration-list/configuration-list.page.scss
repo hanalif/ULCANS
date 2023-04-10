@@ -5,6 +5,16 @@
   --scrollbar-thumb-color: #7a7a7a;
 }
 
+.page-container{
+  .top{
+    width: 100%;
+
+    .title{
+      flex-direction: column;
+    }
+  }
+}
+
 
 
 .card{
@@ -13,6 +23,12 @@
   background-color: black;
   padding: 10px;
   gap: 10px;
+
+  &-content{
+    @include for-bpoint-tablet{
+      flex-direction: column;
+    }
+  }
 
   &-top{
     height: 120px;
@@ -23,8 +39,13 @@
     img{
       width: 70%;
       height:auto;
+
+      @include for-bpoint-tablet{
+        width: 100%;
+      }
     }
+
+
   }
-
-
 }
+

@@ -35,12 +35,10 @@ export class AssetPage implements OnInit {
     if(this.measureType === measureType){
       return;
     }
-
     this.measureType = measureType;
   }
 
   onChooseYourEnvironment(){
-
     let userSelections: Partial<AssetForPdf> = {
       measureType: this.measureType,
     }
