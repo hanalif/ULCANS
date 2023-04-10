@@ -43,6 +43,16 @@ export class ConfigurationsService {
     return conigurationsByIds;
   }
 
+  getConfigurationsSearchResult(searchKey: string){
+    let configurations = this._getConfigurationsValue();
+    if(searchKey === ''){
+      return configurations;
+    }
+    const serchKeyToLowerCase = searchKey.toLocaleLowerCase()
+    let updatedFetchedConfigurations = [...configurations.filter(a => a.name.toLocaleLowerCase().includes(serchKeyToLowerCase))]
+    return updatedFetchedConfigurations;
+  }
+
   getConfgurationIdByNetDimention(netDmention:number){
     let configurations = this._getConfigurationsValue();
     let configurationId!: string;
