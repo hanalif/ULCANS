@@ -15,7 +15,7 @@ export class AccordionComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {}
 
-  ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
 
   }
 

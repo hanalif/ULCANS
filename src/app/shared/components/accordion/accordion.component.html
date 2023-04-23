@@ -2,8 +2,9 @@
   <div *ngFor="let accordionItem of accordionItems; let i = index" class="accordion-item">
     <div class="accordion-item-header" (click)="onAccordionItemClicked(i)">
       <ng-container [ngTemplateOutlet]="accordionItem.accordionItemHeader" [ngTemplateOutletContext]="this"></ng-container>
+      <ion-icon class="icon-down" [ngClass]="{'icon-spins': openedItemIndex === i}"  name="chevron-down-outline"></ion-icon>
     </div>
-    <div class="accordion-item-body"   *ngIf="openedItemIndex === i"  [@slidesDownAnimation] >
+    <div class="accordion-item-body" [ngClass]="{'body-open': openedItemIndex === i}" >
       <ng-container [ngTemplateOutlet]="accordionItem.accordionItemBody" [ngTemplateOutletContext]="this"></ng-container>
     </div>
   </div>

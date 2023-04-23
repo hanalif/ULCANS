@@ -1,0 +1,69 @@
+[
+  {
+    "title": "Fold Poles",
+    "content":[
+      {
+        "videoUrl": "assets/imgs/critical-considerations/folding-up-system/PoleDown.mp4",
+        "imgsUrls":[],
+        "text": [],
+        "linksForMoreInformation": [ ]
+      }
+    ]
+  },
+  {
+    "title": "RETRIEVAL:",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgsUrls": ["assets/imgs/critical-considerations/folding-up-system/SupportSystemBag_CO.png"],
+        "text": [
+          "Remove all tent pins (1) securing net assembly.",
+          "Wipe mud/dirt from tent pins and telescopic poles (2).",
+          "Stow telescopic poles in support system carrying bag (3).",
+          "Place tent pins in carrying case (5). Place case in support system carrying bag.",
+          "Place hammer (6) in support system bag.",
+          "Spread net assembly over level ground and remove leaves, twigs, dirt, or foreign objects from screens.",
+          "Repair screens as necessary. "
+        ],
+        "linksForMoreInformation": [
+          "/useful-information/maintenance",
+          "/useful-information/equipment-description"
+        ]
+      }
+
+    ]
+  },
+  {
+    "title": "HEXAGON SCREEN FOLD PROCEDURE",
+    "content": [
+      {
+        "videoUrl": "assets/imgs/critical-considerations/folding-up-system/FoldHex.mp4",
+        "imgsUrls":[],
+        "text": [],
+        "linksForMoreInformation": []
+      }
+    ]
+  },
+  {
+    "title": "RHOMBIC SCREEN FOLD PROCEDURE",
+    "content":[
+      {
+        "videoUrl": "assets/imgs/critical-considerations/folding-up-system/FoldRhombus.mp4",
+        "imgsUrls":[],
+        "text": [],
+        "linksForMoreInformation": []
+      }
+    ]
+  },
+  {
+    "title": "FOLDING NET ASSEMBLY",
+    "content":[
+      {
+        "videoUrl": "assets/imgs/critical-considerations/setting-up-system/FoldNetAssembly.mp4",
+        "imgsUrls":[],
+        "text": [],
+        "linksForMoreInformation": []
+      }
+    ]
+  }
+]

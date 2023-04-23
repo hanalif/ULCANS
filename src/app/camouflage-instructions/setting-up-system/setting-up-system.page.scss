@@ -1,39 +1,16 @@
-.erect{
-  &-container{
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-  }
-
-  &-top{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    margin-block-start: 20px;
-    font-family: Light-font, sans-serif;
-  }
+.scrollbar {
+  --scrollbar-thumb-color: #7a7a7a;
 }
 
-
-.card{
-  background-color: #3f3f3f;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-
-    &-header{
-      font-family: Light-font, sans-serif;
-  }
-
-  &-title{
-    font-size: 26px;
-    text-align: center;
-    padding-block-start: 10px;
-  }
-
+.style1{
+  font-family: Babas-pro, sans-serif;
+  gap: 0px;
 }
+.middle{
+  display: flex;
+  justify-content: center;
+}
+
 
 
 

@@ -2,60 +2,31 @@
 </ion-header>
 
 <ion-content>
-    <app-accordion>
-      <app-accordion-item>
-        <div accordionItemHeader>
-          example header 1
-        </div>
-        <div accordionItemBody>
-          example body 1
-        </div>
-      </app-accordion-item>
-      <app-accordion-item>
-        <div accordionItemHeader>
-          example header 2
-        </div>
-        <div accordionItemBody>
-          example body 2
-        </div>
-      </app-accordion-item>
-      <app-accordion-item>
-        <div accordionItemHeader>
-          example header 3
-        </div>
-        <div accordionItemBody>
-          example body 3
-        </div>
-      </app-accordion-item>
-      <app-accordion-item>
-        <div accordionItemHeader>
-          example header 4
-        </div>
-        <div accordionItemBody>
-          example body 4
-        </div>
-      </app-accordion-item>
-    </app-accordion>
-
-
-
-    <div class="erect-container main-layout">
-      <div class="erect-top">
-        <div class="main-title">{{'Setting Up ULCANS' | uppercase}}</div>
-      </div>
-      <div class="erect-middle">
-        <div class="card">
-          <div class="card-header">
-            <h1  class="card-title">NET ASSEMBLY SELECTION </h1>
-          </div>
-          <div  class="card-content">
-            <p>Make sure to have the right net screen(s).
-              Screens should be assembled prior to fielding. This allows quick deployment of ULCANS in a hostile environment.
-              Before assembling screens, open and inventory all contents. Ensure all screens are of the same type and class
-            </p>
-          </div>
-
-        </div>
+  <ng-scrollbar class="scrollbar">
+  <div class="page-container style1 main-layout">
+    <div class="top">
+      <div class="title">
+        Setting Up System
       </div>
     </div>
+    <div class="middle">
+      <app-accordion>
+        <app-accordion-item *ngFor="let settingUpData of settingUpSystemData$ | async">
+          <div accordionItemHeader>
+            {{settingUpData.title | uppercase}}
+          </div>
+          <div class="data-content" *ngFor="let dataContent of settingUpData.content" accordionItemBody>
+            <div class="text-container">
+              <p *ngFor="let text of dataContent.text">{{text}}</p>
+            </div>
+            <video *ngIf="dataContent.videoUrl !== 'none'" width="100%" controls>
+              <source [src]="dataContent.videoUrl" type="video/mp4">
+              Your browser does not support HTML video.
+            </video>
+          </div>
+        </app-accordion-item>
+      </app-accordion>
+    </div>
+  </div>
+  </ng-scrollbar>
 </ion-content>

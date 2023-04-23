@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemInstructionsDataService } from '../critical-considerations/services/system-instructions-data.service';
+import { SystemInstructionsData } from '../models/system-instructions-data.model';
+import { Observable } from 'rxjs';
+import { SystemInstructionsContentData } from '../models/system-instructions-content.model';
 
 
 @Component({
@@ -7,15 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting-up-system.page.scss'],
 })
 export class SettingUpSystemPage implements OnInit {
-
-  constructor() { }
+  settingUpSystemData$!: Observable<SystemInstructionsData[]>
+  constructor(private systemDataService: SystemInstructionsDataService) { }
 
   ngOnInit() {
+    this.settingUpSystemData$ = this.systemDataService.getSettingUpSystemData()
+
   }
 
-  scrollToElement($element: HTMLElement): void {
-    console.log($element);
-    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-  }
+  // scrollToElement($element: HTMLElement): void {
+  //   console.log($element);
+  //   $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  // }
 
 }
