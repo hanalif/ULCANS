@@ -4,7 +4,7 @@
     "content":[
       {
         "videoUrl": "assets/imgs/critical-considerations/folding-up-system/PoleDown.mp4",
-        "imgsUrls":[],
+        "imgUrl":"",
         "text": [],
         "linksForMoreInformation": [ ]
       }
@@ -15,7 +15,7 @@
     "content":[
       {
         "videoUrl": "none",
-        "imgsUrls": ["assets/imgs/critical-considerations/folding-up-system/SupportSystemBag_CO.png"],
+        "imgUrl": "assets/imgs/critical-considerations/folding-up-system/SupportSystemBag_CO-greyBG.png",
         "text": [
           "Remove all tent pins (1) securing net assembly.",
           "Wipe mud/dirt from tent pins and telescopic poles (2).",
@@ -38,7 +38,7 @@
     "content": [
       {
         "videoUrl": "assets/imgs/critical-considerations/folding-up-system/FoldHex.mp4",
-        "imgsUrls":[],
+        "imgUrl":"",
         "text": [],
         "linksForMoreInformation": []
       }
@@ -49,7 +49,7 @@
     "content":[
       {
         "videoUrl": "assets/imgs/critical-considerations/folding-up-system/FoldRhombus.mp4",
-        "imgsUrls":[],
+        "imgUrl":"",
         "text": [],
         "linksForMoreInformation": []
       }
@@ -60,7 +60,7 @@
     "content":[
       {
         "videoUrl": "assets/imgs/critical-considerations/setting-up-system/FoldNetAssembly.mp4",
-        "imgsUrls":[],
+        "imgUrl":"",
         "text": [],
         "linksForMoreInformation": []
       }

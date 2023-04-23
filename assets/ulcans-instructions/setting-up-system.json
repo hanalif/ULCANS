@@ -4,7 +4,7 @@
     "content":[
       {
         "videoUrl": "none",
-        "imgsUrls": [],
+        "imgUrl": "",
         "text": [
           "Make sure to have the right net screen(s).",
         "Screens should be assembled prior to fielding. This allows quick deployment of ULCANS in a hostile environment. Before assembling screens, open and inventory all contents. Ensure all screens are of the same type and class"
@@ -34,7 +34,7 @@
     "content": [
       {
         "videoUrl": "assets/imgs/critical-considerations/setting-up-system/FoldNetAssembly.mp4",
-        "imgsUrls": [],
+        "imgUrl": "",
         "text": [],
         "linksForMoreInformation": []
       }
@@ -45,7 +45,7 @@
     "content":[
       {
         "videoUrl": "none",
-        "imgsUrls": [],
+        "imgUrl": "",
         "text": [
           "When choosing a location for concealment of equipment, consider the following:",
           "- The location of concealed equipment and ULCANS should not stand out as foreign object in surrounding area.",
@@ -58,7 +58,7 @@
       },
       {
         "videoUrl": "assets/imgs/critical-considerations/setting-up-system/PoleUp.mp4",
-        "imgsUrls": [],
+        "imgUrl": "",
         "text": [
           "Prepare poles:"
         ],
@@ -68,7 +68,7 @@
       },
       {
         "videoUrl": "assets/imgs/critical-considerations/setting-up-system/TruckCover.mp4",
-        "imgsUrls": [],
+        "imgUrl": "",
         "text": [
           "Place stakes in ground after net is deployed over equipment that needs to be concealed.",
           "Once stakes are deployed, begin extending support poles, starting at tallest point of asset (usually the center) and deploy first poles. Work your way to lowest point of asset on both sides to maintain some level of symmetry."
