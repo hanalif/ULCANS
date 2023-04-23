@@ -1,6 +1,6 @@
 export interface SystemInstructionsContentData {
   videoUrl?: string,
-  imgsUrls?: string[],
+  imgUrl?: string,
   text?: string[],
   linksForMoreInformation?: string[]
 }

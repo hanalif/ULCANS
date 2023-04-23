@@ -1,9 +1,31 @@
+@import "../setup/mixins";
+@import "../setup/variables";
+
+
 app-accordion{
   max-width: 850px;
   margin-block-end: 20px;
 
   .data-content{
     padding-block-end: 20px;
+
+    .main-data{
+      display: flex;
+
+      .img-container{
+        flex: 1;
+      }
+
+      .text-container{
+        flex: 1;
+      }
+
+      @include for-bpoint-mobile{
+        flex-direction: column;
+      }
+
+
+    }
 
     .text-container{
       display: flex;
