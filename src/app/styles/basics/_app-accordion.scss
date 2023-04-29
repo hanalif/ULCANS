@@ -6,23 +6,22 @@ app-accordion{
   max-width: 850px;
   margin-block-end: 20px;
 
+
   .data-content{
     padding-block-end: 20px;
+    background-color: #322929;
+    color: #bebebe;
+    padding: 10px;
+    border-radius: 5px;
+    padding-inline-start: 25px;
+
+     .accordion{
+        padding-inline-start: 20px;
+     }
 
     .main-data{
       display: flex;
-
-      .img-container{
-        flex: 1;
-      }
-
-      .text-container{
-        flex: 1;
-      }
-
-      @include for-bpoint-mobile{
-        flex-direction: column;
-      }
+      flex-direction: column;
 
 
     }
@@ -31,6 +30,7 @@ app-accordion{
       display: flex;
       flex-direction: column;
       gap: 10px;
+      margin-block-end: 20px;
     }
   }
 }

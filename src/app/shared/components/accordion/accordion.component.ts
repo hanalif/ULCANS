@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, OnInit, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { Animations } from 'src/app/angular-animations/animations';
 import { AccordionItemComponent } from './accordion-item/accordion-item.component';
 
@@ -10,13 +10,15 @@ import { AccordionItemComponent } from './accordion-item/accordion-item.componen
 })
 export class AccordionComponent implements OnInit, AfterContentInit {
   @ContentChildren(AccordionItemComponent) accordionItems: QueryList<AccordionItemComponent> = new QueryList<AccordionItemComponent>;
+  @Input() initialOpenIndex: number | null = null;
   openedItemIndex: number | null = null;
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.openedItemIndex = this.initialOpenIndex;
+  }
 
     ngAfterContentInit(): void {
-
   }
 
   onAccordionItemClicked(itemIndex: number) {

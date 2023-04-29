@@ -9,12 +9,20 @@ export class SystemInstructionsDataService{
 
   constructor(private http: HttpClient) { }
 
+  getCriticalConsidarationsData(){
+    return this._getCriticalConsidarationsData();
+  }
+
   getSettingUpSystemData(){
     return this._getSettingUpSystemData();
   }
 
   getFoldingUpSystemData(){
     return this._getFoldingUpSystemData();
+  }
+
+  _getCriticalConsidarationsData(){
+    return this.http.get<SystemInstructionsData[]>('assets/ulcans-instructions/critical-considerations.json');
   }
 
   _getSettingUpSystemData(){

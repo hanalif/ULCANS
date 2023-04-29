@@ -1,7 +1,7 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
   font-family: Babas-pro, sans-serif;
 
 
@@ -26,7 +26,6 @@
 
 
     .accordion-item-body {
-      color: #9F9F9F;
       font-size: 25px;
       margin-block-start: 10px;
       display: flex;
@@ -35,6 +34,7 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height .6s;
+
 
       &.body-open{
        max-height: 3000px;
