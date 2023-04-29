@@ -3,8 +3,9 @@
     "title": "INTRODUCTION",
     "content":[
       {
-        "videoUrl": "",
+        "videoUrl": "none",
         "imgUrl":"",
+        "imgUrl2": "",
         "text": [
           "The army has decades of experience developing, training, and using a variety of signature management systems and techniques. From this experience, multiple subject matter experts have distilled the most relevant information into this guide, which is intended as a supplement to the ULCANS Increment Technical Manual.",
           "The information contained in this section is based on frequently asked questions and commonly observed 'mistakes' in training and in the field."
@@ -17,8 +18,9 @@
     "title": "LOCATION",
     "content":[
       {
-        "videoUrl": "",
+        "videoUrl": "none",
         "imgUrl":"assets/imgs/critical-considerations/location.png",
+        "imgUrl2": "",
         "text": [
           "It is best practice to minimize the area of the side facing the threat when positioning/orienting the asset and system. ",
           "It is beneficial to deploy the system behind at least the first tree line, with concealment improving with increased foliage between the asset and the threat.",
@@ -36,8 +38,9 @@
         "linksForMoreInformation": [ ]
       },
       {
-        "videoUrl": "",
+        "videoUrl": "none",
         "imgUrl":"",
+        "imgUrl2":"",
         "text": [""],
         "linksForMoreInformation": [ ]
       }
@@ -47,8 +50,9 @@
     "title": "DEPLOYMENT",
     "content":[
       {
-        "videoUrl": "",
+        "videoUrl": "none",
         "imgUrl":"",
+        "imgUrl2":"",
         "text": [
           "It is recommended to size up whenever calculating appropriate configuration for net assembly based on the size of the asset to be concealed. ",
           "This allows for more mobility under nets without compromising their concealment capabilities."
@@ -56,20 +60,139 @@
         "linksForMoreInformation": ["/configurations/configuration-calaulator"],
         "subData": [
           {
-            "videoUrl": "",
-            "imgUrl":"",
-            "text": ["POSITIONING THE POLES:"],
-            "linksForMoreInformation": [ ]
+            "title": "POSITIONING THE POLES",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"assets/imgs/critical-considerations/deployment-poles.png",
+                "imgUrl2":"",
+                "text": ["• Place bottom of poles as close as possible to asset to be concealed, with shape disruptor end pointing away.",
+                        "• Arrange poles to allow a wide enough space between for vehicle(s) to depart without needing to reposition poles.",
+                        "• Place corner poles at 45-degree angles from each corner of asset to be concealed. Place additional poles at 90 degrees pointing away from asset. The Graphic Training Aid (GTA) illustrates this configuration clearly."
+                        ],
+                "linksForMoreInformation": []
+              }
+            ]
           },
           {
-            "videoUrl": "",
-            "imgUrl":"",
-            "text": [""],
-            "linksForMoreInformation": [ ]
+            "title": "POSITIONING THE ROLLED NET CONFIGURATION",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": [
+                          "When placing rolled net configuration on top of asset to be concealed, take into account variations in height of the asset.",
+                          "If one side or area is taller than another, the folded/rolled net should be placed closer to highest point to ensure all sides are covered when net is unfolded/unrolled.",
+                          "If the asset is of even height, without a tall point, the folded/rolled net should be placed in the center."
+                        ],
+                "linksForMoreInformation": []
+              }
+            ]
+          },
+          {
+            "title": "DEPLOYING THE STAKES",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"assets/imgs/critical-considerations/deployment-stack-copy.png",
+                "imgUrl2":"",
+                "text": [
+                          "• Create tension in net by aligning two personnel on opposite corners of the system, having them pull against each other and away from the asset at the same time.",
+                          "Each stake should have a counterpart on the opposite side of the system to ensure even distribution of tension from net(s).",
+                          "• It is recommended to use at least eight stakes for the smallest configuration. Add more stakes for larger configurations.",
+                          "• Driving stakes roughly half their length into ground when first deploying is useful and time saving when repositioning is required to adjust net and address slack.",
+                          "Make sure to drive stakes all the way into the ground once net is deployed properly.",
+                          "• When slack in net cannot be eliminated by repositioning location of stakes, it is helpful to use the becket loops to create a small fold that reduces effect of slack.",
+                          "To do so, thread one long becket loop through adjacent short loop, then double back with long loop and attach to stake."
+                        ],
+                "linksForMoreInformation": []
+              }
+            ]
+          },
+          {
+            "title": "DEPLOYING THE NETS AND POLES",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": [
+                          "• Once stakes are deployed, begin extending support poles, starting at tallest point of asset (usually the center) and deploy first poles.",
+                          "Work your way to lowest point of asset on both sides to maintain some level of symmetry.",
+                          "• Always extend upper section/clamp first.",
+                          "• Always lock clamp once extended until a 'click' is heard.",
+                          "• Take advantage of pole's foot spikes to maximize hold, reinforce net tension, and avoid system movement.",
+                          "• It is recommended to angle poles so that smaller side of figure eight shape disruptor is pointed towards the corner of the system at each corner.",
+                          "• Place poles in a way such that the base of each pole is as close to the asset as possible without interfering with vehicle movement or critical access points.",
+                          "• If needed, position poles on top of a vehicle to create required clearance between the net and platform without interfering with vehicle movement or critical access points."
+                        ],
+                "linksForMoreInformation": []
+              }
+            ]
           }
+
         ]
       }
 
+    ]
+  },
+  {
+    "title": "GENERAL",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"",
+        "imgUrl2":"assets/imgs/critical-considerations/general-copy.png",
+        "text": ["Camouflage is comprised of two basic principles: shape disruption and 'noise.'"],
+        "linksForMoreInformation": [ ],
+        "text2": [
+                  "Deploy poles so that wide side of shape disruptor is on the seam to reinforce net interconnection and direct net tension such that it does not create gaps in the quick connection seams.",
+                  "If you anticipate needing to open net connections (e.g. to take out a barrel), begin quick connection process at edges of system working towards the center.",
+                  "This will allow them to disconnect from the center to create a small opening rather than needing to undo an entire side, compromising the system as a whole.",
+                  "It is possible to use the system cases to cover sharp edges of the platform like concertina fences to reduce risk of ripping nets.",
+                  "Inversion is the most dangerous time frame, both day-to-night and night-to-day, due to larger temperature differences between air, ground, foliage, rocks, and other environmental components.",
+                  "Inversion can take up to three hours, depending on global position and time of year.",
+                  "When operating a vehicle under a net, heat will be generated that may compromise the system.",
+                  "It is important to note that thermal devices detect particles, not actual thermal energy. There are two strategies for mitigating this risk:",
+                  "• Create an exhaust extension to force exhaust underneath/outside net.",
+                  "• Create openings in the net roof to function as a chimney to allow particles to escape."
+                ],
+        "subData":[
+          {
+            "title": "Shape",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "text": [
+                          "There are no straight lines in nature (apart from urban environments, which are not natural).",
+                          "To better resemble the environment, it is important to create natural, non-geometric shapes or outlines with the systems.",
+                          "This component of camouflage is created by the end user."
+                        ],
+                "text2":[],
+                "linksForMoreInformation": [ ]
+              }
+            ]
+          },
+          {
+            "title": "Noise",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": [
+                          "The goal is to mimic noise created by the environment within different bandwidths detected by sensors. Noise is created by the manufacturer."
+                        ],
+                "text2":[],
+                "linksForMoreInformation": [ ]
+              }
+            ]
+          }
+        ]
+
+      }
     ]
   }
 ]
