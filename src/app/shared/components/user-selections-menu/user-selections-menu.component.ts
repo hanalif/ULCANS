@@ -143,12 +143,19 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
       autoTable(doc, {
         html: '.table',
+        headStyles:{
+          valign: 'middle',
+          cellWidth: 'wrap',
+          halign: 'left',
+          minCellHeight: 30,
+          minCellWidth: 40
+        },
         bodyStyles: {
           valign: 'middle',
           cellWidth: 'wrap',
-          halign: 'center',
+          halign: 'left',
           minCellHeight: 30,
-          minCellWidth: 35
+          minCellWidth: 40
         },
 
         didDrawCell: (data: any) => {
