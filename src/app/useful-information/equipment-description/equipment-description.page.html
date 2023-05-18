@@ -2,5 +2,53 @@
 </ion-header>
 
 <ion-content>
-  <h1>equipment-description</h1>
+  <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
+    <div class="page-container style1 main-layout">
+      <div class="top">
+        <div class="title">
+          Equipment Description
+        </div>
+      </div>
+      <div class="middle">
+        <app-accordion>
+          <app-accordion-item *ngFor="let equipmentDescriptionData of equipmentDescriptionData$ | async">
+            <div accordionItemHeader>
+              {{equipmentDescriptionData.title | uppercase}}
+            </div>
+            <div class="data-content" *ngFor="let dataContent of equipmentDescriptionData.content" accordionItemBody>
+              <div class="main-data">
+                <div class="text-container">
+                  <p *ngFor="let text of dataContent.text">{{text}}</p>
+                </div>
+                <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
+                  <img [src]="dataContent.imgUrl" alt="dataImg">
+                </div>
+              </div>
+              <video *ngIf="dataContent.videoUrl !== 'none'" width="100%" controls>
+                <source [src]="dataContent.videoUrl" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <app-accordion>
+                <app-accordion-item *ngFor="let subdata of dataContent.subData">
+                  <div accordionItemHeader>
+                    {{subdata.title | uppercase}}
+                  </div>
+                  <div class="data-content" *ngFor="let dataContent of subdata.content" accordionItemBody>
+                    <div class="main-data">
+                      <div class="text-container">
+                        <p *ngFor="let text of dataContent.text">{{text}}</p>
+                      </div>
+                      <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
+                        <img [src]="dataContent.imgUrl" alt="dataImg">
+                      </div>
+                    </div>
+                  </div>
+                </app-accordion-item>
+              </app-accordion>
+            </div>
+          </app-accordion-item>
+        </app-accordion>
+      </div>
+    </div>
+  </ng-scrollbar>
 </ion-content>

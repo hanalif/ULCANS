@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SystemInstructionsData } from "../../models/system-instructions-data.model";
+import { SystemInstructionsData } from "../models/system-instructions-data.model";
 
 @Injectable({
   providedIn: 'root'

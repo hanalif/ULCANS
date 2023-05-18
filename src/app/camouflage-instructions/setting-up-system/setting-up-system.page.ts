@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemInstructionsDataService } from '../critical-considerations/services/system-instructions-data.service';
-import { SystemInstructionsData } from '../models/system-instructions-data.model';
+import { SystemInstructionsDataService } from '../../services/system-instructions-data.service';
+import { SystemInstructionsData } from '../../models/system-instructions-data.model';
 import { Observable } from 'rxjs';
 
 

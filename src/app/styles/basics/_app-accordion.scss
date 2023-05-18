@@ -23,6 +23,10 @@ app-accordion{
       display: flex;
       flex-direction: column;
 
+      .img-container{
+        display: flex;
+        justify-content: center;
+      }
 
     }
 

@@ -1,0 +1,145 @@
+[
+  {
+    "title": "GENERAL INFORMATION",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"",
+        "text": [
+          "ULCANS is a 2D reversible, all-weather, multi-spectral, modular camouflage system that provides visual, near IR, shortwave IR, thermal, and radar signature concealment for stationary vehicles, weapons systems, tactical operation centers, personnel, and other tactical equipment.",
+          "ULCANS is designed for rapid deployment and recovery and is operator repairable and maintainable."
+        ],
+        "linksForMoreInformation": [ ]
+      }
+    ]
+  },
+  {
+    "title": "SYSTEM TYPE",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"",
+        "imgUrl2":"",
+        "text": [],
+        "linksForMoreInformation": [],
+        "subData": [
+          {
+            "title": "Type I, General Purpose (R/S)",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": ["Type I (camouflage edge band) is radar scattering and used for concealing non-radar ground equipment and tactical systems."],
+                "linksForMoreInformation": []
+              }
+            ]
+          },
+          {
+            "title": "Type II, Communications (R/T)",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": ["Type II (solid color edge band) is radar transparent and used for concealing ground radar equipment. "],
+                "linksForMoreInformation": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "SCREEN SYSTEM",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl": "assets/imgs/equipment-information/ED_screen_system-copy.png",
+        "text": [
+          "A modular camouflage screen system consists of the following:",
+          "• 1 ea. Hexagon screen",
+          "• 1 ea. Rhombic screen",
+          "• 1 ea. Screen carrying case",
+          "• 1 ea. Repair kit",
+          "• 1 ea. Technical manual",
+          "• 1 ea. Graphic training aid"
+        ],
+        "linksForMoreInformation": [
+
+        ]
+      }
+
+    ]
+  },
+  {
+    "title": "HEXAGON & RHOMBIC SCREEN",
+    "content": [
+      {
+        "videoUrl": "none",
+        "imgUrl":"assets/imgs/equipment-information/ED-copy.png",
+        "text": [
+          "Each screen has a quick connection system on the outer edges used to connect multiple screens together.",
+          "Identification tags (2) inform whether the screen is Type I, General Purpose (R/S), or Type II, Communications (R/T).",
+          "A camouflage edge band (1) indicates a Type I system and a solid color edge band (1) indicates Type II."
+        ],
+        "linksForMoreInformation": []
+      }
+    ]
+  },
+  {
+    "title": "REPAIR KIT",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"assets/imgs/equipment-information/ED_repair_kit-copy.png",
+        "text": [
+          "A repair kit is furnished to make field repairs of the ULCANS screens and return the system to a serviceable condition.",
+          "The repair material in the kit is the same color as the screen system.",
+          "The repair kit is stored in a pocket inside the screen system bag.",
+          "A repair kit includes the following:",
+          "• Repair kit bag",
+          "• 300 ea. Cable ties",
+          "• 25 ft² Screen repair material (same color as system type)"
+        ],
+        "linksForMoreInformation": []
+      }
+    ]
+  },
+  {
+    "title": "SUPPORT SYSTEM",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"assets/imgs/equipment-information/SupportSystemBag_CO-copy.png",
+        "text": [
+          "The support system includes components that create space between the camouflage screen and equipment being concealed in order to break up the visible outline of the equipment.",
+          "The support system includes the following:",
+          "• 20 ea. Tent pins (1)",
+          "• 5 ea. 13.77 ft (4.2 m) Telescopic support poles (2)",
+          "• 1 ea. Support system carrying bag (3)",
+          "• 1 ea. Spanner wrench (4)",
+          "• 1 ea. Tent pin carry case (5)",
+          "• 1 ea. Hammer (6)"
+        ],
+        "linksForMoreInformation": []
+      }
+    ]
+  },
+  {
+    "title": "TELESCOPIC SUPPORT POLES",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"assets/imgs/equipment-information/ED_support_pole_CO-copy.png",
+        "text": [
+          "Telescopic support poles have an integral shape disruptor (2) that breaks up the geometric screen shapes to improve concealment.",
+          "They are adjusted using integral clamps (1).",
+          "Poles are 5.4 ft (1.6 m) when collapsed and 13.77 ft (4.2 m) when extended."
+        ],
+        "linksForMoreInformation": []
+      }
+    ]
+  }
+]
