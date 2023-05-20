@@ -11,6 +11,7 @@ import autoTable, { CellHookData } from 'jspdf-autotable';
 import JSPDF, { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { MeasureType } from '../../models/measure-type.enum';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -19,17 +20,16 @@ import { Subscription } from 'rxjs';
   providers: [DatePipe]
 })
 export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
-  @ViewChild('mobileCardsWrapper') mobileEl!: ElementRef<HTMLImageElement>;
-  @ViewChild('wideScreenCardsWrapper') wideScreenEl!: ElementRef<HTMLImageElement>;
-
 
   assetsForPdfSubscription!: Subscription;
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
-  tableHeaderTitles:  string[] = ['Configuration Type', 'Asset', 'Side A', 'Side B',' Type', ''];
+  tableHeaderTitles:  string[] = ['Configuration Type', 'Area SQ' ,'Asset', 'Side A', 'Side B',' Type', ''];
   tableHeaderTitlesForPdf: string[] = ['Configuration Type', 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
   date = this.transformDate(new Date);
+  public measureType: MeasureType = MeasureType.METERS;
+  public MeasureType = MeasureType;
 
   transformDate(date: Date) {
     return this.datePipe.transform(date, 'yyyy-MM-dd');
@@ -76,6 +76,12 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       cssClass: 'custom-alert',
     });
   }
+
+
+
+
+  //PDF Generator:
+
   onDownloadPdf(){
 
 

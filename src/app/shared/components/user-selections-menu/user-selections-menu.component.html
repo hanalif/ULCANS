@@ -33,6 +33,11 @@
              </span>
            </div>
            <div class="row-wide-screen">
+            <span class="card-row_content wide-screen">
+              {{userSelection.configuratoin!.measures.areaSqFt | sqftToSqm: userSelection.measureType! | number}} {{userSelection.measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}
+            </span>
+          </div>
+           <div class="row-wide-screen">
              <span class="card-row_content wide-screen">
                {{userSelection.asset!.name}}
              </span>
@@ -85,7 +90,15 @@
              </span>
            </div>
            <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[1]}}</span>
+            <span class="card-row_title">{{tableHeaderTitles[1]}}</span>
+            <span class="card-row_content mobile">
+              {{userSelection.configuratoin!.measures.areaSqFt | sqftToSqm: userSelection.measureType! | number}} {{userSelection.measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}
+              <div class="card-img">
+              </div>
+            </span>
+          </div>
+           <div class="card-row">
+             <span class="card-row_title">{{tableHeaderTitles[2]}}</span>
              <span class="card-row_content mobile">
                {{userSelection.asset!.name}}
                <div class="card-img">
@@ -93,7 +106,7 @@
              </span>
            </div>
            <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[2]}}</span>
+             <span class="card-row_title">{{tableHeaderTitles[3]}}</span>
              <span class="card-row_content mobile">
                {{userSelection.sideA.environment.typeName}}
                <div class="card-img">
@@ -102,7 +115,7 @@
              </span>
            </div>
            <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[3]}}</span>
+             <span class="card-row_title">{{tableHeaderTitles[4]}}</span>
              <span class="card-row_content mobile">
                {{userSelection.sideB.environment.typeName}}
                <div class="card-img">
@@ -111,7 +124,7 @@
              </span>
            </div>
            <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[4]}}</span>
+             <span class="card-row_title">{{tableHeaderTitles[5]}}</span>
              <span class="card-row_content mobile">
                {{userSelection.ulcansType.name}}
              </span>
