@@ -26,7 +26,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
   tableHeaderTitles:  string[] = ['Configuration Type', 'Area SQ' ,'Asset', 'Side A', 'Side B',' Type', ''];
-  tableHeaderTitlesForPdf: string[] = ['Configuration Type', 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
+  tableHeaderTitlesForPdf: string[] = ['Configuration', 'Type', 'Area SQ' , 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
   date = this.transformDate(new Date);
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;

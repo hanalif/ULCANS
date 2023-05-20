@@ -172,8 +172,9 @@
       <tr class="row" *ngFor="let userSelection of assetsForDisplay" >
           <td id="imgEl">
               <img [src]="userSelection.configuratoin!.imgUrlForPdf" alt="">
-              <h3>{{userSelection.configuratoin!.name}}</h3>
           </td>
+          <td><h3>{{userSelection.configuratoin!.name}}</h3></td>
+          <td>{{userSelection.configuratoin!.measures.areaSqFt | sqftToSqm: userSelection.measureType! | number}} {{userSelection.measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</td>
           <td>{{userSelection.asset!.name}}</td>
           <td>
             <h3>{{userSelection.sideA.environment.typeName}}</h3>
