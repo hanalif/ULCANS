@@ -3,14 +3,14 @@
 <ion-content>
   <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
     <div class="page-container style1 main-layout">
-      <div class="top">
-        <div class="btns-section">
-          <div>
-            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
-            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
-          </div>
-        </div>
+      <div class="top main-layout">
         <div class="title">
+          <div class="btns-section">
+            <div>
+              <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+              <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
+            </div>
+          </div>
           <span>
             configuration-list
           </span>
@@ -20,21 +20,56 @@
         </div>
       </div>
       <div class="middle">
+        <!-- Table For Wide Screens -->
+        <div class="table-container main-layout">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th *ngFor="let tableTitle of tableTitlesList">{{tableTitle}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let configuration of configurationsList">
+                <td>
+                  {{configuration.name}}
+                </td>
+                <td>
+                  <div class="table-img">
+                    <img [src]="configuration.imgUrl" alt="configuration-pic">
+                  </div>
+                </td>
+                <td>
+                  {{configuration.hexagon}}
+                </td>
+                <td>
+                  {{configuration.rhombus}}
+                </td>
+                <td>
+                  {{configuration.measures.lengthFt | ftToM: measureType | number : '1.0-2' }}{{' '}}{{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                </td>
+                <td>
+                  {{configuration.measures.widthFt | ftToM: measureType | number : '1.0-2' }}{{' '}}{{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                </td>
+                <td>
+                  {{configuration.measures.areaSqFt | sqftToSqm: measureType | number : '1.0-0'}}{{' '}}{{measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+         <!-- Table For Mobile and Tablet -->
         <div class="grid-container main-layout">
           <div *ngFor="let configuration of configurationsList" class="card">
             <div class="card-top">
-              <div class="card-title">
-                {{configuration.name}}
-              </div>
               <div class="card-img">
                 <img [src]="configuration.imgUrl" alt="configuration-pic">
               </div>
+              <div class="card-title">
+                {{configuration.name}}
+              </div>
             </div>
             <div class="card-content">
-              <div class="card-row">
-                <span>Area:</span>
-                <span>{{configuration.measures.areaSqFt | sqftToSqm: measureType | number : '1.0-0'}}{{' '}}{{measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</span>
-              </div>
               <div class="card-row">
                 <span>Hexagon:</span>
                 <span>{{configuration.hexagon}}</span>
@@ -50,6 +85,10 @@
               <div class="card-row">
                 <span>Width:</span>
                 <span>{{configuration.measures.widthFt | ftToM: measureType | number : '1.0-2' }}{{' '}}{{measureType === MeasureType.METERS ? 'M': 'FT'}}</span>
+              </div>
+              <div class="card-row">
+                <span>Area:</span>
+                <span>{{configuration.measures.areaSqFt | sqftToSqm: measureType | number : '1.0-0'}}{{' '}}{{measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</span>
               </div>
             </div>
           </div>

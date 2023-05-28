@@ -18,6 +18,8 @@ export class ConfigurationListPage implements OnInit, OnDestroy, AfterViewInit {
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
 
+  tableTitlesList: string[] = ['Configuration Name', 'Image', 'Hexagon', 'Rhombus', 'Length', 'Width', 'Area' ]
+
   constructor(private configurationsService: ConfigurationsService) { }
 
 
