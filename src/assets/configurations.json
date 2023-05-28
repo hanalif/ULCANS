@@ -10,7 +10,9 @@
             "widthFt": 16.1,
             "lengthFt": 27.8,
             "areaSqFt": 224.5
-        }
+        },
+        "pins": 8,
+        "poles": 5
     },
     {
         "id": "c2",
@@ -23,7 +25,9 @@
             "widthFt": 13.9,
             "lengthFt": 40.2,
             "areaSqFt": 449.0
-        }
+        },
+        "pins": 10,
+        "poles": 5
     },
     {
         "id": "c3",
@@ -36,7 +40,9 @@
             "widthFt": 27.8,
             "lengthFt": 32.2,
             "areaSqFt": 673.6
-        }
+        },
+        "pins": 12,
+        "poles": 5
     },{
         "id": "c4",
         "name": "1B",
@@ -48,7 +54,9 @@
             "widthFt": 27.8,
             "lengthFt": 48.3,
             "areaSqFt": 1122.6
-        }
+        },
+        "pins": 15,
+        "poles": 6
     },
     {
         "id": "c5",
@@ -61,7 +69,9 @@
             "widthFt": 27.8,
             "lengthFt": 64.4,
             "areaSqFt": 1571.7
-        }
+        },
+        "pins": 18,
+        "poles": 8
     },
     {
         "id": "c6",
@@ -74,7 +84,9 @@
             "widthFt": 48.3,
             "lengthFt": 55.8,
             "areaSqFt": 1796.2
-        }
+        },
+        "pins": 20,
+        "poles": 10
     },
     {
         "id": "c7",
@@ -87,7 +99,9 @@
             "widthFt": 55.8,
             "lengthFt": 64.4,
             "areaSqFt": 2694.3
-        }
+        },
+        "pins": 24,
+        "poles": 15
     },
     {
         "id": "c8",
@@ -100,7 +114,9 @@
             "widthFt": 55.8,
             "lengthFt": 80.5,
             "areaSqFt": 3592.4
-        }
+        },
+        "pins": 28,
+        "poles": 18
     },
     {
         "id": "c9",
@@ -113,7 +129,9 @@
             "widthFt": 80.5,
             "lengthFt": 83.7,
             "areaSqFt": 4715.0
-        }
+        },
+        "pins": 32,
+        "poles": 22
     },
     {
         "id": "c10",
@@ -126,7 +144,9 @@
             "widthFt": 69.7,
             "lengthFt": 104.7,
             "areaSqFt": 5837.5
-        }
+        },
+        "pins": 36,
+        "poles": 26
     },
     {
         "id": "c11",
@@ -139,7 +159,9 @@
             "widthFt": 83.7,
             "lengthFt": 96.9,
             "areaSqFt": 6021.1
-        }
+        },
+        "pins": 36,
+        "poles": 26
     },
     {
         "id": "c12",
@@ -152,7 +174,9 @@
             "widthFt": 96.9,
             "lengthFt": 111.6,
             "areaSqFt": 7184.7
-        }
+        },
+        "pins": 40,
+        "poles": 26
     },
     {
         "id": "c13",
@@ -165,7 +189,9 @@
             "widthFt": 83.7,
             "lengthFt": 112.7,
             "areaSqFt": 7409.2
-        }
+        },
+        "pins": 40,
+        "poles": 28
     },
     {
         "id": "c14",
@@ -178,7 +204,9 @@
             "widthFt": 83.7,
             "lengthFt": 128.8,
             "areaSqFt": 8756.4
-        }
+        },
+        "pins": 44,
+        "poles": 32
     },
     {
         "id": "c15",
@@ -191,6 +219,8 @@
             "widthFt": 111.6,
             "lengthFt": 112.7,
             "areaSqFt": 8980.9
-        }
+        },
+        "pins": 48,
+        "poles": 34
     }
 ]

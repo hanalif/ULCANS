@@ -7,5 +7,7 @@ export interface Configuration{
     imgUrlForPdf: string,
     hexagon: number,
     rhombus: number,
-    measures: ConfigurationMeasures
+    measures: ConfigurationMeasures,
+    pins: number,
+    poles: number
 }
