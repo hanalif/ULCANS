@@ -15,6 +15,7 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges {
   systemTypes$!: Observable<SystemType[]>;
   systemTypeId!: string;
   @Input() currUserSelection!: AssetForPdf;
+  changSrcs: string[] = ['assets/imgs/environments/png-small/check-mark.png', 'assets/imgs/environments/png-small/check-mark-greyBG.png']
 
 
 

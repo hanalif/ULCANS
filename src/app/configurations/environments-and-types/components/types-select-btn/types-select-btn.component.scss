@@ -16,6 +16,7 @@
 
 
   .type-box{
+    box-sizing: border-box;
     position: relative;
     background-color: #393939;
     color: white;
@@ -28,7 +29,7 @@
     cursor: pointer;
 
     &.selected{
-      border: 1px solid white;
+      border: 2px solid white;
       outline-offset: -30px;
     }
 

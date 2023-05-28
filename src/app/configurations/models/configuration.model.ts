@@ -9,5 +9,6 @@ export interface Configuration{
     rhombus: number,
     measures: ConfigurationMeasures,
     pins: number,
-    poles: number
+    poles: number,
+    specialPoles?: boolean;
 }
