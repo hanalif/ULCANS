@@ -11,18 +11,28 @@ import { AccordionItemComponent } from './accordion-item/accordion-item.componen
 export class AccordionComponent implements OnInit, AfterContentInit {
   @ContentChildren(AccordionItemComponent) accordionItems: QueryList<AccordionItemComponent> = new QueryList<AccordionItemComponent>;
   @Input() initialOpenIndex: number | null = null;
-  openedItemIndex: number | null = null;
+  // openedItemIndex: number | null = null;
+  openedItemsIndexesMap: any = {};
+
   constructor() { }
 
   ngOnInit() {
-    this.openedItemIndex = this.initialOpenIndex;
+    if (this.initialOpenIndex !== null) {
+      this.openedItemsIndexesMap[this.initialOpenIndex] = this.initialOpenIndex;
+    }
   }
 
     ngAfterContentInit(): void {
   }
 
   onAccordionItemClicked(itemIndex: number) {
-    // this.accordionItems.get(itemIndex)?.isOpened = !this.accordionItems.get(itemIndex)?.isOpened;
-    this.openedItemIndex = this.openedItemIndex !== itemIndex ? itemIndex : null;
+    const indexToRemove = this.openedItemsIndexesMap[itemIndex];
+    if(indexToRemove !== undefined){
+      delete this.openedItemsIndexesMap[itemIndex];
+    } else{
+      this.openedItemsIndexesMap[itemIndex] = itemIndex;
+    }
+    console.log(this.openedItemsIndexesMap);
+    // this.openedItemIndex = this.openedItemIndex !== itemIndex ? itemIndex : null;
   }
 }
