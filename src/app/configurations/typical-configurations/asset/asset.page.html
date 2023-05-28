@@ -31,7 +31,7 @@
             <div class="card-body">
               <div class="card-row">
                 <span>Area SQ:</span>
-                <span>{{configuration.measures.areaSqFt | sqftToSqm: measureType | number}} {{measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</span>
+                <span>{{configuration.measures.areaSqFt | sqftToSqm: measureType | number : '1.0-0'}} {{measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</span>
               </div>
               <div class="card-row">
                 <span>Hexagon:</span>
@@ -40,6 +40,14 @@
               <div class="card-row">
                 <span>Rhombus:</span>
                 <span>{{configuration.rhombus}}</span>
+              </div>
+              <div class="card-row">
+                <span>Pins:</span>
+                <span>{{configuration.pins}}</span>
+              </div>
+              <div class="card-row">
+                <span>Poles:</span>
+                <span>{{configuration.poles}}</span>
               </div>
             </div>
           </div>
