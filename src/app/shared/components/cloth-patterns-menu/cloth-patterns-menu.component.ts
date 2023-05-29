@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { ReplaySubject, Subscription, takeUntil } from 'rxjs';
+import { ReplaySubject, takeUntil } from 'rxjs';
 import { ClothPatternsUrls } from 'src/app/configurations/environments-and-types/models/cloth-patterns-url.model';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
@@ -80,7 +80,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
     this.swiper2 = new Swiper(".mySwiper2", {
 
       modules: [Navigation, Thumbs],
-      loop: true,
+      loop: false,
       spaceBetween: 10,
       navigation: {
         nextEl: ".swiper-button-next",
@@ -93,7 +93,9 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
     });
 
     this.swiper2.on('activeIndexChange',(swiper) => {
+      console.log('swiper.activeIndex', swiper.activeIndex);
       this.selectedPatternIndex = swiper.activeIndex;
+      console.log('selectedPatternIndex', this.selectedPatternIndex);
     });
 
     this.swiper2.slideToLoop(this.selectedPatternIndex);
