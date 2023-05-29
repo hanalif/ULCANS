@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { from, map, Observable, tap } from "rxjs";
+import { EMPTY, from, map, Observable, tap } from "rxjs";
 import { UserSelectionService } from "src/app/shared/services/user-selection.service";
 import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from "src/app/shared/models/alert-confirmation.enum";
@@ -67,21 +67,37 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
       )
     }
 
+
     if(assetId){
-      if((nextState.url.includes('environments-and-types')) || (nextState.url.includes(assetId))){
+
+      if(currentState.url.includes(assetId)){
+
+        if((currentState.url.includes('environments-and-types'))){
+
+          if(nextState.url.includes(assetId)){
+            return true;
+          }
+          return from(this.presentAlert()).pipe(
+            map((res)=> res == AlertConfirmationType.Confirm),
+            tap((isLeavePage)=> {
+              if(isLeavePage){
+                this.userSelectionsService.resetCurrUserSelection();
+              }
+            })
+          )
+        }
+
+        if((nextState.url.includes('environments-and-types')) || (nextState.url.includes(assetId))){
+          return true;
+        }
+
+        this.userSelectionsService.resetCurrUserSelection();
         return true;
       }
+
     }
 
-
-    return from(this.presentAlert()).pipe(
-      map((res)=> res == AlertConfirmationType.Confirm),
-      tap((isLeavePage)=> {
-        if(isLeavePage){
-          this.userSelectionsService.resetCurrUserSelection();
-        }
-      })
-    )
+    return EMPTY;
   }
 }
 

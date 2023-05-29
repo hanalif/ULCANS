@@ -4,7 +4,7 @@
 //swiper
 .mySwiper{
   &.swiper{
-    height: 83px;
+    height: 85px;
     width: 400px;
     margin-left: auto;
     margin-right: auto;
@@ -18,10 +18,13 @@
   .swiper-wrapper{
     .swiper-slide{
       cursor: pointer;
-
+      &.bottom-choice{
+        width: 70px;
+      }
       .white-border{
         position: absolute;
       }
+
       background-color: transparent;
       opacity: 0.4;
 

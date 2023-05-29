@@ -47,7 +47,6 @@ export class AssetPage implements OnInit {
   }
 
   onBack(){
-    this.userSelectionsService.resetCurrUserSelection();
     this.route.navigate(['/configurations/typical-configurations']);
   }
 }
