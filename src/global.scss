@@ -51,7 +51,12 @@
 @import 'swiper/scss/scrollbar';
 @import 'swiper/scss/thumbs';
 
-
-
+.custom-alert .alert-wrapper {
+  .alert-title, .alert-button{
+    font-size: 25px;
+    letter-spacing: 1.4px;
+    font-family: Babas-pro, sans-serif;
+  }
+}
 
 

@@ -59,11 +59,15 @@
       padding: 12px 12px;
       text-align: center;
       letter-spacing: 3px;
-
     }
 
     & td {
       background-color: black;
+    }
+
+    .td-img{
+      display: flex;
+      justify-content: center;
     }
 
     & tbody tr{

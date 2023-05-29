@@ -12,7 +12,7 @@ const routes: Routes = [
     component: AssetPage,
     canActivate: [AssetPageGuard],
     resolve: {assetForPreview: AssetResolver},
-    canDeactivate: [UserSelectionGuard]
+    // canDeactivate: [UserSelectionGuard]
   }
 ];
 

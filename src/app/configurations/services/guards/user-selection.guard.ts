@@ -74,7 +74,6 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
     }
 
 
-
     return from(this.presentAlert()).pipe(
       map((res)=> res == AlertConfirmationType.Confirm),
       tap((isLeavePage)=> {
