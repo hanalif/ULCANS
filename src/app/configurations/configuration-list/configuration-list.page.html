@@ -4,13 +4,13 @@
   <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
     <div class="page-container style1 main-layout">
       <div class="top main-layout">
-        <div class="title">
-          <div class="btns-section">
-            <div>
-              <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
-              <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
-            </div>
+        <div class="btns-section">
+          <div>
+            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
+            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
           </div>
+        </div>
+        <div class="title">
           <span>
             configuration-list
           </span>
