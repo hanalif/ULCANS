@@ -1,8 +1,7 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSearchbar, NavController } from '@ionic/angular';
 import { debounceTime, Subscription } from 'rxjs';
-import { HomePage } from 'src/app/home/home.page';
 import { Asset } from '../models/asset.model';
 import { AssetsService } from '../services/assets/assets.service';
 
@@ -33,7 +32,6 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
         this.cd.detectChanges();
       });
 
-
     }
 
     ngOnDestroy(): void {
@@ -42,6 +40,11 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
 
     onAssetLink(assetId: string){
     this.route.navigate(['configurations', 'typical-configurations', assetId]);
+    }
+
+    onRemoveAsset(assetId:string){
+      this.assetsService.removeAsset(assetId);
+
     }
 
     ngAfterViewInit(): void {

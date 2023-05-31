@@ -80,6 +80,13 @@ export class AssetsService {
     return id;
   }
 
+  removeAsset(assetId: string){
+    let assets = this._getassetsValue();
+    let foundAssetIndex = assets.findIndex(a => a.id === assetId);
+    assets.splice(foundAssetIndex, 1);
+    this.addAssets(assets);
+  }
+
   addAsset(assetToAdd: Asset){
     let assets = this._getassetsValue();
     let foundAssetIndex = assets.findIndex(a => a.id === assetToAdd.id);

@@ -25,6 +25,9 @@
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </span>
           </div>
+          <div *ngIf="!asset.isInList" class="trash-icon">
+            <button (click)="onRemoveAsset(asset.id)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+          </div>
         </a>
       </div>
     </div>

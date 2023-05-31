@@ -5,6 +5,16 @@
   --scrollbar-thumb-color: #7a7a7a;
 }
 
+.trash-icon{
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+
+  .icon-btn{
+    border-radius: 10px;
+  }
+}
+
 .page{
   &-container{
     .top{
@@ -17,7 +27,8 @@
 }
 
 .single-link{
-  cursor: pointer;
+    position: relative;
+    cursor: pointer;
     background-color: black;
     border-radius: 10px;
     height: 250px;
