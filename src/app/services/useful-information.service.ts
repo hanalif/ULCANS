@@ -14,6 +14,14 @@ export class UsefulInformationDataService{
     return this._getEquipmentDescriptionData();
   }
 
+  getMaintenanceData(){
+    return this._getMaintenanceData()
+  }
+
+  _getMaintenanceData(){
+    return this.http.get<SystemInstructionsData[]>('assets/equipment-information/maintenance.json');
+  }
+
   _getEquipmentDescriptionData(){
     return this.http.get<SystemInstructionsData[]>('assets/equipment-information/equipment-description.json');
   }
