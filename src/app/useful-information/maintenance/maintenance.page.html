@@ -2,5 +2,69 @@
 </ion-header>
 
 <ion-content>
-<h1>maintenance</h1>
+  <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
+    <div class="page-container style1 main-layout">
+      <div class="top">
+        <div class="title">
+          Maintenance
+        </div>
+      </div>
+      <div class="middle">
+        <app-accordion>
+          <app-accordion-item *ngFor="let maintenanceData of maintenanceData$ | async">
+            <div accordionItemHeader>
+              {{maintenanceData.title | uppercase}}
+            </div>
+            <div class="data-content" *ngFor="let mainDataContent of maintenanceData.content" accordionItemBody>
+              <div class="main-data">
+                <div *ngIf="mainDataContent.note" class="note-box">
+                  <span>Note: {{mainDataContent.note}}</span>
+                </div>
+                <div class="text-container">
+                  <p *ngFor="let text of mainDataContent.text">{{text}}</p>
+                </div>
+                <div *ngIf="mainDataContent.note2" class="note-box">
+                  <span>Note: {{mainDataContent.note2}}</span>
+                </div>
+                <div *ngIf="mainDataContent.text2" class="text-container">
+                  <p *ngFor="let text of mainDataContent.text2">{{text}}</p>
+                </div>
+              </div>
+              <div class="img-box">
+                <div *ngIf="mainDataContent.imgUrl !== ''" class="img-container">
+                  <img [src]="mainDataContent.imgUrl" alt="dataImg">
+                </div>
+              </div>
+              <app-accordion>
+                <app-accordion-item *ngFor="let subdata of mainDataContent.subData">
+                  <div accordionItemHeader>
+                    {{subdata.title | uppercase}}
+                  </div>
+                  <div class="data-content" *ngFor="let subDataContent of subdata.content" accordionItemBody>
+                    <div class="main-data">
+                      <app-accordion>
+                        <app-accordion-item *ngFor="let innerSubdata of subDataContent.subData">
+                          <div accordionItemHeader>
+                            {{innerSubdata.title | uppercase}}
+                          </div>
+                          <div *ngFor="let innerSubdataContent of innerSubdata.content " accordionItemBody>
+                            <div class="main-data">
+                              <div class="text-container">
+                                <p *ngFor="let text of innerSubdataContent.text">{{text}}</p>
+                              </div>
+                            </div>
+                          </div>
+
+                        </app-accordion-item>
+                      </app-accordion>
+                    </div>
+                  </div>
+                </app-accordion-item>
+              </app-accordion>
+            </div>
+          </app-accordion-item>
+        </app-accordion>
+      </div>
+    </div>
+  </ng-scrollbar>
 </ion-content>

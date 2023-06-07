@@ -64,8 +64,8 @@
           "The checks are used to find, correct, or report problems.",
           "PMCS is done every day ULCANS is deployed using the PMCS tables found in the Technical Manual (TM) or by referring to the guidelines below."
         ],
-        "note2:": "Perform procedure in accordance with the ULCANS Technical Manual.",
-        "text2": ["Maintenance Check Interval"],
+        "note2": "Perform procedures in accordance with the ULCANS Technical Manual.",
+        "text2": ["Maintenance Check Interval:"],
         "subData": [
           {
             "title": "Before",
@@ -84,7 +84,6 @@
                         "imgUrl":"",
                         "imgUrl2":"",
                         "text": [
-                          "Procedure:",
                           "• Inventory contents of modular screen system carrying case and support system carrying case.",
                           "• Ensure ULCANS is packed in proper deployment configuration."
                             ],
@@ -100,7 +99,6 @@
                         "imgUrl":"",
                         "imgUrl2":"",
                         "text": [
-                          "Procedure:",
                           "• Inspect support pole tubes for damage.",
                           "• Ensure foot of support pole is secure and undamaged.",
                           "• Ensure grounding loop of support pole is secure, rotates freely, and is undamaged.",
@@ -119,7 +117,6 @@
                         "imgUrl":"",
                         "imgUrl2":"",
                         "text": [
-                          "Procedure:",
                           "• Inspect screen module for fabric damage or for evidence of many previous repairs.",
                           "• Inspect screen module for damage becket loops and grounding loops.",
                           "• Inspect identification tags to ensure they are present and readable."
@@ -136,7 +133,6 @@
                         "imgUrl":"",
                         "imgUrl2":"",
                         "text": [
-                          "Procedure:",
                           "• Ensure that net assembly is properly assembled.",
                           "• Ensure all becket loops are properly connected and secured with a knot."
                         ],
@@ -166,7 +162,6 @@
                         "imgUrl":"",
                         "imgUrl2":"",
                         "text": [
-                          "Procedure:",
                           "• Ensure that tent pins, tie down points, and becket loops remain secure.",
                           "• Clear any accumulated rain, snow, damp, leaves, or other environmental hazards as applicable.",
                           "• Confirm camouflage pattern matches other screens in net assembly.",
@@ -199,7 +194,6 @@
                         "imgUrl":"",
                         "imgUrl2":"",
                         "text": [
-                          "Procedure:",
                           "• Inspect screens for debris, sticks, grass, leaves, etc. Remove debris as required"
                             ],
                         "linksForMoreInformation": []
@@ -214,7 +208,6 @@
                         "imgUrl":"",
                         "imgUrl2":"",
                         "text": [
-                          "Procedure:",
                           "• Inspect support system components for damage and debris. Repair or replace components as required. "
                         ],
                         "linksForMoreInformation": []
