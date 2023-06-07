@@ -12,7 +12,7 @@
 
       <!-- Table For Wide Screens -->
 
-      <div *ngIf="areThereAssetsToDisplay" class="cards-container wide-screen" #wideScreenCardsWrapper>
+      <div *ngIf="areThereAssetsToDisplay" class="cards-container wide-screen">
        <div class="card wide-screen">
          <div class="card-body wide-screen">
            <div *ngFor="let headerTitle of tableHeaderTitles" class="row-wide-screen">
@@ -77,7 +77,7 @@
 
      <!-- Cards For Mobile Screens -->
 
-     <div class="cards-container mobile" #mobileCardsWrapper>
+     <div class="cards-container mobile">
        <div *ngFor="let userSelection of assetsForDisplay" class="card">
          <div class="card-body">
            <div class="card-row">

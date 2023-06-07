@@ -93,9 +93,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
     });
 
     this.swiper2.on('activeIndexChange',(swiper) => {
-      console.log('swiper.activeIndex', swiper.activeIndex);
       this.selectedPatternIndex = swiper.activeIndex;
-      console.log('selectedPatternIndex', this.selectedPatternIndex);
     });
 
     this.swiper2.slideToLoop(this.selectedPatternIndex);

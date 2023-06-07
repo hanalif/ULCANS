@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient } from "@angular/common/http";
 import { Asset } from '../../models/asset.model';
 import { BehaviorSubject, map } from 'rxjs';
@@ -6,18 +7,23 @@ import { UtilService } from 'src/app/shared/services/util.service';
 import { CalculatorFormValue } from '../../configuration-calculator/calculator-form-value.model';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { MToFtPipe } from 'src/app/shared/pipes/m-to-ft.pipe';
+import { UserSelectionService } from '../../../shared/services/user-selection.service';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+
+@Injectable({providedIn: 'root'})
+
 export class AssetsService {
   private MeasureType = MeasureType;
 
   private assets$: BehaviorSubject<Asset[]> = new BehaviorSubject<Asset[]>([]);
 
-  constructor(private http: HttpClient, private utilService:UtilService, private mToFtPipe: MToFtPipe) { }
+  constructor(
+    private http: HttpClient,
+    private utilService:UtilService,
+    private mToFtPipe: MToFtPipe
+    ) { }
 
   getSearchResultAssets(searchKey: string){
     let assets = this._getassetsValue();
@@ -83,8 +89,11 @@ export class AssetsService {
   removeAsset(assetId: string){
     let assets = this._getassetsValue();
     let foundAssetIndex = assets.findIndex(a => a.id === assetId);
+
+
     assets.splice(foundAssetIndex, 1);
     this.addAssets(assets);
+
   }
 
   addAsset(assetToAdd: Asset){
