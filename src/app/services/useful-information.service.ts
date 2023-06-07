@@ -15,6 +15,6 @@ export class UsefulInformationDataService{
   }
 
   _getEquipmentDescriptionData(){
-    return this.http.get<SystemInstructionsData[]>('assets/equipment-description/equipment-description.json');
+    return this.http.get<SystemInstructionsData[]>('assets/equipment-information/equipment-description.json');
   }
 }

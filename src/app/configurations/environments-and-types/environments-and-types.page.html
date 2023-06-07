@@ -62,6 +62,7 @@
         <!-- <button type="submit"  class="regular-btn"><span class="mobile-buttom">{{'continue' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button> -->
           <button (click)="onAddToYourSelections()" class="regular-btn" [ngClass]="{'disabled': isDiabled$ | async}" > <span>Add To Your Selections</span><ion-icon name="add-outline"></ion-icon> </button>
       </div>
+      <p class="footer-txt">The app offers limited ULCANS preferences. For more options, please reach out.</p>
     </div>
   </ion-toolbar>
 </ion-footer>

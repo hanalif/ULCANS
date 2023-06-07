@@ -3,7 +3,7 @@
 
 
 app-accordion{
-  max-width: 900px;
+
   margin-block-end: 20px;
 
 
@@ -23,10 +23,22 @@ app-accordion{
       display: flex;
       flex-direction: column;
 
-      .img-container{
+      .img-box{
+        width: 100%;
         display: flex;
         justify-content: center;
+
+        .img-container{
+
+          width: 450px;
+
+          @include for-bpoint-tablet{
+            width: 100%;
+          }
+
+        }
       }
+
 
     }
 

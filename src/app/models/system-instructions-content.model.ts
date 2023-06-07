@@ -8,5 +8,7 @@ export interface SystemInstructionsContentData {
   text2?: string[],
   subData?: SystemInstructionsData[],
   linksForMoreInformation?: string[],
+  note?: string,
+  note2?: string
 
 }

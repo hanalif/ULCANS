@@ -17,6 +17,7 @@ ion-input{
 
 .card{
   background-color: #0000008a;
+  margin-block-end: 0px;
 
 
   .calc-input{
@@ -31,6 +32,10 @@ ion-input{
       display: flex;
     }
   }
+}
+
+.next-button-wrapper{
+  padding: 20px;
 }
 
 

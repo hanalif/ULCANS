@@ -1,0 +1,233 @@
+[
+  {
+    "title": "REPAIR SMALL TEARS USING CABLE TIES",
+    "content":[
+      {
+        "note": "If cable ties are not available, use twine, cord, string, or lightweight rope",
+        "videoUrl": "none",
+        "imgUrl":"",
+        "text": [
+          "• Remove debris and ragged material from damaged area of screen."
+        ],
+        "note2": "Position cable ties 1 in apart and 1 in (2.54 cm) away from edge of tear.",
+        "text2": [
+          "• Starting at one end of tear, push cable tie through net material.",
+          "• Position cable tie perpendicular to tear. Push through net material on other side of tear.",
+          "• Close cable tie and tighten. Ensure material is tightly secured to prevent loose material or gaps.",
+          "• Repeat Steps 2-4 until tear is sealed. Cut off excess cable ties."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "REPAIR LARGE TEARS USING REPAIR MATERIAL",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"assets/imgs/maintenance/Maintenance-copy.png",
+        "text": [
+          "• Remove debris and ragged material from damaged area of screen.",
+          "• Select a piece of screen material from the screen repair kit of the correct type and class."
+        ],
+        "note2": "Repair material should be slightly larger than repair area.",
+        "text2": [
+          "• Cut repair material to appropriate size.",
+          "• Position repair material over damaged screen. Attach using the Repair Using Cable Ties procedure."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "BECKET LOOP REPAIR",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"",
+        "text": [
+          "• A missing or broken becket loop may be bypassed by looping through next available becket loop.",
+          "• When more than one becket loop in a row is missing or broken, replace them using available tie material.",
+          "• If three or more of the same kind of loops (short, long) in a row are damaged or missing, replace screen."
+        ],
+        "linksForMoreInformation": [ ]
+      }
+    ]
+  },
+  {
+    "title": "PREVENTIVE MAINTENANCE CHECKS AND SERVICES",
+    "content":[
+      {
+        "videoUrl": "none",
+        "imgUrl":"",
+        "imgUrl2":"",
+        "text": [
+          "Preventive Maintenance Checks and Service (PMCS) are performed to keep ULCANS in operating condition.",
+          "The checks are used to find, correct, or report problems.",
+          "PMCS is done every day ULCANS is deployed using the PMCS tables found in the Technical Manual (TM) or by referring to the guidelines below."
+        ],
+        "note2:": "Perform procedure in accordance with the ULCANS Technical Manual.",
+        "text2": ["Maintenance Check Interval"],
+        "subData": [
+          {
+            "title": "Before",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": ["Items:"],
+                "subData":[
+                  {
+                    "title": "ULCANS",
+                    "content":[
+                      {
+                        "videoUrl": "none",
+                        "imgUrl":"",
+                        "imgUrl2":"",
+                        "text": [
+                          "Procedure:",
+                          "• Inventory contents of modular screen system carrying case and support system carrying case.",
+                          "• Ensure ULCANS is packed in proper deployment configuration."
+                            ],
+                        "linksForMoreInformation": []
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Support Pols",
+                    "content":[
+                      {
+                        "videoUrl": "none",
+                        "imgUrl":"",
+                        "imgUrl2":"",
+                        "text": [
+                          "Procedure:",
+                          "• Inspect support pole tubes for damage.",
+                          "• Ensure foot of support pole is secure and undamaged.",
+                          "• Ensure grounding loop of support pole is secure, rotates freely, and is undamaged.",
+                          "• Ensure locking mechanisms are functional.",
+                          "• Ensure shape disruptors are moveable and undamaged."
+                        ],
+                        "linksForMoreInformation": []
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Individual Screen Module",
+                    "content":[
+                      {
+                        "videoUrl": "none",
+                        "imgUrl":"",
+                        "imgUrl2":"",
+                        "text": [
+                          "Procedure:",
+                          "• Inspect screen module for fabric damage or for evidence of many previous repairs.",
+                          "• Inspect screen module for damage becket loops and grounding loops.",
+                          "• Inspect identification tags to ensure they are present and readable."
+                          ],
+                        "linksForMoreInformation": []
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Net Assembly",
+                    "content":[
+                      {
+                        "videoUrl": "none",
+                        "imgUrl":"",
+                        "imgUrl2":"",
+                        "text": [
+                          "Procedure:",
+                          "• Ensure that net assembly is properly assembled.",
+                          "• Ensure all becket loops are properly connected and secured with a knot."
+                        ],
+                        "linksForMoreInformation": []
+                      }
+                    ]
+                  }
+                ],
+                "linksForMoreInformation": []
+              }
+            ]
+          },
+          {
+            "title": "During",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": ["Items:"],
+                "subData": [
+                  {
+                    "title": "Net Assembly",
+                    "content":[
+                      {
+                        "videoUrl": "none",
+                        "imgUrl":"",
+                        "imgUrl2":"",
+                        "text": [
+                          "Procedure:",
+                          "• Ensure that tent pins, tie down points, and becket loops remain secure.",
+                          "• Clear any accumulated rain, snow, damp, leaves, or other environmental hazards as applicable.",
+                          "• Confirm camouflage pattern matches other screens in net assembly.",
+                          "• Confirm there are no gaps of 6 in (15.24 cm) or more in seams of joined screens."
+                        ],
+                        "linksForMoreInformation": []
+                      }
+                    ]
+                  }
+                ],
+
+                "linksForMoreInformation": []
+              }
+            ]
+          },
+          {
+            "title": "After",
+            "content":[
+              {
+                "videoUrl": "none",
+                "imgUrl":"",
+                "imgUrl2":"",
+                "text": ["Items:"],
+                "subData":[
+                  {
+                    "title": "Screen Module / Net Assembly",
+                    "content":[
+                      {
+                        "videoUrl": "none",
+                        "imgUrl":"",
+                        "imgUrl2":"",
+                        "text": [
+                          "Procedure:",
+                          "• Inspect screens for debris, sticks, grass, leaves, etc. Remove debris as required"
+                            ],
+                        "linksForMoreInformation": []
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Support System",
+                    "content":[
+                      {
+                        "videoUrl": "none",
+                        "imgUrl":"",
+                        "imgUrl2":"",
+                        "text": [
+                          "Procedure:",
+                          "• Inspect support system components for damage and debris. Repair or replace components as required. "
+                        ],
+                        "linksForMoreInformation": []
+                      }
+                    ]
+                  }
+                ],
+                "linksForMoreInformation": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -27,6 +27,8 @@ export class UserSelectionService {
 
   public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
 
+  public FOOTER_FORM_TXT: string = "";
+
 
   constructor(
     private assetsService: AssetsService,

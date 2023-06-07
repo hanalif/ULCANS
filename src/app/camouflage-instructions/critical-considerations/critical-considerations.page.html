@@ -20,8 +20,10 @@
                 <div class="text-container">
                   <p *ngFor="let text of dataContent.text">{{text}}</p>
                 </div>
-                <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
-                  <img [src]="dataContent.imgUrl" alt="dataImg">
+                <div class="img-box">
+                  <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
+                    <img [src]="dataContent.imgUrl" alt="dataImg">
+                  </div>
                 </div>
               </div>
               <video *ngIf="dataContent.videoUrl !== 'none'" width="100%" controls>
@@ -38,16 +40,20 @@
                       <div class="text-container">
                         <p *ngFor="let text of dataContent.text">{{text}}</p>
                       </div>
-                      <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
-                        <img [src]="dataContent.imgUrl" alt="dataImg">
+                      <div class="img-box">
+                        <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
+                          <img [src]="dataContent.imgUrl" alt="dataImg">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </app-accordion-item>
               </app-accordion>
               <div class="main-data" *ngIf="dataContent.imgUrl2 !== '' || dataContent.text2 ">
-                <div *ngIf="dataContent.imgUrl2 !== ''" class="img-container">
-                  <img [src]="dataContent.imgUrl2" alt="dataImg">
+                <div class="img-box">
+                  <div *ngIf="dataContent.imgUrl2 !== ''" class="img-container">
+                    <img [src]="dataContent.imgUrl2" alt="dataImg">
+                  </div>
                 </div>
                 <div class="text-container">
                   <p *ngFor="let text of dataContent.text2">{{text}}</p>

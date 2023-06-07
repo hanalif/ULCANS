@@ -1,9 +1,10 @@
 .accordion {
+  max-width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 5px;
   font-family: Babas-pro, sans-serif;
-
 
   .accordion-item {
 
@@ -24,7 +25,6 @@
         }
       }
     }
-
 
     .accordion-item-body {
       font-size: 25px;

@@ -20,8 +20,10 @@
               <div class="text-container">
                 <p *ngFor="let text of dataContent.text">{{text}}</p>
               </div>
-              <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
-                <img [src]="dataContent.imgUrl" alt="dataImg">
+              <div class="img-box">
+                <div *ngIf="dataContent.imgUrl !== ''" class="img-container">
+                  <img [src]="dataContent.imgUrl" alt="dataImg">
+                </div>
               </div>
             </div>
             <video *ngIf="dataContent.videoUrl !== 'none'" width="100%" controls>
