@@ -26,8 +26,16 @@
           "Repair screens as necessary. "
         ],
         "linksForMoreInformation": [
-          "/useful-information/maintenance",
-          "/useful-information/equipment-description"
+          {
+            "link": "/useful-information/maintenance",
+            "index": -1,
+            "txt": "• See additional info - Maintenance"
+          },
+          {
+            "link": "/useful-information/equipment-description",
+            "index": 5,
+            "txt": "• See equipment information - Support System"
+          }
         ]
       }
 

@@ -1,4 +1,6 @@
 import { SystemInstructionsData } from "./system-instructions-data.model";
+import { SystemInstructionsLink } from "./system-instructions-link.model";
+
 
 export interface SystemInstructionsContentData {
   videoUrl?: string,
@@ -7,7 +9,7 @@ export interface SystemInstructionsContentData {
   text?: string[],
   text2?: string[],
   subData?: SystemInstructionsData[],
-  linksForMoreInformation?: string[],
+  linksForMoreInformation?: SystemInstructionsLink[],
   note?: string,
   note2?: string
 
