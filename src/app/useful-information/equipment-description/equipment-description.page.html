@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="middle">
-        <app-accordion>
+        <app-accordion [initialOpenIndex]="indexesForAccordion.index">
           <app-accordion-item *ngFor="let equipmentDescriptionData of equipmentDescriptionData$ | async">
             <div accordionItemHeader>
               {{equipmentDescriptionData.title | uppercase}}
@@ -30,7 +30,7 @@
                 <source [src]="dataContent.videoUrl" type="video/mp4">
                 Your browser does not support HTML video.
               </video>
-              <app-accordion>
+              <app-accordion [initialOpenIndex]="indexesForAccordion.innerIndex">
                 <app-accordion-item *ngFor="let subdata of dataContent.subData">
                   <div accordionItemHeader>
                     {{subdata.title | uppercase}}

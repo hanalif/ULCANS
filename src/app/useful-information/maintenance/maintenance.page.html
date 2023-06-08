@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="middle">
-        <app-accordion>
+        <app-accordion [initialOpenIndex]="indexesForAccordion.index">
           <app-accordion-item *ngFor="let maintenanceData of maintenanceData$ | async">
             <div accordionItemHeader>
               {{maintenanceData.title | uppercase}}
@@ -35,7 +35,7 @@
                   <img [src]="mainDataContent.imgUrl" alt="dataImg">
                 </div>
               </div>
-              <app-accordion>
+              <app-accordion [initialOpenIndex]="indexesForAccordion.innerIndex">
                 <app-accordion-item *ngFor="let subdata of mainDataContent.subData">
                   <div accordionItemHeader>
                     {{subdata.title | uppercase}}

@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, OnChanges, OnDestroy, OnInit, QueryList, SimpleChanges } from '@angular/core';
 import { Animations } from 'src/app/angular-animations/animations';
 import { AccordionItemComponent } from './accordion-item/accordion-item.component';
 
@@ -8,7 +8,7 @@ import { AccordionItemComponent } from './accordion-item/accordion-item.componen
   styleUrls: ['./accordion.component.scss'],
   animations: [Animations.slidesDownAnimation]
 })
-export class AccordionComponent implements OnInit, AfterContentInit {
+export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
   @ContentChildren(AccordionItemComponent) accordionItems: QueryList<AccordionItemComponent> = new QueryList<AccordionItemComponent>;
   @Input() initialOpenIndex: number | null = null;
   // openedItemIndex: number | null = null;
@@ -16,14 +16,19 @@ export class AccordionComponent implements OnInit, AfterContentInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.initialOpenIndex !== null) {
       this.openedItemsIndexesMap[this.initialOpenIndex] = this.initialOpenIndex;
+    }else{
+      this.openedItemsIndexesMap = {};
     }
   }
 
-    ngAfterContentInit(): void {
+  ngOnInit() {
+
+
   }
+
 
   onAccordionItemClicked(itemIndex: number) {
     const indexToRemove = this.openedItemsIndexesMap[itemIndex];
@@ -34,5 +39,10 @@ export class AccordionComponent implements OnInit, AfterContentInit {
     }
 
     // this.openedItemIndex = this.openedItemIndex !== itemIndex ? itemIndex : null;
+  }
+
+  ngOnDestroy(): void {
+    this.openedItemsIndexesMap = {};
+    console.log('destroy');
   }
 }

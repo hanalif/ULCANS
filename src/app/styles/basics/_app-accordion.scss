@@ -58,5 +58,23 @@ app-accordion{
       font-size: 26px;
       margin-block-end: 20px;
     }
+
+    .links-box{
+      display: flex;
+      flex-direction: column;
+
+      .links-title{
+        font-size: 20px;
+      }
+
+      .link-btn{
+        cursor: pointer;
+        font-size: 16px;
+
+        &:hover{
+          color: white;
+        }
+      }
+    }
   }
 }

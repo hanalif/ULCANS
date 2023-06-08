@@ -8,6 +8,7 @@ import { CriticalConsiderationsPageRoutingModule } from './critical-consideratio
 
 import { CriticalConsiderationsPage } from './critical-considerations.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { InfoPagesResolver } from 'src/app/shared/resolvers/info-pages.resolver';
 
 @NgModule({
   imports: [

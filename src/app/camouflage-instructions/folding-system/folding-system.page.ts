@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SystemInstructionsData } from '../../models/system-instructions-data.model';
 import { Observable } from 'rxjs';
 import { SystemInstructionsDataService } from '../../services/system-instructions-data.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-folding-system',
@@ -11,11 +12,17 @@ import { SystemInstructionsDataService } from '../../services/system-instruction
 export class FoldingSystemPage implements OnInit {
 
   foldingUpSystemData$!: Observable<SystemInstructionsData[]>
-  constructor(private systemDataService: SystemInstructionsDataService) { }
+  constructor(private systemDataService: SystemInstructionsDataService, private route: Router) { }
 
   ngOnInit() {
     this.foldingUpSystemData$ = this.systemDataService.getFoldingUpSystemData()
 
+  }
+
+  onLink(link: string ,index:number | null, innerIndex: number | null = null){
+    console.log(index),
+    console.log(innerIndex)
+    this.route.navigate([link] , {queryParams: {index: index, innerIndex: innerIndex}});
   }
 
 }

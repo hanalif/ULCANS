@@ -12,18 +12,21 @@
         "linksForMoreInformation": [
           {
             "link": "/configurations/configurations-list",
-            "index": -1,
+            "index": null,
+            "innerIndex": null,
             "txt": "• See configurations"
           },
           {
             "link": "/camouflage-instructions/critical-considerations",
             "index": 2,
-            "txt": "• See Critical considerations - deployment "
+            "innerIndex": null,
+            "txt": "• See Critical considerations - Deployment "
           },
           {
             "link":"/useful-information/equipment-description",
-            "index": -1,
-            "txt": "• See useful information - eauipment description"
+            "index": null,
+            "innerIndex": null,
+            "txt": "• See useful information - Eauipment Description"
           }
         ]
       }
@@ -66,12 +69,14 @@
           {
             "link":  "/camouflage-instructions/critical-considerations",
             "index": 1,
-            "txt": "• See Critical considerations - location"
+            "innerIndex": null,
+            "txt": "• See Critical considerations - Location"
           },
           {
             "link":  "/camouflage-instructions/critical-considerations",
             "index": 3,
-            "txt": "• See Critical considerations - general"
+            "innerIndex": null,
+            "txt": "• See Critical considerations - General"
           }
 
         ]
@@ -87,7 +92,7 @@
             "link": "/camouflage-instructions/critical-considerations",
             "index": 2,
             "innerIndex": 0,
-            "txt": "• See Critical considerations - positioning poles"
+            "txt": "• See Critical considerations - Positioning Poles"
           }
 
         ]
@@ -104,7 +109,7 @@
             "link": "/camouflage-instructions/critical-considerations",
             "index": 2,
             "innerIndex": 0,
-            "txt": "• See Critical considerations - positioning poles"
+            "txt": "• See Critical considerations - Positioning Poles"
           },
           {
             "link": "/camouflage-instructions/critical-considerations",
@@ -127,6 +132,7 @@
           {
             "link": "/camouflage-instructions/critical-considerations",
             "index": 3,
+            "innerIndex": null,
             "txt": "• See Critical considerations - General"
           }
         ]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SystemInstructionsDataService } from '../../services/system-instructions-data.service';
 import { SystemInstructionsData } from '../../models/system-instructions-data.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class SettingUpSystemPage implements OnInit {
   settingUpSystemData$!: Observable<SystemInstructionsData[]>
-  constructor(private systemDataService: SystemInstructionsDataService) { }
+  constructor(private systemDataService: SystemInstructionsDataService, private route: Router) { }
 
   ngOnInit() {
     this.settingUpSystemData$ = this.systemDataService.getSettingUpSystemData()
@@ -21,5 +22,10 @@ export class SettingUpSystemPage implements OnInit {
   // scrollToElement($element: HTMLElement): void {
   //   $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   // }
+
+  onLink(link: string ,index:number | null, innerIndex: number | null = null){
+    this.route.navigate([link] , {queryParams: {index: index, innerIndex: innerIndex}});
+
+  }
 
 }

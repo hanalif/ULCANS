@@ -23,6 +23,15 @@
               <source [src]="dataContent.videoUrl" type="video/mp4">
               Your browser does not support HTML video.
             </video>
+            <div *ngIf="dataContent.linksForMoreInformation" class="links-box">
+              <div class="links-title">For More Information:</div>
+              <a
+                class="link-btn"
+                *ngFor="let link of dataContent.linksForMoreInformation"
+                (click)="onLink(link.link ,link.index, link.innerIndex)">
+                {{link.txt}}
+              </a>
+            </div>
           </div>
         </app-accordion-item>
       </app-accordion>
