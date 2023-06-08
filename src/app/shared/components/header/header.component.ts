@@ -23,6 +23,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   progressBarSubscription!: Subscription;
   progressBar: number = 0;
 
+  openMenuLinksMapingSubscription!: Subscription;
+
 
   constructor(
     private route: Router,
@@ -37,6 +39,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.progressBarSubscription = this.userSelectionsService.getprogressBar().subscribe(progressBar=>{
         this.progressBar = progressBar;
       })
+
+      this.openMenuLinksMapingSubscription = this.menuCategoriesServive.getOpenMenuLinksMaping().subscribe((maping)=>{
+        this.openMenuLinksMaping = maping;
+      });
   }
 
   onLogo(){
@@ -51,17 +57,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   onMenuLink(id: string){
-    for(let key in this.openMenuLinksMaping) {
-      if(key !== id) {
-        this.openMenuLinksMaping[key] = false;
-      }
-    }
-
-    if(this.openMenuLinksMaping[id]){
-      this.openMenuLinksMaping[id] = !this.openMenuLinksMaping[id];
-    } else{
-      this.openMenuLinksMaping[id] = true;
-    }
+    this.menuCategoriesServive.setOpenMenuLinkMaping(id);
   }
 
   onAccordionItemHeader(){
@@ -73,7 +69,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-   this.progressBarSubscription?.unsubscribe()
+   this.progressBarSubscription?.unsubscribe();
+   this.openMenuLinksMapingSubscription.unsubscribe();
   }
 
 }

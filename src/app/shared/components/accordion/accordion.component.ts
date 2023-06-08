@@ -32,7 +32,7 @@ export class AccordionComponent implements OnInit, AfterContentInit {
     } else{
       this.openedItemsIndexesMap[itemIndex] = itemIndex;
     }
-    console.log(this.openedItemsIndexesMap);
+
     // this.openedItemIndex = this.openedItemIndex !== itemIndex ? itemIndex : null;
   }
 }

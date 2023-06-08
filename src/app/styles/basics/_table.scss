@@ -1,0 +1,76 @@
+@import '../setup/mixins';
+@import '../setup/variables';
+
+
+.table-container{
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+
+
+  @include for-bpoint-tablet{
+    display: none;
+  }
+
+  .styled-table{
+    font-family: Babas-pro, sans-serif;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 25px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+
+    .table-img{
+      width: 100px;
+    }
+
+    & thead tr{
+      background-color:  #454952;
+      color: #ffffff;
+      font-weight: 100;
+
+      & th:first-child {
+        border-top-left-radius: 10px;
+      }
+
+      & th:last-child {
+        border-top-right-radius: 10px;
+      }
+    }
+
+    & th, & td{
+      padding: 12px 12px;
+      text-align: center;
+      letter-spacing: 3px;
+    }
+
+    & td {
+      background-color: black;
+    }
+
+    .td-img{
+      display: flex;
+      justify-content: center;
+    }
+
+    & tbody tr{
+      border-bottom: 1px solid #00A9FF;
+    }
+
+
+    & tbody tr:last-of-type {
+      border-bottom: none;
+    }
+
+    & tr:last-child td:first-child{
+      border-bottom-left-radius: 10px;
+    }
+
+    & tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+    }
+
+
+  }
+}

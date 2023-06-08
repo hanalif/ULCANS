@@ -174,7 +174,6 @@ export class UserSelectionService {
     if(isAssetIdFound){
       return true;
     }else{
-      console.log(isAssetIdFound);
       return false;
     }
 

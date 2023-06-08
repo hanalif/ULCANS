@@ -37,18 +37,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
     this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();
 
-
-
-    let p = new Promise((resolve, reject)=>{
-      let sum = 1+1;
-      if(sum === 2){
-        resolve(sum);
-      }else{
-        reject();
-      }
-    })
-
-    console.log(p)
   }
 
   onBackdropClicked(val:boolean){

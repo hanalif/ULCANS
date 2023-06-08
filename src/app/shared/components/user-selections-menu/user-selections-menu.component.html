@@ -67,6 +67,7 @@
              <span class="card-row_content wide-screen">
                <div class="selection-btns">
                  <button (click)="onDeleteSelection(userSelection.id)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+                 <button (click)="onDownloadPdf()" class="icon-btn"><ion-icon name="download-outline"></ion-icon></button>
                </div>
              </span>
            </div>
@@ -133,6 +134,7 @@
          <div class="card-top">
            <div class="selection-btns">
              <button (click)="onDeleteSelection(userSelection.id)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+             <button (click)="onDownloadPdf()" class="icon-btn"><ion-icon name="download-outline"></ion-icon></button>
            </div>
          </div>
        </div>
@@ -142,7 +144,8 @@
 
    <div class="bottom">
      <div class="next-button-wrapper">
-      <button  [ngClass]="{'disabled': !areThereAssetsToDisplay}" (click)="onDownloadPdf()" class="regular-btn"> <span>Download To Pdf</span> </button>
+      <button (click)="onHowToCamouflage()" class="regular-btn"> <span>How to camouflage?</span> </button>
+      <button (click)="onAboutTheEquipment()" class="regular-btn"> <span>About your equipment</span> </button>
      </div>
    </div>
    <p class="bottom-txt">Note that your preferences are from an initial list, please reach out with your PDF of selections for more options and details.</p>

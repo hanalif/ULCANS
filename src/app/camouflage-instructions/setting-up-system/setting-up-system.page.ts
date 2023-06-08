@@ -19,7 +19,6 @@ export class SettingUpSystemPage implements OnInit {
   }
 
   // scrollToElement($element: HTMLElement): void {
-  //   console.log($element);
   //   $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   // }
 

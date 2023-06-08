@@ -77,6 +77,14 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  onHowToCamouflage(){
+
+  }
+
+  onAboutTheEquipment(){
+
+  }
+
 
 
 

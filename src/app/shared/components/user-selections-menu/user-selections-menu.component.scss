@@ -130,7 +130,7 @@
     }
 
     &-top{
-      align-items: end;
+      align-items: center;
     }
   }
 }
@@ -144,7 +144,18 @@
   transform: scale(3);
 }
 
+.next-button-wrapper{
+  .regular-btn{
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  gap: 10px;
+
+}
 .bottom-txt{
   margin-block-end: 20px;
   font-size: 22px;
 }
+
+
