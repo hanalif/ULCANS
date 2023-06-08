@@ -41,7 +41,7 @@
                     {{subdata.title | uppercase}}
                   </div>
                   <div class="data-content" *ngFor="let subDataContent of subdata.content" accordionItemBody>
-                    <div class="main-data">
+                    <div>
                       <app-accordion>
                         <app-accordion-item *ngFor="let innerSubdata of subDataContent.subData">
                           <div accordionItemHeader>

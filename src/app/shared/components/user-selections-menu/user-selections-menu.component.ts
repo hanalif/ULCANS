@@ -12,6 +12,8 @@ import JSPDF, { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
+import { MenuCategoriesService } from '../../services/menu-categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -44,7 +46,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private file: File,
     private fileOpener: FileOpener,
     private datePipe: DatePipe,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private menuCategoriesService: MenuCategoriesService,
+    private route: Router
     ) { }
 
   ngOnInit() {
@@ -77,12 +81,14 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  onHowToCamouflage(){
-
-  }
-
-  onAboutTheEquipment(){
-
+  onToCategoryIntro(categoryId:string){
+    this.menuCategoriesService.setOpenMenuLinkMaping(categoryId);
+    if(categoryId === 'MC2'){
+      this.route.navigate(['camouflage-instructions']);
+    }else{
+      this.route.navigate(['useful-information']);
+    }
+    this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
 
 
