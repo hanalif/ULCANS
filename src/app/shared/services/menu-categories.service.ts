@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { MenuCategory } from '../models/menu-category.model';
 import { StartBtn } from '../models/start-btn.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 
 
@@ -41,6 +41,15 @@ export class MenuCategoriesService {
 
   getMenuCategories(){
     return this._getMenuCategories();
+  }
+
+  getCategoryById(categoryId: string){
+    return this._getMenuCategories().pipe(
+      map(categories=>{
+        const category = categories.find(c=> c.id === categoryId);
+        return category;
+      }),
+    )
   }
 
   _getMenuCategories(){

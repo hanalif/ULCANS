@@ -1,7 +1,26 @@
 <ion-header>
-
 </ion-header>
 
 <ion-content>
-      <h1>camouflage-instructions-intro</h1>
+  <ng-scrollbar class="scrollbar">
+  <div *ngIf="camouflageInstructionsCategoryData$ | async as camouflageInstructionsCategoryData" class="page-container style1 main-layout">
+    <div class="top">
+      <div class="title">
+        {{camouflageInstructionsCategoryData.mainTitle}}
+      </div>
+    </div>
+    <div class="middle">
+      <div class="next-button-wrapper">
+        <button
+            *ngFor="let subCategory of camouflageInstructionsCategoryData.subCategories"
+            (click)="onSubCategory(subCategory.subRouterLink)"
+            routerLinkActive="is-active"
+            class="regular-btn">
+            <span>{{subCategory.subTitle}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  </ng-scrollbar>
 </ion-content>
+

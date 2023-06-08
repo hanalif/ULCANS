@@ -1,0 +1,27 @@
+@import '../../styles/setup/mixins';
+@import '../../styles/setup/variables';
+
+.scrollbar {
+  --scrollbar-thumb-color: #7a7a7a;
+}
+
+.page-container{
+  @include for-bpoint-mobile{
+    gap: 0px;
+  }
+}
+
+.next-button-wrapper{
+  gap: 15px;
+
+  @include for-bpoint-mobile{
+
+    .regular-btn{
+      width: 100%;
+      font-size: 16px;
+    }
+
+    flex-direction: column;
+
+  }
+}
