@@ -10,9 +10,24 @@
         "Screens should be assembled prior to fielding. This allows quick deployment of ULCANS in a hostile environment. Before assembling screens, open and inventory all contents. Ensure all screens are of the same type and class"
         ],
         "linksForMoreInformation": [
-          "/configurations/configurations-list",
-          "/camouflage-instructions/critical-considerations",
-          "/useful-information/equipment-description"
+          {
+            "link": "/configurations/configurations-list",
+            "index": null,
+            "innerIndex": null,
+            "txt": "• See configurations"
+          },
+          {
+            "link": "/camouflage-instructions/critical-considerations",
+            "index": 2,
+            "innerIndex": null,
+            "txt": "• See Critical considerations - Deployment "
+          },
+          {
+            "link":"/useful-information/equipment-description",
+            "index": null,
+            "innerIndex": null,
+            "txt": "• See useful information - Eauipment Description"
+          }
         ]
       }
     ]
@@ -23,8 +38,7 @@
       {
         "videoUrl": "assets/imgs/critical-considerations/setting-up-system/Lacing.mp4",
         "imgsUrl": [],
-        "text": [],
-        "linksForMoreInformation": []
+        "text": []
       }
 
     ]
@@ -35,8 +49,7 @@
       {
         "videoUrl": "assets/imgs/critical-considerations/setting-up-system/FoldNetAssembly.mp4",
         "imgUrl": "",
-        "text": [],
-        "linksForMoreInformation": []
+        "text": []
       }
     ]
   },
@@ -53,7 +66,19 @@
           "- Do not locate equipment to be concealed and ULCANS on top of a ridge to avoid creating a silhouette on the skyline."
         ],
         "linksForMoreInformation": [
-          "/camouflage-instructions/critical-considerations"
+          {
+            "link":  "/camouflage-instructions/critical-considerations",
+            "index": 1,
+            "innerIndex": null,
+            "txt": "• See Critical considerations - Location"
+          },
+          {
+            "link":  "/camouflage-instructions/critical-considerations",
+            "index": 3,
+            "innerIndex": null,
+            "txt": "• See Critical considerations - General"
+          }
+
         ]
       },
       {
@@ -63,7 +88,13 @@
           "Prepare poles:"
         ],
         "linksForMoreInformation": [
-          "/camouflage-instructions/critical-considerations"
+          {
+            "link": "/camouflage-instructions/critical-considerations",
+            "index": 2,
+            "innerIndex": 0,
+            "txt": "• See Critical considerations - Positioning Poles"
+          }
+
         ]
       },
       {
@@ -74,7 +105,36 @@
           "Once stakes are deployed, begin extending support poles, starting at tallest point of asset (usually the center) and deploy first poles. Work your way to lowest point of asset on both sides to maintain some level of symmetry."
         ],
         "linksForMoreInformation": [
-          "/camouflage-instructions/critical-considerations"
+          {
+            "link": "/camouflage-instructions/critical-considerations",
+            "index": 2,
+            "innerIndex": 0,
+            "txt": "• See Critical considerations - Positioning Poles"
+          },
+          {
+            "link": "/camouflage-instructions/critical-considerations",
+            "index": 2,
+            "innerIndex": 1,
+            "txt": "• See Critical considerations - Positioning The Rolled Net Configuration"
+          },
+          {
+            "link": "/camouflage-instructions/critical-considerations",
+            "index": 2,
+            "innerIndex": 2,
+            "txt": "• See Critical considerations - Deploying The Stakes"
+          },
+          {
+            "link": "/camouflage-instructions/critical-considerations",
+            "index": 2,
+            "innerIndex": 3,
+            "txt": "• See Critical considerations - Deploying The Nents And Poles"
+          },
+          {
+            "link": "/camouflage-instructions/critical-considerations",
+            "index": 3,
+            "innerIndex": null,
+            "txt": "• See Critical considerations - General"
+          }
         ]
       }
     ]

@@ -5,8 +5,7 @@
       {
         "videoUrl": "assets/imgs/critical-considerations/folding-up-system/PoleDown.mp4",
         "imgUrl":"",
-        "text": [],
-        "linksForMoreInformation": [ ]
+        "text": []
       }
     ]
   },
@@ -26,8 +25,18 @@
           "Repair screens as necessary. "
         ],
         "linksForMoreInformation": [
-          "/useful-information/maintenance",
-          "/useful-information/equipment-description"
+          {
+            "link": "/useful-information/maintenance",
+            "index": null,
+            "innerIndex": null,
+            "txt": "• See additional info - Maintenance"
+          },
+          {
+            "link": "/useful-information/equipment-description",
+            "index": 5,
+            "innerIndex": null,
+            "txt": "• See equipment information - Support System"
+          }
         ]
       }
 
@@ -39,8 +48,7 @@
       {
         "videoUrl": "assets/imgs/critical-considerations/folding-up-system/FoldHex.mp4",
         "imgUrl":"",
-        "text": [],
-        "linksForMoreInformation": []
+        "text": []
       }
     ]
   },
@@ -50,8 +58,7 @@
       {
         "videoUrl": "assets/imgs/critical-considerations/folding-up-system/FoldRhombus.mp4",
         "imgUrl":"",
-        "text": [],
-        "linksForMoreInformation": []
+        "text": []
       }
     ]
   },
@@ -61,8 +68,7 @@
       {
         "videoUrl": "assets/imgs/critical-considerations/setting-up-system/FoldNetAssembly.mp4",
         "imgUrl":"",
-        "text": [],
-        "linksForMoreInformation": []
+        "text": []
       }
     ]
   }
