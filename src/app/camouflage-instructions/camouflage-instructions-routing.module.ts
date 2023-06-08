@@ -6,6 +6,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./camouflage-instructions-intro/camouflage-instructions-intro.module').then( m => m.CamouflageInstructionsIntroPageModule)
+
+  },
+  {
     path: 'setting-up-system',
     loadChildren: () => import('./setting-up-system/setting-up-system.module').then( m => m.SettingUpSystemPageModule)
   },

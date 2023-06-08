@@ -24,7 +24,6 @@ const routes: Routes = [
     path: 'useful-information',
     loadChildren: () => import('./useful-information/useful-information-routing.module').then(m => m.UsefulInformationRoutingModule)
   }
-
 ];
 
 @NgModule({
