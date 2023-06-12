@@ -3,206 +3,600 @@
   <div class="page-container main-layout">
     <div class="top">
       <div class="title">
-       <span>{{'user selections list' | uppercase}}</span>
-     </div>
-   </div>
-   <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
-   <div class="body">
-     <div class="massege" *ngIf="!areThereAssetsToDisplay">No Items In List yet</div>
-
-      <!-- Table For Wide Screens -->
-
-      <div *ngIf="areThereAssetsToDisplay" class="cards-container wide-screen">
-       <div class="card wide-screen">
-         <div class="card-body wide-screen">
-           <div *ngFor="let headerTitle of tableHeaderTitles" class="row-wide-screen">
-             <span class="card-row_title wide-screen">
-               {{headerTitle}}
-             </span>
-           </div>
-         </div>
-       </div>
-       <div *ngFor="let userSelection of assetsForDisplay" class="card wide-screen">
-         <div class="card-body wide-screen">
-           <div class="row-wide-screen">
-             <span class="card-row_content wide-screen">
-               {{userSelection.configuratoin!.name}}
-               <div class="card-img wide-screen">
-                 <img [src]="userSelection.configuratoin!.imgUrl" alt="configuration">
-               </div>
-             </span>
-           </div>
-           <div class="row-wide-screen">
-            <span class="card-row_content wide-screen">
-              {{userSelection.configuratoin!.measures.areaSqFt | sqftToSqm: userSelection.measureType! | number}} {{userSelection.measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}
-            </span>
-          </div>
-           <div class="row-wide-screen">
-             <span class="card-row_content wide-screen">
-               {{userSelection.asset!.name}}
-             </span>
-           </div>
-           <div class="row-wide-screen">
-             <span class="card-row_content wide-screen">
-               {{userSelection.sideA.environment.typeName}}
-               <div class="card-img wide-screen">
-                 <img [src]="userSelection.sideA.environment.shapes[userSelection.sideA.indexForPatternUrl]" alt="pattren-sideA">
-               </div>
-             </span>
-           </div>
-           <div class="row-wide-screen">
-             <span class="card-row_content wide-screen">
-               {{userSelection.sideB.environment.typeName}}
-               <div class="card-img wide-screen">
-                 <img [src]="userSelection.sideB.environment.shapes[userSelection.sideB.indexForPatternUrl]" alt="pattren-sideB">
-               </div>
-             </span>
-           </div>
-           <div class="row-wide-screen">
-             <span class="card-row_content wide-screen">
-               {{userSelection.ulcansType.name}}
-             </span>
-           </div>
-           <div class="row-wide-screen">
-             <span class="card-row_content wide-screen">
-               <div class="selection-btns">
-                 <button (click)="onDeleteSelection(userSelection.id)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
-                 <button (click)="onDownloadPdf()" class="icon-btn"><ion-icon name="download-outline"></ion-icon></button>
-               </div>
-             </span>
-           </div>
-         </div>
-       </div>
-     </div>
-
-
-     <!-- Cards For Mobile Screens -->
-
-     <div class="cards-container mobile">
-       <div *ngFor="let userSelection of assetsForDisplay" class="card">
-         <div class="card-body">
-           <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[0]}}</span>
-             <span class="card-row_content mobile">
-               {{userSelection.configuratoin!.name}}
-               <div class="card-img">
-                 <img [src]="userSelection.configuratoin!.imgUrl" alt="">
-               </div>
-             </span>
-           </div>
-           <div class="card-row">
-            <span class="card-row_title">{{tableHeaderTitles[1]}}</span>
-            <span class="card-row_content mobile">
-              {{userSelection.configuratoin!.measures.areaSqFt | sqftToSqm: userSelection.measureType! | number}} {{userSelection.measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}
-              <div class="card-img">
-              </div>
-            </span>
-          </div>
-           <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[2]}}</span>
-             <span class="card-row_content mobile">
-               {{userSelection.asset!.name}}
-               <div class="card-img">
-               </div>
-             </span>
-           </div>
-           <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[3]}}</span>
-             <span class="card-row_content mobile">
-               {{userSelection.sideA.environment.typeName}}
-               <div class="card-img">
-                 <img [src]="userSelection.sideA.environment.shapes[userSelection.sideA.indexForPatternUrl]" alt="">
-               </div>
-             </span>
-           </div>
-           <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[4]}}</span>
-             <span class="card-row_content mobile">
-               {{userSelection.sideB.environment.typeName}}
-               <div class="card-img">
-                 <img [src]="userSelection.sideB.environment.shapes[userSelection.sideB.indexForPatternUrl]" alt="">
-               </div>
-             </span>
-           </div>
-           <div class="card-row">
-             <span class="card-row_title">{{tableHeaderTitles[5]}}</span>
-             <span class="card-row_content mobile">
-               {{userSelection.ulcansType.name}}
-             </span>
-           </div>
-         </div>
-         <div class="card-top">
-           <div class="selection-btns">
-             <button (click)="onDeleteSelection(userSelection.id)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
-             <button (click)="onDownloadPdf()" class="icon-btn"><ion-icon name="download-outline"></ion-icon></button>
-           </div>
-         </div>
-       </div>
-     </div>
+        <span>{{ "user selections list" | uppercase }}</span>
+      </div>
     </div>
-  </ng-scrollbar>
+    <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
+      <div class="body">
+        <div class="massege" *ngIf="!areThereAssetsToDisplay">
+          No Items In List yet
+        </div>
 
-   <div class="bottom">
-     <div class="next-button-wrapper">
-      <button (click)="onToCategoryIntro('MC2')" class="regular-btn"> <span>How to camouflage?</span> </button>
-      <button (click)="onToCategoryIntro('MC3')" class="regular-btn"> <span>About the equipment</span> </button>
-     </div>
-   </div>
-   <p class="bottom-txt">Note that your preferences are from an initial list, please reach out with your PDF of selections for more options and details.</p>
+        <!-- Table For Wide Screens -->
+        <div *ngIf="areThereAssetsToDisplay">
+          <div class="wide-screen">
+            <div
+              *ngFor="let userSelection of assetsForDisplay; let i = index"
+              class="middle"
+            >
+              <h1>ULCANS Prefrences for {{ userSelection.asset!.name }}</h1>
+              <div class="table-container">
+                <app-accordion>
+                  <app-accordion-item>
+                    <div accordionItemHeader class="accordion-header">
+                      <h1>{{ wideScreenTitles[0].mainTitle }}</h1>
+                    </div>
+                    <div accordionItemBody class="accordion-body">
+                      <table class="styled-table style1">
+                        <thead>
+                          <tr>
+                            <th
+                              *ngFor="
+                                let tableTitle of wideScreenTitles[0]
+                                  .tableTitles
+                              "
+                            >
+                              {{ tableTitle }}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="td-img">
+                              <div class="table-img">
+                                <img
+                                  [src]="userSelection.configuratoin!.imgUrl"
+                                  alt="configuration-pic"
+                                />
+                              </div>
+                              {{ userSelection.configuratoin!.name }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.configuratoin!.measures.widthFt
+                                  | sqftToSqm : userSelection.measureType!
+                                  | number : "1.1-3"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "SQM"
+                                  : "SQFT"
+                              }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.configuratoin!.measures.lengthFt
+                                  | sqftToSqm : userSelection.measureType!
+                                  | number : "1.1-3"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "SQM"
+                                  : "SQFT"
+                              }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.configuratoin!.measures.areaSqFt
+                                  | sqftToSqm : userSelection.measureType!
+                                  | number : "1.0-0"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "SQM"
+                                  : "SQFT"
+                              }}
+                            </td>
+                            <td>
+                              {{ userSelection.configuratoin!.poles }}
+                            </td>
+                            <td>
+                              {{ userSelection.configuratoin!.pins }}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </app-accordion-item>
+                </app-accordion>
+              </div>
+              <div class="table-container">
+                <app-accordion>
+                  <app-accordion-item>
+                    <div accordionItemHeader class="accordion-header">
+                      {{ wideScreenTitles[1].mainTitle }}
+                    </div>
+                    <div accordionItemBody class="accordion-body">
+                      <table class="styled-table style1">
+                        <thead>
+                          <tr>
+                            <th
+                              *ngFor="
+                                let tableTitle of wideScreenTitles[1]
+                                  .tableTitles
+                              "
+                            >
+                              {{ tableTitle }}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              {{ userSelection.sideA.environment.typeName }}
+                            </td>
+                            <td class="td-img">
+                              <div class="table-img">
+                                <img
+                                  [src]="
+                                    userSelection.sideA.environment.shapes[
+                                      userSelection.sideA.indexForPatternUrl
+                                    ]
+                                  "
+                                  alt="sidaA-pic"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              {{ userSelection.sideB.environment.typeName }}
+                            </td>
+                            <td class="td-img">
+                              <div class="table-img">
+                                <img
+                                  [src]="
+                                    userSelection.sideB.environment.shapes[
+                                      userSelection.sideB.indexForPatternUrl
+                                    ]
+                                  "
+                                  alt="sideB-pic"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              {{ userSelection.ulcansType.name }}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </app-accordion-item>
+                </app-accordion>
+              </div>
+              <div class="table-container">
+                <app-accordion>
+                  <app-accordion-item>
+                    <div accordionItemHeader class="accordion-header">
+                      {{ wideScreenTitles[2].mainTitle }}
+                    </div>
+                    <div accordionItemBody class="accordion-body">
+                      <table class="styled-table style1">
+                        <thead>
+                          <tr>
+                            <th
+                              *ngFor="
+                                let tableTitle of wideScreenTitles[2]
+                                  .tableTitles
+                              "
+                            >
+                              {{ tableTitle }}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              {{ userSelection.asset!.name }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.asset!.measures.widthFt
+                                  | ftToM : userSelection.measureType!
+                                  | number : "1.1-3"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "M"
+                                  : "FT"
+                              }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.asset!.measures.heightFt
+                                  | ftToM : userSelection.measureType!
+                                  | number : "1.1-3"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "M"
+                                  : "FT"
+                              }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.asset!.measures.lengthFt
+                                  | ftToM : userSelection.measureType!
+                                  | number : "1.1-3"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "M"
+                                  : "FT"
+                              }}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </app-accordion-item>
+                </app-accordion>
+              </div>
+              <div class="selection-btns">
+                <button
+                  (click)="onDeleteSelection(userSelection.id)"
+                  class="icon-btn"
+                >
+                  <ion-icon name="trash-outline"></ion-icon>
+                </button>
+                <button (click)="onDownloadPdf(i)" class="icon-btn">
+                  <ion-icon name="download-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <!-- Cards For Mobile Screens -->
+
+            <div class="cards-container mobile">
+              <div
+                *ngFor="let userSelection of assetsForDisplay; let i = index"
+                class="card"
+              >
+                <div class="card-top">
+                  <div class="card-title">
+                    ULCANS Prefrences for {{ userSelection.asset!.name }}
+                  </div>
+                </div>
+                <div class="card-body">
+                  <app-accordion>
+                    <app-accordion-item>
+                      <div accordionItemHeader class="accordion-header">
+                        Configuration
+                      </div>
+                      <div accordionItemBody class="accordion-body">
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[0]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.configuratoin!.name }}
+                            <div class="card-img">
+                              <img
+                                [src]="userSelection.configuratoin!.imgUrl"
+                                alt=""
+                              />
+                            </div>
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[1]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.configuratoin!.measures.widthFt
+                                | sqftToSqm : userSelection.measureType!
+                                | number : "1.1-3"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "SQM"
+                                : "SQFT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[2]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.configuratoin!.measures.lengthFt
+                                | sqftToSqm : userSelection.measureType!
+                                | number : "1.1-3"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "SQM"
+                                : "SQFT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[3]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.configuratoin!.measures.areaSqFt
+                                | sqftToSqm : userSelection.measureType!
+                                | number : "1.0-0"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "SQM"
+                                : "SQFT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">
+                            {{ tableHeaderTitles[4] }}
+                          </span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.configuratoin!.poles }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[5]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.configuratoin!.pins }}
+                          </span>
+                        </div>
+                      </div>
+                    </app-accordion-item>
+                  </app-accordion>
+                  <app-accordion>
+                    <app-accordion-item>
+                      <div accordionItemHeader class="accordion-header">
+                        Patterns
+                      </div>
+                      <div accordionItemBody class="accordion-body">
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[6]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.sideA.environment.typeName }}
+                            <div class="card-img">
+                              <img
+                                [src]="
+                                  userSelection.sideA.environment.shapes[
+                                    userSelection.sideA.indexForPatternUrl
+                                  ]
+                                "
+                                alt=""
+                              />
+                            </div>
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[7]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.sideB.environment.typeName }}
+                            <div class="card-img">
+                              <img
+                                [src]="
+                                  userSelection.sideB.environment.shapes[
+                                    userSelection.sideB.indexForPatternUrl
+                                  ]
+                                "
+                                alt=""
+                              />
+                            </div>
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[8]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.ulcansType.name }}
+                          </span>
+                        </div>
+                      </div>
+                    </app-accordion-item>
+                  </app-accordion>
+                  <app-accordion>
+                    <app-accordion-item>
+                      <div accordionItemHeader class="accordion-header">
+                        Asset
+                      </div>
+                      <div accordionItemBody class="accordion-body">
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[9]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.asset!.name }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[10]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.asset!.measures.widthFt
+                                | ftToM : userSelection.measureType!
+                                | number : "1.1-3"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "M"
+                                : "FT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[11]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.asset!.measures.heightFt
+                                | ftToM : userSelection.measureType!
+                                | number : "1.1-3"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "M"
+                                : "FT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[12]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.asset!.measures.lengthFt
+                                | ftToM : userSelection.measureType!
+                                | number : "1.1-3"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "M"
+                                : "FT"
+                            }}
+                          </span>
+                        </div>
+                      </div>
+                    </app-accordion-item>
+                  </app-accordion>
+                </div>
+                <div class="card-buttom">
+                  <div class="selection-btns">
+                    <button
+                      (click)="onDeleteSelection(userSelection.id)"
+                      class="icon-btn"
+                    >
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                    <button (click)="onDownloadPdf(i)" class="icon-btn">
+                      <ion-icon name="download-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-scrollbar>
+
+    <div class="bottom">
+      <div class="next-button-wrapper">
+        <button (click)="onToCategoryIntro('MC2')" class="regular-btn">
+          <span>How to camouflage?</span>
+        </button>
+        <button (click)="onToCategoryIntro('MC3')" class="regular-btn">
+          <span>About the equipment</span>
+        </button>
+      </div>
+      <p class="bottom-txt">
+        Note that your preferences are from an initial list, please reach out
+        with your PDF of selections for more options and details.
+      </p>
+    </div>
   </div>
 
-
-
-
   <!-- Tables For Pdf -->
-  <div class="tables-container" hidden>
+  <div
+    *ngIf="assetsForDisplay[indexForTablePdf]"
+    class="tables-container"
+    hidden
+  >
     <table class="table1">
       <thead>
-      <tr class="row table1">
-        <th id="logo">
-          <img src="assets/imgs/logo/logo.jpeg" alt="logo">
-        </th>
-      </tr>
-    </thead>
+        <tr class="row table1">
+          <th id="logo">
+            <img src="assets/imgs/logo/logo.jpeg" alt="logo" />
+          </th>
+        </tr>
+      </thead>
     </table>
 
     <table class="table">
       <thead>
-      <tr class="row header blue">
-        <th *ngFor="let headerTitle of tableHeaderTitlesForPdf">{{headerTitle}}</th>
-      </tr>
+        <tr class="row header blue">
+          <th *ngFor="let headerTitle of tableHeaderTitlesForPdf">
+            {{ headerTitle }}
+          </th>
+        </tr>
       </thead>
       <tbody>
-      <tr class="row" *ngFor="let userSelection of assetsForDisplay" >
+        <tr class="row">
           <td id="imgEl">
-              <img [src]="userSelection.configuratoin!.imgUrlForPdf" alt="">
+            <img
+              [src]="
+                assetsForDisplay[indexForTablePdf].configuratoin!.imgUrlForPdf
+              "
+              alt=""
+            />
           </td>
-          <td><h3>{{userSelection.configuratoin!.name}}</h3></td>
-          <td>{{userSelection.configuratoin!.measures.areaSqFt | sqftToSqm: userSelection.measureType! | number}} {{userSelection.measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</td>
-          <td>{{userSelection.asset!.name}}</td>
           <td>
-            <h3>{{userSelection.sideA.environment.typeName}}</h3>
+            <h3>
+              {{ assetsForDisplay[indexForTablePdf].configuratoin!.name }}
+            </h3>
+          </td>
+          <td>
+            {{
+              assetsForDisplay[indexForTablePdf].configuratoin!.measures
+                .areaSqFt
+                | sqftToSqm : assetsForDisplay[indexForTablePdf].measureType!
+                | number : "1.0-0"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType ===
+              MeasureType.METERS
+                ? "SQM"
+                : "SQFT"
+            }}
+          </td>
+          <td>{{ assetsForDisplay[indexForTablePdf].asset!.name }}</td>
+          <td>
+            <h3>
+              {{
+                assetsForDisplay[indexForTablePdf].sideA.environment.typeName
+              }}
+            </h3>
           </td>
           <td id="imgElSideA">
-            <img [src]="userSelection.sideA.environment.forPdf[userSelection.sideA.indexForPatternUrl]" alt="pattern">
-          </td>
-          <td >
-            <h3>{{userSelection.sideB.environment.typeName}}</h3>
-          </td>
-          <td id="imgElSideB">
-            <img [src]="userSelection.sideB.environment.forPdf[userSelection.sideB.indexForPatternUrl]" alt="pattern">
+            <img
+              [src]="
+                assetsForDisplay[indexForTablePdf].sideA.environment.forPdf[
+                  assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+                ]
+              "
+              alt="pattern"
+            />
           </td>
           <td>
-            <h3>{{userSelection.ulcansType.name}}</h3>
+            <h3>
+              {{
+                assetsForDisplay[indexForTablePdf].sideB.environment.typeName
+              }}
+            </h3>
           </td>
-      </tr>
+          <td id="imgElSideB">
+            <img
+              [src]="
+                assetsForDisplay[indexForTablePdf].sideB.environment.forPdf[
+                  assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+                ]
+              "
+              alt="pattern"
+            />
+          </td>
+          <td>
+            <h3>{{ assetsForDisplay[indexForTablePdf].ulcansType.name }}</h3>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 </ion-content>
-
-
-
-
-
-

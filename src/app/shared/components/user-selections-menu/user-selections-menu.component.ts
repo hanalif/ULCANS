@@ -27,11 +27,13 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
-  tableHeaderTitles:  string[] = ['Configuration Type', 'Area SQ' ,'Asset', 'Side A', 'Side B',' Type', ''];
+  tableHeaderTitles:  string[] = ['Type','Width', 'Length', 'Area SQ', 'Poles', 'Pins' ,'Side A', 'Side B',' Type' ,'Name', 'Width', 'Height', 'Length' ,''];
+  wideScreenTitles: any = [{mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(0,6)},{mainTitle: 'Patterns', tableTitles: ['sideA', '', 'sideB', '', 'Type'] }, {mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(9,13)}]
   tableHeaderTitlesForPdf: string[] = ['Configuration', 'Type', 'Area SQ' , 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
   date = this.transformDate(new Date);
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
+  public indexForTablePdf: number = -1;
 
   transformDate(date: Date) {
     return this.datePipe.transform(date, 'yyyy-MM-dd');
@@ -96,162 +98,164 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   //PDF Generator:
 
-  onDownloadPdf(){
+  onDownloadPdf(index: number){
+    this.indexForTablePdf = index;
+    setTimeout(() => this.exportToPdf(), 0);
+  }
+
+  exportToPdf() {
+    let platform = this.checkPlatform(this.currPlatforms);
+
+    const doc = new jsPDF('p', 'pt','a4',true);
 
 
-      let platform = this.checkPlatform(this.currPlatforms);
-
-      const doc = new jsPDF('p', 'pt','a4',true);
-
-
-      autoTable(doc, {
-        html: '.table1',
-        didDrawCell: (data: any) => {
-          if(data.cell.raw.id === 'logo'){
-              var td = data.cell.raw;
-              var img = td.getElementsByTagName('img')[0];
-              doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 30, data.cell.contentHeight);
-            }
-        },
-        theme: 'plain',
-      });
-
-      autoTable(doc, {
-        body: [
-          [
-            {
-              content: `${this.date}`,
-              styles: {
-                halign: 'left'
-              },
-            }
-          ],
-        ],
-        theme: 'plain'
-      });
-
-      autoTable(doc, {
-        body: [
-          [
-            {
-              content:'Fibrotex'
-              +'\n8 Hasivim Street, Petach Tikvah, Israel'
-              +'\n+972 9 951 8830',
-              styles: {
-                halign: 'left'
-              }
-            }
-          ],
-        ],
-        theme: 'plain'
-      });
-
-      autoTable(doc, {
-        body: [
-          [
-            {
-              content: 'ULCANS PREFERENCES',
-              styles: {
-                halign:'left',
-                fontSize: 12
-              }
-            }
-          ]
-        ],
-        theme: 'plain'
-      });
-
-      autoTable(doc, {
-        html: '.table',
-        headStyles:{
-          valign: 'middle',
-          cellWidth: 'wrap',
-          halign: 'left',
-          minCellHeight: 30,
-          minCellWidth: 40
-        },
-        bodyStyles: {
-          valign: 'middle',
-          cellWidth: 'wrap',
-          halign: 'left',
-          minCellHeight: 30,
-          minCellWidth: 40
-        },
-
-        didDrawCell: (data: any) => {
-          var cellId = data.cell.raw.id;
-          if( cellId === 'imgEl'){
+    autoTable(doc, {
+      html: '.table1',
+      didDrawCell: (data: any) => {
+        if(data.cell.raw.id === 'logo'){
             var td = data.cell.raw;
             var img = td.getElementsByTagName('img')[0];
-            doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight, '', 'FAST' );
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 30, data.cell.contentHeight);
           }
-          if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
-            var td = data.cell.raw;
-            var img = td.getElementsByTagName('img')[0];
-            doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 20, data.cell.contentHeight, '', 'FAST');
+      },
+      theme: 'plain',
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: `${this.date}`,
+            styles: {
+              halign: 'left'
+            },
           }
-        },
-        theme: 'striped'
-
-      });
-
-      autoTable(doc, {
-        body: [
-          [
-            {
-              content: 'Important Note',
-              styles: {
-                halign: 'left',
-                fontSize: 14
-              }
-            }
-          ],
-          [
-            {
-
-              content: 'Thank you for selecting your ULCANS preferences.'
-              +'We would appreciate it if you could send the PDF to our office'
-              +' and get in touch with our exceptional agent to discuss your choices further.',
-              styles: {
-                halign: 'left'
-              }
-            }
-          ],
         ],
-        theme: "plain"
-      });
+      ],
+      theme: 'plain'
+    });
 
-      autoTable(doc, {
-        body: [
-          [
-            {
-              content: 'Ultra Lightweight Camouflage Net System'
-              +'The ability to conceal and protect forces against multi-spectral sensor threats.',
-              styles: {
-                halign: 'center'
-              }
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content:'Fibrotex'
+            +'\n8 Hasivim Street, Petach Tikvah, Israel'
+            +'\n+972 9 951 8830',
+            styles: {
+              halign: 'left'
             }
-          ]
+          }
         ],
-        theme: "plain"
-      });
+      ],
+      theme: 'plain'
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'ULCANS PREFERENCES',
+            styles: {
+              halign:'left',
+              fontSize: 12
+            }
+          }
+        ]
+      ],
+      theme: 'plain'
+    });
+
+    autoTable(doc, {
+      html: '.table',
+      headStyles:{
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'left',
+        minCellHeight: 30,
+        minCellWidth: 40
+      },
+      bodyStyles: {
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'left',
+        minCellHeight: 30,
+        minCellWidth: 40
+      },
+
+      didDrawCell: (data: any) => {
+        var cellId = data.cell.raw.id;
+        if( cellId === 'imgEl'){
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight, '', 'FAST' );
+        }
+        if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 20, data.cell.contentHeight, '', 'FAST');
+        }
+      },
+      theme: 'striped'
+
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'Important Note',
+            styles: {
+              halign: 'left',
+              fontSize: 14
+            }
+          }
+        ],
+        [
+          {
+
+            content: 'Thank you for selecting your ULCANS preferences.'
+            +'We would appreciate it if you could send the PDF to our office'
+            +' and get in touch with our exceptional agent to discuss your choices further.',
+            styles: {
+              halign: 'left'
+            }
+          }
+        ],
+      ],
+      theme: "plain"
+    });
+
+    autoTable(doc, {
+      body: [
+        [
+          {
+            content: 'Ultra Lightweight Camouflage Net System'
+            +'The ability to conceal and protect forces against multi-spectral sensor threats.',
+            styles: {
+              halign: 'center'
+            }
+          }
+        ]
+      ],
+      theme: "plain"
+    });
 
 
-      if(platform.desktop || platform.mobileWeb){
-        return doc.save("output.pdf",{ returnPromise: true }).then(()=>{
+    if(platform.desktop || platform.mobileWeb){
+      return doc.save("output.pdf",{ returnPromise: true }).then(()=>{
+      })
+    }
+
+
+    if(platform.mobile){
+      let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
+        this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
+          this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
         })
-      }
+    }
 
-
-      if(platform.mobile){
-        let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
-          this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
-            this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
-          })
-      }
-
-      return
-
+    return;
   }
 
   checkPlatform(currPlatforms: string[]){

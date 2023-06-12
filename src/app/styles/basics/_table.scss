@@ -12,6 +12,7 @@
     display: none;
   }
 
+
   .styled-table{
     font-family: Babas-pro, sans-serif;
     border-collapse: collapse;
@@ -70,6 +71,24 @@
     & tr:last-child td:last-child {
       border-bottom-right-radius: 10px;
     }
+
+
+    &.style1{
+      font-size: 16px;
+      margin: 3px 0;
+
+      & th, & td{
+        padding: 2px 2px;
+      }
+
+      .table-img{
+        width: 60px;
+      }
+
+
+    }
+
+
 
 
   }
