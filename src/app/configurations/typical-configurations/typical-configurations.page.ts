@@ -43,7 +43,9 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
 
     ngOnDestroy(): void {
       this.assetsSuscription.unsubscribe();
-      this.alertSubscription.unsubscribe();
+      if(this.alertSubscription){
+        this.alertSubscription.unsubscribe();
+      }
     }
 
     onAssetLink(assetId: string){

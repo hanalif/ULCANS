@@ -16,8 +16,12 @@ import { Configuration } from '../../models/configuration.model';
 export class AssetPage implements OnInit {
   public asset!: Asset;
   public configuration!: Configuration;
+  public areSpecialPoles!: boolean;
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
+  tableHeaderTitles:  string[] = ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins', 'Name', 'Width', 'Height', 'Length'];
+  wideScreenTitles: any = [{mainTitle: 'Configuration', tableTitles: ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins']},{mainTitle: 'Asset', tableTitles: ['Name', 'Width', 'Height', 'Length']}]
+
 
   constructor(
     private router: ActivatedRoute,
@@ -29,6 +33,8 @@ export class AssetPage implements OnInit {
     const assetForPreview = this.router.snapshot.data['assetForPreview'];
     this.asset = assetForPreview.asset;
     this.configuration = assetForPreview.configuration;
+    this.areSpecialPoles = assetForPreview.areSpecialPoles;
+
   }
 
   onSelectBtn(measureType:MeasureType){

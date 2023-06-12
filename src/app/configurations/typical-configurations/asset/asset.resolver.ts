@@ -46,7 +46,8 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
 
       let assetForPreview: AssetForPreview = {
         asset: asset,
-        configuration: config
+        configuration: config,
+        areSpecialPoles: areSpecialPoles
       }
       return assetForPreview;
     }

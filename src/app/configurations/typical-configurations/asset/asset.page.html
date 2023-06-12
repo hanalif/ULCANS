@@ -1,105 +1,300 @@
-<ion-header>
-</ion-header>
+<ion-header> </ion-header>
 <ion-content>
-  <ng-scrollbar class="scrollbar">
-  <div class="main-layout">
-    <div class="page-container">
-      <div class="top">
-        <div class="btns-section">
-          <button (click)="onBack()" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
-          <div>
-            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.METERS}" (click)="onSelectBtn(1)">M</button>
-            <button class="icon-btn" [ngClass]="{'active': measureType === MeasureType.FEET}"(click)="onSelectBtn(2)">FT</button>
-          </div>
-        </div>
-        <div class="title">
-          <span>ULCANS Configuration</span>
-          <span>Based On Your Asset Measurements</span>
+  <div class="page-container main-layout">
+    <div class="top">
+      <div class="btns-section">
+        <button (click)="onBack()" class="icon-btn">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </button>
+        <div>
+          <button
+            class="icon-btn"
+            [ngClass]="{'active': measureType === MeasureType.METERS}"
+            (click)="onSelectBtn(1)"
+          >
+            M
+          </button>
+          <button
+            class="icon-btn"
+            [ngClass]="{'active': measureType === MeasureType.FEET}"
+            (click)="onSelectBtn(2)"
+          >
+            FT
+          </button>
         </div>
       </div>
-      <div class="cards-container">
-        <div *ngIf="!configuration">
-          <div class="sub-title">
-            The size of your asset requires a custom configuration.  Please contact us for more information.
-          </div>
-        </div>
-        <div *ngIf="configuration" class="card">
-          <div class="card-content">
-            <div class="card-top">
-              <div class="card-title">
-                ULCANS Configuration Type: {{configuration.name | uppercase}}
-              </div>
-              <div class="card-img">
-                <img [src]="configuration.imgUrlForPdf" alt="asset-pic">
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card-row">
-                <span>Area SQ:</span>
-                <span>{{configuration.measures.areaSqFt | sqftToSqm: measureType | number : '1.0-0'}} {{measureType === MeasureType.METERS ? 'SQM': 'SQFT'}}</span>
-              </div>
-              <div class="card-row">
-                <span>Hexagon:</span>
-                <span>{{configuration.hexagon}}</span>
-              </div>
-              <div class="card-row">
-                <span>Rhombus:</span>
-                <span>{{configuration.rhombus}}</span>
-              </div>
-              <div class="card-row">
-                <span>Pins:</span>
-                <span>{{configuration.pins}}</span>
-              </div>
-              <div class="card-row">
-                <span>Poles:</span>
-                <span>{{configuration.poles}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-          <div class="card">
-            <div class="card-content">
-              <div class="card-top">
-                <div class="card-title">
-                  {{asset.name | uppercase}}
-                </div>
-                <div class="card-img" *ngIf="asset.assetImgUrl !== 'assets/imgs/hexagon-bg/asset-bg.png'">
-                  <img [src]="asset.assetImgUrl" alt="asset-pic">
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="card-row">
-                  <span>Width:</span>
-                  <span>{{asset.measures.widthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</span>
-                </div>
-                <div class="card-row">
-                  <span>Height:</span>
-                  <span>{{asset.measures.heightFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</span>
-                </div>
-                <div class="card-row">
-                  <span>Length:</span>
-                  <span>{{asset.measures.lengthFt | ftToM: measureType | number: '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="title">
+        <span>ULCANS Configuration</span>
+        <span>Based On Your Asset Measurements</span>
+      </div>
     </div>
+    <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
+      <div class="body">
+        <!-- Table For Wide Screens -->
+
+        <div class="wide-screen">
+          <div class="middle">
+            <div class="table-container">
+              <h1>Configuration</h1>
+              <span *ngIf="!configuration" class="note"
+                >The size of your asset requires a custom configuration. Please
+                contact us for more information.
+              </span>
+              <div *ngIf="configuration">
+                <table class="styled-table style1">
+                  <thead>
+                    <tr>
+                      <th
+                        *ngFor="let tableTitle of ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins']"
+                      >
+                        {{ tableTitle }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="td-img">
+                        <div class="table-img">
+                          <img
+                            [src]="configuration!.imgUrl"
+                            alt="configuration-pic"
+                          />
+                        </div>
+                        {{ configuration!.name }}
+                      </td>
+                      <td>{{configuration.hexagon}}</td>
+                      <td>{{configuration.rhombus}}</td>
+                      <td>
+                        {{configuration.measures.widthFt | ftToM: measureType |
+                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        ? 'M': 'FT'}}
+                      </td>
+                      <td>
+                        {{configuration.measures.lengthFt | ftToM: measureType |
+                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        ? 'M': 'FT'}}
+                      </td>
+                      <td>
+                        {{configuration.measures.areaSqFt | sqftToSqm:
+                        measureType | number : '1.0-0'}} {{measureType ===
+                        MeasureType.METERS ? 'SQM': 'SQFT'}}
+                      </td>
+                      <td>
+                        <span *ngIf="areSpecialPoles">*</span>
+                        {{ configuration.poles }}
+                      </td>
+                      <td>{{ configuration.pins }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div
+                  *ngIf="
+                          areSpecialPoles
+                          "
+                >
+                  <span class="poles-note"> * Special poles require </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <h1>{{ wideScreenTitles[1].mainTitle }}</h1>
+
+              <table class="styled-table style1">
+                <thead>
+                  <tr>
+                    <th
+                      *ngFor="
+                                let tableTitle of ['Name', 'Width', 'Height', 'Length']
+                              "
+                    >
+                      {{ tableTitle }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ asset!.name }}</td>
+                    <td>
+                      {{asset.measures.widthFt | ftToM: measureType | number :
+                      '1.1-3'}} {{measureType === MeasureType.METERS ? 'M':
+                      'FT'}}
+                    </td>
+                    <td>
+                      {{asset.measures.heightFt | ftToM: measureType | number :
+                      '1.1-3'}} {{measureType === MeasureType.METERS ? 'M':
+                      'FT'}}
+                    </td>
+                    <td>
+                      {{asset.measures.lengthFt | ftToM: measureType | number :
+                      '1.1-3'}} {{measureType === MeasureType.METERS ? 'M':
+                      'FT'}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Cards For Mobile Screens -->
+
+          <div class="cards-container mobile">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title">Configuration</div>
+                <div>
+                  <div *ngIf="!configuration" class="card-row">
+                    <div class="card-row_title">
+                      <div class="note">
+                        The size of your asset requires a custom configuration.
+                        Please contact us for more information.
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="configuration">
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[0] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        {{ configuration.name }}
+                        <div class="card-img">
+                          <img [src]="configuration.imgUrl" alt="" />
+                        </div>
+                      </span>
+                    </div>
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[1] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        {{configuration.hexagon}}
+                      </span>
+                    </div>
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[2] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        {{configuration.rhombus}}
+                      </span>
+                    </div>
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[3] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        {{configuration.measures.widthFt | ftToM: measureType |
+                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        ? 'M': 'FT'}}
+                      </span>
+                    </div>
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[4] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        {{configuration.measures.lengthFt | ftToM: measureType |
+                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        ? 'M': 'FT'}}
+                      </span>
+                    </div>
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[5] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        {{configuration.measures.areaSqFt | sqftToSqm:
+                        measureType | number : '1.0-0'}} {{measureType ===
+                        MeasureType.METERS ? 'SQM': 'SQFT'}}
+                      </span>
+                    </div>
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[6] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        <span *ngIf="areSpecialPoles">*</span>
+                        {{ configuration.poles }}
+                      </span>
+                    </div>
+                    <div class="card-row">
+                      <span class="card-row_title"
+                        >{{ tableHeaderTitles[7] }}</span
+                      >
+                      <span class="card-row_content mobile">
+                        {{ configuration.pins }}
+                      </span>
+                    </div>
+                    <div
+                      class="note-txt"
+                      *ngIf="
+                      areSpecialPoles
+                            "
+                    >
+                      * Special poles require
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                  <div class="card-title">Asset</div>
+                <div class="card-row">
+                  <span class="card-row_title">{{ tableHeaderTitles[8] }}</span>
+                  <span class="card-row_content mobile">
+                    {{ asset.name }}
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title">{{ tableHeaderTitles[9] }}</span>
+                  <span class="card-row_content mobile">
+                    {{asset.measures.widthFt | ftToM: measureType | number :
+                    '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"
+                    >{{ tableHeaderTitles[10] }}</span
+                  >
+                  <span class="card-row_content mobile">
+                    {{asset.measures.heightFt | ftToM: measureType | number :
+                    '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"
+                    >{{ tableHeaderTitles[11] }}</span
+                  >
+                  <span class="card-row_content mobile">
+                    {{asset.measures.lengthFt | ftToM: measureType | number :
+                    '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-scrollbar>
   </div>
-</ng-scrollbar>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <div class="footer-container main-layout">
       <div class="next-button-wrapper">
-        <button  (click)="onChooseYourEnvironment()" class="regular-btn"><span class="mobile-buttom">{{'continue to choose your environment and type' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
+        <button (click)="onChooseYourEnvironment()" class="regular-btn">
+          <span class="mobile-buttom"
+            >{{'continue to choose your environment and type' |
+            uppercase}}</span
+          ><ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
       </div>
-      <p class="footer-txt">The app offers limited ULCANS preferences. For more options, please reach out.</p>
+      <p class="footer-txt">
+        The app offers limited ULCANS preferences. For more options, please
+        reach out.
+      </p>
     </div>
   </ion-toolbar>
 </ion-footer>
-
-
-
-
-

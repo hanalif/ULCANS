@@ -6,6 +6,8 @@
   color: aliceblue;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  width: 100%;
 
 
   @include for-bpoint-tablet{

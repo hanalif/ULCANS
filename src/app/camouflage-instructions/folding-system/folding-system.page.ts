@@ -20,8 +20,6 @@ export class FoldingSystemPage implements OnInit {
   }
 
   onLink(link: string ,index:number | null, innerIndex: number | null = null){
-    console.log(index),
-    console.log(innerIndex)
     this.route.navigate([link] , {queryParams: {index: index, innerIndex: innerIndex}});
   }
 
