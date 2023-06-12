@@ -78,9 +78,9 @@ export class UserSelectionService {
     let currSelctionValue = this.getCurrUserSelectionValue();
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
     let numsOfKeys = Object.values(currSelctionValue).length;
-    let progressNum = numsOfKeys * 16.666;
+    let progressNum = numsOfKeys * 12.5;
     this.progressBar$.next(progressNum);
-    if(numsOfKeys === 6){
+    if(numsOfKeys === 8){
       this.isDisabled$.next(false);
     }
     this.userCurrSelection$.next(currSelctionValue);

@@ -75,7 +75,9 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
         if((currentState.url.includes('environments-and-types'))){
 
           if(nextState.url.includes(assetId)){
+
             return true;
+
           }
           return from(this.presentAlert()).pipe(
             map((res)=> res == AlertConfirmationType.Confirm),
