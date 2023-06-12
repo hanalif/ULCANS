@@ -8,6 +8,7 @@ import { UserSelectionService } from 'src/app/shared/services/user-selection.ser
 import { AssetForPreview } from '../../models/assetForPreview.model';
 import { AssetsService } from '../../services/assets/assets.service';
 import { ConfigurationsService } from '../../services/configurationsService/configurations.service';
+import { Configuration } from '../../models/configuration.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,17 +25,25 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
       return undefined;
     }else{
       const areSpecialPoles = asset.measures.heightFt >= 12.1030 ? true : false;
+      const isCustomConfiguration = asset.configurationId ? false : true;
       //save to curr user selection
       let userSelections: Partial<AssetForPdf> = {
         assetId: assetId,
         configuraionId: asset.configurationId,
-        areSpecialPoles: areSpecialPoles
+        areSpecialPoles: areSpecialPoles,
+        isCustomConfiguration: isCustomConfiguration
       }
 
       this.userSelectionsService.updateCurrUserSelections(userSelections);
-
+      let config: Configuration | undefined;
       //generate asset for preview
-      let config = this.configsService.getConfigurationById(asset.configurationId);
+      if(asset.configurationId){
+        config = this.configsService.getConfigurationById(asset.configurationId);
+      } else{
+        config = undefined;
+      }
+
+
       let assetForPreview: AssetForPreview = {
         asset: asset,
         configuration: config

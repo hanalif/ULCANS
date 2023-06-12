@@ -54,7 +54,7 @@ export class AssetsService {
     return assetsByIds;
   }
 
-  generataAndAddNewAsset(assetName:string, calculatorFormValue: CalculatorFormValue, configuraionId: string){
+  generataAndAddNewAsset(assetName:string, calculatorFormValue: CalculatorFormValue, configuraionId: string | undefined){
     let widhtFt: number;
     let heightFt:number;
     let lengthFt: number;

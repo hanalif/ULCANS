@@ -2,6 +2,6 @@ import { Asset } from "./asset.model";
 import { Configuration } from "./configuration.model";
 
 export interface AssetForPreview{
-  asset?: Asset,
-  configuration?: Configuration
+  asset: Asset,
+  configuration: Configuration | undefined
 }

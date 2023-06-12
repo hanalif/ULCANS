@@ -3,12 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { ConfigurationsService } from '../configurationsService/configurations.service';
 import { CalculatorFormValue } from '../../configuration-calculator/calculator-form-value.model';
-import { SqftToSqmPipe } from 'src/app/shared/pipes/sqft-to-sqm.pipe';
-
-
-
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +12,16 @@ export class CalculatorService {
   private GAP_FEET: number = 2; //Gap from roof top to net
   private MeasureType = MeasureType;
 
-
-
-
   constructor( private configurationsService: ConfigurationsService ) { }
 
-  getCalculatedConfigurationId(calculatorFormInput: CalculatorFormValue){
+  getCalculatedConfigurationId(calculatorFormInput: CalculatorFormValue): string | undefined{
     let measureType = calculatorFormInput.measureType;
     let length = calculatorFormInput.length;
     let width = calculatorFormInput.width;
     let height = calculatorFormInput.height;
 
     let netDimentions: number;
-    let configurationId: string;
+    let configurationId: string | undefined;
 
     if(MeasureType.METERS === measureType){
       let netDimentionsCalc = this.calculateNetDimentions(length, width, height, this.GAP_METERS);

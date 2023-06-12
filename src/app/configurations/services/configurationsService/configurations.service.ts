@@ -53,16 +53,16 @@ export class ConfigurationsService {
     return updatedFetchedConfigurations;
   }
 
-  getConfgurationIdByNetDimention(netDmention:number){
+  getConfgurationIdByNetDimention(netDmention:number): string | undefined{
     let configurations = this._getConfigurationsValue();
-    let configurationId!: string;
+    let configurationId!: string | undefined;
 
     for(let i = 0; i<configurations.length; i++){
       if(netDmention >= configurations[i].measures.areaSqFt){
         if(!configurations[i+1]){
-          configurationId = configurations[i].id
+          configurationId = undefined;
         }else{
-          configurationId = configurations[i+1].id
+          configurationId = configurations[i+1].id;
         }
       }
     }

@@ -18,7 +18,12 @@
         </div>
       </div>
       <div class="cards-container">
-        <div class="card">
+        <div *ngIf="!configuration">
+          <div class="sub-title">
+            The size of your asset requires a custom configuration.  Please contact us for more information.
+          </div>
+        </div>
+        <div *ngIf="configuration" class="card">
           <div class="card-content">
             <div class="card-top">
               <div class="card-title">

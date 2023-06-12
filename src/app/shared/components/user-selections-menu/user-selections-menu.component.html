@@ -27,77 +27,96 @@
                       <h1>{{ wideScreenTitles[0].mainTitle }}</h1>
                     </div>
                     <div accordionItemBody class="accordion-body">
-                      <table class="styled-table style1">
-                        <thead>
-                          <tr>
-                            <th
-                              *ngFor="
-                                let tableTitle of wideScreenTitles[0]
-                                  .tableTitles
-                              "
-                            >
-                              {{ tableTitle }}
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="td-img">
-                              <div class="table-img">
-                                <img
-                                  [src]="userSelection.configuratoin!.imgUrl"
-                                  alt="configuration-pic"
-                                />
-                              </div>
-                              {{ userSelection.configuratoin!.name }}
-                            </td>
-                            <td>
-                              {{
-                                userSelection.configuratoin!.measures.widthFt
-                                  | sqftToSqm : userSelection.measureType!
-                                  | number : "1.1-3"
-                              }}
-                              {{
-                                userSelection.measureType === MeasureType.METERS
-                                  ? "SQM"
-                                  : "SQFT"
-                              }}
-                            </td>
-                            <td>
-                              {{
-                                userSelection.configuratoin!.measures.lengthFt
-                                  | sqftToSqm : userSelection.measureType!
-                                  | number : "1.1-3"
-                              }}
-                              {{
-                                userSelection.measureType === MeasureType.METERS
-                                  ? "SQM"
-                                  : "SQFT"
-                              }}
-                            </td>
-                            <td>
-                              {{
-                                userSelection.configuratoin!.measures.areaSqFt
-                                  | sqftToSqm : userSelection.measureType!
-                                  | number : "1.0-0"
-                              }}
-                              {{
-                                userSelection.measureType === MeasureType.METERS
-                                  ? "SQM"
-                                  : "SQFT"
-                              }}
-                            </td>
-                            <td>
-                              <span *ngIf="userSelection.areSpecialPoles">*</span>
-                              {{ userSelection.configuratoin!.poles }}
-                            </td>
-                            <td>
-                              {{ userSelection.configuratoin!.pins }}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div class="note-txt" *ngIf="userSelection.areSpecialPoles">* Special poles require</div>
+                      <span *ngIf="!userSelection.configuratoin" class="note"
+                        >The size of your asset requires a custom configuration.
+                        Please contact us for more information.
+                      </span>
+                      <div  *ngIf="userSelection.configuratoin">
+                        <table
+                          class="styled-table style1"
+                        >
+                          <thead>
+                            <tr>
+                              <th
+                                *ngFor="
+                                  let tableTitle of wideScreenTitles[0]
+                                    .tableTitles
+                                "
+                              >
+                                {{ tableTitle }}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="td-img">
+                                <div class="table-img">
+                                  <img
+                                    [src]="userSelection.configuratoin!.imgUrl"
+                                    alt="configuration-pic"
+                                  />
+                                </div>
+                                {{ userSelection.configuratoin!.name }}
+                              </td>
+                              <td>
+                                {{
+                                  userSelection.configuratoin!.measures.widthFt
+                                    | sqftToSqm : userSelection.measureType!
+                                    | number : "1.1-3"
+                                }}
+                                {{
+                                  userSelection.measureType === MeasureType.METERS
+                                    ? "SQM"
+                                    : "SQFT"
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                  userSelection.configuratoin!.measures.lengthFt
+                                    | sqftToSqm : userSelection.measureType!
+                                    | number : "1.1-3"
+                                }}
+                                {{
+                                  userSelection.measureType === MeasureType.METERS
+                                    ? "SQM"
+                                    : "SQFT"
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                  userSelection.configuratoin!.measures.areaSqFt
+                                    | sqftToSqm : userSelection.measureType!
+                                    | number : "1.0-0"
+                                }}
+                                {{
+                                  userSelection.measureType === MeasureType.METERS
+                                    ? "SQM"
+                                    : "SQFT"
+                                }}
+                              </td>
+                              <td>
+                                <span *ngIf="userSelection.areSpecialPoles"
+                                  >*</span
+                                >
+                                {{ userSelection.configuratoin!.poles }}
+                              </td>
+                              <td>
+                                {{ userSelection.configuratoin!.pins }}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div
+
+                          *ngIf="
+                            userSelection.areSpecialPoles
+                          "
+                        >
+                          <span class="poles-note">
+                            * Special poles require
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </app-accordion-item>
                 </app-accordion>
@@ -264,90 +283,110 @@
                         Configuration
                       </div>
                       <div accordionItemBody class="accordion-body">
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[0]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{ userSelection.configuratoin!.name }}
-                            <div class="card-img">
-                              <img
-                                [src]="userSelection.configuratoin!.imgUrl"
-                                alt=""
-                              />
-                            </div>
-                          </span>
+                        <div
+                          *ngIf="!userSelection.configuratoin"
+                          class="card-row"
+                        >
+                          <div class="card-row_title">
+                            The size of your asset requires a custom
+                            configuration. Please contact us for more information.
+                          </div>
                         </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[1]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{
-                              userSelection.configuratoin!.measures.widthFt
-                                | sqftToSqm : userSelection.measureType!
-                                | number : "1.1-3"
-                            }}
-                            {{
-                              userSelection.measureType === MeasureType.METERS
-                                ? "SQM"
-                                : "SQFT"
-                            }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[2]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{
-                              userSelection.configuratoin!.measures.lengthFt
-                                | sqftToSqm : userSelection.measureType!
-                                | number : "1.1-3"
-                            }}
-                            {{
-                              userSelection.measureType === MeasureType.METERS
-                                ? "SQM"
-                                : "SQFT"
-                            }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[3]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{
-                              userSelection.configuratoin!.measures.areaSqFt
-                                | sqftToSqm : userSelection.measureType!
-                                | number : "1.0-0"
-                            }}
-                            {{
-                              userSelection.measureType === MeasureType.METERS
-                                ? "SQM"
-                                : "SQFT"
-                            }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">
-                            {{ tableHeaderTitles[4] }}
-                          </span>
-                          <span class="card-row_content mobile">
-                            <span *ngIf="userSelection.areSpecialPoles">*</span>
-                            {{ userSelection.configuratoin!.poles }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[5]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{ userSelection.configuratoin!.pins }}
-                          </span>
+                        <div *ngIf="userSelection.configuratoin">
+                          <div class="card-row">
+                            <span class="card-row_title">{{
+                              tableHeaderTitles[0]
+                            }}</span>
+                            <span class="card-row_content mobile">
+                              {{ userSelection.configuratoin!.name }}
+                              <div class="card-img">
+                                <img
+                                  [src]="userSelection.configuratoin!.imgUrl"
+                                  alt=""
+                                />
+                              </div>
+                            </span>
+                          </div>
+                          <div class="card-row">
+                            <span class="card-row_title">{{
+                              tableHeaderTitles[1]
+                            }}</span>
+                            <span class="card-row_content mobile">
+                              {{
+                                userSelection.configuratoin!.measures.widthFt
+                                  | sqftToSqm : userSelection.measureType!
+                                  | number : "1.1-3"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "SQM"
+                                  : "SQFT"
+                              }}
+                            </span>
+                          </div>
+                          <div class="card-row">
+                            <span class="card-row_title">{{
+                              tableHeaderTitles[2]
+                            }}</span>
+                            <span class="card-row_content mobile">
+                              {{
+                                userSelection.configuratoin!.measures.lengthFt
+                                  | sqftToSqm : userSelection.measureType!
+                                  | number : "1.1-3"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "SQM"
+                                  : "SQFT"
+                              }}
+                            </span>
+                          </div>
+                          <div class="card-row">
+                            <span class="card-row_title">{{
+                              tableHeaderTitles[3]
+                            }}</span>
+                            <span class="card-row_content mobile">
+                              {{
+                                userSelection.configuratoin!.measures.areaSqFt
+                                  | sqftToSqm : userSelection.measureType!
+                                  | number : "1.0-0"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "SQM"
+                                  : "SQFT"
+                              }}
+                            </span>
+                          </div>
+                          <div class="card-row">
+                            <span class="card-row_title">
+                              {{ tableHeaderTitles[4] }}
+                            </span>
+                            <span class="card-row_content mobile">
+                              <span *ngIf="userSelection.areSpecialPoles"
+                                >*</span
+                              >
+                              {{ userSelection.configuratoin!.poles }}
+                            </span>
+                          </div>
+                          <div class="card-row">
+                            <span class="card-row_title">{{
+                              tableHeaderTitles[5]
+                            }}</span>
+                            <span class="card-row_content mobile">
+                              {{ userSelection.configuratoin!.pins }}
+                            </span>
+                          </div>
+                          <div
+                            class="note-txt"
+                            *ngIf="
+                              userSelection.areSpecialPoles
+                            "
+                          >
+                            * Special poles require
+                          </div>
                         </div>
                       </div>
-                      <div class="note-txt" *ngIf="userSelection.areSpecialPoles">* Special poles require</div>
                     </app-accordion-item>
                   </app-accordion>
                   <app-accordion>
