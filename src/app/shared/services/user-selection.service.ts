@@ -83,6 +83,7 @@ export class UserSelectionService {
     if(numsOfKeys === 6){
       this.isDisabled$.next(false);
     }
+    console.log(currSelctionValue);
     this.userCurrSelection$.next(currSelctionValue);
   }
 
@@ -143,7 +144,8 @@ export class UserSelectionService {
           sideA: sidesAForDisplay[i],
           sideB: sidesBForDisplay[i],
           measureType: assetsForPdf[i].measureType,
-          ulcansType: ulcansTypes[i]
+          ulcansType: ulcansTypes[i],
+          areSpecialPoles: assetsForPdf[i].areSpecialPoles
         }
 
         assetsForDisplay.push(assetForDisplay);

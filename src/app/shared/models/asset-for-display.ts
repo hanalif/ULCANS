@@ -15,4 +15,5 @@ export interface AssetForDisplay {
   environment?: Environment,
   measureType?: MeasureType,
   ulcansType: SystemType,
+  areSpecialPoles: boolean
 }

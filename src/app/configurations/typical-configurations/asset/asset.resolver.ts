@@ -23,10 +23,12 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
     if(!asset){
       return undefined;
     }else{
+      const areSpecialPoles = asset.measures.heightFt >= 12.1030 ? true : false;
       //save to curr user selection
       let userSelections: Partial<AssetForPdf> = {
         assetId: assetId,
-        configuraionId: asset.configurationId
+        configuraionId: asset.configurationId,
+        areSpecialPoles: areSpecialPoles
       }
 
       this.userSelectionsService.updateCurrUserSelections(userSelections);

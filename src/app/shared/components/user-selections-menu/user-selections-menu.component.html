@@ -88,6 +88,7 @@
                               }}
                             </td>
                             <td>
+                              <span *ngIf="userSelection.areSpecialPoles">*</span>
                               {{ userSelection.configuratoin!.poles }}
                             </td>
                             <td>
@@ -96,6 +97,7 @@
                           </tr>
                         </tbody>
                       </table>
+                      <div class="note-txt" *ngIf="userSelection.areSpecialPoles">* Special poles require</div>
                     </div>
                   </app-accordion-item>
                 </app-accordion>
@@ -332,6 +334,7 @@
                             {{ tableHeaderTitles[4] }}
                           </span>
                           <span class="card-row_content mobile">
+                            <span *ngIf="userSelection.areSpecialPoles">*</span>
                             {{ userSelection.configuratoin!.poles }}
                           </span>
                         </div>
@@ -344,6 +347,7 @@
                           </span>
                         </div>
                       </div>
+                      <div class="note-txt" *ngIf="userSelection.areSpecialPoles">* Special poles require</div>
                     </app-accordion-item>
                   </app-accordion>
                   <app-accordion>
