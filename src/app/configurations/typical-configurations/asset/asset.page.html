@@ -1,5 +1,6 @@
 <ion-header> </ion-header>
 <ion-content>
+  <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
   <div class="page-container main-layout">
     <div class="top">
       <div class="btns-section">
@@ -28,7 +29,7 @@
         <span>Based On Your Asset Measurements</span>
       </div>
     </div>
-    <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
+
       <div class="body">
         <!-- Table For Wide Screens -->
 
@@ -277,8 +278,8 @@
           </div>
         </div>
       </div>
-    </ng-scrollbar>
-  </div>
+    </div>
+  </ng-scrollbar>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

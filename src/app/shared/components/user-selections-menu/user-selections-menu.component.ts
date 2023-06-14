@@ -7,13 +7,14 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { DatePipe } from '@angular/common';
 import 'jspdf-autotable';
-import autoTable, { CellHookData } from 'jspdf-autotable';
+import autoTable, { Cell, CellHookData } from 'jspdf-autotable';
 import JSPDF, { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -30,6 +31,10 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   tableHeaderTitles:  string[] = ['Type','Width', 'Length', 'Area SQ', 'Poles', 'Pins' ,'Side A', 'Side B',' Type' ,'Name', 'Width', 'Height', 'Length' ,''];
   wideScreenTitles: any = [{mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(0,6)},{mainTitle: 'Patterns', tableTitles: ['sideA', '', 'sideB', '', 'Type'] }, {mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(9,13)}]
   tableHeaderTitlesForPdf: string[] = ['Configuration', 'Type', 'Area SQ' , 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
+  configurationTitles: string[] = ['Type', 'Name','Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
+  patternsTitles: string[] = ['Side A', 'Pattern Design' ,'Side B', 'Pattern Design' ,' Type' ];
+  assetTitles: string[] = ['Name', 'Width', 'Height', 'Length']
+
   date = this.transformDate(new Date);
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
@@ -110,64 +115,191 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
 
     autoTable(doc, {
-      html: '.table1',
+      bodyStyles: {
+        minCellHeight: 62,
+      },
+      html: '.logo-table',
       didDrawCell: (data: any) => {
         if(data.cell.raw.id === 'logo'){
             var td = data.cell.raw;
             var img = td.getElementsByTagName('img')[0];
-            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 30, data.cell.contentHeight);
+            doc.addImage(img.src, 'JPEG', data.cell.x,  data.cell.y , data.cell.contentWidth + 90, data.cell.contentHeight);
           }
       },
       theme: 'plain',
     });
 
     autoTable(doc, {
-      body: [
-        [
-          {
-            content: `${this.date}`,
-            styles: {
-              halign: 'left'
-            },
+      useCss: true,
+      html: '.date-link-table',
+      didDrawCell: (data: any) => {
+
+          if(data.cell.raw.id === 'link'){
+            var td = data.cell.raw;
+            var link = td.getElementsByTagName('a')[0];
+            doc.link(data.cell.x,  data.cell.y , data.cell.contentWidth + 90, data.cell.contentHeight, {url: link.href});
           }
-        ],
-      ],
-      theme: 'plain'
+      },
+      theme: 'plain',
+    });
+
+
+    autoTable(doc, {
+      useCss: true,
+      html: '.title-table',
+      theme: 'plain',
     });
 
     autoTable(doc, {
+      startY: (doc as any).lastAutoTable.finalY,
       body: [
         [
           {
-            content:'Fibrotex'
-            +'\n8 Hasivim Street, Petach Tikvah, Israel'
-            +'\n+972 9 951 8830',
+            content: 'Configuration:',
             styles: {
-              halign: 'left'
-            }
-          }
-        ],
-      ],
-      theme: 'plain'
-    });
-
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: 'ULCANS PREFERENCES',
-            styles: {
-              halign:'left',
-              fontSize: 12
+              fontSize: 14,
+              halign: 'left',
             }
           }
         ]
       ],
-      theme: 'plain'
+      theme: "plain"
+    });
+
+    if(!this.assetsForDisplay[this.indexForTablePdf].configuratoin){
+      autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 1,
+        body: [
+          [
+            {
+              content: 'The size of your asset requires a custom configuration. Please contact us for more information.',
+              styles: {
+                fontSize: 11,
+                halign: 'center',
+              }
+            }
+          ]
+        ],
+        theme: "plain"
+      });
+    }
+
+
+if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
+  autoTable(doc, {
+    startY: (doc as any).lastAutoTable.finalY + 3,
+    html: '.config-table',
+    headStyles:{
+      valign: 'middle',
+      cellWidth: 'wrap',
+      halign: 'left',
+      minCellHeight: 30,
+      minCellWidth: 40
+    },
+    bodyStyles: {
+      valign: 'middle',
+      cellWidth: 'wrap',
+      halign: 'left',
+      minCellHeight: 30,
+      minCellWidth: 40
+    },
+
+    didDrawCell: (data: any) => {
+      var cellId = data.cell.raw.id;
+      if( cellId === 'imgEl'){
+        var td = data.cell.raw;
+        var img = td.getElementsByTagName('img')[0];
+        doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight, '', 'FAST' );
+      }
+    },
+    theme: 'striped'
+  });
+
+  if(this.assetsForDisplay[this.indexForTablePdf].areSpecialPoles){
+    autoTable(doc, {
+      startY: (doc as any).lastAutoTable.finalY + 1,
+      body: [
+        [
+          {
+            content: '* Special poles require',
+            styles: {
+              fontSize: 10,
+              halign: 'left',
+            }
+          }
+        ]
+      ],
+      theme: "plain"
+    });
+  }
+}
+
+
+    autoTable(doc, {
+      startY: (doc as any).lastAutoTable.finalY + 3,
+      body: [
+        [
+          {
+            content: 'Patterns:',
+            styles: {
+              fontSize: 12,
+              halign: 'left',
+            }
+          }
+        ]
+      ],
+      theme: "plain"
+    });
+
+
+    autoTable(doc, {
+      startY: (doc as any).lastAutoTable.finalY + 3,
+      html: '.patterns-table',
+      headStyles:{
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'left',
+        minCellHeight: 30,
+        minCellWidth: 40
+      },
+      bodyStyles: {
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'left',
+        minCellHeight: 80,
+        minCellWidth: 40
+      },
+
+      didDrawCell: (data: any) => {
+        var cellId = data.cell.raw.id;
+        if( cellId === 'imgEl'){
+          var td = data.cell.raw;
+          var img = td.getElementsByTagName('img')[0];
+          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 90, data.cell.contentHeight, '', 'FAST' );
+        }
+      },
+      theme: 'striped'
     });
 
     autoTable(doc, {
-      html: '.table',
+      startY: (doc as any).lastAutoTable.finalY + 3,
+      body: [
+        [
+          {
+            content: 'Asset:',
+            styles: {
+              halign: 'left',
+              fontSize: 14
+            }
+          }
+        ]
+      ],
+      theme: "plain"
+    });
+
+    autoTable(doc, {
+      startY: (doc as any).lastAutoTable.finalY + 3,
+      html: '.asset-table',
       headStyles:{
         valign: 'middle',
         cellWidth: 'wrap',
@@ -182,56 +314,34 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         minCellHeight: 30,
         minCellWidth: 40
       },
-
-      didDrawCell: (data: any) => {
-        var cellId = data.cell.raw.id;
-        if( cellId === 'imgEl'){
-          var td = data.cell.raw;
-          var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 16, data.cell.contentHeight, '', 'FAST' );
-        }
-        if(cellId === 'imgElSideA' || cellId === 'imgElSideB'){
-          var td = data.cell.raw;
-          var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x + 2,  data.cell.y, data.cell.contentWidth + 20, data.cell.contentHeight, '', 'FAST');
-        }
-      },
       theme: 'striped'
-
     });
 
+
     autoTable(doc, {
+      useCss: true,
+      html: '.marketing-table',
+      tableWidth: 413,
+      theme: 'plain',
+    });
+
+
+    autoTable(doc, {
+
       body: [
         [
           {
-            content: 'Important Note',
+            content: 'Ultra Lightweight Camouflage Net System',
             styles: {
-              halign: 'left',
-              fontSize: 14
+              halign: 'center',
+              fontStyle: 'bold'
+
             }
           }
         ],
         [
           {
-
-            content: 'Thank you for selecting your ULCANS preferences.'
-            +'We would appreciate it if you could send the PDF to our office'
-            +' and get in touch with our exceptional agent to discuss your choices further.',
-            styles: {
-              halign: 'left'
-            }
-          }
-        ],
-      ],
-      theme: "plain"
-    });
-
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: 'Ultra Lightweight Camouflage Net System'
-            +'The ability to conceal and protect forces against multi-spectral sensor threats.',
+            content: 'The ability to conceal and protect forces against multi-spectral sensor threats.',
             styles: {
               halign: 'center'
             }

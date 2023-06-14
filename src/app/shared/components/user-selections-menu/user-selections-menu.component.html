@@ -545,27 +545,61 @@
     </div>
   </div>
 
+
+
   <!-- Tables For Pdf -->
   <div
     *ngIf="assetsForDisplay[indexForTablePdf]"
     class="tables-container"
     hidden
   >
-    <table class="table1">
-      <thead>
-        <tr class="row table1">
-          <th id="logo">
+
+  <!-- Logo -->
+
+    <table class="logo-table">
+      <tbody>
+        <tr class="row logo-table">
+          <td id="logo">
             <img src="assets/imgs/logo/logo.jpeg" alt="logo" />
-          </th>
+          </td>
         </tr>
-      </thead>
+      </tbody>
     </table>
 
-    <table class="table">
+  <!-- Dante and Link -->
+
+    <table class="date-link-table">
+      <tbody>
+        <tr>
+          <td style="font-size: 14px; color: black;">
+            {{date}}
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue; text-decoration: underline; font-size: 12px;" id="link"><a href="https://fibrotex-tech.com/">fibrotex-tech.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+   <!-- Title -->
+
+    <table class="title-table">
+      <tbody>
+        <tr>
+          <td style="font-size: 16px; color: black; text-align: center;">
+            ULCANS Prefrences For {{assetsForDisplay[indexForTablePdf].asset!.name}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Configuration -->
+
+    <table *ngIf="assetsForDisplay[indexForTablePdf].configuratoin" class="config-table">
       <thead>
         <tr class="row header blue">
-          <th *ngFor="let headerTitle of tableHeaderTitlesForPdf">
-            {{ headerTitle }}
+          <th *ngFor="let configTitle of configurationTitles">
+            {{ configTitle }}
           </th>
         </tr>
       </thead>
@@ -580,9 +614,36 @@
             />
           </td>
           <td>
-            <h3>
-              {{ assetsForDisplay[indexForTablePdf].configuratoin!.name }}
-            </h3>
+            {{ assetsForDisplay[indexForTablePdf].configuratoin!.name }}
+          </td>
+          <td>
+            {{
+              assetsForDisplay[indexForTablePdf].configuratoin!.measures
+                .widthFt
+                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | number : "1.1-2"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType ===
+              MeasureType.METERS
+                ? "M"
+                : "FT"
+            }}
+
+          </td>
+          <td>
+            {{
+              assetsForDisplay[indexForTablePdf].configuratoin!.measures
+                .lengthFt
+                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | number : "1.1-2"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType ===
+              MeasureType.METERS
+                ? "M"
+                : "FT"
+            }}
           </td>
           <td>
             {{
@@ -598,47 +659,146 @@
                 : "SQFT"
             }}
           </td>
-          <td>{{ assetsForDisplay[indexForTablePdf].asset!.name }}</td>
           <td>
-            <h3>
-              {{
-                assetsForDisplay[indexForTablePdf].sideA.environment.typeName
-              }}
-            </h3>
-          </td>
-          <td id="imgElSideA">
-            <img
-              [src]="
-                assetsForDisplay[indexForTablePdf].sideA.environment.forPdf[
-                  assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
-                ]
-              "
-              alt="pattern"
-            />
+             <h5 *ngIf="assetsForDisplay[indexForTablePdf].areSpecialPoles">*</h5>
+            {{ assetsForDisplay[indexForTablePdf].configuratoin!.poles }}
           </td>
           <td>
-            <h3>
-              {{
-                assetsForDisplay[indexForTablePdf].sideB.environment.typeName
-              }}
-            </h3>
-          </td>
-          <td id="imgElSideB">
-            <img
-              [src]="
-                assetsForDisplay[indexForTablePdf].sideB.environment.forPdf[
-                  assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
-                ]
-              "
-              alt="pattern"
-            />
-          </td>
-          <td>
-            <h3>{{ assetsForDisplay[indexForTablePdf].ulcansType.name }}</h3>
+            {{ assetsForDisplay[indexForTablePdf].configuratoin!.pins }}
           </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Patterns -->
+
+      <table class="patterns-table">
+      <thead>
+        <tr class="row header blue">
+          <th *ngFor="let patternTitle of patternsTitles">
+            {{ patternTitle }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row">
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].sideA.environment.typeName }}
+          </td>
+          <td id="imgEl">
+            <img
+              [src]="
+                assetsForDisplay[indexForTablePdf].sideA.environment.shapes[
+                assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+              ]
+              "
+              alt=""
+            />
+          </td>
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].sideB.environment.typeName }}
+          </td>
+          <td id="imgEl">
+            <img
+              [src]="
+                assetsForDisplay[indexForTablePdf].sideB.environment.shapes[
+                assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+              ]
+              "
+              alt=""
+            />
+          </td>
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].ulcansType.name }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+     <!-- Asset -->
+
+     <table class="asset-table">
+      <thead>
+        <tr class="row header blue">
+          <th *ngFor="let assetTitle of assetTitles">
+            {{ assetTitle }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row">
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].asset!.name }}
+          </td>
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].asset!.measures.widthFt
+              | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+              | number : "1.1-3"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+                  ? "M"
+                  : "FT"
+            }}
+
+          </td>
+          <td>
+            {{
+              assetsForDisplay[indexForTablePdf].asset!.measures.heightFt
+                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | number : "1.1-3"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+                ? "M"
+                : "FT"
+            }}
+          </td>
+          <td>
+            {{
+              assetsForDisplay[indexForTablePdf].asset!.measures.lengthFt
+                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | number : "1.1-3"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+                ? "M"
+                : "FT"
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+        <!-- marketing email -->
+
+        <table class="marketing-table">
+          <tbody>
+            <tr>
+              <td style="font-size: 14px; color: black;">
+                To discuss your ULCANS preferences further,
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="font-size: 14px; color: black; width: fit-content;">
+                Please contact our marketing team and share the PDF at
+              </td>
+              <td style="font-size: 14px; color: blue; text-align: left;">
+                marketing@fibrotex-tech.com.
+             </td>
+            <tr>
+              <td style="font-size: 14px; color: black;">
+                Thank you!
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+
   </div>
 </ion-content>
 
