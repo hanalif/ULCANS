@@ -325,8 +325,13 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
       theme: 'plain',
     });
 
+    let pageSize = doc.internal.pageSize;
+    var pageHeight = pageSize.height
+      ? pageSize.height
+      : pageSize.getHeight();
 
     autoTable(doc, {
+
 
       body: [
         [
