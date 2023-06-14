@@ -10,11 +10,11 @@
         "subRouterLink": "/configurations/typical-configurations"
       },
       {
-        "subTitle": "configuration calculator",
+        "subTitle": "Configuration Calculator",
         "subRouterLink": "/configurations/configuration-calaulator"
       },
       {
-        "subTitle": "configurations list",
+        "subTitle": "Configurations List",
         "subRouterLink": "/configurations/configurations-list"
       }
     ]
@@ -26,15 +26,15 @@
     "iconName": "book-outline",
     "subCategories": [
       {
-        "subTitle": "critical considerations",
+        "subTitle": "Critical Considerations",
         "subRouterLink": "/camouflage-instructions/critical-considerations"
       },
       {
-        "subTitle": "setting up system",
+        "subTitle": "Setting Up System",
         "subRouterLink": "/camouflage-instructions/setting-up-system"
       },
       {
-        "subTitle": "folding up system",
+        "subTitle": "Folding Up System",
         "subRouterLink": "/camouflage-instructions/folding-system"
       }
     ]
@@ -47,11 +47,11 @@
 
     "subCategories": [
       {
-        "subTitle": "equipment description",
+        "subTitle": "Equipment Description",
         "subRouterLink": "/useful-information/equipment-description"
       },
       {
-        "subTitle": "maintenance",
+        "subTitle": "Maintenance",
         "subRouterLink": "/useful-information/maintenance"
       }
     ]
