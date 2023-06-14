@@ -266,7 +266,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
         valign: 'middle',
         cellWidth: 'wrap',
         halign: 'left',
-        minCellHeight: 80,
+        minCellHeight: 50,
         minCellWidth: 40
       },
 
@@ -275,7 +275,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
         if( cellId === 'imgEl'){
           var td = data.cell.raw;
           var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 90, data.cell.contentHeight, '', 'FAST' );
+          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 50, data.cell.contentHeight, '', 'FAST' );
         }
       },
       theme: 'striped'
