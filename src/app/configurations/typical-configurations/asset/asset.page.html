@@ -36,6 +36,43 @@
         <div class="wide-screen">
           <div class="middle">
             <div class="table-container">
+              <h1>{{ wideScreenTitles[1].mainTitle }}</h1>
+
+              <table class="styled-table style1">
+                <thead>
+                  <tr>
+                    <th
+                      *ngFor="
+                                let tableTitle of ['Name', 'Width', 'Height', 'Length']
+                              "
+                    >
+                      {{ tableTitle }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ asset!.name }}</td>
+                    <td>
+                      {{asset.measures.widthFt | ftToM: measureType | number :
+                      '1.1-1'}} {{measureType === MeasureType.METERS ? 'M':
+                      'FT'}}
+                    </td>
+                    <td>
+                      {{asset.measures.heightFt | ftToM: measureType | number :
+                      '1.1-1'}} {{measureType === MeasureType.METERS ? 'M':
+                      'FT'}}
+                    </td>
+                    <td>
+                      {{asset.measures.lengthFt | ftToM: measureType | number :
+                      '1.1-1'}} {{measureType === MeasureType.METERS ? 'M':
+                      'FT'}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-container">
               <h1>Configuration</h1>
               <span *ngIf="!configuration" class="note"
                 >The size of your asset requires a custom configuration. Please
@@ -67,12 +104,12 @@
                       <td>{{configuration.rhombus}}</td>
                       <td>
                         {{configuration.measures.widthFt | ftToM: measureType |
-                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        number : '1.1-1'}} {{measureType === MeasureType.METERS
                         ? 'M': 'FT'}}
                       </td>
                       <td>
                         {{configuration.measures.lengthFt | ftToM: measureType |
-                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        number : '1.1-1'}} {{measureType === MeasureType.METERS
                         ? 'M': 'FT'}}
                       </td>
                       <td>
@@ -97,49 +134,47 @@
                 </div>
               </div>
             </div>
-
-            <div class="table-container">
-              <h1>{{ wideScreenTitles[1].mainTitle }}</h1>
-
-              <table class="styled-table style1">
-                <thead>
-                  <tr>
-                    <th
-                      *ngFor="
-                                let tableTitle of ['Name', 'Width', 'Height', 'Length']
-                              "
-                    >
-                      {{ tableTitle }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{{ asset!.name }}</td>
-                    <td>
-                      {{asset.measures.widthFt | ftToM: measureType | number :
-                      '1.1-3'}} {{measureType === MeasureType.METERS ? 'M':
-                      'FT'}}
-                    </td>
-                    <td>
-                      {{asset.measures.heightFt | ftToM: measureType | number :
-                      '1.1-3'}} {{measureType === MeasureType.METERS ? 'M':
-                      'FT'}}
-                    </td>
-                    <td>
-                      {{asset.measures.lengthFt | ftToM: measureType | number :
-                      '1.1-3'}} {{measureType === MeasureType.METERS ? 'M':
-                      'FT'}}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
 
           <!-- Cards For Mobile Screens -->
 
           <div class="cards-container mobile">
+            <div class="card">
+              <div class="card-body">
+                  <div class="card-title">Asset</div>
+                <div class="card-row">
+                  <span class="card-row_title">{{ tableHeaderTitles[8] }}</span>
+                  <span class="card-row_content mobile">
+                    {{ asset.name }}
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title">{{ tableHeaderTitles[9] }}</span>
+                  <span class="card-row_content mobile">
+                    {{asset.measures.widthFt | ftToM: measureType | number :
+                    '1.1-1'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"
+                    >{{ tableHeaderTitles[10] }}</span
+                  >
+                  <span class="card-row_content mobile">
+                    {{asset.measures.heightFt | ftToM: measureType | number :
+                    '1.1-1'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"
+                    >{{ tableHeaderTitles[11] }}</span
+                  >
+                  <span class="card-row_content mobile">
+                    {{asset.measures.lengthFt | ftToM: measureType | number :
+                    '1.1-1'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
+                  </span>
+                </div>
+              </div>
+            </div>
             <div class="card">
               <div class="card-body">
                 <div class="card-title">Configuration</div>
@@ -186,7 +221,7 @@
                       >
                       <span class="card-row_content mobile">
                         {{configuration.measures.widthFt | ftToM: measureType |
-                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        number : '1.1-1'}} {{measureType === MeasureType.METERS
                         ? 'M': 'FT'}}
                       </span>
                     </div>
@@ -196,7 +231,7 @@
                       >
                       <span class="card-row_content mobile">
                         {{configuration.measures.lengthFt | ftToM: measureType |
-                        number : '1.1-3'}} {{measureType === MeasureType.METERS
+                        number : '1.1-1'}} {{measureType === MeasureType.METERS
                         ? 'M': 'FT'}}
                       </span>
                     </div>
@@ -236,42 +271,6 @@
                       * Special poles require
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                  <div class="card-title">Asset</div>
-                <div class="card-row">
-                  <span class="card-row_title">{{ tableHeaderTitles[8] }}</span>
-                  <span class="card-row_content mobile">
-                    {{ asset.name }}
-                  </span>
-                </div>
-                <div class="card-row">
-                  <span class="card-row_title">{{ tableHeaderTitles[9] }}</span>
-                  <span class="card-row_content mobile">
-                    {{asset.measures.widthFt | ftToM: measureType | number :
-                    '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
-                  </span>
-                </div>
-                <div class="card-row">
-                  <span class="card-row_title"
-                    >{{ tableHeaderTitles[10] }}</span
-                  >
-                  <span class="card-row_content mobile">
-                    {{asset.measures.heightFt | ftToM: measureType | number :
-                    '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
-                  </span>
-                </div>
-                <div class="card-row">
-                  <span class="card-row_title"
-                    >{{ tableHeaderTitles[11] }}</span
-                  >
-                  <span class="card-row_content mobile">
-                    {{asset.measures.lengthFt | ftToM: measureType | number :
-                    '1.1-3'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
-                  </span>
                 </div>
               </div>
             </div>

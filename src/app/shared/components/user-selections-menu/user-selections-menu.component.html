@@ -21,7 +21,75 @@
             >
               <h1>ULCANS Prefrences for {{ userSelection.asset!.name }}</h1>
               <div class="table-container">
-                <app-accordion>
+                <app-accordion [initialOpenIndex]="0">
+                  <app-accordion-item>
+                    <div accordionItemHeader class="accordion-header">
+                      {{ wideScreenTitles[2].mainTitle }}
+                    </div>
+                    <div accordionItemBody class="accordion-body">
+                      <table class="styled-table style1">
+                        <thead>
+                          <tr>
+                            <th
+                              *ngFor="
+                                let tableTitle of wideScreenTitles[2]
+                                  .tableTitles
+                              "
+                            >
+                              {{ tableTitle }}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              {{ userSelection.asset!.name }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.asset!.measures.widthFt
+                                  | ftToM : userSelection.measureType!
+                                  | number : "1.1-1"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "M"
+                                  : "FT"
+                              }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.asset!.measures.heightFt
+                                  | ftToM : userSelection.measureType!
+                                  | number : "1.1-1"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "M"
+                                  : "FT"
+                              }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.asset!.measures.lengthFt
+                                  | ftToM : userSelection.measureType!
+                                  | number : "1.1-1"
+                              }}
+                              {{
+                                userSelection.measureType === MeasureType.METERS
+                                  ? "M"
+                                  : "FT"
+                              }}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </app-accordion-item>
+                </app-accordion>
+              </div>
+              <div class="table-container">
+                <app-accordion [initialOpenIndex]="0">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       <h1>{{ wideScreenTitles[0].mainTitle }}</h1>
@@ -62,24 +130,24 @@
                                 {{
                                   userSelection.configuratoin!.measures.widthFt
                                     | sqftToSqm : userSelection.measureType!
-                                    | number : "1.1-3"
+                                    | number : "1.1-1"
                                 }}
                                 {{
                                   userSelection.measureType === MeasureType.METERS
-                                    ? "SQM"
-                                    : "SQFT"
+                                    ? "M"
+                                    : "FT"
                                 }}
                               </td>
                               <td>
                                 {{
                                   userSelection.configuratoin!.measures.lengthFt
                                     | sqftToSqm : userSelection.measureType!
-                                    | number : "1.1-3"
+                                    | number : "1.1-1"
                                 }}
                                 {{
                                   userSelection.measureType === MeasureType.METERS
-                                    ? "SQM"
-                                    : "SQFT"
+                                    ? "M"
+                                    : "FT"
                                 }}
                               </td>
                               <td>
@@ -121,7 +189,7 @@
                 </app-accordion>
               </div>
               <div class="table-container">
-                <app-accordion>
+                <app-accordion [initialOpenIndex]="0">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[1].mainTitle }}
@@ -182,74 +250,6 @@
                   </app-accordion-item>
                 </app-accordion>
               </div>
-              <div class="table-container">
-                <app-accordion>
-                  <app-accordion-item>
-                    <div accordionItemHeader class="accordion-header">
-                      {{ wideScreenTitles[2].mainTitle }}
-                    </div>
-                    <div accordionItemBody class="accordion-body">
-                      <table class="styled-table style1">
-                        <thead>
-                          <tr>
-                            <th
-                              *ngFor="
-                                let tableTitle of wideScreenTitles[2]
-                                  .tableTitles
-                              "
-                            >
-                              {{ tableTitle }}
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              {{ userSelection.asset!.name }}
-                            </td>
-                            <td>
-                              {{
-                                userSelection.asset!.measures.widthFt
-                                  | ftToM : userSelection.measureType!
-                                  | number : "1.1-3"
-                              }}
-                              {{
-                                userSelection.measureType === MeasureType.METERS
-                                  ? "M"
-                                  : "FT"
-                              }}
-                            </td>
-                            <td>
-                              {{
-                                userSelection.asset!.measures.heightFt
-                                  | ftToM : userSelection.measureType!
-                                  | number : "1.1-3"
-                              }}
-                              {{
-                                userSelection.measureType === MeasureType.METERS
-                                  ? "M"
-                                  : "FT"
-                              }}
-                            </td>
-                            <td>
-                              {{
-                                userSelection.asset!.measures.lengthFt
-                                  | ftToM : userSelection.measureType!
-                                  | number : "1.1-3"
-                              }}
-                              {{
-                                userSelection.measureType === MeasureType.METERS
-                                  ? "M"
-                                  : "FT"
-                              }}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </app-accordion-item>
-                </app-accordion>
-              </div>
               <div class="selection-btns">
                 <button
                   (click)="onDeleteSelection(userSelection.id)"
@@ -276,7 +276,75 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <app-accordion>
+                  <app-accordion [initialOpenIndex]="0">
+                    <app-accordion-item>
+                      <div accordionItemHeader class="accordion-header">
+                        Asset
+                      </div>
+                      <div accordionItemBody class="accordion-body">
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[9]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{ userSelection.asset!.name }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[10]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.asset!.measures.widthFt
+                                | ftToM : userSelection.measureType!
+                                | number : "1.1-1"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "M"
+                                : "FT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[11]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.asset!.measures.heightFt
+                                | ftToM : userSelection.measureType!
+                                | number : "1.1-1"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "M"
+                                : "FT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
+                            tableHeaderTitles[12]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.asset!.measures.lengthFt
+                                | ftToM : userSelection.measureType!
+                                | number : "1.1-1"
+                            }}
+                            {{
+                              userSelection.measureType === MeasureType.METERS
+                                ? "M"
+                                : "FT"
+                            }}
+                          </span>
+                        </div>
+                      </div>
+                    </app-accordion-item>
+                  </app-accordion>
+                  <app-accordion [initialOpenIndex]="0">
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Configuration
@@ -314,12 +382,12 @@
                               {{
                                 userSelection.configuratoin!.measures.widthFt
                                   | sqftToSqm : userSelection.measureType!
-                                  | number : "1.1-3"
+                                  | number : "1.1-1"
                               }}
                               {{
                                 userSelection.measureType === MeasureType.METERS
-                                  ? "SQM"
-                                  : "SQFT"
+                                  ? "M"
+                                  : "FT"
                               }}
                             </span>
                           </div>
@@ -331,12 +399,12 @@
                               {{
                                 userSelection.configuratoin!.measures.lengthFt
                                   | sqftToSqm : userSelection.measureType!
-                                  | number : "1.1-3"
+                                  | number : "1.1-1"
                               }}
                               {{
                                 userSelection.measureType === MeasureType.METERS
-                                  ? "SQM"
-                                  : "SQFT"
+                                  ? "M"
+                                  : "FT"
                               }}
                             </span>
                           </div>
@@ -387,7 +455,7 @@
                       </div>
                     </app-accordion-item>
                   </app-accordion>
-                  <app-accordion>
+                  <app-accordion [initialOpenIndex]="0">
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Patterns
@@ -435,74 +503,6 @@
                           }}</span>
                           <span class="card-row_content mobile">
                             {{ userSelection.ulcansType.name }}
-                          </span>
-                        </div>
-                      </div>
-                    </app-accordion-item>
-                  </app-accordion>
-                  <app-accordion>
-                    <app-accordion-item>
-                      <div accordionItemHeader class="accordion-header">
-                        Asset
-                      </div>
-                      <div accordionItemBody class="accordion-body">
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[9]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{ userSelection.asset!.name }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[10]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{
-                              userSelection.asset!.measures.widthFt
-                                | ftToM : userSelection.measureType!
-                                | number : "1.1-3"
-                            }}
-                            {{
-                              userSelection.measureType === MeasureType.METERS
-                                ? "M"
-                                : "FT"
-                            }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[11]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{
-                              userSelection.asset!.measures.heightFt
-                                | ftToM : userSelection.measureType!
-                                | number : "1.1-3"
-                            }}
-                            {{
-                              userSelection.measureType === MeasureType.METERS
-                                ? "M"
-                                : "FT"
-                            }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[12]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{
-                              userSelection.asset!.measures.lengthFt
-                                | ftToM : userSelection.measureType!
-                                | number : "1.1-3"
-                            }}
-                            {{
-                              userSelection.measureType === MeasureType.METERS
-                                ? "M"
-                                : "FT"
-                            }}
                           </span>
                         </div>
                       </div>
@@ -588,6 +588,61 @@
         <tr>
           <td style="font-size: 16px; color: black; text-align: center;">
             ULCANS Prefrences For {{assetsForDisplay[indexForTablePdf].asset!.name}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Asset -->
+
+    <table class="asset-table">
+      <thead>
+        <tr class="row header blue">
+          <th *ngFor="let assetTitle of assetTitles">
+            {{ assetTitle }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row">
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].asset!.name }}
+          </td>
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].asset!.measures.widthFt
+              | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+              | number : "1.1-1"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+                  ? "M"
+                  : "FT"
+            }}
+
+          </td>
+          <td>
+            {{
+              assetsForDisplay[indexForTablePdf].asset!.measures.heightFt
+                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | number : "1.1-1"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+                ? "M"
+                : "FT"
+            }}
+          </td>
+          <td>
+            {{
+              assetsForDisplay[indexForTablePdf].asset!.measures.lengthFt
+                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | number : "1.1-1"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+                ? "M"
+                : "FT"
+            }}
           </td>
         </tr>
       </tbody>
@@ -710,61 +765,6 @@
           </td>
           <td>
             {{ assetsForDisplay[indexForTablePdf].ulcansType.name }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-     <!-- Asset -->
-
-     <table class="asset-table">
-      <thead>
-        <tr class="row header blue">
-          <th *ngFor="let assetTitle of assetTitles">
-            {{ assetTitle }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="row">
-          <td>
-            {{ assetsForDisplay[indexForTablePdf].asset!.name }}
-          </td>
-          <td>
-            {{ assetsForDisplay[indexForTablePdf].asset!.measures.widthFt
-              | ftToM : assetsForDisplay[indexForTablePdf].measureType!
-              | number : "1.1-3"
-            }}
-            {{
-              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
-                  ? "M"
-                  : "FT"
-            }}
-
-          </td>
-          <td>
-            {{
-              assetsForDisplay[indexForTablePdf].asset!.measures.heightFt
-                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
-                | number : "1.1-3"
-            }}
-            {{
-              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
-                ? "M"
-                : "FT"
-            }}
-          </td>
-          <td>
-            {{
-              assetsForDisplay[indexForTablePdf].asset!.measures.lengthFt
-                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
-                | number : "1.1-3"
-            }}
-            {{
-              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
-                ? "M"
-                : "FT"
-            }}
           </td>
         </tr>
       </tbody>

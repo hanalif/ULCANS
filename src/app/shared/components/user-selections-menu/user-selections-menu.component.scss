@@ -99,13 +99,24 @@
       justify-content: center;
     }
 
+    &-buttom{
+      gap: 4px;
+    }
+
   }
 }
 
 
+.selection-btns{
 
-.icon-btn{
-  background-color: transparent;
+
+  .icon-btn{
+    background-color: transparent;
+
+    &:hover{
+      background-color: #383838;
+    }
+  }
 }
 
 .next-button-wrapper{
