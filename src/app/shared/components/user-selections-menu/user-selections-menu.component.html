@@ -24,7 +24,7 @@
                 <app-accordion [initialOpenIndex]="0">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
-                      {{ wideScreenTitles[2].mainTitle }}
+                      {{ wideScreenTitles[0].mainTitle }}
                     </div>
                     <div accordionItemBody class="accordion-body">
                       <table class="styled-table style1">
@@ -32,7 +32,7 @@
                           <tr>
                             <th
                               *ngFor="
-                                let tableTitle of wideScreenTitles[2]
+                                let tableTitle of wideScreenTitles[0]
                                   .tableTitles
                               "
                             >
@@ -92,7 +92,7 @@
                 <app-accordion [initialOpenIndex]="0">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
-                      <h1>{{ wideScreenTitles[0].mainTitle }}</h1>
+                      <h1>{{ wideScreenTitles[1].mainTitle }}</h1>
                     </div>
                     <div accordionItemBody class="accordion-body">
                       <span *ngIf="!userSelection.configuratoin" class="note"
@@ -107,7 +107,7 @@
                             <tr>
                               <th
                                 *ngFor="
-                                  let tableTitle of wideScreenTitles[0]
+                                  let tableTitle of wideScreenTitles[1]
                                     .tableTitles
                                 "
                               >
@@ -125,6 +125,12 @@
                                   />
                                 </div>
                                 {{ userSelection.configuratoin!.name }}
+                              </td>
+                              <td>
+                                {{ userSelection.configuratoin!.hexagon}}
+                              </td>
+                              <td>
+                                {{ userSelection.configuratoin!.rhombus}}
                               </td>
                               <td>
                                 {{
@@ -192,7 +198,7 @@
                 <app-accordion [initialOpenIndex]="0">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
-                      {{ wideScreenTitles[1].mainTitle }}
+                      {{ wideScreenTitles[2].mainTitle }}
                     </div>
                     <div accordionItemBody class="accordion-body">
                       <table class="styled-table style1">
@@ -200,7 +206,7 @@
                           <tr>
                             <th
                               *ngFor="
-                                let tableTitle of wideScreenTitles[1]
+                                let tableTitle of wideScreenTitles[2]
                                   .tableTitles
                               "
                             >
@@ -284,7 +290,7 @@
                       <div accordionItemBody class="accordion-body">
                         <div class="card-row">
                           <span class="card-row_title">{{
-                            tableHeaderTitles[9]
+                            tableHeaderTitles[0]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{ userSelection.asset!.name }}
@@ -292,7 +298,7 @@
                         </div>
                         <div class="card-row">
                           <span class="card-row_title">{{
-                            tableHeaderTitles[10]
+                            tableHeaderTitles[1]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{
@@ -309,7 +315,7 @@
                         </div>
                         <div class="card-row">
                           <span class="card-row_title">{{
-                            tableHeaderTitles[11]
+                            tableHeaderTitles[2]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{
@@ -326,7 +332,7 @@
                         </div>
                         <div class="card-row">
                           <span class="card-row_title">{{
-                            tableHeaderTitles[12]
+                            tableHeaderTitles[3]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{
@@ -362,7 +368,7 @@
                         <div *ngIf="userSelection.configuratoin">
                           <div class="card-row">
                             <span class="card-row_title">{{
-                              tableHeaderTitles[0]
+                              tableHeaderTitles[4]
                             }}</span>
                             <span class="card-row_content mobile">
                               {{ userSelection.configuratoin!.name }}
@@ -376,7 +382,27 @@
                           </div>
                           <div class="card-row">
                             <span class="card-row_title">{{
-                              tableHeaderTitles[1]
+                              tableHeaderTitles[5]
+                            }}</span>
+                            <span class="card-row_content mobile">
+                              {{
+                                userSelection.configuratoin!.hexagon
+                              }}
+                            </span>
+                          </div>
+                          <div class="card-row">
+                            <span class="card-row_title">{{
+                              tableHeaderTitles[6]
+                            }}</span>
+                            <span class="card-row_content mobile">
+                              {{
+                                userSelection.configuratoin!.rhombus
+                              }}
+                            </span>
+                          </div>
+                          <div class="card-row">
+                            <span class="card-row_title">{{
+                              tableHeaderTitles[7]
                             }}</span>
                             <span class="card-row_content mobile">
                               {{
@@ -393,7 +419,7 @@
                           </div>
                           <div class="card-row">
                             <span class="card-row_title">{{
-                              tableHeaderTitles[2]
+                              tableHeaderTitles[8]
                             }}</span>
                             <span class="card-row_content mobile">
                               {{
@@ -410,7 +436,7 @@
                           </div>
                           <div class="card-row">
                             <span class="card-row_title">{{
-                              tableHeaderTitles[3]
+                              tableHeaderTitles[9]
                             }}</span>
                             <span class="card-row_content mobile">
                               {{
@@ -427,7 +453,7 @@
                           </div>
                           <div class="card-row">
                             <span class="card-row_title">
-                              {{ tableHeaderTitles[4] }}
+                              {{ tableHeaderTitles[10] }}
                             </span>
                             <span class="card-row_content mobile">
                               <span *ngIf="userSelection.areSpecialPoles"
@@ -437,7 +463,7 @@
                           </div>
                           <div class="card-row">
                             <span class="card-row_title">{{
-                              tableHeaderTitles[5]
+                              tableHeaderTitles[11]
                             }}</span>
                             <span class="card-row_content mobile">
                               {{ userSelection.configuratoin!.pins }}
@@ -463,7 +489,7 @@
                       <div accordionItemBody class="accordion-body">
                         <div class="card-row">
                           <span class="card-row_title">{{
-                            tableHeaderTitles[6]
+                            tableHeaderTitles[12]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{ userSelection.sideA.environment.typeName }}
@@ -481,7 +507,7 @@
                         </div>
                         <div class="card-row">
                           <span class="card-row_title">{{
-                            tableHeaderTitles[7]
+                            tableHeaderTitles[13]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{ userSelection.sideB.environment.typeName }}
@@ -499,7 +525,7 @@
                         </div>
                         <div class="card-row">
                           <span class="card-row_title">{{
-                            tableHeaderTitles[8]
+                            tableHeaderTitles[14]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{ userSelection.ulcansType.name }}
@@ -670,6 +696,12 @@
           </td>
           <td>
             {{ assetsForDisplay[indexForTablePdf].configuratoin!.name }}
+          </td>
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].configuratoin!.hexagon}}
+          </td>
+          <td>
+            {{ assetsForDisplay[indexForTablePdf].configuratoin!.rhombus}}
           </td>
           <td>
             {{

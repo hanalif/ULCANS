@@ -130,5 +130,29 @@
             "lengthFt": 34
         },
         "isInList": true
-    }
+    },
+    {
+      "id": "Nsd3Y",
+      "assetImgUrl": "assets/imgs/typical-assets/ah1z.png",
+      "name": "AH-1Z (Viper)",
+      "configurationId": null,
+      "measures": {
+          "widthFt": 48,
+          "heightFt": 15,
+          "lengthFt": 59
+      },
+      "isInList": true
+  },
+  {
+    "id": "e1Q7IKjY",
+    "assetImgUrl": "assets/imgs/typical-assets/ah1z.png",
+    "name": "AH-1Z (Viper)",
+    "configurationId": null,
+    "measures": {
+        "widthFt": 48,
+        "heightFt": 15,
+        "lengthFt": 59
+    },
+    "isInList": true
+}
 ]

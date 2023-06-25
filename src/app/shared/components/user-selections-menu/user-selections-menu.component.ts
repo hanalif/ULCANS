@@ -28,10 +28,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
-  tableHeaderTitles:  string[] = ['Type','Width', 'Length', 'Area SQ', 'Poles', 'Pins' ,'Side A', 'Side B',' Type' ,'Name', 'Width', 'Height', 'Length' ,''];
-  wideScreenTitles: any = [{mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(0,6)},{mainTitle: 'Patterns', tableTitles: ['sideA', '', 'sideB', '', 'Type'] }, {mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(9,13)}]
-  tableHeaderTitlesForPdf: string[] = ['Configuration', 'Type', 'Area SQ' , 'Asset', 'Side A', 'Pattern', 'Side B', 'Pattern',' Type'];
-  configurationTitles: string[] = ['Type', 'Name','Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
+  tableHeaderTitles:  string[] = ['Name', 'Width', 'Height', 'Length', 'Type', 'Hexagon', 'Rhombus','Width', 'Length', 'Area SQ', 'Poles', 'Pins' ,'Side A', 'Side B',' Type' ,''];
+  wideScreenTitles: any = [{mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(0,4)}, {mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(4,12)},{mainTitle: 'Patterns', tableTitles: ['sideA', '', 'sideB', '', 'Type'] }];
+  configurationTitles: string[] = ['Type','Name', 'Hexagon', 'Rhombus', 'Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
   patternsTitles: string[] = ['Side A', 'Pattern Design' ,'Side B', 'Pattern Design' ,' Type' ];
   assetTitles: string[] = ['Name', 'Width', 'Height', 'Length']
 
@@ -151,6 +150,43 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     });
 
     autoTable(doc, {
+      startY: (doc as any).lastAutoTable.finalY + 3,
+      body: [
+        [
+          {
+            content: 'Asset:',
+            styles: {
+              halign: 'left',
+              fontSize: 14
+            }
+          }
+        ]
+      ],
+      theme: "plain"
+    });
+
+    autoTable(doc, {
+      startY: (doc as any).lastAutoTable.finalY + 3,
+      html: '.asset-table',
+      headStyles:{
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'left',
+        minCellHeight: 30,
+        minCellWidth: 40
+      },
+      bodyStyles: {
+        valign: 'middle',
+        cellWidth: 'wrap',
+        halign: 'left',
+        minCellHeight: 30,
+        minCellWidth: 40
+      },
+      theme: 'striped'
+    });
+
+
+    autoTable(doc, {
       startY: (doc as any).lastAutoTable.finalY,
       body: [
         [
@@ -199,13 +235,13 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
     bodyStyles: {
       valign: 'middle',
       cellWidth: 'wrap',
-      halign: 'left',
+      halign: 'center',
       minCellHeight: 30,
       minCellWidth: 40
     },
 
     didDrawCell: (data: any) => {
-      var cellId = data.cell.raw.id;
+      var cellId = data.cell.raw?.id;
       if( cellId === 'imgEl'){
         var td = data.cell.raw;
         var img = td.getElementsByTagName('img')[0];
@@ -280,43 +316,6 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
       },
       theme: 'striped'
     });
-
-    autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 3,
-      body: [
-        [
-          {
-            content: 'Asset:',
-            styles: {
-              halign: 'left',
-              fontSize: 14
-            }
-          }
-        ]
-      ],
-      theme: "plain"
-    });
-
-    autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 3,
-      html: '.asset-table',
-      headStyles:{
-        valign: 'middle',
-        cellWidth: 'wrap',
-        halign: 'left',
-        minCellHeight: 30,
-        minCellWidth: 40
-      },
-      bodyStyles: {
-        valign: 'middle',
-        cellWidth: 'wrap',
-        halign: 'left',
-        minCellHeight: 30,
-        minCellWidth: 40
-      },
-      theme: 'striped'
-    });
-
 
     autoTable(doc, {
       useCss: true,
