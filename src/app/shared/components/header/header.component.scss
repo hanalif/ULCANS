@@ -310,11 +310,13 @@
   .progress{
     background-color: #2D79A5;
     height: 100%;
+
   }
 
   .completion{
     background-color: #55595c;
     height: 100%;
+    transition: width 1s;
 
   }
 }
