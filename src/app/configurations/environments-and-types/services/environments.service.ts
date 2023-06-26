@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-
 import { BehaviorSubject, map, } from 'rxjs';
 import { Environment} from 'src/app/configurations/environments-and-types/models/environment.model';
 import { CurrEnvironmentIdAndSide } from '../models/curr-environmentId-and-side.model';
 import { SystemSideForDisplay } from 'src/app/shared/models/system-side-for-display.mode';
-import { ClothPatternsUrls } from '../models/cloth-patterns-url.model';
 import { ClothPattern } from '../models/clothPattern.model';
 
 
