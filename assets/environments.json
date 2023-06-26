@@ -32,7 +32,7 @@
     "imgUrl": "assets/imgs/environments/png-pics/desert.png",
     "imgUrlowResolution": "assets/imgs/environments/png-low-resolution/desert.png",
     "clothPatterns": [
-      "assets/imgs/environments/cloth-patterns/Desert/low-resolution/1-copy-1.jpg",
+      "assets/imgs/environments/cloth-patterns/Desert/low-resolution/1-copy.jpg",
       "assets/imgs/environments/cloth-patterns/Desert/low-resolution/2-copy.jpg",
       "assets/imgs/environments/cloth-patterns/Desert/low-resolution/3-copy.jpg",
       "assets/imgs/environments/cloth-patterns/Desert/low-resolution/4-copy.jpg",
