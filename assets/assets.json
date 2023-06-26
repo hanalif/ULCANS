@@ -143,16 +143,88 @@
       },
       "isInList": true
   },
-  {
-    "id": "e1Q7IKjY",
-    "assetImgUrl": "assets/imgs/typical-assets/ah1z.png",
-    "name": "AH-1Z (Viper)",
-    "configurationId": null,
-    "measures": {
-        "widthFt": 48,
-        "heightFt": 15,
-        "lengthFt": 59
-    },
-    "isInList": true
+{
+  "id": "2utky55lrz",
+  "assetImgUrl": "assets/imgs/typical-assets/UH-1Y-Venom.png",
+  "name": "UH-1Y (Venom)",
+  "configurationId": null,
+  "measures": {
+      "widthFt": 48,
+      "heightFt": 15,
+      "lengthFt": 59
+  },
+  "isInList": true
+},
+{
+  "id": "lhjky77K0",
+  "assetImgUrl": "assets/imgs/typical-assets/f-35-lightning-ii.png",
+  "name": "F-35B (Lightning II)",
+  "configurationId": "c14",
+  "measures": {
+      "widthFt": 35,
+      "heightFt": 15,
+      "lengthFt": 51
+  },
+  "isInList": true
+},
+{
+  "id": "jkkj88499dj0",
+  "assetImgUrl": "assets/imgs/typical-assets/HDT.png",
+  "name": "HDT Airbeam tent 2021",
+  "configurationId": "c8",
+  "measures": {
+      "widthFt": 20,
+      "heightFt": 11,
+      "lengthFt": 21
+  },
+  "isInList": true
+},
+{
+  "id": "jhjkduc886d",
+  "assetImgUrl": "assets/imgs/typical-assets/MRAZR-LWB.png",
+  "name": "Polaris (MRAZR LWB)",
+  "configurationId": "c4",
+  "measures": {
+      "widthFt": 4.96,
+      "heightFt": 6.15,
+      "lengthFt": 11.70
+  },
+  "isInList": true
+},
+{
+  "id": "hfjsu736fdjs",
+  "assetImgUrl": "assets/imgs/typical-assets/SWB.png",
+  "name": "Polaris (MRAZR SWB)",
+  "configurationId": "c4",
+  "measures": {
+      "widthFt": 4.96,
+      "heightFt": 6.15,
+      "lengthFt": 9.42
+  },
+  "isInList": true
+},
+{
+  "id": "hgfhou77s",
+  "assetImgUrl": "assets/imgs/typical-assets/Humvee.png",
+  "name": "Humvee",
+  "configurationId": "c4",
+  "measures": {
+      "widthFt": 7,
+      "heightFt": 6,
+      "lengthFt": 15
+  },
+  "isInList": true
+},
+{
+  "id": "yfhsjjuv2s",
+  "assetImgUrl": "assets/imgs/typical-assets/LRW.png",
+  "name": "Land Rover Wolf",
+  "configurationId": "c4",
+  "measures": {
+      "widthFt": 6.2,
+      "heightFt": 6.9,
+      "lengthFt": 15.4
+  },
+  "isInList": true
 }
 ]
