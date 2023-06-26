@@ -26,10 +26,14 @@
                   </div>
                 </div>
               </div>
-              <video *ngIf="dataContent.videoUrl !== 'none'" width="100%" controls>
-                <source [src]="dataContent.videoUrl" type="video/mp4">
-                Your browser does not support HTML video.
-              </video>
+              <div class="video-box">
+                <div class="video-container">
+                  <video *ngIf="dataContent.videoUrl !== 'none'" width="100%" controls>
+                    <source [src]="dataContent.videoUrl" type="video/mp4">
+                    Your browser does not support HTML video.
+                  </video>
+                </div>
+              </div>
               <app-accordion [initialOpenIndex]="indexesForAccordion.innerIndex">
                 <app-accordion-item *ngFor="let subdata of dataContent.subData">
                   <div accordionItemHeader>

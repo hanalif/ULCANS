@@ -49,7 +49,22 @@ app-accordion{
         }
       }
 
+    }
 
+    .video-box{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .video-container{
+
+        width: 650px;
+
+        @include for-bpoint-tablet{
+          width: 100%;
+        }
+
+      }
     }
 
     .text-container{

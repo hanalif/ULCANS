@@ -19,10 +19,14 @@
             <div class="text-container">
               <p *ngFor="let text of dataContent.text">{{text}}</p>
             </div>
-            <video *ngIf="dataContent.videoUrl !== 'none'" width="100%" controls>
-              <source [src]="dataContent.videoUrl" type="video/mp4">
-              Your browser does not support HTML video.
-            </video>
+            <div *ngIf="dataContent.videoUrl !== 'none'" class="video-box">
+              <div class="video-container">
+                <video  width="100%" controls>
+                  <source [src]="dataContent.videoUrl" type="video/mp4">
+                  Your browser does not support HTML video.
+                </video>
+              </div>
+            </div>
             <div *ngIf="dataContent.linksForMoreInformation" class="links-box">
               <div class="links-title">For More Information:</div>
               <a
