@@ -4,18 +4,24 @@
 //swiper
 .mySwiper{
   &.swiper{
-    height: 85px;
+    height: 138px;
     width: 400px;
     margin-left: auto;
     margin-right: auto;
 
     @include for-bpoint-mobile{
-      height: 66px;
+      height: 106px;
       width: 300px;
     }
   }
   padding: 10px 0;
   .swiper-wrapper{
+    height: 54%;
+
+    h2{
+      font-size: 20px;
+      text-align: center;
+    }
     .swiper-slide{
       cursor: pointer;
       &.bottom-choice{
@@ -42,8 +48,8 @@
 
 .mySwiper2{
   &.swiper{
-    height: 300px;
-    width: 550px;
+    // height: 300px;
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 4px;
@@ -54,6 +60,8 @@
   }
   .swiper-wrapper{
     width: 100%;
+
+
     .swiper-slide{
       background-size: cover;
       background-position: center;
