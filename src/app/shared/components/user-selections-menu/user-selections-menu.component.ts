@@ -29,9 +29,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
   tableHeaderTitles:  string[] = ['Name', 'Width', 'Height', 'Length', 'Type', 'Hexagon', 'Rhombus','Width', 'Length', 'Area SQ', 'Poles', 'Pins' ,'Side A', 'Side B',' Type' ,''];
-  wideScreenTitles: any = [{mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(0,4)}, {mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(4,12)},{mainTitle: 'Patterns', tableTitles: ['sideA', '', 'sideB', '', 'Type'] }];
+  wideScreenTitles: any = [{mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(0,4)}, {mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(4,12)},{mainTitle: 'Patterns', tableTitles: ['sideA', 'Pattern Design', 'sideB','Pattern Design', 'Type'] }];
   configurationTitles: string[] = ['Type','Name', 'Hexagon', 'Rhombus', 'Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
-  patternsTitles: string[] = ['Side A', 'Pattern Design' ,'Side B', 'Pattern Design' ,' Type' ];
+  patternsTitles: string[] = ['Side A', 'Pattern',  'Design' ,'Side B', 'Pattern',  'Design' ,' Type' ];
   assetTitles: string[] = ['Name', 'Width', 'Height', 'Length']
 
   date = this.transformDate(new Date);
@@ -279,7 +279,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
             content: 'Patterns:',
             styles: {
               fontSize: 12,
-              halign: 'left',
+              halign: 'left'
             }
           }
         ]
@@ -293,17 +293,15 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
       html: '.patterns-table',
       headStyles:{
         valign: 'middle',
-        cellWidth: 'wrap',
-        halign: 'left',
+        halign: 'center',
         minCellHeight: 30,
-        minCellWidth: 40
+        minCellWidth: 70
       },
       bodyStyles: {
         valign: 'middle',
-        cellWidth: 'wrap',
-        halign: 'left',
-        minCellHeight: 50,
-        minCellWidth: 40
+        halign: 'center',
+        minCellHeight: 60,
+        minCellWidth: 70,
       },
 
       didDrawCell: (data: any) => {
@@ -311,7 +309,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
         if( cellId === 'imgEl'){
           var td = data.cell.raw;
           var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 50, data.cell.contentHeight, '', 'FAST' );
+          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 60, data.cell.contentHeight, '', 'FAST' );
         }
       },
       theme: 'striped'

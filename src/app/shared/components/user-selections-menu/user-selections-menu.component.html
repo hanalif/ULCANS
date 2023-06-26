@@ -230,6 +230,7 @@
                                   alt="sidaA-pic"
                                 />
                               </div>
+                              S-04
                             </td>
                             <td>
                               {{ userSelection.sideB.environment.typeName }}
@@ -245,6 +246,7 @@
                                   alt="sideB-pic"
                                 />
                               </div>
+                              S-03
                             </td>
                             <td>
                               {{ userSelection.ulcansType.name }}
@@ -490,9 +492,9 @@
                         <div class="card-row">
                           <span class="card-row_title">{{
                             tableHeaderTitles[12]
-                          }}</span>
+                          }} / {{ userSelection.sideA.environment.typeName }}</span>
                           <span class="card-row_content mobile">
-                            {{ userSelection.sideA.environment.typeName }}
+                            S-04
                             <div class="card-img">
                               <img
                                 [src]="
@@ -508,9 +510,9 @@
                         <div class="card-row">
                           <span class="card-row_title">{{
                             tableHeaderTitles[13]
-                          }}</span>
+                          }} / {{ userSelection.sideB.environment.typeName }} </span>
                           <span class="card-row_content mobile">
-                            {{ userSelection.sideB.environment.typeName }}
+                            S-04
                             <div class="card-img">
                               <img
                                 [src]="
@@ -783,6 +785,9 @@
             />
           </td>
           <td>
+            RU-04
+          </td>
+          <td>
             {{ assetsForDisplay[indexForTablePdf].sideB.environment.typeName }}
           </td>
           <td id="imgEl">
@@ -794,6 +799,9 @@
               "
               alt=""
             />
+          </td>
+          <td>
+            S-04
           </td>
           <td>
             {{ assetsForDisplay[indexForTablePdf].ulcansType.name }}
