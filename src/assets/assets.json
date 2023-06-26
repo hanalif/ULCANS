@@ -168,6 +168,18 @@
   "isInList": true
 },
 {
+  "id": "lhjuuusa0",
+  "assetImgUrl": "assets/imgs/typical-assets/ISV-Ranger.png",
+  "name": "ISV (Infantry Fighting Vehicle)",
+  "configurationId": "c5",
+  "measures": {
+      "widthFt": 6.80,
+      "heightFt": 6.20,
+      "lengthFt": 17.3
+  },
+  "isInList": true
+},
+{
   "id": "jkkj88499dj0",
   "assetImgUrl": "assets/imgs/typical-assets/HDT.png",
   "name": "HDT Airbeam tent 2021",
@@ -176,6 +188,18 @@
       "widthFt": 20,
       "heightFt": 11,
       "lengthFt": 21
+  },
+  "isInList": true
+},
+{
+  "id": "jhjugtj0",
+  "assetImgUrl": "assets/imgs/typical-assets/HDT.png",
+  "name": "HDT Airbeam tent 2032",
+  "configurationId": "c9",
+  "measures": {
+      "widthFt": 20,
+      "heightFt": 11,
+      "lengthFt": 32
   },
   "isInList": true
 },
