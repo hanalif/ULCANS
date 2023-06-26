@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSearchbar, NavController } from '@ionic/angular';
+import { IonIcon, IonSearchbar, NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { debounceTime, EMPTY, from, map, Subscription, tap } from 'rxjs';
 import {AlertConfirmationType} from '../../shared/models/alert-confirmation.enum';
@@ -16,6 +16,7 @@ import { UserSelectionService } from 'src/app/shared/services/user-selection.ser
 export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestroy {
   public assetsList!: Asset[];
   @ViewChild(IonSearchbar) searchBarEl!: IonSearchbar;
+
   areAssetsFound: boolean = true;
   assetsSuscription!: Subscription;
 
@@ -77,8 +78,11 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
     }
 
     async presentAlert() {
+
       const alert = await this.alertController.create({
-        header: 'Please remove the asset from your selections first.',
+        message:
+        '<div>Please remove the asset from your selections first.</div>' +
+        '<ion-icon name="arrow-forward-outline"></ion-icon> <ion-icon name="reader-outline"></ion-icon>',
         cssClass: 'custom-alert',
         buttons: [
           {
