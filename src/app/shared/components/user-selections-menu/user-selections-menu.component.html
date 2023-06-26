@@ -223,9 +223,9 @@
                               <div class="table-img">
                                 <img
                                   [src]="
-                                    userSelection.sideA.environment.shapes[
+                                    userSelection.sideA.environment.clothPatterns[
                                       userSelection.sideA.indexForPatternUrl
-                                    ]
+                                    ].shapeHighResolutionUrl
                                   "
                                   alt="sidaA-pic"
                                 />
@@ -239,9 +239,9 @@
                               <div class="table-img">
                                 <img
                                   [src]="
-                                    userSelection.sideB.environment.shapes[
+                                    userSelection.sideB.environment.clothPatterns[
                                       userSelection.sideB.indexForPatternUrl
-                                    ]
+                                    ].shapeHighResolutionUrl
                                   "
                                   alt="sideB-pic"
                                 />
@@ -498,9 +498,9 @@
                             <div class="card-img">
                               <img
                                 [src]="
-                                  userSelection.sideA.environment.shapes[
+                                  userSelection.sideA.environment.clothPatterns[
                                     userSelection.sideA.indexForPatternUrl
-                                  ]
+                                  ].shapeHighResolutionUrl
                                 "
                                 alt=""
                               />
@@ -516,9 +516,9 @@
                             <div class="card-img">
                               <img
                                 [src]="
-                                  userSelection.sideB.environment.shapes[
+                                  userSelection.sideB.environment.clothPatterns[
                                     userSelection.sideB.indexForPatternUrl
-                                  ]
+                                  ].shapeHighResolutionUrl
                                 "
                                 alt=""
                               />
@@ -777,9 +777,9 @@
           <td id="imgEl">
             <img
               [src]="
-                assetsForDisplay[indexForTablePdf].sideA.environment.forPdf[
+                assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
                 assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
-              ]
+              ].shapeLowResolutionUrl
               "
               alt=""
             />
@@ -793,9 +793,9 @@
           <td id="imgEl">
             <img
               [src]="
-                assetsForDisplay[indexForTablePdf].sideB.environment.forPdf[
+                assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
                 assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
-              ]
+              ].shapeLowResolutionUrl
               "
               alt=""
             />
@@ -835,10 +835,6 @@
             </tr>
           </tbody>
         </table>
-
-
-
-
   </div>
 </ion-content>
 

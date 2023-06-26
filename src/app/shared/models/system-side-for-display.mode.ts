@@ -3,5 +3,4 @@ import { Environment } from "src/app/configurations/environments-and-types/model
 export interface SystemSideForDisplay{
   environment: Environment,
   indexForPatternUrl: number
-
 }

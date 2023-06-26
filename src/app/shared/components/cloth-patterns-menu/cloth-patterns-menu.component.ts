@@ -7,6 +7,7 @@ import Swiper, { Navigation, Thumbs } from 'swiper';
 import { AssetForPdf } from '../../models/asset-for-pdf.model';
 import { SystemSide } from '../../models/system-side.model';
 import { UserSelectionService } from '../../services/user-selection.service';
+import { ClothPattern } from 'src/app/configurations/environments-and-types/models/clothPattern.model';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
   swiper!: Swiper;
   swiper2!: Swiper;
 
-  clothPatternsUrls!: ClothPatternsUrls | null;
+  clothPatterns!: ClothPattern[];
   currEnvironment!: Environment;
 
   currSide!: string;
@@ -31,8 +32,8 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
 
   ngOnInit() {
-    this.environmentsService.currClothPatterns$.pipe(takeUntil(this.destroyed$)).subscribe(currClothPatternsUrls=>{
-      this.clothPatternsUrls = currClothPatternsUrls;
+    this.environmentsService.currClothPatterns$.pipe(takeUntil(this.destroyed$)).subscribe(currClothPatterns=>{
+      this.clothPatterns = currClothPatterns as ClothPattern[];
     })
 
     this.environmentsService.currEnvironmentIdAndSide$.pipe(takeUntil(this.destroyed$)).subscribe(environmentIdAndSide=>{

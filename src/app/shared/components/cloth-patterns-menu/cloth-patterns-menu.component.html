@@ -12,8 +12,8 @@
     <div class="slider-container">
       <div style="--swiper-navigation-color: #fff" class="swiper mySwiper2">
         <div class="swiper-wrapper">
-          <div *ngFor="let url of clothPatternsUrls?.clothPatterns" class="swiper-slide">
-            <img [src]="url" />
+          <div *ngFor="let clothPattern of clothPatterns" class="swiper-slide">
+            <img [src]="clothPattern.landscapeUrl" />
           </div>
         </div>
         <div class="swiper-button-next"></div>
@@ -21,10 +21,10 @@
       </div>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div *ngFor="let url of clothPatternsUrls?.forPdf; let i = index" class="swiper-slide bottom-choice">
+          <div *ngFor="let clothPattern of clothPatterns; let i = index" class="swiper-slide bottom-choice">
             <img class="white-border" *ngIf="selectedPatternIndex === i" src="assets/imgs/environments/png-small/border2.png" alt="">
-            <img (click)="onClothPatternLink(i)" [src]="url" />
-            <h2>{{url.slice(url.length - 8, url.length - 4)}}</h2>
+            <img (click)="onClothPatternLink(i)" [src]="clothPattern.shapeLowResolutionUrl" />
+            <h2>{{clothPattern.name}}</h2>
           </div>
         </div>
       </div>
