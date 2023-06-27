@@ -228,7 +228,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
     headStyles:{
       valign: 'middle',
       cellWidth: 'wrap',
-      halign: 'left',
+      halign: 'center',
       minCellHeight: 30,
       minCellWidth: 40
     },
