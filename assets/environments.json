@@ -2,8 +2,7 @@
   {
     "id": "11aa",
     "typeName": "Woodland",
-    "imgUrl": "assets/imgs/environments/png-pics/woodland.png",
-    "imgUrlowResolution": "assets/imgs/environments/png-low-resolution/woodland.png",
+    "imgUrlowResolution": "assets/imgs/environments/png-small/W-try.png",
     "clothPatterns": [
       {
         "name":"W-01",
@@ -41,8 +40,7 @@
   {
     "id": "12bb",
     "typeName": "Desert",
-    "imgUrl": "assets/imgs/environments/png-pics/desert.png",
-    "imgUrlowResolution": "assets/imgs/environments/png-low-resolution/desert.png",
+    "imgUrlowResolution": "assets/imgs/environments/png-small/D-try.png",
     "clothPatterns": [
       {
         "name":"D-01",
@@ -79,8 +77,7 @@
   {
     "id": "13cc",
     "typeName": "Rocky Urban",
-    "imgUrl": "assets/imgs/environments/png-pics/urban-rocky.png",
-    "imgUrlowResolution": "assets/imgs/environments/png-low-resolution/urban-rocky.png",
+    "imgUrlowResolution": "assets/imgs/environments/png-small/RU-try.png",
     "clothPatterns": [
       {
         "name":"RU-01",
@@ -117,8 +114,7 @@
   {
     "id": "15ee",
     "typeName": "Snowy",
-    "imgUrl": "assets/imgs/environments/png-pics/snowy.png",
-    "imgUrlowResolution": "assets/imgs/environments/png-low-resolution/snowy.png",
+    "imgUrlowResolution": "assets/imgs/environments/png-small/S-try.png",
     "clothPatterns": [
       {
         "name":"S-01",
