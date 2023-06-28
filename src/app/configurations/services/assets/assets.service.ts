@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from "@angular/common/http";
 import { Asset } from '../../models/asset.model';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, EMPTY, map, of, tap } from 'rxjs';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { CalculatorFormValue } from '../../configuration-calculator/calculator-form-value.model';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { MToFtPipe } from 'src/app/shared/pipes/m-to-ft.pipe';
-import { UserSelectionService } from '../../../shared/services/user-selection.service';
-
-
-
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { Entity } from 'src/app/shared/models/entity.model';
 
 @Injectable({providedIn: 'root'})
 
 export class AssetsService {
   private MeasureType = MeasureType;
 
+  private readonly entityType: string = 'assets';
+
   private assets$: BehaviorSubject<Asset[]> = new BehaviorSubject<Asset[]>([]);
 
   constructor(
     private http: HttpClient,
     private utilService:UtilService,
-    private mToFtPipe: MToFtPipe
+    private mToFtPipe: MToFtPipe,
+    private localStorage: StorageService
     ) { }
 
   getSearchResultAssets(searchKey: string){
@@ -89,10 +89,9 @@ export class AssetsService {
   removeAsset(assetId: string){
     let assets = this._getassetsValue();
     let foundAssetIndex = assets.findIndex(a => a.id === assetId);
-
-
     assets.splice(foundAssetIndex, 1);
     this.addAssets(assets);
+    this.localStorage.remove(this.entityType, assetId);
 
   }
 
@@ -101,8 +100,10 @@ export class AssetsService {
     let foundAssetIndex = assets.findIndex(a => a.id === assetToAdd.id);
     if(foundAssetIndex !== -1){
       assets.splice(foundAssetIndex, 1, assetToAdd);
+      this.localStorage.put(this.entityType, assetToAdd);
     }else{
       assets.push(assetToAdd);
+      this.localStorage.post(this.entityType, assetToAdd);
     }
     this.addAssets(assets);
   }
@@ -119,10 +120,36 @@ export class AssetsService {
     return this.assets$.getValue();
   }
 
+  _saveAssetsToLocalStorage(assets: Asset[]){
+    return this.localStorage.postMany(this.entityType, assets);
+  }
 
-  _getAssetesFromJson(){
-    return this.http.get<Asset[]>('assets/assets.json').pipe(map(assets=> {
-      this.assets$.next(assets)
+  _getAssetsFromLocalStorage(){
+    return this.localStorage.get(this.entityType);
+  }
+
+  _resetAssets(){
+    this.assets$.next([]);
+    this.localStorage.removeLocalStorageSessions(this.entityType);
+  }
+
+
+  _getAssetes(){
+    let assetsFromStorage = this.localStorage.get<Asset>(this.entityType);
+    if(assetsFromStorage.length !== 0){
+      this.assets$.next(assetsFromStorage);
+      return of();
+    }
+
+    return this.http.get<Asset[]>('assets/assets.json').pipe(map(assetsFromJson=> {
+      this.assets$.next(assetsFromJson);
+      let assetsFromStorage = this._getAssetsFromLocalStorage();
+      if(assetsFromStorage.length != 0 ){
+       let assets = [...this.assets$.getValue(), ...assetsFromStorage as Asset[]];
+      this.assets$.next(assets as Asset[]);
+      }else{
+        this._saveAssetsToLocalStorage(assetsFromJson);
+      }
     }));
   }
 }

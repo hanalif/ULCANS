@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
     this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();
-    this.assetsService._getAssetesFromJson().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.assetsService._getAssetes().pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
     this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();

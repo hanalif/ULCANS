@@ -1,8 +1,5 @@
 import { Injectable } from "@angular/core";
-
-export interface Entity{
-  _id: string;
-}
+import { Entity } from "../models/entity.model";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +15,7 @@ export class StorageService {
 
   getById<T extends Entity>(entityType: string, entityId: string){
     let entities = this.get<T>(entityType);
-    let foundEntity = entities.find(entity=> entity._id === entityId);
+    let foundEntity = entities.find(entity=> entity.id === entityId);
     return foundEntity;
   }
 
@@ -37,7 +34,7 @@ export class StorageService {
 
   put<T extends Entity>(entityType: string, updatedEntity: T){
     let entities = this.get<T>(entityType);
-    const index = entities.findIndex(entity => entity._id === updatedEntity._id);
+    const index = entities.findIndex(entity => entity.id === updatedEntity.id);
     entities.splice(index, 1, updatedEntity);
     this._save(entityType, entities);
   }
@@ -45,7 +42,7 @@ export class StorageService {
 
   remove<T extends Entity>(entityType: string, entityId: string){
     let entities = this.get<T>(entityType);
-    const index = entities.findIndex(entity => entity._id === entityId);
+    const index = entities.findIndex(entity => entity.id === entityId);
     entities.splice(index, 1);
     this._save(entityType, entities);
   }
