@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
 import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
 import { AssetForDisplay } from '../models/asset-for-display';
@@ -10,6 +10,7 @@ import { SystemSide } from '../models/system-side.model';
 import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
 import { UtilService } from './util.service';
 import { SystemTypesService } from 'src/app/configurations/environments-and-types/services/system-types.service';
+import { StorageService } from './storage.service';
 
 
 @Injectable({
@@ -28,6 +29,8 @@ export class UserSelectionService {
   public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
 
   public FOOTER_FORM_TXT: string = "";
+  private readonly entityType: string = 'userSelections';
+
 
 
   constructor(
@@ -36,7 +39,8 @@ export class UserSelectionService {
     public plt: Platform,
     public environmentsService: EnvironmentsService,
     public utilService: UtilService,
-    public systemTypesService: SystemTypesService
+    public systemTypesService: SystemTypesService,
+    public localStorage: StorageService
     ) { }
 
   getIsUserSelectionsMenuOpen() {
@@ -107,6 +111,7 @@ export class UserSelectionService {
       this.userCurrSelection$.next(null);
       this.isDisabled$.next(true);
     }
+    this.localStorage.post(this.entityType, assetForPdf);
     this.assetsForPdf$.next(assetsForPdf);
     this.resetCurrUserSelection();
   }
@@ -115,6 +120,9 @@ export class UserSelectionService {
     let userSelections = this.assetsForPdf$.getValue();
     const index = userSelections.findIndex(selection=> selection.id === userSelectionId);
     userSelections.splice(index, 1);
+
+    this.localStorage.remove(this.entityType, userSelectionId);
+
     this.assetsForPdf$.next(userSelections);
     this.setNumberOfNewSelections(-1);
   }
@@ -181,6 +189,18 @@ export class UserSelectionService {
   }
 
 
+
+  _initialUserSelections(){
+    let userSelectionsFromStorage = this.localStorage.get<AssetForPdf>(this.entityType);
+
+    if(userSelectionsFromStorage.length !== 0){
+      this.numOfSelections$.next(userSelectionsFromStorage.length);
+      this.assetsForPdf$.next(userSelectionsFromStorage);
+      return of();
+    }
+
+    return this.assetsForPdf$.asObservable();
+  }
 
 }
 
