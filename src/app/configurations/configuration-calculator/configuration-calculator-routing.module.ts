@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ConfigurationCalculatorPage
+  },
+  {
+    path: ':assetId',
+    component: ConfigurationCalculatorPage
   }
 ];
 

@@ -37,7 +37,11 @@ export class AssetsService {
 
   getAssetById(assetId:string){
     let assets = this._getassetsValue();
-    return assets.find(a => a.id === assetId);
+    return assets.find(a => a.id === assetId) as Asset;
+  }
+
+  getIsAssetInList(assetId:string){
+    return this.getAssetById(assetId).isInList;
   }
 
   getAssetsByIds(assetIds: string[]){
@@ -54,35 +58,53 @@ export class AssetsService {
     return assetsByIds;
   }
 
-  generataAndAddNewAsset(assetName:string, calculatorFormValue: CalculatorFormValue, configuraionId: string | undefined){
-    let widhtFt: number;
-    let heightFt:number;
-    let lengthFt: number;
-    let id: string = this.utilService._makeId();
+  transformMToFt(calculatorFormValue: CalculatorFormValue){
+    let updatedCalculatorFormValue : Partial<CalculatorFormValue>;
 
     if(this.MeasureType.METERS === calculatorFormValue.measureType){
-       widhtFt =this.mToFtPipe.transform(calculatorFormValue.width);
-       heightFt = this.mToFtPipe.transform(calculatorFormValue.height);
-       lengthFt = this.mToFtPipe.transform(calculatorFormValue.length);
-    } else{
-      widhtFt = calculatorFormValue.width;
-      heightFt = calculatorFormValue.height;
-      lengthFt = calculatorFormValue.length;
+      updatedCalculatorFormValue = {
+        width: this.mToFtPipe.transform(calculatorFormValue.width),
+        height: this.mToFtPipe.transform(calculatorFormValue.height),
+        length: this.mToFtPipe.transform(calculatorFormValue.length)
+      }
+   } else{
+     updatedCalculatorFormValue = {
+      width: calculatorFormValue.width,
+      height: calculatorFormValue.height,
+      length: calculatorFormValue.length
     }
-    const newAsset:Asset = {
+
+   }
+
+   return updatedCalculatorFormValue = {...updatedCalculatorFormValue, measureType: calculatorFormValue.measureType};
+
+  }
+
+  generataAndAddAsset(assetName:string, calculatorFormValue: CalculatorFormValue, configuraionId: string | undefined, measureType: MeasureType, assetId: string | undefined = undefined){
+    let id: string;
+    if(assetId){
+      id = assetId
+    } else{
+      id = this.utilService._makeId();
+    }
+
+    let updatedCalculatorFormValue = this.transformMToFt(calculatorFormValue) as CalculatorFormValue;
+
+    const assetToAdd:Asset = {
       id: id,
       assetImgUrl: 'assets/imgs/hexagon-bg/asset-bg.png',
       name: assetName,
       configurationId: configuraionId,
       measures: {
-        widthFt: widhtFt,
-        heightFt: heightFt,
-        lengthFt: lengthFt,
+        widthFt: updatedCalculatorFormValue.width,
+        heightFt: updatedCalculatorFormValue.height,
+        lengthFt: updatedCalculatorFormValue.length,
       },
-      isInList: false
+      isInList: false,
+      initialMeasureType: measureType
     }
 
-    this.addAsset(newAsset);
+    this.addAsset(assetToAdd);
     return id;
   }
 
@@ -92,8 +114,9 @@ export class AssetsService {
     assets.splice(foundAssetIndex, 1);
     this.addAssets(assets);
     this.localStorage.remove(this.entityType, assetId);
-
   }
+
+
 
   addAsset(assetToAdd: Asset){
     let assets = this._getassetsValue();

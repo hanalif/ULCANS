@@ -6,7 +6,7 @@
     <div class="page-container">
       <div class="top">
         <div class="btns-section">
-          <button routerLink="/configurations/typical-configurations" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+          <button (click)="onBack()" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
         </div>
         <div class="title">
           <span>Calculate Your ULCANS Configuration</span>
@@ -64,7 +64,7 @@
   <ion-toolbar>
     <div class="footer-container main-layout">
       <div class="next-button-wrapper">
-        <button [ngClass]="{'disabled': calculatorForm.invalid}" type="submit" [formGroup]="calculatorForm" (click)="onCalculate()" class="regular-btn"><span>{{'calculate' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
+        <button [ngClass]="{'disabled': calculatorForm.invalid || calculatorForm.pristine}"  type="submit" [formGroup]="calculatorForm" (click)="onCalculate()" class="regular-btn"><span>{{'calculate' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button>
       </div>
     </div>
   </ion-toolbar>

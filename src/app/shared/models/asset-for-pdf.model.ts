@@ -11,6 +11,6 @@ export interface AssetForPdf{
   configuraionId: string | undefined,
   quantity: number,
   systemTypeId: string,
-  isCustomConfiguration: boolean
-
+  isCustomConfiguration: boolean,
+  wasStartedFromCalculator: boolean
 }

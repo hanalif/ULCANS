@@ -26,12 +26,15 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
     }else{
       const areSpecialPoles = asset.measures.heightFt >= 12.1030 ? true : false;
       const isCustomConfiguration = asset.configurationId ? false : true;
+
+      let wasStartedFromCalculator = this.userSelectionsService.getCurrUserSelectionValue()?.wasStartedFromCalculator;
       //save to curr user selection
       let userSelections: Partial<AssetForPdf> = {
         assetId: assetId,
         configuraionId: asset.configurationId,
         areSpecialPoles: areSpecialPoles,
-        isCustomConfiguration: isCustomConfiguration
+        isCustomConfiguration: isCustomConfiguration,
+        wasStartedFromCalculator: wasStartedFromCalculator? wasStartedFromCalculator : false
       }
 
       this.userSelectionsService.updateCurrUserSelections(userSelections);
@@ -47,7 +50,9 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
       let assetForPreview: AssetForPreview = {
         asset: asset,
         configuration: config,
-        areSpecialPoles: areSpecialPoles
+        areSpecialPoles: areSpecialPoles,
+        wasStartedFromCalculator: userSelections.wasStartedFromCalculator as boolean
+
       }
       return assetForPreview;
     }

@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { ActivatedRouteSnapshot, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { EMPTY, from, map, Observable, tap } from "rxjs";
 import { UserSelectionService } from "src/app/shared/services/user-selection.service";
 import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from "src/app/shared/models/alert-confirmation.enum";
 import { AssetForPdf } from "src/app/shared/models/asset-for-pdf.model";
+import { AssetsService } from "../assets/assets.service";
 
 
 
@@ -14,7 +15,11 @@ import { AssetForPdf } from "src/app/shared/models/asset-for-pdf.model";
 })
 
 export class UserSelectionGuard implements CanDeactivate<unknown>{
-  constructor(private userSelectionsService: UserSelectionService, private alertController: AlertController){}
+  constructor(
+    private userSelectionsService: UserSelectionService,
+    private alertController: AlertController,
+    private assetService: AssetsService,
+    private route: Router){}
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -60,12 +65,14 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
   canDeactivate(component: unknown, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     const assetId: string | undefined = (this.userSelectionsService.userCurrSelection$.value)?.assetId;
     const currUserSelection: AssetForPdf | null = this.userSelectionsService.getCurrUserSelectionValue();
+
     if(currUserSelection === null){
       return from(this.presentAlert2()).pipe(
         map(res=> res == AlertConfirmationType.Confirm),
         tap(res=> this.userSelectionsService.setIsUserSelectionsMenuOpen(res))
       )
     }
+
 
 
     if(assetId){
@@ -87,6 +94,10 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
               }
             })
           )
+        }
+
+        if(nextState.url.includes('configuration-calaulator') && currUserSelection.wasStartedFromCalculator){
+            return true;
         }
 
         if((nextState.url.includes('environments-and-types')) || (nextState.url.includes(assetId))){

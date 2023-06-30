@@ -82,7 +82,8 @@ export class UserSelectionService {
     let currSelctionValue = this.getCurrUserSelectionValue();
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
     let numsOfKeys = Object.values(currSelctionValue).length;
-    let progressNum = numsOfKeys * 12.5;
+    let progressNum = numsOfKeys * 11.1111;
+    console.log(progressNum);
     this.progressBar$.next(progressNum);
     if(numsOfKeys === 8){
       this.isDisabled$.next(false);
@@ -90,17 +91,25 @@ export class UserSelectionService {
     this.userCurrSelection$.next(currSelctionValue);
   }
 
+
   resetCurrUserSelection(){
+    console.log('reset curr user selection colled');
     this.userCurrSelection$.next(null);
     this.progressBar$.next(0);
   }
 
-  addAssetForPdf(){
-    const assetForPdf = this.getCurrUserSelectionValue() as AssetForPdf;
-    if(!assetForPdf.id){
-      assetForPdf.id = this.utilService._makeId();
-      this.progressBar$.next(0);
+  addAssetForPdf(userSelectionToUpdate?: Partial<AssetForPdf>){
+    let assetForPdf: AssetForPdf;
+    if(userSelectionToUpdate){
+      assetForPdf = this.updateUserSelection(userSelectionToUpdate) as AssetForPdf;
+    } else{
+      assetForPdf = this.getCurrUserSelectionValue() as AssetForPdf;
+      if(!assetForPdf.id){
+        assetForPdf.id = this.utilService._makeId();
+        this.progressBar$.next(0);
+      }
     }
+
     const assetsForPdf = this.assetsForPdf$.getValue();
     const foundAssetIndex = assetsForPdf.findIndex(a=> a.id === assetForPdf.assetId);
     if(foundAssetIndex !== -1){
@@ -114,6 +123,15 @@ export class UserSelectionService {
     this.localStorage.post(this.entityType, assetForPdf);
     this.assetsForPdf$.next(assetsForPdf);
     this.resetCurrUserSelection();
+  }
+
+  updateUserSelection(userSelectionToUpdate: Partial<AssetForPdf>){
+    const userSelections = this.assetsForPdf$.getValue();
+    let foundUserSelection = userSelections.find(us => us.id === userSelectionToUpdate.id);
+    if(foundUserSelection){
+      return foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as AssetForPdf;
+    }
+    return undefined;
   }
 
   removeUserSelection(userSelectionId: string){

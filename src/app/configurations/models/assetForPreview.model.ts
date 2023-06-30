@@ -4,5 +4,6 @@ import { Configuration } from "./configuration.model";
 export interface AssetForPreview{
   asset: Asset,
   configuration: Configuration | undefined,
-  areSpecialPoles: boolean
+  areSpecialPoles: boolean,
+  wasStartedFromCalculator: boolean
 }
