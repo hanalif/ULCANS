@@ -6,11 +6,6 @@ import { CurrEnvironmentIdAndSide } from '../models/curr-environmentId-and-side.
 import { SystemSideForDisplay } from 'src/app/shared/models/system-side-for-display.mode';
 import { ClothPattern } from '../models/clothPattern.model';
 
-
-
-
-
-
 @Injectable({
   providedIn: 'root'
 })
