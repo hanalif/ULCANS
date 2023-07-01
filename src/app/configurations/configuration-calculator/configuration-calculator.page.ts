@@ -24,6 +24,7 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
   public measureType: MeasureType = MeasureType.FEET;
   public MeasureType = MeasureType;
   isFromAssetsList: boolean = false;
+  isFromUserSelectionsMenu: boolean = false;
   isFromAssetsSubscription?: Subscription;
 
 
@@ -55,6 +56,7 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
 
     this.isFromAssetsSubscription = this.activatedRoute.queryParams.subscribe(params=>{
       this.isFromAssetsList = params['isFromAssetsList'];
+      this.isFromUserSelectionsMenu = params['isFromUserSelectionsMenu'];
     })
 
     this.initForm(this.assetToUpdate);
@@ -132,20 +134,24 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
     }
 
     if(!this.isFromAssetsList){
+      if(this.isFromUserSelectionsMenu){
+        this.userSelectionsService.setIsUserSelectionsMenuOpen(true);
+        this.router.navigate(['configurations/typical-configurations']);
+      }else{
+        let userSelections: Partial<AssetForPdf> = {
+          assetId: assetId,
+          wasStartedFromCalculator:true
+        }
 
-      let userSelections: Partial<AssetForPdf> = {
-        assetId: assetId,
-        wasStartedFromCalculator:true
+        this.userSelectionsService.updateCurrUserSelections(userSelections);
+
+        this.router.navigate(['configurations/typical-configurations', assetId]);
       }
-
-      this.userSelectionsService.updateCurrUserSelections(userSelections);
-
-      this.router.navigate(['configurations/typical-configurations', assetId]);
     }else{
+
+
       this.router.navigate(['configurations/typical-configurations']);
     }
-
-
     this.calculatorForm.reset();
   }
 

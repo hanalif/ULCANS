@@ -106,12 +106,22 @@
   }
 }
 
+.icon-btn.edit-btn{
+  background-color: transparent;
+
+
+  &:hover{
+    background-color: #1c1b1b;
+  }
+}
 
 .selection-btns{
 
 
   .icon-btn{
     background-color: transparent;
+
+
 
     &:hover{
       background-color: #383838;

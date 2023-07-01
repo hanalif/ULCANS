@@ -71,9 +71,10 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       this.currPlatforms = this.plt.platforms();
   }
 
-  onEditAsset(assetId: string, event: Event){
-
-
+  onEditAsset(assetId: string, $event: Event){
+    $event.stopPropagation();
+    this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromUserSelectionsMenu: true}});
+    this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
 
   ngOnDestroy(): void {
