@@ -53,6 +53,12 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
     this.route.navigate(['configurations', 'typical-configurations', assetId]);
     }
 
+    onEdit(assetId:string, $event: Event){
+      $event.stopPropagation();
+
+      this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromAssetsList: true}});
+    }
+
     onRemoveAsset(assetId:string, $event: Event){
       $event.stopPropagation();
 

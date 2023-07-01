@@ -43,6 +43,5 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy(): void {
     this.openedItemsIndexesMap = {};
-    console.log('accordion cmp destroy');
   }
 }

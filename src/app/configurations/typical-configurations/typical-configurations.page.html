@@ -27,6 +27,7 @@
           </div>
           <div *ngIf="!asset.isInList" class="trash-icon">
             <button (click)="onRemoveAsset(asset.id, $event)" class="icon-btn"><ion-icon name="trash-outline"></ion-icon></button>
+            <button class="icon-btn" (click)="onEdit(asset.id, $event)"><ion-icon name="create-outline"></ion-icon></button>
           </div>
         </a>
       </div>

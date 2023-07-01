@@ -11,6 +11,7 @@ import { DecimalPipe } from '@angular/common';
 import { AssetMeasures } from '../models/asset-measures.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-configuration-calculator',
@@ -22,6 +23,9 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
   assetName: FormControl = new FormControl();
   public measureType: MeasureType = MeasureType.FEET;
   public MeasureType = MeasureType;
+  isFromAssetsList: boolean = false;
+  isFromAssetsSubscription?: Subscription;
+
 
 
   constructor(
@@ -48,6 +52,10 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
       }
 
     }
+
+    this.isFromAssetsSubscription = this.activatedRoute.queryParams.subscribe(params=>{
+      this.isFromAssetsList = params['isFromAssetsList'];
+    })
 
     this.initForm(this.assetToUpdate);
   }
@@ -86,10 +94,11 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
   }
 
   onBack(){
-    this.userSelectionsService.resetCurrUserSelection();
+    if(!this.isFromAssetsList){
+       this.userSelectionsService.resetCurrUserSelection();
+    }
+
     this.router.navigate(['configurations/typical-configurations']);
-
-
   }
 
   getCalculatorFormValue(){
@@ -113,6 +122,7 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
     calculatorValue.measureType = this.measureType;
     const configurayionId = this.calculatorService.getCalculatedConfigurationId(calculatorValue);
     let assetId: string;
+
     if(this.assetToUpdate){
       assetId = this.assetService.generataAndAddAsset(formOutput.assetName, calculatorValue, configurayionId, this.measureType, this.assetToUpdate.id);
 
@@ -120,14 +130,20 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
       assetId = this.assetService.generataAndAddAsset(formOutput.assetName, calculatorValue, configurayionId, this.measureType);
     }
 
-    let userSelections: Partial<AssetForPdf> = {
-      assetId: assetId,
-      wasStartedFromCalculator:true
+    if(!this.isFromAssetsList){
+
+      let userSelections: Partial<AssetForPdf> = {
+        assetId: assetId,
+        wasStartedFromCalculator:true
+      }
+
+      this.userSelectionsService.updateCurrUserSelections(userSelections);
+
+      this.router.navigate(['configurations/typical-configurations', assetId]);
+    }else{
+      this.router.navigate(['configurations/typical-configurations']);
     }
 
-    this.userSelectionsService.updateCurrUserSelections(userSelections);
-
-    this.router.navigate(['configurations/typical-configurations', assetId]);
 
     this.calculatorForm.reset();
   }
@@ -139,9 +155,7 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-
-    console.log('calculator page destroy');
-
+    this.isFromAssetsSubscription?.unsubscribe();
   }
 
 

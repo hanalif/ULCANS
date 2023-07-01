@@ -20,7 +20,7 @@ export class AssetPage implements OnInit,OnDestroy {
   public asset!: Asset;
   public configuration!: Configuration;
   public areSpecialPoles!: boolean;
-  public measureType: MeasureType = MeasureType.METERS;
+  public measureType!: MeasureType;
   public MeasureType = MeasureType;
   tableHeaderTitles:  string[] = ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins', 'Name', 'Width', 'Height', 'Length'];
   wideScreenTitles: any = [{mainTitle: 'Configuration', tableTitles: ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins']},{mainTitle: 'Asset', tableTitles: ['Name', 'Width', 'Height', 'Length']}]
@@ -30,8 +30,7 @@ export class AssetPage implements OnInit,OnDestroy {
   constructor(
     private router: ActivatedRoute,
     private route: Router,
-    private userSelectionsService: UserSelectionService,
-    private assetService: AssetsService) { }
+    private userSelectionsService: UserSelectionService) { }
 
 
   ngOnInit() {
@@ -41,6 +40,7 @@ export class AssetPage implements OnInit,OnDestroy {
       this.configuration = assetForPreview.configuration;
       this.areSpecialPoles = assetForPreview.areSpecialPoles;
       this.wasStartedFromCalculator = assetForPreview.wasStartedFromCalculator;
+      this.measureType = this.asset.initialMeasureType;
     })
 
   }
