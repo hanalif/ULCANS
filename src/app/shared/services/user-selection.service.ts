@@ -133,6 +133,8 @@ export class UserSelectionService {
     return undefined;
   }
 
+
+
   removeUserSelection(userSelectionId: string){
     let userSelections = this.assetsForPdf$.getValue();
     const index = userSelections.findIndex(selection=> selection.id === userSelectionId);
@@ -147,12 +149,13 @@ export class UserSelectionService {
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
 
         const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
-        const configurationsIds = (assetsForPdf.map(asset => asset.configuraionId)) as string[];
+
         const sidesA = (assetsForPdf.map(asset => asset.sideA));
         const sidesB = (assetsForPdf.map(asset => asset.sideB));
         const ulcansTypesIds = (assetsForPdf.map(asset=> asset.systemTypeId));
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
+        const configurationsIds = (assets.map(a => a.configurationId)) as string[];
         const sidesAForDisplay = this.getSidesForDisplay(sidesA);
         const sidesBForDisplay = this.getSidesForDisplay(sidesB);
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
@@ -164,7 +167,7 @@ export class UserSelectionService {
           let assetForDisplay = {
           id: assetsForPdf[i].id,
           asset: assets.find(a=> a.id === assetsForPdf[i].assetId),
-          configuratoin: configurations.find(c => c.id === assetsForPdf[i].configuraionId),
+          configuratoin: configurations.find(c => c.id === configurationsIds[i]),
           sideA: sidesAForDisplay[i],
           sideB: sidesBForDisplay[i],
           measureType: assetsForPdf[i].measureType,

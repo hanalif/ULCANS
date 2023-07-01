@@ -25,6 +25,7 @@
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[0].mainTitle }}
+                      <button class="icon-btn" (click)="onEditAsset(userSelection.asset!.id, $event)"><ion-icon name="create-outline"></ion-icon></button>
                     </div>
                     <div accordionItemBody class="accordion-body">
                       <table class="styled-table style1">
@@ -288,6 +289,7 @@
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Asset
+                        <button class="icon-btn" (click)="onEditAsset(userSelection.asset!.id, $event)"><ion-icon name="create-outline"></ion-icon></button>
                       </div>
                       <div accordionItemBody class="accordion-body">
                         <div class="card-row">

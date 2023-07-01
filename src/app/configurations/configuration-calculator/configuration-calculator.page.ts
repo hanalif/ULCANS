@@ -121,6 +121,7 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
     let calculatorValue = formOutput.calculatorFormValue as CalculatorFormValue;
     calculatorValue.measureType = this.measureType;
     const configurayionId = this.calculatorService.getCalculatedConfigurationId(calculatorValue);
+
     let assetId: string;
 
     if(this.assetToUpdate){

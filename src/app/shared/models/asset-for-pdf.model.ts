@@ -7,8 +7,7 @@ export interface AssetForPdf{
   areSpecialPoles: boolean,
   measureType: MeasureType,
   sideA: SystemSide,
-  sideB: SystemSide
-  configuraionId: string | undefined,
+  sideB: SystemSide,
   quantity: number,
   systemTypeId: string,
   isCustomConfiguration: boolean,

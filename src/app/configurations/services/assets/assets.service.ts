@@ -82,8 +82,10 @@ export class AssetsService {
 
   generataAndAddAsset(assetName:string, calculatorFormValue: CalculatorFormValue, configuraionId: string | undefined, measureType: MeasureType, assetId: string | undefined = undefined){
     let id: string;
+    let isAssetInUserSelections: boolean;
+
     if(assetId){
-      id = assetId
+      id = assetId;
     } else{
       id = this.utilService._makeId();
     }
@@ -103,6 +105,8 @@ export class AssetsService {
       isInList: false,
       initialMeasureType: measureType
     }
+
+
 
     this.addAsset(assetToAdd);
     return id;

@@ -31,7 +31,6 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
       //save to curr user selection
       let userSelections: Partial<AssetForPdf> = {
         assetId: assetId,
-        configuraionId: asset.configurationId,
         areSpecialPoles: areSpecialPoles,
         isCustomConfiguration: isCustomConfiguration,
         wasStartedFromCalculator: wasStartedFromCalculator? wasStartedFromCalculator : false

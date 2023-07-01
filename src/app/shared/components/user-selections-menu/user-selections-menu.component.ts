@@ -71,6 +71,11 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       this.currPlatforms = this.plt.platforms();
   }
 
+  onEditAsset(assetId: string, event: Event){
+
+
+  }
+
   ngOnDestroy(): void {
     this.assetsForPdfSubscription?.unsubscribe()
   }
