@@ -15,6 +15,7 @@ import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
 import { style } from '@angular/animations';
+import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -54,7 +55,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private datePipe: DatePipe,
     private alertController: AlertController,
     private menuCategoriesService: MenuCategoriesService,
-    private route: Router
+    private route: Router,
+    private environmentsService: EnvironmentsService
     ) { }
 
   ngOnInit() {
@@ -102,8 +104,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     }
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
-
-
 
 
   //PDF Generator:
