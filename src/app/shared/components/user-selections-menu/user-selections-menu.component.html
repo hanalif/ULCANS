@@ -231,7 +231,9 @@
                                   alt="sidaA-pic"
                                 />
                               </div>
-                              S-04
+                              {{userSelection.sideA.environment.clothPatterns[
+                                userSelection.sideA.indexForPatternUrl
+                              ].name}}
                             </td>
                             <td>
                               {{ userSelection.sideB.environment.typeName }}
@@ -247,7 +249,9 @@
                                   alt="sideB-pic"
                                 />
                               </div>
-                              S-03
+                              {{userSelection.sideB.environment.clothPatterns[
+                                userSelection.sideB.indexForPatternUrl
+                              ].name}}
                             </td>
                             <td>
                               {{ userSelection.ulcansType.name }}
@@ -496,7 +500,9 @@
                             tableHeaderTitles[12]
                           }} / {{ userSelection.sideA.environment.typeName }}</span>
                           <span class="card-row_content mobile">
-                            S-04
+                            {{userSelection.sideA.environment.clothPatterns[
+                              userSelection.sideA.indexForPatternUrl
+                            ].name}}
                             <div class="card-img">
                               <img
                                 [src]="
@@ -514,7 +520,9 @@
                             tableHeaderTitles[13]
                           }} / {{ userSelection.sideB.environment.typeName }} </span>
                           <span class="card-row_content mobile">
-                            S-04
+                            {{userSelection.sideB.environment.clothPatterns[
+                              userSelection.sideB.indexForPatternUrl
+                            ].name}}
                             <div class="card-img">
                               <img
                                 [src]="
@@ -787,7 +795,9 @@
             />
           </td>
           <td>
-            RU-04
+            {{assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
+              assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+            ].name}}
           </td>
           <td>
             {{ assetsForDisplay[indexForTablePdf].sideB.environment.typeName }}
@@ -803,7 +813,9 @@
             />
           </td>
           <td>
-            S-04
+            {{assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
+              assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+            ].name}}
           </td>
           <td>
             {{ assetsForDisplay[indexForTablePdf].ulcansType.name }}

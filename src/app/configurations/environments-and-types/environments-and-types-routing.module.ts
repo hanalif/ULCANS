@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '',
     canDeactivate:[UserSelectionGuard],
     canActivate:[EnvironmentsAndTypesPageGuard],
-    resolve: {currUserSelection: EnvironmentsAndTypesResolver},
+    // resolve: {currUserSelection: EnvironmentsAndTypesResolver},
     component: EnvironmentsAndTypesPage
   }
 

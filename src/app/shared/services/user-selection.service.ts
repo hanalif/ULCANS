@@ -87,6 +87,7 @@ export class UserSelectionService {
     if(numsOfKeys === 7){
       this.isDisabled$.next(false);
     }
+    console.log(currSelctionValue);
     this.userCurrSelection$.next(currSelctionValue);
   }
 

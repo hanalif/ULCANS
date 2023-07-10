@@ -55,8 +55,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private datePipe: DatePipe,
     private alertController: AlertController,
     private menuCategoriesService: MenuCategoriesService,
-    private route: Router,
-    private environmentsService: EnvironmentsService
+    private route: Router
     ) { }
 
   ngOnInit() {
@@ -80,6 +79,12 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
     $event.stopPropagation();
     this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
+    this.userSelectionService.setIsUserSelectionsMenuOpen(false);
+  }
+
+  onEditPatterns($event: Event, userSelectionId: string | undefined){
+    $event.stopPropagation();
+    this.route.navigate(['configurations', 'environments-and-types'], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
 

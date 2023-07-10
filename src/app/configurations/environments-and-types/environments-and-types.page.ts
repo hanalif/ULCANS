@@ -17,6 +17,9 @@ export class EnvironmentsAndTypesPage implements OnInit {
 
   isDiabled$!: Observable<boolean>;
   isDisabled!: boolean;
+  isFromUserSelections: boolean = false;
+  isFromUserSelectionsSubscription: Subscription | undefined;
+  userSelectionToUpdateId: string | undefined;
 
   currUserSelection!:AssetForPdf;
 
@@ -27,8 +30,18 @@ export class EnvironmentsAndTypesPage implements OnInit {
 
 
   ngOnInit() {
-    this.currUserSelection = this.route.snapshot.data['currUserSelection'];
+
+    this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as AssetForPdf;
+    console.log('curr user selection from environments', this.currUserSelection)
     this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
+
+    this.isFromUserSelectionsSubscription = this.route.queryParams.subscribe(params=>{
+      this.isFromUserSelections = params['isFromUserSelectionsMenu'];
+
+      if(this.isFromUserSelections){
+        this.userSelectionToUpdateId = params['userSelectionToUpdateId'];
+      }
+    })
   }
 
   onBack(){
