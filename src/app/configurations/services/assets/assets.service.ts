@@ -82,7 +82,6 @@ export class AssetsService {
 
   generataAndAddAsset(assetName:string, calculatorFormValue: CalculatorFormValue, configuraionId: string | undefined, measureType: MeasureType, assetId: string | undefined = undefined){
     let id: string;
-    let isAssetInUserSelections: boolean;
 
     if(assetId){
       id = assetId;
@@ -112,6 +111,21 @@ export class AssetsService {
     return id;
   }
 
+  updateAsset(assetToUpdate: Partial<Asset>, assetToUpdateId: string){
+    const assets = this.assets$.getValue();
+    let foundAsset = assets.find(a => a.id == assetToUpdateId);
+    console.log('before asset changes', foundAsset);
+    if(foundAsset){
+      foundAsset = {...foundAsset, ...assetToUpdate} as Asset;
+      console.log('after asset changes', foundAsset);
+      this.addAsset(foundAsset);
+    }else{
+      console.log('No Asset Found');
+    }
+  }
+
+
+
   removeAsset(assetId: string){
     let assets = this._getassetsValue();
     let foundAssetIndex = assets.findIndex(a => a.id === assetId);
@@ -119,6 +133,8 @@ export class AssetsService {
     this.addAssets(assets);
     this.localStorage.remove(this.entityType, assetId);
   }
+
+
 
 
 

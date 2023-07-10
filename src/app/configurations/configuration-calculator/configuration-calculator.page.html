@@ -5,7 +5,7 @@
   <div class="main-layout">
     <div class="page-container">
       <div class="top">
-        <div class="btns-section">
+        <div *ngIf="!isFromUserSelectionsMenu" class="btns-section">
           <button (click)="onBack()" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
         </div>
         <div class="title">
@@ -33,19 +33,19 @@
                 </div>
                 <div formGroupName="calculatorFormValue">
                   <div class="card-row calc-input">
-                    <span>Its Length:</span>
+                    <span>Length:</span>
                     <span>
                       <ion-input type="number" formControlName="length"></ion-input>
                     </span>
                   </div>
                   <div class="card-row">
-                    <span>Its Width:</span>
+                    <span>Width:</span>
                     <span>
                       <ion-input type="number" formControlName="width"></ion-input>
                     </span>
                   </div>
                   <div class="card-row">
-                    <span>Its Height:</span>
+                    <span>Height:</span>
                     <span>
                       <ion-input type="number" formControlName="height"></ion-input>
                     </span>

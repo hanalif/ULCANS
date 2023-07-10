@@ -42,9 +42,7 @@
                 <thead>
                   <tr>
                     <th
-                      *ngFor="
-                                let tableTitle of ['Name', 'Width', 'Height', 'Length']
-                              "
+                      *ngFor="let tableTitle of wideScreenTitles[1].tableTitles"
                     >
                       {{ tableTitle }}
                     </th>
@@ -53,6 +51,11 @@
                 <tbody>
                   <tr>
                     <td>{{ asset!.name }}</td>
+                    <td>
+                      {{asset.measures.lengthFt | ftToM: measureType | number :
+                      '1.1-1'}} {{measureType === MeasureType.METERS ? 'M':
+                      'FT'}}
+                    </td>
                     <td>
                       {{asset.measures.widthFt | ftToM: measureType | number :
                       '1.1-1'}} {{measureType === MeasureType.METERS ? 'M':
@@ -63,17 +66,12 @@
                       '1.1-1'}} {{measureType === MeasureType.METERS ? 'M':
                       'FT'}}
                     </td>
-                    <td>
-                      {{asset.measures.lengthFt | ftToM: measureType | number :
-                      '1.1-1'}} {{measureType === MeasureType.METERS ? 'M':
-                      'FT'}}
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="table-container">
-              <h1>Configuration</h1>
+              <h1>{{ wideScreenTitles[0].mainTitle}}</h1>
               <span *ngIf="!configuration" class="note"
                 >The size of your asset requires a custom configuration. Please
                 contact us for more information.
@@ -83,7 +81,7 @@
                   <thead>
                     <tr>
                       <th
-                        *ngFor="let tableTitle of ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins']"
+                        *ngFor="let tableTitle of wideScreenTitles[0].tableTitles"
                       >
                         {{ tableTitle }}
                       </th>
@@ -149,18 +147,18 @@
                   </span>
                 </div>
                 <div class="card-row">
-                  <span class="card-row_title">{{ tableHeaderTitles[9] }}</span>
+                  <span class="card-row_title"
+                    >{{ tableHeaderTitles[9] }}</span
+                  >
                   <span class="card-row_content mobile">
-                    {{asset.measures.widthFt | ftToM: measureType | number :
+                    {{asset.measures.lengthFt | ftToM: measureType | number :
                     '1.1-1'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
                   </span>
                 </div>
                 <div class="card-row">
-                  <span class="card-row_title"
-                    >{{ tableHeaderTitles[10] }}</span
-                  >
+                  <span class="card-row_title">{{ tableHeaderTitles[10] }}</span>
                   <span class="card-row_content mobile">
-                    {{asset.measures.heightFt | ftToM: measureType | number :
+                    {{asset.measures.widthFt | ftToM: measureType | number :
                     '1.1-1'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
                   </span>
                 </div>
@@ -169,7 +167,7 @@
                     >{{ tableHeaderTitles[11] }}</span
                   >
                   <span class="card-row_content mobile">
-                    {{asset.measures.lengthFt | ftToM: measureType | number :
+                    {{asset.measures.heightFt | ftToM: measureType | number :
                     '1.1-1'}} {{measureType === MeasureType.METERS ? 'M': 'FT'}}
                   </span>
                 </div>

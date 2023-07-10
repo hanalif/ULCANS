@@ -29,11 +29,11 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   assetsForDisplay!: AssetForDisplay[];
   areThereAssetsToDisplay: boolean = false;
   currPlatforms!: string[];
-  tableHeaderTitles:  string[] = ['Name', 'Width', 'Height', 'Length', 'Type', 'Hexagon', 'Rhombus','Width', 'Length', 'Area SQ', 'Poles', 'Pins' ,'Side A', 'Side B',' Type' ,''];
+  tableHeaderTitles:  string[] = ['Name', 'Length', 'Width', 'Height',  'Type', 'Hexagon', 'Rhombus','Width', 'Length', 'Area SQ', 'Poles', 'Pins' ,'Side A', 'Side B',' Type' ,''];
   wideScreenTitles: any = [{mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(0,4)}, {mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(4,12)},{mainTitle: 'Patterns', tableTitles: ['sideA', 'Pattern Design', 'sideB','Pattern Design', 'Type'] }];
   configurationTitles: string[] = ['Type','Name', 'Hexagon', 'Rhombus', 'Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
   patternsTitles: string[] = ['Side A', 'Pattern',  'Design' ,'Side B', 'Pattern',  'Design' ,' Type' ];
-  assetTitles: string[] = ['Name', 'Width', 'Height', 'Length']
+  assetTitles: string[] = ['Name', 'Length', 'Width', 'Height' ]
 
   date = this.transformDate(new Date);
   public measureType: MeasureType = MeasureType.METERS;
@@ -73,9 +73,13 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       this.currPlatforms = this.plt.platforms();
   }
 
-  onEditAsset(assetId: string, $event: Event){
+  onEditAsset(assetId: string, $event: Event, isInList: boolean, userSelectionId: string | undefined){
+    if(isInList){
+      return;
+    }
+
     $event.stopPropagation();
-    this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromUserSelectionsMenu: true}});
+    this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
 

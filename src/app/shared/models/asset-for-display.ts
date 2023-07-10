@@ -13,7 +13,6 @@ export interface AssetForDisplay {
   sideA: SystemSideForDisplay,
   sideB: SystemSideForDisplay,
   environment?: Environment,
-  measureType?: MeasureType,
   ulcansType: SystemType,
   areSpecialPoles: boolean
 }

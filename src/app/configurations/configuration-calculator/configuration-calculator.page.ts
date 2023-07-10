@@ -26,6 +26,7 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
   isFromAssetsList: boolean = false;
   isFromUserSelectionsMenu: boolean = false;
   isFromAssetsSubscription?: Subscription;
+  userSelectionId: string | undefined;
 
 
 
@@ -57,6 +58,9 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
     this.isFromAssetsSubscription = this.activatedRoute.queryParams.subscribe(params=>{
       this.isFromAssetsList = params['isFromAssetsList'];
       this.isFromUserSelectionsMenu = params['isFromUserSelectionsMenu'];
+      if(this.isFromUserSelectionsMenu){
+        this.userSelectionId = params['userSelectionToUpdateId'];
+      }
     })
 
     this.initForm(this.assetToUpdate);
@@ -119,6 +123,8 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
     if(this.calculatorForm.invalid || this.calculatorForm.pristine){
       return;
     }
+
+
     let formOutput = this.getCalculatorFormValue();
     let calculatorValue = formOutput.calculatorFormValue as CalculatorFormValue;
     calculatorValue.measureType = this.measureType;
@@ -127,31 +133,39 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
     let assetId: string;
 
     if(this.assetToUpdate){
+      if(this.assetToUpdate.isInList){
+        return;
+      }
       assetId = this.assetService.generataAndAddAsset(formOutput.assetName, calculatorValue, configurayionId, this.measureType, this.assetToUpdate.id);
 
     }else{
       assetId = this.assetService.generataAndAddAsset(formOutput.assetName, calculatorValue, configurayionId, this.measureType);
     }
 
+    let userSelections: Partial<AssetForPdf>;
+
+    userSelections = {
+      assetId: assetId,
+    }
+
     if(!this.isFromAssetsList){
       if(this.isFromUserSelectionsMenu){
         this.userSelectionsService.setIsUserSelectionsMenuOpen(true);
         this.router.navigate(['configurations/typical-configurations']);
+
       }else{
-        let userSelections: Partial<AssetForPdf> = {
-          assetId: assetId,
+        userSelections = {
           wasStartedFromCalculator:true
         }
 
         this.userSelectionsService.updateCurrUserSelections(userSelections);
-
         this.router.navigate(['configurations/typical-configurations', assetId]);
       }
+
     }else{
-
-
       this.router.navigate(['configurations/typical-configurations']);
     }
+
     this.calculatorForm.reset();
   }
 

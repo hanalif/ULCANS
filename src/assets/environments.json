@@ -76,7 +76,7 @@
   },
   {
     "id": "13cc",
-    "typeName": "Rocky Urban",
+    "typeName": "Urban",
     "imgUrlowResolution": "assets/imgs/environments/png-small/RU-try.png",
     "clothPatterns": [
       {
@@ -113,7 +113,7 @@
   },
   {
     "id": "15ee",
-    "typeName": "Snowy",
+    "typeName": "Snow",
     "imgUrlowResolution": "assets/imgs/environments/png-small/S-try.png",
     "clothPatterns": [
       {

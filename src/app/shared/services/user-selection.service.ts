@@ -82,53 +82,62 @@ export class UserSelectionService {
     let currSelctionValue = this.getCurrUserSelectionValue();
     currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
     let numsOfKeys = Object.values(currSelctionValue).length;
-    let progressNum = numsOfKeys * 12.5;
+    let progressNum = numsOfKeys * 14.2857;
     this.progressBar$.next(progressNum);
-    if(numsOfKeys === 8){
+    if(numsOfKeys === 7){
       this.isDisabled$.next(false);
     }
     this.userCurrSelection$.next(currSelctionValue);
   }
 
-
   resetCurrUserSelection(){
     console.log('reset curr user selection colled');
+    this.isDisabled$.next(true);
     this.userCurrSelection$.next(null);
     this.progressBar$.next(0);
   }
 
-  addAssetForPdf(userSelectionToUpdate?: Partial<AssetForPdf>){
+  addAssetForPdf(userSelectionToUpdate?: Partial<AssetForPdf>, userSelectionToUpdateId?: string){
     let assetForPdf: AssetForPdf;
-    if(userSelectionToUpdate){
-      assetForPdf = this.updateUserSelection(userSelectionToUpdate) as AssetForPdf;
+    if(userSelectionToUpdate && userSelectionToUpdateId){
+      assetForPdf = this.updateUserSelection(userSelectionToUpdate, userSelectionToUpdateId) as AssetForPdf;
     } else{
       assetForPdf = this.getCurrUserSelectionValue() as AssetForPdf;
       if(!assetForPdf.id){
         assetForPdf.id = this.utilService._makeId();
-        this.progressBar$.next(0);
       }
     }
 
-    const assetsForPdf = this.assetsForPdf$.getValue();
-    const foundAssetIndex = assetsForPdf.findIndex(a=> a.id === assetForPdf.assetId);
-    if(foundAssetIndex !== -1){
-      assetsForPdf.splice(foundAssetIndex, 1, assetForPdf);
-    }else{
-      assetsForPdf.push(assetForPdf);
-      this.setNumberOfNewSelections(1);
-      this.userCurrSelection$.next(null);
-      this.isDisabled$.next(true);
-    }
-    this.localStorage.post(this.entityType, assetForPdf);
-    this.assetsForPdf$.next(assetsForPdf);
-    this.resetCurrUserSelection();
+    this.addUserSelectionToSelectionsList(assetForPdf);
+
   }
 
-  updateUserSelection(userSelectionToUpdate: Partial<AssetForPdf>){
+  addUserSelectionToSelectionsList(userSelection: AssetForPdf){
+    const assetsForPdf = this.assetsForPdf$.getValue();
+    const foundAssetIndex = assetsForPdf.findIndex(a=> a.id === userSelection.id);
+    if(foundAssetIndex !== -1){
+      assetsForPdf.splice(foundAssetIndex, 1, userSelection);
+    }else{
+      assetsForPdf.push(userSelection);
+      this.setNumberOfNewSelections(1);
+      this.resetCurrUserSelection();
+
+    }
+
+    console.log('from user service', assetsForPdf);
+
+    this.localStorage.put(this.entityType, userSelection);
+    this.assetsForPdf$.next(assetsForPdf);
+  }
+
+  updateUserSelection(userSelectionToUpdate: Partial<AssetForPdf>, userSelectionToUpdateId: string){
     const userSelections = this.assetsForPdf$.getValue();
-    let foundUserSelection = userSelections.find(us => us.id === userSelectionToUpdate.id);
+    let foundUserSelection = userSelections.find(us => us.id == userSelectionToUpdateId);
+    console.log('before changes', foundUserSelection);
     if(foundUserSelection){
-      return foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as AssetForPdf;
+      foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as AssetForPdf;
+      console.log('after changes', foundUserSelection);
+      return foundUserSelection;
     }
     return undefined;
   }
@@ -170,7 +179,6 @@ export class UserSelectionService {
           configuratoin: configurations.find(c => c.id === configurationsIds[i]),
           sideA: sidesAForDisplay[i],
           sideB: sidesBForDisplay[i],
-          measureType: assetsForPdf[i].measureType,
           ulcansType: ulcansTypes[i],
           areSpecialPoles: assetsForPdf[i].areSpecialPoles
         }

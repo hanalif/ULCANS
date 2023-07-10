@@ -22,15 +22,15 @@ export class AssetPage implements OnInit,OnDestroy {
   public areSpecialPoles!: boolean;
   public measureType!: MeasureType;
   public MeasureType = MeasureType;
-  tableHeaderTitles:  string[] = ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins', 'Name', 'Width', 'Height', 'Length'];
-  wideScreenTitles: any = [{mainTitle: 'Configuration', tableTitles: ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins']},{mainTitle: 'Asset', tableTitles: ['Name', 'Width', 'Height', 'Length']}]
+  tableHeaderTitles:  string[] = ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins', 'Name', 'Length', 'Width', 'Height' ];
+  wideScreenTitles: any = [{mainTitle: 'Configuration', tableTitles: ['Type', 'Hexagon', 'Rhombus' ,'Width', 'Length', 'Area SQ', 'Poles', 'Pins']},{mainTitle: 'Asset', tableTitles: ['Name','Length', 'Width', 'Height']}]
   dataSubscription!: Subscription;
   wasStartedFromCalculator!: boolean;
 
   constructor(
     private router: ActivatedRoute,
     private route: Router,
-    private userSelectionsService: UserSelectionService) { }
+    private assetsService: AssetsService) { }
 
 
   ngOnInit() {
@@ -47,17 +47,21 @@ export class AssetPage implements OnInit,OnDestroy {
 
   onSelectBtn(measureType:MeasureType){
     if(this.measureType === measureType){
-      return;
+
     }
     this.measureType = measureType;
   }
 
   onChooseYourEnvironment(){
-    let userSelections: Partial<AssetForPdf> = {
-      measureType: this.measureType,
+
+    if(!(this.measureType == this.asset.initialMeasureType)){
+      let assetToUpdate: Partial<Asset> = {
+        initialMeasureType: this.measureType
+      }
+      this.assetsService.updateAsset(assetToUpdate, this.asset.id);
     }
-    this.userSelectionsService.updateCurrUserSelections(userSelections);
-    this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id, measureType:this.measureType}});
+
+    this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id}});
   }
 
   onBack(){

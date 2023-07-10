@@ -25,7 +25,7 @@
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[0].mainTitle }}
-                      <button class="icon-btn edit-btn" (click)="onEditAsset(userSelection.asset!.id, $event)"><ion-icon name="create-outline"></ion-icon></button>
+                      <button *ngIf="!userSelection.asset!.isInList" class="icon-btn edit-btn" (click)="onEditAsset(userSelection.asset!.id, $event, userSelection.asset!.isInList, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                     </div>
                     <div accordionItemBody class="accordion-body">
                       <table class="styled-table style1">
@@ -48,12 +48,24 @@
                             </td>
                             <td>
                               {{
-                                userSelection.asset!.measures.widthFt
-                                  | ftToM : userSelection.measureType!
+                                userSelection.asset!.measures.lengthFt
+                                  | ftToM : userSelection.asset!.initialMeasureType
                                   | number : "1.1-1"
                               }}
                               {{
-                                userSelection.measureType === MeasureType.METERS
+                                userSelection.asset!.initialMeasureType === MeasureType.METERS
+                                  ? "M"
+                                  : "FT"
+                              }}
+                            </td>
+                            <td>
+                              {{
+                                userSelection.asset!.measures.widthFt
+                                  | ftToM : userSelection.asset!.initialMeasureType
+                                  | number : "1.1-1"
+                              }}
+                              {{
+                                userSelection.asset!.initialMeasureType === MeasureType.METERS
                                   ? "M"
                                   : "FT"
                               }}
@@ -61,23 +73,11 @@
                             <td>
                               {{
                                 userSelection.asset!.measures.heightFt
-                                  | ftToM : userSelection.measureType!
+                                  | ftToM : userSelection.asset!.initialMeasureType
                                   | number : "1.1-1"
                               }}
                               {{
-                                userSelection.measureType === MeasureType.METERS
-                                  ? "M"
-                                  : "FT"
-                              }}
-                            </td>
-                            <td>
-                              {{
-                                userSelection.asset!.measures.lengthFt
-                                  | ftToM : userSelection.measureType!
-                                  | number : "1.1-1"
-                              }}
-                              {{
-                                userSelection.measureType === MeasureType.METERS
+                                userSelection.asset!.initialMeasureType === MeasureType.METERS
                                   ? "M"
                                   : "FT"
                               }}
@@ -136,11 +136,11 @@
                               <td>
                                 {{
                                   userSelection.configuratoin!.measures.widthFt
-                                    | sqftToSqm : userSelection.measureType!
+                                    | sqftToSqm : userSelection.asset!.initialMeasureType
                                     | number : "1.1-1"
                                 }}
                                 {{
-                                  userSelection.measureType === MeasureType.METERS
+                                  userSelection.asset!.initialMeasureType === MeasureType.METERS
                                     ? "M"
                                     : "FT"
                                 }}
@@ -148,11 +148,11 @@
                               <td>
                                 {{
                                   userSelection.configuratoin!.measures.lengthFt
-                                    | sqftToSqm : userSelection.measureType!
+                                    | sqftToSqm : userSelection.asset!.initialMeasureType
                                     | number : "1.1-1"
                                 }}
                                 {{
-                                  userSelection.measureType === MeasureType.METERS
+                                  userSelection.asset!.initialMeasureType === MeasureType.METERS
                                     ? "M"
                                     : "FT"
                                 }}
@@ -160,11 +160,11 @@
                               <td>
                                 {{
                                   userSelection.configuratoin!.measures.areaSqFt
-                                    | sqftToSqm : userSelection.measureType!
+                                    | sqftToSqm : userSelection.asset!.initialMeasureType
                                     | number : "1.0-0"
                                 }}
                                 {{
-                                  userSelection.measureType === MeasureType.METERS
+                                  userSelection.asset!.initialMeasureType === MeasureType.METERS
                                     ? "SQM"
                                     : "SQFT"
                                 }}
@@ -289,7 +289,7 @@
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Asset
-                        <button class="icon-btn edit-btn" (click)="onEditAsset(userSelection.asset!.id, $event)"><ion-icon name="create-outline"></ion-icon></button>
+                        <button *ngIf="!userSelection.asset!.isInList" class="icon-btn edit-btn" (click)="onEditAsset(userSelection.asset!.id, $event,userSelection.asset!.isInList, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                       </div>
                       <div accordionItemBody class="accordion-body">
                         <div class="card-row">
@@ -302,16 +302,33 @@
                         </div>
                         <div class="card-row">
                           <span class="card-row_title">{{
+                            tableHeaderTitles[3]
+                          }}</span>
+                          <span class="card-row_content mobile">
+                            {{
+                              userSelection.asset!.measures.lengthFt
+                                | ftToM : userSelection.asset!.initialMeasureType
+                                | number : "1.1-1"
+                            }}
+                            {{
+                              userSelection.asset!.initialMeasureType === MeasureType.METERS
+                                ? "M"
+                                : "FT"
+                            }}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">{{
                             tableHeaderTitles[1]
                           }}</span>
                           <span class="card-row_content mobile">
                             {{
                               userSelection.asset!.measures.widthFt
-                                | ftToM : userSelection.measureType!
+                                | ftToM : userSelection.asset!.initialMeasureType
                                 | number : "1.1-1"
                             }}
                             {{
-                              userSelection.measureType === MeasureType.METERS
+                              userSelection.asset!.initialMeasureType === MeasureType.METERS
                                 ? "M"
                                 : "FT"
                             }}
@@ -324,28 +341,11 @@
                           <span class="card-row_content mobile">
                             {{
                               userSelection.asset!.measures.heightFt
-                                | ftToM : userSelection.measureType!
+                                | ftToM : userSelection.asset!.initialMeasureType
                                 | number : "1.1-1"
                             }}
                             {{
-                              userSelection.measureType === MeasureType.METERS
-                                ? "M"
-                                : "FT"
-                            }}
-                          </span>
-                        </div>
-                        <div class="card-row">
-                          <span class="card-row_title">{{
-                            tableHeaderTitles[3]
-                          }}</span>
-                          <span class="card-row_content mobile">
-                            {{
-                              userSelection.asset!.measures.lengthFt
-                                | ftToM : userSelection.measureType!
-                                | number : "1.1-1"
-                            }}
-                            {{
-                              userSelection.measureType === MeasureType.METERS
+                              userSelection.asset!.initialMeasureType === MeasureType.METERS
                                 ? "M"
                                 : "FT"
                             }}
@@ -411,11 +411,11 @@
                             <span class="card-row_content mobile">
                               {{
                                 userSelection.configuratoin!.measures.widthFt
-                                  | sqftToSqm : userSelection.measureType!
+                                  | sqftToSqm : userSelection.asset!.initialMeasureType
                                   | number : "1.1-1"
                               }}
                               {{
-                                userSelection.measureType === MeasureType.METERS
+                                userSelection.asset!.initialMeasureType === MeasureType.METERS
                                   ? "M"
                                   : "FT"
                               }}
@@ -428,11 +428,11 @@
                             <span class="card-row_content mobile">
                               {{
                                 userSelection.configuratoin!.measures.lengthFt
-                                  | sqftToSqm : userSelection.measureType!
+                                  | sqftToSqm : userSelection.asset!.initialMeasureType
                                   | number : "1.1-1"
                               }}
                               {{
-                                userSelection.measureType === MeasureType.METERS
+                                userSelection.asset!.initialMeasureType === MeasureType.METERS
                                   ? "M"
                                   : "FT"
                               }}
@@ -445,11 +445,11 @@
                             <span class="card-row_content mobile">
                               {{
                                 userSelection.configuratoin!.measures.areaSqFt
-                                  | sqftToSqm : userSelection.measureType!
+                                  | sqftToSqm : userSelection.asset!.initialMeasureType
                                   | number : "1.0-0"
                               }}
                               {{
-                                userSelection.measureType === MeasureType.METERS
+                                userSelection.asset!.initialMeasureType === MeasureType.METERS
                                   ? "SQM"
                                   : "SQFT"
                               }}
@@ -617,7 +617,7 @@
       <tbody>
         <tr>
           <td style="font-size: 16px; color: black; text-align: center;">
-            ULCANS Prefrences For {{assetsForDisplay[indexForTablePdf].asset!.name}}
+            ULCANS Preferences For {{assetsForDisplay[indexForTablePdf].asset!.name}}
           </td>
         </tr>
       </tbody>
@@ -639,12 +639,24 @@
             {{ assetsForDisplay[indexForTablePdf].asset!.name }}
           </td>
           <td>
+            {{
+              assetsForDisplay[indexForTablePdf].asset!.measures.lengthFt
+                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
+                | number : "1.1-1"
+            }}
+            {{
+              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType === MeasureType.METERS
+                ? "M"
+                : "FT"
+            }}
+          </td>
+          <td>
             {{ assetsForDisplay[indexForTablePdf].asset!.measures.widthFt
-              | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+              | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
               | number : "1.1-1"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType === MeasureType.METERS
                   ? "M"
                   : "FT"
             }}
@@ -653,23 +665,11 @@
           <td>
             {{
               assetsForDisplay[indexForTablePdf].asset!.measures.heightFt
-                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
                 | number : "1.1-1"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
-                ? "M"
-                : "FT"
-            }}
-          </td>
-          <td>
-            {{
-              assetsForDisplay[indexForTablePdf].asset!.measures.lengthFt
-                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
-                | number : "1.1-1"
-            }}
-            {{
-              assetsForDisplay[indexForTablePdf].measureType === MeasureType.METERS
+              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType === MeasureType.METERS
                 ? "M"
                 : "FT"
             }}
@@ -711,11 +711,11 @@
             {{
               assetsForDisplay[indexForTablePdf].configuratoin!.measures
                 .widthFt
-                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
                 | number : "1.1-2"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].measureType ===
+              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType ===
               MeasureType.METERS
                 ? "M"
                 : "FT"
@@ -726,11 +726,11 @@
             {{
               assetsForDisplay[indexForTablePdf].configuratoin!.measures
                 .lengthFt
-                | ftToM : assetsForDisplay[indexForTablePdf].measureType!
+                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
                 | number : "1.1-2"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].measureType ===
+              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType ===
               MeasureType.METERS
                 ? "M"
                 : "FT"
@@ -740,11 +740,11 @@
             {{
               assetsForDisplay[indexForTablePdf].configuratoin!.measures
                 .areaSqFt
-                | sqftToSqm : assetsForDisplay[indexForTablePdf].measureType!
+                | sqftToSqm : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
                 | number : "1.0-0"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].measureType ===
+              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType ===
               MeasureType.METERS
                 ? "SQM"
                 : "SQFT"

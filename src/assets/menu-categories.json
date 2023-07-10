@@ -6,7 +6,7 @@
     "iconName": "prism-outline",
     "subCategories": [
       {
-        "subTitle": "assets",
+        "subTitle": "Assets",
         "subRouterLink": "/configurations/typical-configurations"
       },
       {
