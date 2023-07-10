@@ -12,7 +12,7 @@ import { UserSelectionService } from 'src/app/shared/services/user-selection.ser
   templateUrl: './environments-and-types.page.html',
   styleUrls: ['./environments-and-types.page.scss'],
 })
-export class EnvironmentsAndTypesPage implements OnInit {
+export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   sides: string[] =['A','B']
 
   isDiabled$!: Observable<boolean>;
@@ -29,11 +29,12 @@ export class EnvironmentsAndTypesPage implements OnInit {
     private route: ActivatedRoute,) { }
 
 
+
   ngOnInit() {
 
     this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as AssetForPdf;
-    console.log('curr user selection from environments', this.currUserSelection)
     this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
+
 
     this.isFromUserSelectionsSubscription = this.route.queryParams.subscribe(params=>{
       this.isFromUserSelections = params['isFromUserSelectionsMenu'];
@@ -45,7 +46,7 @@ export class EnvironmentsAndTypesPage implements OnInit {
   }
 
   onBack(){
-    this.router.navigate(['configurations/typical-configurations', this.currUserSelection.assetId ])
+    this.router.navigate(['configurations/typical-configurations', this.currUserSelection.assetId])
   }
 
 
@@ -56,6 +57,10 @@ export class EnvironmentsAndTypesPage implements OnInit {
       this.userSelectionsService.addAssetForPdf();
       this.router.navigate(['/configurations/typical-configurations']);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.isFromUserSelectionsSubscription?.unsubscribe();
   }
 
 

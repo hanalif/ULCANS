@@ -25,7 +25,7 @@
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[0].mainTitle }}
-                      <button *ngIf="!userSelection.asset!.isInList" class="icon-btn edit-btn" (click)="onEditAsset(userSelection.asset!.id, $event, userSelection.asset!.isInList, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
+                      <button *ngIf="!userSelection.asset!.isInList" class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditAsset(userSelection.asset!.id, $event, userSelection.asset!.isInList, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                     </div>
                     <div accordionItemBody class="accordion-body">
                       <table class="styled-table style1">
@@ -293,7 +293,7 @@
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Asset
-                        <button *ngIf="!userSelection.asset!.isInList" class="icon-btn edit-btn" (click)="onEditAsset(userSelection.asset!.id, $event,userSelection.asset!.isInList, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
+                        <button *ngIf="!userSelection.asset!.isInList" class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditAsset(userSelection.asset!.id, $event,userSelection.asset!.isInList, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                       </div>
                       <div accordionItemBody class="accordion-body">
                         <div class="card-row">

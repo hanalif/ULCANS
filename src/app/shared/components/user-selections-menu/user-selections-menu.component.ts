@@ -10,12 +10,11 @@ import 'jspdf-autotable';
 import autoTable, { Cell, CellHookData } from 'jspdf-autotable';
 import JSPDF, { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
-import { style } from '@angular/animations';
-import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
+
 
 @Component({
   selector: 'app-user-selections-menu',
@@ -39,6 +38,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
   public indexForTablePdf: number = -1;
+
+  isDiabledSubscription!: Subscription;
+  isDisabled!: boolean;
 
   transformDate(date: Date) {
     return this.datePipe.transform(date, 'yyyy-MM-dd');
@@ -70,6 +72,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       }
     });
       this.currPlatforms = this.plt.platforms();
+      this.isDiabledSubscription = this.userSelectionService.getisDisabled().subscribe(isDisabled=> this.isDisabled = isDisabled);
   }
 
   onEditAsset(assetId: string, $event: Event, isInList: boolean, userSelectionId: string | undefined){
@@ -84,12 +87,14 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   onEditPatterns($event: Event, userSelectionId: string | undefined){
     $event.stopPropagation();
+
     this.route.navigate(['configurations', 'environments-and-types'], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
 
   ngOnDestroy(): void {
-    this.assetsForPdfSubscription?.unsubscribe()
+    this.assetsForPdfSubscription?.unsubscribe();
+    this.isDiabledSubscription?.unsubscribe();
   }
 
   onDeleteSelection(userSlectionId: string | undefined){

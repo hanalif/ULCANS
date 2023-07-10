@@ -22,7 +22,7 @@ export class UserSelectionService {
   private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
   public assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private progressBar$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
@@ -87,12 +87,11 @@ export class UserSelectionService {
     if(numsOfKeys === 7){
       this.isDisabled$.next(false);
     }
-    console.log(currSelctionValue);
+    console.log(Object.values(currSelctionValue).length)
     this.userCurrSelection$.next(currSelctionValue);
   }
 
   resetCurrUserSelection(){
-    console.log('reset curr user selection colled');
     this.isDisabled$.next(true);
     this.userCurrSelection$.next(null);
     this.progressBar$.next(0);
@@ -125,8 +124,6 @@ export class UserSelectionService {
 
     }
 
-    console.log('from user service', assetsForPdf);
-
     this.localStorage.put(this.entityType, userSelection);
     this.assetsForPdf$.next(assetsForPdf);
   }
@@ -134,10 +131,8 @@ export class UserSelectionService {
   updateUserSelection(userSelectionToUpdate: Partial<AssetForPdf>, userSelectionToUpdateId: string){
     const userSelections = this.assetsForPdf$.getValue();
     let foundUserSelection = userSelections.find(us => us.id == userSelectionToUpdateId);
-    console.log('before changes', foundUserSelection);
     if(foundUserSelection){
       foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as AssetForPdf;
-      console.log('after changes', foundUserSelection);
       return foundUserSelection;
     }
     return undefined;

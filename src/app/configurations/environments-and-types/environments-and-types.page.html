@@ -6,7 +6,7 @@
       <div class="page-container">
         <div class="top">
           <div class="btns-section">
-            <button *ngIf="isFromUserSelections" title="Back" (click)="onBack()" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+            <button *ngIf="!isFromUserSelections" title="Back" (click)="onBack()" class="icon-btn"><ion-icon name="arrow-back-outline"></ion-icon></button>
           </div>
           <div class="top">
             <div class="title">

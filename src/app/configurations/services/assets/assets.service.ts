@@ -114,10 +114,8 @@ export class AssetsService {
   updateAsset(assetToUpdate: Partial<Asset>, assetToUpdateId: string){
     const assets = this.assets$.getValue();
     let foundAsset = assets.find(a => a.id == assetToUpdateId);
-    console.log('before asset changes', foundAsset);
     if(foundAsset){
       foundAsset = {...foundAsset, ...assetToUpdate} as Asset;
-      console.log('after asset changes', foundAsset);
       this.addAsset(foundAsset);
     }else{
       console.log('No Asset Found');

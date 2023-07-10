@@ -61,7 +61,7 @@ export class AssetPage implements OnInit,OnDestroy {
       this.assetsService.updateAsset(assetToUpdate, this.asset.id);
     }
 
-    this.route.navigate(['/configurations/environments-and-types']);
+    this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id}});
   }
 
   onBack(){
