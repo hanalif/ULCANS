@@ -70,8 +70,16 @@ export class UserSelectionService {
   setIsUserSelectionsMenuOpen(val:boolean){
     this.isUserSelectionsMenuOpen$.next(val);
   }
+
+  setIsDisabled(val:boolean){
+    this.isDisabled$.next(val);
+  }
   getCurrUserSelectionValue(){
     return this.userCurrSelection$.getValue();
+  }
+
+  getCurrUserSelectionValueAsObservable(){
+    return this.userCurrSelection$.asObservable();
   }
 
   _getAssetsForPdfValue(){
@@ -85,14 +93,13 @@ export class UserSelectionService {
     let progressNum = numsOfKeys * 14.2857;
     this.progressBar$.next(progressNum);
     if(numsOfKeys === 7){
-      this.isDisabled$.next(false);
+      this.setIsDisabled(false);
     }
-    console.log(Object.values(currSelctionValue).length)
     this.userCurrSelection$.next(currSelctionValue);
   }
 
   resetCurrUserSelection(){
-    this.isDisabled$.next(true);
+    this.setIsDisabled(false);
     this.userCurrSelection$.next(null);
     this.progressBar$.next(0);
   }

@@ -30,6 +30,7 @@ export class AssetPage implements OnInit,OnDestroy {
   constructor(
     private router: ActivatedRoute,
     private route: Router,
+    private userSelectionsService: UserSelectionService,
     private assetsService: AssetsService) { }
 
 
@@ -60,6 +61,7 @@ export class AssetPage implements OnInit,OnDestroy {
       }
       this.assetsService.updateAsset(assetToUpdate, this.asset.id);
     }
+    this.userSelectionsService.setIsDisabled(true);
 
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id}});
   }

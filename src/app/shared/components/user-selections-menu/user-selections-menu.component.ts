@@ -10,10 +10,11 @@ import 'jspdf-autotable';
 import autoTable, { Cell, CellHookData } from 'jspdf-autotable';
 import JSPDF, { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
+import { AssetForPdf } from '../../models/asset-for-pdf.model';
 
 
 @Component({
@@ -42,11 +43,12 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   isDiabledSubscription!: Subscription;
   isDisabled!: boolean;
 
+  currUserSelectionSubscription!: Subscription;
+  currUserSelection!: AssetForPdf | null;
+
   transformDate(date: Date) {
     return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
-
-
 
   constructor(
     private userSelectionService: UserSelectionService,
@@ -71,12 +73,24 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
         this.assetsForDisplay = assetsForDisplay;
       }
     });
-      this.currPlatforms = this.plt.platforms();
-      this.isDiabledSubscription = this.userSelectionService.getisDisabled().subscribe(isDisabled=> this.isDisabled = isDisabled);
+    this.currPlatforms = this.plt.platforms();
+    this.isDiabledSubscription = this.userSelectionService.getisDisabled().subscribe(isDisabled=> this.isDisabled = isDisabled);
+      this.currUserSelectionSubscription = this.userSelectionService.getCurrUserSelectionValueAsObservable().subscribe(currUserSelection=>{
+        this.currUserSelection = currUserSelection;
+        if(currUserSelection){
+          this.userSelectionService.setIsDisabled(true);
+        }else{
+          this.userSelectionService.setIsDisabled(false);
+        }
+      })
   }
 
   onEditAsset(assetId: string, $event: Event, isInList: boolean, userSelectionId: string | undefined){
     if(isInList){
+      return;
+    }
+
+    if(this.currUserSelection){
       return;
     }
 
@@ -95,6 +109,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.assetsForPdfSubscription?.unsubscribe();
     this.isDiabledSubscription?.unsubscribe();
+    this.currUserSelectionSubscription?.unsubscribe();
   }
 
   onDeleteSelection(userSlectionId: string | undefined){
