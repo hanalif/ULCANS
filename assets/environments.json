@@ -80,31 +80,31 @@
     "imgUrlowResolution": "assets/imgs/environments/png-small/RU-try.png",
     "clothPatterns": [
       {
-        "name":"RU-01",
+        "name":"U-01",
         "landscapeUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/RU-01.jpg",
         "shapeHighResolutionUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shapes/RU-01.png",
         "shapeLowResolutionUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/RU-01.png"
       },
       {
-        "name":"RU-02",
+        "name":"U-02",
         "landscapeUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/RU-02.jpg",
         "shapeHighResolutionUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shapes/RU-02.png",
         "shapeLowResolutionUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/RU-02.png"
       },
       {
-        "name":"RU-03",
+        "name":"U-03",
         "landscapeUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/RU-03.jpg",
         "shapeHighResolutionUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shapes/RU-03.png",
         "shapeLowResolutionUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/RU-03.png"
       },
       {
-        "name":"RU-04",
+        "name":"U-04",
         "landscapeUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/RU-04.jpg",
         "shapeHighResolutionUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shapes/RU-04.png",
         "shapeLowResolutionUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/RU-04.png"
       },
       {
-        "name":"RU-05",
+        "name":"U-05",
         "landscapeUrl":   "assets/imgs/environments/cloth-patterns/Urban-Rocky/low-resolution/RU-05.jpg",
         "shapeHighResolutionUrl": "assets/imgs/environments/cloth-patterns/Urban-Rocky/shapes/RU-05.png",
         "shapeLowResolutionUrl":  "assets/imgs/environments/cloth-patterns/Urban-Rocky/for-pdf/RU-05.png"
