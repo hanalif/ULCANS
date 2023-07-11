@@ -49,7 +49,6 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
     this.route.queryParams.pipe(
       switchMap(params=>{
-        console.log(params);
           this.isFromUserMenu = params['isFromUserSelectionsMenu'];
           if(this.isFromUserMenu){
             this.userSelectionToEditId = params['userSelectionToUpdateId'];

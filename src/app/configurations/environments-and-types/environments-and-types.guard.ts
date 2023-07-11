@@ -9,7 +9,6 @@ export class EnvironmentsAndTypesPageGuard implements CanActivate{
   constructor(private userSelectionService:UserSelectionService, private route: Router,){}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     const isFromUserMenu = route.queryParams['isFromUserSelectionsMenu'];
-    console.log(isFromUserMenu);
     return this.userSelectionService.userCurrSelection$.asObservable().pipe(
       map(curruserSelection=>{
       if(curruserSelection != null || isFromUserMenu){
