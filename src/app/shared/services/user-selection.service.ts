@@ -26,6 +26,7 @@ export class UserSelectionService {
   private progressBar$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
+
   public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
 
   public FOOTER_FORM_TXT: string = "";
@@ -71,6 +72,7 @@ export class UserSelectionService {
     this.isUserSelectionsMenuOpen$.next(val);
   }
 
+
   setIsDisabled(val:boolean){
     this.isDisabled$.next(val);
   }
@@ -95,6 +97,7 @@ export class UserSelectionService {
     if(numsOfKeys === 7){
       this.setIsDisabled(false);
     }
+    console.log(currSelctionValue);
     this.userCurrSelection$.next(currSelctionValue);
   }
 
@@ -208,7 +211,12 @@ export class UserSelectionService {
     }
   }
 
-  getIsAssetInAssetsForPDF(assetId:string){
+  getUserSelectionById(userSelectionId: string){
+    let userSelections = this._getAssetsForPdfValue();
+    return userSelections.find(us=> us.id == userSelectionId);
+  }
+
+  getIsAssetInUserSelection(assetId:string){
     let assetsForPdf = this._getAssetsForPdfValue();
     let isAssetIdFound = assetsForPdf.find(a => a.assetId === assetId);
     if(isAssetIdFound){

@@ -200,6 +200,7 @@
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[2].mainTitle }}
+                      <button class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditPatterns($event, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                     </div>
                     <div accordionItemBody class="accordion-body">
                       <table class="styled-table style1">
@@ -493,6 +494,7 @@
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Patterns
+                        <button class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditPatterns($event, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                       </div>
                       <div accordionItemBody class="accordion-body">
                         <div class="card-row">

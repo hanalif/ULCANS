@@ -31,18 +31,20 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-
-    this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as AssetForPdf;
-    this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
-
-
     this.isFromUserSelectionsSubscription = this.route.queryParams.subscribe(params=>{
       this.isFromUserSelections = params['isFromUserSelectionsMenu'];
 
       if(this.isFromUserSelections){
         this.userSelectionToUpdateId = params['userSelectionToUpdateId'];
+        if(this.userSelectionToUpdateId){
+          this.currUserSelection = this.userSelectionsService.getUserSelectionById(this.userSelectionToUpdateId) as AssetForPdf;
+        }
+      }else{
+          this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as AssetForPdf;
       }
     })
+
+    this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
   }
 
   onBack(){
@@ -53,8 +55,15 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   onAddToYourSelections(){
     if(this.isDisabled){
       return;
+
     }else{
-      this.userSelectionsService.addAssetForPdf();
+      if(this.isFromUserSelections){
+        this.userSelectionsService.setIsUserSelectionsMenuOpen(true);
+
+      }else{
+        this.userSelectionsService.addAssetForPdf();
+      }
+
       this.router.navigate(['/configurations/typical-configurations']);
     }
   }

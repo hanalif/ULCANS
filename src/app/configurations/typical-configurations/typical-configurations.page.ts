@@ -62,7 +62,7 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
     onRemoveAsset(assetId:string, $event: Event){
       $event.stopPropagation();
 
-      let isAssetInUserSelection = this.userSelectionService.getIsAssetInAssetsForPDF(assetId);
+      let isAssetInUserSelection = this.userSelectionService.getIsAssetInUserSelection(assetId);
       if(isAssetInUserSelection){
           this.alertSubscription = from(this.presentAlert()).subscribe(()=>{
             this.userSelectionService.setIsUserSelectionsMenuOpen(true);

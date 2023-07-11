@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { ReplaySubject, takeUntil } from 'rxjs';
+import { EMPTY, ReplaySubject, Subscription, of, switchMap, takeUntil } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import Swiper, { Navigation, Thumbs } from 'swiper';
@@ -7,6 +7,7 @@ import { AssetForPdf } from '../../models/asset-for-pdf.model';
 import { SystemSide } from '../../models/system-side.model';
 import { UserSelectionService } from '../../services/user-selection.service';
 import { ClothPattern } from 'src/app/configurations/environments-and-types/models/clothPattern.model';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,11 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
   currEnvironmentId!: string;
   selectedPatternIndex: number = 0;
 
-  constructor(private environmentsService: EnvironmentsService, private userSelectionService: UserSelectionService) { }
+  isFromUserMenu: boolean = false;
+  userSelectionToEditId: string | undefined;
+
+
+  constructor(private environmentsService: EnvironmentsService, private userSelectionService: UserSelectionService, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -42,24 +47,39 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
     this.currEnvironment = this.environmentsService.getEnvironmentById(this.currEnvironmentId);
 
+    this.route.queryParams.pipe(
+      switchMap(params=>{
+        console.log(params);
+          this.isFromUserMenu = params['isFromUserSelectionsMenu'];
+          if(this.isFromUserMenu){
+            this.userSelectionToEditId = params['userSelectionToUpdateId'];
+            if(this.userSelectionToEditId){
+              return of(this.userSelectionService.getUserSelectionById(this.userSelectionToEditId))
+            }
+          }else{
+            return this.userSelectionService.userCurrSelection$
+          }
 
-
-    this.userSelectionService.userCurrSelection$.pipe(takeUntil(this.destroyed$)).subscribe(currSelection=>{
-      if(this.currSide === 'A'){
-        if(currSelection!.sideA){
-          if(this.currEnvironmentId === currSelection!.sideA.environmentId){
-            this.selectedPatternIndex = currSelection!.sideA.clothPatternIndex;
+          return EMPTY;
+      }),
+      takeUntil(this.destroyed$)).subscribe(userSelection=>{
+        if(this.currSide === 'A'){
+          if(userSelection!.sideA){
+            if(this.currEnvironmentId === userSelection!.sideA.environmentId){
+              this.selectedPatternIndex = userSelection!.sideA.clothPatternIndex;
+            }
           }
         }
-      }
 
-      if(this.currSide === 'B'){
-        if(currSelection!.sideB){
-          if(this.currEnvironmentId === currSelection!.sideB.environmentId){
-            this.selectedPatternIndex = currSelection!.sideB.clothPatternIndex;
+        if(this.currSide === 'B'){
+          if(userSelection!.sideB){
+            if(this.currEnvironmentId === userSelection!.sideB.environmentId){
+              this.selectedPatternIndex = userSelection!.sideB.clothPatternIndex;
+            }
           }
         }
-      }
+
+
     })
 
     this.onSave();
@@ -131,12 +151,18 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
         }
       }
 
-      this.userSelectionService.updateCurrUserSelections(userSelections);
+      if(this.isFromUserMenu){
+        if(this.userSelectionToEditId){
+          this.userSelectionService.addAssetForPdf(userSelections, this.userSelectionToEditId);
+        }
+      }else{
+        this.userSelectionService.updateCurrUserSelections(userSelections);
+      }
   }
 
   ngOnDestroy(): void {
     this.destroyed$.next(true);
-  this.destroyed$.unsubscribe();
+    this.destroyed$.unsubscribe();
   }
 
 }

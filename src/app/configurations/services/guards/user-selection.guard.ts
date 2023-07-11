@@ -65,6 +65,12 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
   canDeactivate(component: unknown, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     const assetId: string | undefined = (this.userSelectionsService.userCurrSelection$.value)?.assetId;
     const currUserSelection: AssetForPdf | null = this.userSelectionsService.getCurrUserSelectionValue();
+    const isFromUserMenu: boolean | undefined = currentRoute.queryParams['isFromUserSelectionsMenu'];
+
+    if(isFromUserMenu){
+      return true;
+
+    }
 
     if(currUserSelection === null){
       return from(this.presentAlert2()).pipe(
@@ -72,7 +78,6 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
         tap(res=> this.userSelectionsService.setIsUserSelectionsMenuOpen(res))
       )
     }
-
 
 
     if(assetId){
@@ -86,6 +91,7 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
             return true;
 
           }
+
           return from(this.presentAlert()).pipe(
             map((res)=> res == AlertConfirmationType.Confirm),
             tap((isLeavePage)=> {
@@ -95,6 +101,7 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
             })
           )
         }
+
 
         if(nextState.url.includes('configuration-calaulator') && currUserSelection.wasStartedFromCalculator){
             return true;
