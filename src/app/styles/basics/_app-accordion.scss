@@ -34,13 +34,14 @@ app-accordion{
 
 
       .img-box{
-        width: 100%;
+        height: auto;
+        max-width: 100%;
         display: flex;
         justify-content: center;
 
         .img-container{
 
-          width: 450px;
+          width: 75%;
 
           @include for-bpoint-tablet{
             width: 100%;
@@ -52,13 +53,14 @@ app-accordion{
     }
 
     .video-box{
-      width: 100%;
+      height: auto;
+      max-width: 100%;
       display: flex;
       justify-content: center;
 
       .video-container{
 
-        width: 650px;
+        width: 75%;
 
         @include for-bpoint-tablet{
           width: 100%;
