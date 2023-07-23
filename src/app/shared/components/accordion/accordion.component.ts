@@ -10,15 +10,18 @@ import { AccordionItemComponent } from './accordion-item/accordion-item.componen
 })
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
   @ContentChildren(AccordionItemComponent) accordionItems: QueryList<AccordionItemComponent> = new QueryList<AccordionItemComponent>;
-  @Input() initialOpenIndex: number| null = null;
+  @Input() initialOpenIndex: number[] = [];
   // openedItemIndex: number | null = null;
   openedItemsIndexesMap: any = {};
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.initialOpenIndex !== null) {
-        this.openedItemsIndexesMap[this.initialOpenIndex] = this.initialOpenIndex;
+    if (this.initialOpenIndex.length != 0) {
+        for(let i = 0; i < this.initialOpenIndex.length; i++){
+          this.openedItemsIndexesMap[this.initialOpenIndex[i]] = this.initialOpenIndex[i];
+        }
+
     }else{
       this.openedItemsIndexesMap = {};
     }

@@ -23,8 +23,10 @@ export class SettingUpSystemPage implements OnInit {
   //   $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   // }
 
-  onLink(link: string ,index:number | null, innerIndex: number | null = null){
-    this.route.navigate([link] , {queryParams: {index: index, innerIndex: innerIndex}});
+  onLink(link: string ,index:number[], innerIndex: number[] = []){
+    console.log(index);
+    console.log(innerIndex);
+    this.route.navigate([link] , {queryParams: {index: index.join(','), innerIndex: innerIndex.join(',')}});
 
   }
 

@@ -27,14 +27,14 @@
         "linksForMoreInformation": [
           {
             "link": "/useful-information/maintenance",
-            "index": null,
-            "innerIndex": null,
+            "index": [],
+            "innerIndex": [],
             "txt": "• See additional info - Maintenance"
           },
           {
             "link": "/useful-information/equipment-description",
-            "index": 5,
-            "innerIndex": null,
+            "index": [5],
+            "innerIndex": [],
             "txt": "• See equipment information - Support System"
           }
         ]

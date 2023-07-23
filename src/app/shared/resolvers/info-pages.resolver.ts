@@ -16,8 +16,8 @@ export class InfoPagesResolver implements Resolve<IndexesForAccordion>  {
   constructor() { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): IndexesForAccordion | Observable<IndexesForAccordion> | Promise<IndexesForAccordion> {
 
-    const index: number | null = route.queryParams['index']? +route.queryParams['index'] : null;
-    const innerIndex: number | null = route.queryParams['innerIndex']? +route.queryParams['innerIndex'] : null;
+    const index: number[] = route.queryParams['index']? (route.queryParams['index']).split(',') : [];
+    const innerIndex: number[] = route.queryParams['innerIndex']? (route.queryParams['innerIndex']).split(',') : [];
     const indexesForAccordion: IndexesForAccordion = {index: index, innerIndex: innerIndex};
     return indexesForAccordion;
   }

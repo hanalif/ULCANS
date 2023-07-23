@@ -1,7 +1,7 @@
 
 export interface SystemInstructionsLink {
   link: string,
-  index: number,
-  innerIndex?: number,
+  index: number[],
+  innerIndex?: number[],
   txt: string
 }

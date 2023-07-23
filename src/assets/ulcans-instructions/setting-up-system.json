@@ -12,20 +12,20 @@
         "linksForMoreInformation": [
           {
             "link": "/configurations/configurations-list",
-            "index": null,
-            "innerIndex": null,
+            "index": [],
+            "innerIndex": [],
             "txt": "• See configurations"
           },
           {
             "link": "/camouflage-instructions/critical-considerations",
-            "index": 2,
-            "innerIndex": null,
+            "index": [2],
+            "innerIndex": [],
             "txt": "• See Critical considerations - Deployment "
           },
           {
             "link":"/useful-information/equipment-description",
-            "index": null,
-            "innerIndex": null,
+            "index": [],
+            "innerIndex": [],
             "txt": "• See useful information - Eauipment Description"
           }
         ]
@@ -68,14 +68,14 @@
         "linksForMoreInformation": [
           {
             "link":  "/camouflage-instructions/critical-considerations",
-            "index": 1,
-            "innerIndex": null,
+            "index": [1],
+            "innerIndex": [],
             "txt": "• See Critical considerations - Location"
           },
           {
             "link":  "/camouflage-instructions/critical-considerations",
-            "index": 3,
-            "innerIndex": null,
+            "index": [3],
+            "innerIndex": [],
             "txt": "• See Critical considerations - General"
           }
 
@@ -90,8 +90,8 @@
         "linksForMoreInformation": [
           {
             "link": "/camouflage-instructions/critical-considerations",
-            "index": 2,
-            "innerIndex": 0,
+            "index": [2],
+            "innerIndex": [0],
             "txt": "• See Critical considerations - Positioning Poles"
           }
 
@@ -107,32 +107,32 @@
         "linksForMoreInformation": [
           {
             "link": "/camouflage-instructions/critical-considerations",
-            "index": 2,
-            "innerIndex": 0,
+            "index": [2],
+            "innerIndex": [0],
             "txt": "• See Critical considerations - Positioning Poles"
           },
           {
             "link": "/camouflage-instructions/critical-considerations",
-            "index": 2,
-            "innerIndex": 1,
+            "index": [2],
+            "innerIndex": [1],
             "txt": "• See Critical considerations - Positioning The Rolled Net Configuration"
           },
           {
             "link": "/camouflage-instructions/critical-considerations",
-            "index": 2,
-            "innerIndex": 2,
+            "index": [2],
+            "innerIndex": [2],
             "txt": "• See Critical considerations - Deploying The Stakes"
           },
           {
             "link": "/camouflage-instructions/critical-considerations",
-            "index": 2,
-            "innerIndex": 3,
+            "index": [2],
+            "innerIndex": [3],
             "txt": "• See Critical considerations - Deploying The Nents And Poles"
           },
           {
             "link": "/camouflage-instructions/critical-considerations",
-            "index": 3,
-            "innerIndex": null,
+            "index": [3],
+            "innerIndex": [],
             "txt": "• See Critical considerations - General"
           }
         ]
