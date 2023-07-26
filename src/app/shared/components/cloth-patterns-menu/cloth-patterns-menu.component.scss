@@ -4,8 +4,8 @@
 //swiper
 .mySwiper{
   &.swiper{
-    height: 138px;
-    width: 400px;
+    height: 120px;
+    width: 292px;
     margin-left: auto;
     margin-right: auto;
 
@@ -17,6 +17,7 @@
   padding: 10px 0;
   .swiper-wrapper{
     height: 54%;
+
 
     h2{
       font-size: 20px;
@@ -39,6 +40,7 @@
       }
 
       img{
+        height: auto;
         background-color: transparent;
       }
     }
@@ -48,8 +50,7 @@
 
 .mySwiper2{
   &.swiper{
-    // height: 300px;
-    width: 500px;
+    width: 350px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 4px;
@@ -94,7 +95,6 @@
   .menu-top{
     display: flex;
     flex-direction: column;
-    gap: 11px;
     width: 100%;
     -webkit-margin-after: 20px;
     margin-block-end: 20px;
@@ -118,7 +118,7 @@
 
 
     h1{
-      font-size: 30px;
+      font-size: 22px;
       text-align: center;
       width: 100%;
     }
