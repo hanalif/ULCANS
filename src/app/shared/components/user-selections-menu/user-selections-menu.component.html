@@ -20,14 +20,14 @@
               class="middle"
             >
               <h1>ULCANS Prefrences for {{ userSelection.asset!.name }}</h1>
-              <div class="table-container">
-                <app-accordion [initialOpenIndex]="[0]">
+                <app-accordion [initialOpenIndex]="[0,1,2]">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[0].mainTitle }}
                       <button *ngIf="!userSelection.asset!.isInList" class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditAsset(userSelection.asset!.id, $event, userSelection.asset!.isInList, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                     </div>
                     <div accordionItemBody class="accordion-body">
+                      <div class="table-container">
                       <table class="styled-table style1">
                         <thead>
                           <tr>
@@ -86,16 +86,14 @@
                         </tbody>
                       </table>
                     </div>
+                    </div>
                   </app-accordion-item>
-                </app-accordion>
-              </div>
-              <div class="table-container">
-                <app-accordion [initialOpenIndex]="[0]">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       <h1>{{ wideScreenTitles[1].mainTitle }}</h1>
                     </div>
                     <div accordionItemBody class="accordion-body">
+                      <div class="table-container">
                       <span *ngIf="!userSelection.configuratoin" class="note"
                         >The size of your asset requires a custom configuration.
                         Please contact us for more information.
@@ -192,17 +190,15 @@
                         </div>
                       </div>
                     </div>
+                  </div>
                   </app-accordion-item>
-                </app-accordion>
-              </div>
-              <div class="table-container">
-                <app-accordion [initialOpenIndex]="[0]">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[2].mainTitle }}
                       <button class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditPatterns($event, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                     </div>
                     <div accordionItemBody class="accordion-body">
+                      <div class="table-container">
                       <table class="styled-table style1">
                         <thead>
                           <tr>
@@ -261,9 +257,9 @@
                         </tbody>
                       </table>
                     </div>
+                  </div>
                   </app-accordion-item>
                 </app-accordion>
-              </div>
               <div class="selection-btns">
                 <button
                   (click)="onDeleteSelection(userSelection.id)"
@@ -290,7 +286,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <app-accordion [initialOpenIndex]="[0]">
+                  <app-accordion [initialOpenIndex]="[0,1,2]">
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Asset
@@ -358,8 +354,6 @@
                         </div>
                       </div>
                     </app-accordion-item>
-                  </app-accordion>
-                  <app-accordion [initialOpenIndex]="[0]">
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Configuration
@@ -489,8 +483,6 @@
                         </div>
                       </div>
                     </app-accordion-item>
-                  </app-accordion>
-                  <app-accordion [initialOpenIndex]="[0]">
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Patterns
