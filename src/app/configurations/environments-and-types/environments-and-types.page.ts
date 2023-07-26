@@ -61,6 +61,10 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
         this.userSelectionsService.setIsUserSelectionsMenuOpen(true);
 
       }else{
+        let userSelectios: Partial<AssetForPdf> = {
+          initialIndexses: [0,1,2]
+        }
+        this.userSelectionsService.updateCurrUserSelections(userSelectios);
         this.userSelectionsService.addAssetForPdf();
       }
 

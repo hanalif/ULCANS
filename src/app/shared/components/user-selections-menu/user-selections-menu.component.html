@@ -20,7 +20,7 @@
               class="middle"
             >
               <h1>ULCANS Prefrences for {{ userSelection.asset!.name }}</h1>
-                <app-accordion [initialOpenIndex]="[0,1,2]">
+                <app-accordion [initialOpenIndex]="userSelection.initialIndexes" (accordionItemClicked)="onAccordionItem($event, userSelection.id, userSelection.initialIndexes)">
                   <app-accordion-item>
                     <div accordionItemHeader class="accordion-header">
                       {{ wideScreenTitles[0].mainTitle }}
@@ -286,7 +286,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <app-accordion [initialOpenIndex]="[0,1,2]">
+                  <app-accordion [initialOpenIndex]="userSelection.initialIndexes" (accordionItemClicked)="onAccordionItem($event, userSelection.id,  userSelection.initialIndexes)">
                     <app-accordion-item>
                       <div accordionItemHeader class="accordion-header">
                         Asset

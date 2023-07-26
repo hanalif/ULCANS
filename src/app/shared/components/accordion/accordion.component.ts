@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, Input, OnChanges, OnDestroy, OnInit, QueryList, SimpleChanges } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, QueryList, SimpleChanges } from '@angular/core';
 import { Animations } from 'src/app/angular-animations/animations';
 import { AccordionItemComponent } from './accordion-item/accordion-item.component';
 
@@ -11,6 +11,7 @@ import { AccordionItemComponent } from './accordion-item/accordion-item.componen
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
   @ContentChildren(AccordionItemComponent) accordionItems: QueryList<AccordionItemComponent> = new QueryList<AccordionItemComponent>;
   @Input() initialOpenIndex: number[] = [];
+  @Output() accordionItemClicked = new EventEmitter<number>()
   // openedItemIndex: number | null = null;
   openedItemsIndexesMap: any = {};
 
@@ -40,7 +41,7 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
     } else{
       this.openedItemsIndexesMap[itemIndex] = itemIndex;
     }
-
+    this.accordionItemClicked.emit(itemIndex);
     // this.openedItemIndex = this.openedItemIndex !== itemIndex ? itemIndex : null;
   }
 

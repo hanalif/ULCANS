@@ -10,5 +10,6 @@ export interface AssetForPdf{
   quantity: number,
   systemTypeId: string,
   isCustomConfiguration: boolean,
-  wasStartedFromCalculator: boolean
+  wasStartedFromCalculator: boolean,
+  initialIndexses: number[];
 }

@@ -33,7 +33,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   wideScreenTitles: any = [{mainTitle: 'Asset', tableTitles: this.tableHeaderTitles.slice(0,4)}, {mainTitle: 'Configuration', tableTitles: this.tableHeaderTitles.slice(4,12)},{mainTitle: 'Patterns', tableTitles: ['sideA', 'Pattern Design', 'sideB','Pattern Design', 'Type'] }];
   configurationTitles: string[] = ['Type','Name', 'Hexagon', 'Rhombus', 'Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
   patternsTitles: string[] = ['Side A', 'Pattern',  'Design' ,'Side B', 'Pattern',  'Design' ,' Type' ];
-  assetTitles: string[] = ['Name', 'Length', 'Width', 'Height' ]
+  assetTitles: string[] = ['Name', 'Length', 'Width', 'Height' ];
 
   date = this.transformDate(new Date);
   public measureType: MeasureType = MeasureType.METERS;
@@ -107,6 +107,30 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     }
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
+  }
+  onAccordionItem(index: number, userSelectionId: string | undefined, initialIndexes: number[]){
+    let userSelectios: Partial<AssetForPdf>;
+    let copyOfInitialIndexes = initialIndexes;
+    let foundNumber = copyOfInitialIndexes.find(i => i == index);
+
+    if(foundNumber != undefined){
+      let foundIndex = copyOfInitialIndexes.findIndex(i => i == foundNumber);
+      copyOfInitialIndexes.splice(foundIndex, 1);
+
+    }else{
+      copyOfInitialIndexes.push(index);
+    }
+
+    userSelectios = {
+      initialIndexses: copyOfInitialIndexes
+    }
+
+    if(userSelectionId){
+      this.userSelectionService.updateUserSelection(userSelectios, userSelectionId);
+    }
+
+
+
   }
 
   ngOnDestroy(): void {

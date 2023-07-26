@@ -14,5 +14,6 @@ export interface AssetForDisplay {
   sideB: SystemSideForDisplay,
   environment?: Environment,
   ulcansType: SystemType,
-  areSpecialPoles: boolean
+  areSpecialPoles: boolean,
+  initialIndexes: number[]
 }

@@ -167,13 +167,15 @@ export class UserSelectionService {
         const sidesA = (assetsForPdf.map(asset => asset.sideA));
         const sidesB = (assetsForPdf.map(asset => asset.sideB));
         const ulcansTypesIds = (assetsForPdf.map(asset=> asset.systemTypeId));
+        const initialIndexes = (assetsForPdf.map(asset=> asset.initialIndexses));
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
         const configurationsIds = (assets.map(a => a.configurationId)) as string[];
         const sidesAForDisplay = this.getSidesForDisplay(sidesA);
         const sidesBForDisplay = this.getSidesForDisplay(sidesB);
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
-        const ulcansTypes = this.systemTypesService.getUlcansTypesByIds(ulcansTypesIds)
+        const ulcansTypes = this.systemTypesService.getUlcansTypesByIds(ulcansTypesIds);
+
 
         let assetsForDisplay: AssetForDisplay[] = [];
 
@@ -185,7 +187,8 @@ export class UserSelectionService {
           sideA: sidesAForDisplay[i],
           sideB: sidesBForDisplay[i],
           ulcansType: ulcansTypes[i],
-          areSpecialPoles: assetsForPdf[i].areSpecialPoles
+          areSpecialPoles: assetsForPdf[i].areSpecialPoles,
+          initialIndexes: initialIndexes[i]
         }
 
         assetsForDisplay.push(assetForDisplay);
