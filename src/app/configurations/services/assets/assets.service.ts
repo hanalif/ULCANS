@@ -122,8 +122,6 @@ export class AssetsService {
     }
   }
 
-
-
   removeAsset(assetId: string){
     let assets = this._getassetsValue();
     let foundAssetIndex = assets.findIndex(a => a.id === assetId);
