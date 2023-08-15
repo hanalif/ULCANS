@@ -47,7 +47,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   currUserSelection!: AssetForPdf | null;
 
   transformDate(date: Date) {
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
+    return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
 
   constructor(
