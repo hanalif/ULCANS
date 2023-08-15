@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
 export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
   calculatorForm!: FormGroup;
   assetName: FormControl = new FormControl();
-  public measureType: MeasureType = MeasureType.FEET;
+  public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
   isFromAssetsList: boolean = false;
   isFromUserSelectionsMenu: boolean = false;

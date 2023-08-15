@@ -10,7 +10,7 @@
             "lengthFt": 20.4
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "YtWnE",
@@ -23,7 +23,7 @@
             "lengthFt": 22.3
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "bRB9n",
@@ -36,7 +36,7 @@
             "lengthFt": 8.8
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "COIiz",
@@ -49,7 +49,7 @@
             "lengthFt": 21.5
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "mK7YI",
@@ -62,7 +62,7 @@
             "lengthFt": 32.04
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "aSlVh",
@@ -75,7 +75,7 @@
             "lengthFt": 19.6
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "Hjpj1",
@@ -88,7 +88,7 @@
             "lengthFt": 20
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "iO9WF",
@@ -101,7 +101,7 @@
             "lengthFt": 30
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "92SHl",
@@ -114,7 +114,7 @@
             "lengthFt": 32.5
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "EAE1C",
@@ -127,7 +127,7 @@
             "lengthFt": 33.4
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
         "id": "Ybq3Y",
@@ -140,7 +140,7 @@
             "lengthFt": 34
         },
         "isInList": true,
-        "initialMeasureType": 2
+        "initialMeasureType": 1
     },
     {
       "id": "Nsd3Y",
@@ -153,7 +153,7 @@
           "lengthFt": 59
       },
       "isInList": true,
-      "initialMeasureType": 2
+      "initialMeasureType": 1
   },
 {
   "id": "2utky55lrz",
@@ -166,7 +166,7 @@
       "lengthFt": 59
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "lhjky77K0",
@@ -179,7 +179,7 @@
       "lengthFt": 51
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "lhjuuusa0",
@@ -192,7 +192,7 @@
       "lengthFt": 17.3
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "jkkj88499dj0",
@@ -205,7 +205,7 @@
       "lengthFt": 21
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "jhjugtj0",
@@ -218,7 +218,7 @@
       "lengthFt": 32
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "jhjkduc886d",
@@ -231,7 +231,7 @@
       "lengthFt": 11.70
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "hfjsu736fdjs",
@@ -244,7 +244,7 @@
       "lengthFt": 9.42
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "hgfhou77s",
@@ -257,7 +257,7 @@
       "lengthFt": 15
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 },
 {
   "id": "yfhsjjuv2s",
@@ -270,6 +270,6 @@
       "lengthFt": 15.4
   },
   "isInList": true,
-  "initialMeasureType": 2
+  "initialMeasureType": 1
 }
 ]
