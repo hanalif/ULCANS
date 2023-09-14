@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, isDevMode } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
 import { Observable, ReplaySubject, takeUntil } from 'rxjs';
 import { Animations } from './angular-animations/animations';
@@ -7,6 +7,9 @@ import { SystemTypesService } from './configurations/environments-and-types/serv
 import { AssetsService } from './configurations/services/assets/assets.service';
 import { ConfigurationsService } from './configurations/services/configurationsService/configurations.service';
 import { UserSelectionService } from './shared/services/user-selection.service';
+import { AppConfigurationService } from './app-configurations/app-configurations.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -26,10 +29,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private assetsService: AssetsService,
     private environmetsService: EnvironmentsService,
     private systemTypesService: SystemTypesService,
+    private appConfigService: AppConfigurationService
     ) {}
 
 
   ngOnInit(): void {
+    this.appConfigService.setInitialAppConfig();
+    this.appConfigService.getAppConfig().pipe(takeUntil(this.destroyed$)).subscribe(res=>console.log(res));
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
     this.userSelectionsService._initialUserSelections().pipe(takeUntil(this.destroyed$)).subscribe();
     this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();

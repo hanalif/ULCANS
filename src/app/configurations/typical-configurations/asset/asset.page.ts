@@ -6,10 +6,7 @@ import { UserSelectionService } from 'src/app/shared/services/user-selection.ser
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
 import { AssetsService } from '../../services/assets/assets.service';
-import { AssetForPreview } from '../../models/assetForPreview.model';
 import { Subscription } from 'rxjs';
-
-
 
 @Component({
   selector: 'app-asset',
@@ -27,14 +24,18 @@ export class AssetPage implements OnInit,OnDestroy {
   dataSubscription!: Subscription;
   wasStartedFromCalculator!: boolean;
 
+
+
   constructor(
     private router: ActivatedRoute,
     private route: Router,
     private userSelectionsService: UserSelectionService,
-    private assetsService: AssetsService) { }
+    private assetsService: AssetsService,
+    ) { }
 
 
   ngOnInit() {
+
     this.router.data.subscribe(data=>{
       const assetForPreview = data['assetForPreview'];
       this.asset = assetForPreview.asset;

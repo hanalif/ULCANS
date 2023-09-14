@@ -2,8 +2,11 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { AppConfirmationSelections } from "src/app/app-configurations/app-configurations.enum";
+
 export const environment = {
-  production: true
+  production: true,
+  appConfigSelection: AppConfirmationSelections.NONE
 };
 
 /*
