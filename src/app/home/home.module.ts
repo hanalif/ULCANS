@@ -7,8 +7,6 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { WelcomeTxtComponent } from './welcome-txt/welcome-txt.component';
-import { AppConfigSelectionPage } from './app-config-selection/app-config-selection.page';
-import { AppConfigSelectionPageModule } from './app-config-selection/app-config-selection.module';
 
 
 

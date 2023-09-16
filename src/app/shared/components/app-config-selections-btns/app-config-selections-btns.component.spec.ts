@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AppConfigSelectionPage } from './app-config-selection.page';
+import { AppConfigSelectionsBtnsComponent } from './app-config-selections-btns.component';
 
-describe('AppConfigSelectionPage', () => {
-  let component: AppConfigSelectionPage;
-  let fixture: ComponentFixture<AppConfigSelectionPage>;
+describe('AppConfigSelectionsBtnsComponent', () => {
+  let component: AppConfigSelectionsBtnsComponent;
+  let fixture: ComponentFixture<AppConfigSelectionsBtnsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppConfigSelectionPage ],
+      declarations: [ AppConfigSelectionsBtnsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AppConfigSelectionPage);
+    fixture = TestBed.createComponent(AppConfigSelectionsBtnsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

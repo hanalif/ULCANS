@@ -35,7 +35,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.appConfigService.setInitialAppConfig();
-    this.appConfigService.getAppConfig().pipe(takeUntil(this.destroyed$)).subscribe(res=>console.log(res));
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
     this.userSelectionsService._initialUserSelections().pipe(takeUntil(this.destroyed$)).subscribe();
     this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();

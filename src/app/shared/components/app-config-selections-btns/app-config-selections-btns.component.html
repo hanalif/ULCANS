@@ -1,0 +1,18 @@
+<div [ngClass]="displayMode" class="btns-container">
+  <button
+      *ngFor="let btnData of btnsData; index as i"
+      [ngClass]="{selected: initialAppConfirmationSelection === btnData.code }"
+      [class]="'regular-btn ' + displayMode"
+      (click)="onConfigBtn(btnData.code)">
+    <div *ngIf="displayMode !== appConfigBtnsMode.small" class="txt-container">
+      <span>{{btnData.txt}}</span>
+    </div>
+    <div *ngIf="displayMode === appConfigBtnsMode.small" [ngClass]="displayMode" class="txt-container">
+      <span [ngClass]="displayMode">{{btnData.shortTxt}}</span>
+      <span *ngIf="i !== btnsData.length -1">/</span>
+    </div>
+    <div *ngIf="displayMode !== appConfigBtnsMode.small" class="icon-container">
+      <img [src]="btnData.imgLink" alt="usa-icon">
+    </div>
+  </button>
+</div>

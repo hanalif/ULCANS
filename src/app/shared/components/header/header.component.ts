@@ -6,6 +6,8 @@ import { MenuCategory } from '../../models/menu-category.model';
 import { StartBtn } from '../../models/start-btn.model';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { UserSelectionService } from '../../services/user-selection.service';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+import { appConfigBtnsMode } from '../../models/app-config-btns-mode.enum';
 
 @Component({
   selector: 'app-header',
@@ -25,14 +27,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   openMenuLinksMapingSubscription!: Subscription;
 
+  showAppConfigBtns!: boolean;
+  showAppConfigBtnsSubscription!: Subscription;
+
+  appConfigBtnsMode = appConfigBtnsMode;
+
 
   constructor(
     private route: Router,
     private menuCategoriesServive: MenuCategoriesService,
-    private userSelectionsService: UserSelectionService) { }
+    private userSelectionsService: UserSelectionService,
+    private appConfigService: AppConfigurationService) { }
 
 
   ngOnInit() {
+      this.showAppConfigBtnsSubscription = this.appConfigService.getShowAppConfigBtns().subscribe(showAppConfigBtns=>{
+        this.showAppConfigBtns = showAppConfigBtns;
+      })
+
       this.menuCategories$ = this.menuCategoriesServive.getMenuCategories();
       this.startBtn = this.menuCategoriesServive.START_BTN;
       this.numsOfUserSelections$ = this.userSelectionsService.getnumOfSelections();
@@ -71,6 +83,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
    this.progressBarSubscription?.unsubscribe();
    this.openMenuLinksMapingSubscription.unsubscribe();
+   this.showAppConfigBtnsSubscription.unsubscribe();
   }
 
 }

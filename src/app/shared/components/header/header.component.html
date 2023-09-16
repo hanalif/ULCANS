@@ -1,5 +1,4 @@
 <div class="header-wrapper">
-
   <div class="header-container main-layout">
     <div class="header-inline-start">
       <div (click)="onLogo()" class="logo">
@@ -7,14 +6,18 @@
           src="assets/imgs/logo/logo-png.png"
         ></ion-img>
       </div>
-      <div (click)="onReaderIcon(true)" class="user-selections-menu-icon">
+      <div  (click)="onReaderIcon(true)" class="user-selections-menu-icon">
         <ion-badge class="badge-icon wide-screen" slot="end">{{numsOfUserSelections$ | async}}</ion-badge>
         <ion-icon class="reader-icon wide-screen" name="reader-outline"></ion-icon>
       </div>
     </div>
+
+
     <div class="top-nav">
 
-      <!-- Hamburger Icon For Mobile -->
+      <ng-container >
+
+        <!-- Hamburger Icon For Mobile -->
       <ion-icon
         *ngIf="!isDropdownMenuOpen"
         (click)="onHamburgerIcon()"
@@ -56,6 +59,8 @@
         </div>
       </div>
       <app-main-btn routerLink={{startBtn.btnLink}} routerLinkActive="is-active" class="top-nav-btn">{{ startBtn.btnTitle | uppercase }}</app-main-btn>
+    </ng-container>
+    <app-app-config-selections-btns class="config-btns" [displayMode]="appConfigBtnsMode.small" *ngIf="showAppConfigBtns"></app-app-config-selections-btns>
     </div>
   </div>
 

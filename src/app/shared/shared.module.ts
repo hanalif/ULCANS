@@ -20,15 +20,13 @@ import { MToFtPipe } from './pipes/m-to-ft.pipe';
 import { SqftToSqmPipe } from './pipes/sqft-to-sqm.pipe';
 import { BtnSelectionComponent } from './components/btn-selection/btn-selection.component';
 import {Swiper} from 'swiper';
-
-
-
+import { AppConfigSelectionsBtnsComponent } from './components/app-config-selections-btns/app-config-selections-btns.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, BtnSelectionComponent,MainBtnComponent, SqftToSqmPipe ,FtToMPipe, MToFtPipe,AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, ClothPatternsMenuComponent],
+  declarations: [HeaderComponent, BtnSelectionComponent,MainBtnComponent, SqftToSqmPipe ,FtToMPipe, MToFtPipe,AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, ClothPatternsMenuComponent,AppConfigSelectionsBtnsComponent],
   imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule, NgScrollbarModule ],
-  exports: [HeaderComponent,BtnSelectionComponent, MainBtnComponent,SqftToSqmPipe, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent,NgScrollbarModule, ClothPatternsMenuComponent],
+  exports: [HeaderComponent,BtnSelectionComponent, MainBtnComponent,SqftToSqmPipe, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent,NgScrollbarModule, ClothPatternsMenuComponent, AppConfigSelectionsBtnsComponent],
   providers:[ FtToMPipe ,MToFtPipe, SqftToSqmPipe,FileOpener, File, Swiper]
 })
 export class SharedModule {}

@@ -59,13 +59,48 @@
               "outputHashing": "none"
             },
             "usaProd": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "150kb",
+                  "maximumError": "150kb"
+                }
+              ],
               "sourceMap": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.usa.ts"
                 }
-              ]
+              ],
+              "outputHashing": "none"
+            },
+            "globalProd": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "150kb",
+                  "maximumError": "150kb"
+                }
+              ],
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.global.ts"
+                }
+              ],
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,
@@ -93,6 +128,9 @@
             },
             "usaProd": {
               "browserTarget": "app:build:usaProd"
+            },
+            "globalProd": {
+              "browserTarget": "app:build:globalProd"
             },
 
             "ci": {

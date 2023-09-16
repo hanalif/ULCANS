@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppConfirmationSelections } from './app-configurations.enum';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { StorageService } from '../shared/services/storage.service';
+import { BehaviorSubject} from 'rxjs';
 import { environment } from '../../environments/environment';
 
 
@@ -10,26 +9,40 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AppConfigurationService {
-  private appConfig$: BehaviorSubject<AppConfirmationSelections | undefined> = new BehaviorSubject<AppConfirmationSelections | undefined>(undefined);
+  private currAppConfigSettings$:BehaviorSubject<AppConfirmationSelections> = new BehaviorSubject<AppConfirmationSelections>(0)
+  private showAppConfigBtns$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  private showOnlyHeaderConfigBtns$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   private readonly appConfigKey: string = 'appCofig';
   private appEnvironment = environment;
-  constructor(private storageService: StorageService ) { }
+  constructor() { }
 
-  getAppConfig(){
-    return this.appConfig$.asObservable();
+  getShowAppConfigBtns(){
+    return this.showAppConfigBtns$.asObservable();
+  }
+
+  getCurrAppConfigSettings(){
+    return this.currAppConfigSettings$.asObservable();
+  }
+
+  getShowOnlyHeaderConfigBtns(){
+    return this.showOnlyHeaderConfigBtns$.asObservable();
   }
 
   setInitialAppConfig(){
      let appConfigFromStorage: AppConfirmationSelections | undefined = this._getFromStorage(this.appConfigKey);
-     console.log(appConfigFromStorage);
      let environmentVal =  this.appEnvironment.appConfigSelection;
     if(!appConfigFromStorage){
-      this.appConfig$.next(environmentVal);
+      if( environmentVal == AppConfirmationSelections.USA ||environmentVal == AppConfirmationSelections.GLOBAL){
+        this.showAppConfigBtns$.next(false);
+        console.log(this.showAppConfigBtns$.getValue());
+      }
+      this.currAppConfigSettings$.next(environmentVal);
     }else{
-      this.appConfig$.next(appConfigFromStorage);
+      this.showOnlyHeaderConfigBtns$.next(true);
+      this.currAppConfigSettings$.next(appConfigFromStorage);
     }
   }
-
 
   _getFromStorage(keyInStorage:string){
     let appCofigVal: AppConfirmationSelections;
@@ -40,6 +53,10 @@ export class AppConfigurationService {
 
   setAppConfig(val: AppConfirmationSelections){
     localStorage.setItem(this.appConfigKey, JSON.stringify(val));
+    this.currAppConfigSettings$.next(val);
+    if(!this.showOnlyHeaderConfigBtns$.getValue()){
+      this.showOnlyHeaderConfigBtns$.next(true);
+    }
   }
 
 
