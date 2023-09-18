@@ -10,7 +10,8 @@
             "lengthFt": 20.4
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "YtWnE",
@@ -23,7 +24,8 @@
             "lengthFt": 22.3
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "bRB9n",
@@ -36,7 +38,8 @@
             "lengthFt": 8.8
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "COIiz",
@@ -49,7 +52,8 @@
             "lengthFt": 21.5
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 2
     },
     {
         "id": "mK7YI",
@@ -62,7 +66,8 @@
             "lengthFt": 32.04
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "aSlVh",
@@ -75,7 +80,8 @@
             "lengthFt": 19.6
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "Hjpj1",
@@ -88,7 +94,8 @@
             "lengthFt": 20
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "iO9WF",
@@ -101,7 +108,8 @@
             "lengthFt": 30
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "92SHl",
@@ -114,7 +122,8 @@
             "lengthFt": 32.5
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "EAE1C",
@@ -127,7 +136,8 @@
             "lengthFt": 33.4
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
         "id": "Ybq3Y",
@@ -140,7 +150,8 @@
             "lengthFt": 34
         },
         "isInList": true,
-        "initialMeasureType": 1
+        "initialMeasureType": 1,
+        "appConfig": 0
     },
     {
       "id": "Nsd3Y",
@@ -153,7 +164,8 @@
           "lengthFt": 59
       },
       "isInList": true,
-      "initialMeasureType": 1
+      "initialMeasureType": 1,
+      "appConfig": 0
   },
 {
   "id": "2utky55lrz",
@@ -166,7 +178,8 @@
       "lengthFt": 59
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 0
 },
 {
   "id": "lhjky77K0",
@@ -179,7 +192,8 @@
       "lengthFt": 51
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 0
 },
 {
   "id": "lhjuuusa0",
@@ -192,7 +206,8 @@
       "lengthFt": 17.3
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 2
 },
 {
   "id": "jkkj88499dj0",
@@ -205,7 +220,8 @@
       "lengthFt": 21
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 0
 },
 {
   "id": "jhjugtj0",
@@ -218,7 +234,8 @@
       "lengthFt": 32
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 0
 },
 {
   "id": "jhjkduc886d",
@@ -231,7 +248,8 @@
       "lengthFt": 11.70
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 2
 },
 {
   "id": "hfjsu736fdjs",
@@ -244,7 +262,8 @@
       "lengthFt": 9.42
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 2
 },
 {
   "id": "hgfhou77s",
@@ -257,7 +276,8 @@
       "lengthFt": 15
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 0
 },
 {
   "id": "yfhsjjuv2s",
@@ -270,6 +290,161 @@
       "lengthFt": 15.4
   },
   "isInList": true,
-  "initialMeasureType": 1
+  "initialMeasureType": 1,
+  "appConfig": 0
+},
+{
+  "id": "H0ZTXo3W",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/MRZRA2.png",
+  "name": "Polaris LTATV MRZR Alpha (MRZR A-2) / Diesel (MRZR D-2)",
+  "configurationId": "c4",
+  "measures": {
+      "widthFt": 4.96,
+      "heightFt": 6.12,
+      "lengthFt": 12.21
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "E2ZYyoBi",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/MRZRA4.png",
+  "name": "Polaris LTATV MRZR Alpha (MRZR A-4) /  Diesel (MRZR D-4)",
+  "configurationId": "c4",
+  "measures": {
+      "widthFt": 4.96,
+      "heightFt": 6.12,
+      "lengthFt": 14.46
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "A44ZwKU4",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/Warthog.png",
+  "name": "Fairchild Republic A-10 Thunderbolt II / Warthog",
+  "configurationId": null,
+  "measures": {
+      "widthFt": 57.50,
+      "heightFt": 14.67,
+      "lengthFt": 53.33
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "gBw4oL1J",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/M113APC.png",
+  "name": "M113 APC",
+  "configurationId": "c6",
+  "measures": {
+      "widthFt": 8.81,
+      "heightFt": 8.19,
+      "lengthFt": 15.96
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "bDgFNfES",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/M10BCV.png",
+  "name": "General Dynamic M10 Booker / Combat Vehicle",
+  "configurationId": "c8",
+  "measures": {
+      "widthFt": 7.90,
+      "heightFt": 12.00,
+      "lengthFt": 22.50
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "dKnE4YtS",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/LC79.png",
+  "name": "Toyota Land Cruiser 79 / Land Cruiser 79",
+  "configurationId": "c5",
+  "measures": {
+      "widthFt": 5.91,
+      "heightFt": 6.50,
+      "lengthFt": 17.19
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "aZOHNHDM",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/AH64Apache.png",
+  "name": "Boeing AH-64 Apache / Longbow",
+  "configurationId": null,
+  "measures": {
+      "widthFt": 48.00,
+      "heightFt": 15.49,
+      "lengthFt": 48.16
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "BdcKxfEh",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/UH60.png",
+  "name": "Sikorsky UH-60 / Black Hawk",
+  "configurationId": null,
+  "measures": {
+      "widthFt": 50.10,
+      "heightFt": 16.00,
+      "lengthFt": 64.80
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "l5W7uf11",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/AMVP.png",
+  "name": "Bradley M2 / Armored Multi-Purpose Vehicle",
+  "configurationId": "c7",
+  "measures": {
+      "widthFt": 12.14,
+      "heightFt": 10.17,
+      "lengthFt": 18.57
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "hNZYfYqq",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/CH53K.png",
+  "name": "CH-53K / King Stallion",
+  "configurationId": null,
+  "measures": {
+      "widthFt": 79.00,
+      "heightFt": 29.00,
+      "lengthFt": 100.00
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
+},
+{
+  "id": "X3O1axBp",
+  "assetImgUrl": "assets/imgs/typical-assets/usaImgs/MV22B.png",
+  "name": "MV-22B / Osprey",
+  "configurationId": null,
+  "measures": {
+      "widthFt": 85.00,
+      "heightFt": 21.00,
+      "lengthFt": 58.00
+  },
+  "isInList": true,
+  "initialMeasureType": 1,
+  "appConfig": 1
 }
 ]

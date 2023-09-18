@@ -102,7 +102,8 @@ export class AssetsService {
         lengthFt: updatedCalculatorFormValue.length,
       },
       isInList: false,
-      initialMeasureType: measureType
+      initialMeasureType: measureType,
+      appConfig: 0
     }
 
 

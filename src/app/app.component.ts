@@ -8,6 +8,7 @@ import { AssetsService } from './configurations/services/assets/assets.service';
 import { ConfigurationsService } from './configurations/services/configurationsService/configurations.service';
 import { UserSelectionService } from './shared/services/user-selection.service';
 import { AppConfigurationService } from './app-configurations/app-configurations.service';
+import { UtilService } from './shared/services/util.service';
 
 
 
@@ -29,7 +30,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private assetsService: AssetsService,
     private environmetsService: EnvironmentsService,
     private systemTypesService: SystemTypesService,
-    private appConfigService: AppConfigurationService
+    private appConfigService: AppConfigurationService,
+
+    private utilService: UtilService
     ) {}
 
 
@@ -42,6 +45,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
     this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();
+
+    console.log(this.utilService._makeId());
 
   }
 
