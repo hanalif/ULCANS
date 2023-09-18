@@ -4,11 +4,10 @@
   <ng-scrollbar class="scrollbar">
     <div class="home-container">
       <app-welcome-txt >
-        <app-app-config-selections-btns [displayMode]="appConfigBtnsMode.medium" *ngIf="(showHomPageAppConfigBtns$ | async); else elseBlock"></app-app-config-selections-btns>
+        <app-config-selections-btns [displayMode]="appConfigBtnsMode.medium" *ngIf="(showHomPageAppConfigBtns$ | async); else elseBlock"></app-config-selections-btns>
         <ng-template #elseBlock>
           <app-main-btn routerLink={{startBtn.btnLink}}>{{startBtn.btnTitle}}</app-main-btn>
         </ng-template>
-
       </app-welcome-txt>
     </div>
   </ng-scrollbar>

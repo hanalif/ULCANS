@@ -6,7 +6,7 @@
           src="assets/imgs/logo/logo-png.png"
         ></ion-img>
       </div>
-      <div  (click)="onReaderIcon(true)" class="user-selections-menu-icon">
+      <div *ngIf="showAppConfigBtns && showOnlyHeaderAppConfigBtn" (click)="onReaderIcon(true)" class="user-selections-menu-icon">
         <ion-badge class="badge-icon wide-screen" slot="end">{{numsOfUserSelections$ | async}}</ion-badge>
         <ion-icon class="reader-icon wide-screen" name="reader-outline"></ion-icon>
       </div>
@@ -15,7 +15,7 @@
 
     <div class="top-nav">
 
-      <ng-container >
+      <ng-container *ngIf="showAppConfigBtns && showOnlyHeaderAppConfigBtn">
 
         <!-- Hamburger Icon For Mobile -->
       <ion-icon
@@ -60,7 +60,7 @@
       </div>
       <app-main-btn routerLink={{startBtn.btnLink}} routerLinkActive="is-active" class="top-nav-btn">{{ startBtn.btnTitle | uppercase }}</app-main-btn>
     </ng-container>
-    <app-app-config-selections-btns class="config-btns" [displayMode]="appConfigBtnsMode.small" *ngIf="showAppConfigBtns"></app-app-config-selections-btns>
+    <app-config-selections-btns class="config-btns" [displayMode]="appConfigBtnsMode.small" *ngIf="showAppConfigBtns"></app-config-selections-btns>
     </div>
   </div>
 

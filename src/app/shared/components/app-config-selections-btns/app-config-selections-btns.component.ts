@@ -3,15 +3,18 @@ import { appConfigBtnsMode } from '../../models/app-config-btns-mode.enum';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 import { Observable, Subscription } from 'rxjs';
+import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
+import { AssetPage } from 'src/app/configurations/typical-configurations/asset/asset.page';
 
 @Component({
-  selector: 'app-app-config-selections-btns',
+  selector: 'app-config-selections-btns',
   templateUrl: './app-config-selections-btns.component.html',
   styleUrls: ['./app-config-selections-btns.component.scss'],
 })
 export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
   @Input() displayMode!: appConfigBtnsMode;
   appConfigBtnsMode = appConfigBtnsMode;
+  appConfigBtnSubscription!: Subscription;
 
   initialAppConfirmationSelection: AppConfirmationSelections | undefined = undefined;
   initialAppConfigSubscription!: Subscription;
@@ -33,7 +36,7 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
     }
   ]
 
-  constructor(private appConfigService: AppConfigurationService) { }
+  constructor(private appConfigService: AppConfigurationService, private assetsService:AssetsService) { }
 
   ngOnInit() {
     this.initialAppConfigSubscription = this.appConfigService.getCurrAppConfigSettings().subscribe(currConfig=>{
@@ -45,6 +48,7 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
 
   onConfigBtn(configVal: AppConfirmationSelections){
     this.appConfigService.setAppConfig(configVal);
+    this.appConfigBtnSubscription = this.assetsService.setAssets(configVal).subscribe();
   }
 
   ngOnDestroy(): void {

@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,19 +30,19 @@ export class AppConfigurationService {
     return this.showOnlyHeaderConfigBtns$.asObservable();
   }
 
-  setInitialAppConfig(){
+  setAndGetInitialAppConfig(){
      let appConfigFromStorage: AppConfirmationSelections | undefined = this._getFromStorage(this.appConfigKey);
      let environmentVal =  this.appEnvironment.appConfigSelection;
     if(!appConfigFromStorage){
       if( environmentVal == AppConfirmationSelections.USA ||environmentVal == AppConfirmationSelections.GLOBAL){
         this.showAppConfigBtns$.next(false);
-        console.log(this.showAppConfigBtns$.getValue());
       }
       this.currAppConfigSettings$.next(environmentVal);
     }else{
       this.showOnlyHeaderConfigBtns$.next(true);
       this.currAppConfigSettings$.next(appConfigFromStorage);
     }
+    return this.currAppConfigSettings$.getValue();
   }
 
   _getFromStorage(keyInStorage:string){
@@ -57,8 +58,7 @@ export class AppConfigurationService {
     if(!this.showOnlyHeaderConfigBtns$.getValue()){
       this.showOnlyHeaderConfigBtns$.next(true);
     }
+
   }
-
-
 
 }

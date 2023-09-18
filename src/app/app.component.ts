@@ -9,6 +9,7 @@ import { ConfigurationsService } from './configurations/services/configurationsS
 import { UserSelectionService } from './shared/services/user-selection.service';
 import { AppConfigurationService } from './app-configurations/app-configurations.service';
 import { UtilService } from './shared/services/util.service';
+import { AppConfirmationSelections } from './app-configurations/app-configurations.enum';
 
 
 
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   isUserSelectionsMenuOpen$!: Observable<boolean>;
   isClothPatternsMenuOpen$!: Observable<boolean>;
+  appCurrConfigVal!: AppConfirmationSelections;
 
   constructor(
     private animationCtrl: AnimationController,
@@ -30,24 +32,19 @@ export class AppComponent implements OnInit, OnDestroy {
     private assetsService: AssetsService,
     private environmetsService: EnvironmentsService,
     private systemTypesService: SystemTypesService,
-    private appConfigService: AppConfigurationService,
-
-    private utilService: UtilService
+    private appConfigService: AppConfigurationService
     ) {}
 
 
   ngOnInit(): void {
-    this.appConfigService.setInitialAppConfig();
+    this.appCurrConfigVal = this.appConfigService.setAndGetInitialAppConfig();
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
     this.userSelectionsService._initialUserSelections().pipe(takeUntil(this.destroyed$)).subscribe();
     this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();
-    this.assetsService._getAssetes().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.assetsService.setAssets(this.appCurrConfigVal).pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
     this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();
-
-    console.log(this.utilService._makeId());
-
   }
 
   onBackdropClicked(val:boolean){

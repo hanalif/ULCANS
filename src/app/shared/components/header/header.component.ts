@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
 import { Animations } from 'src/app/angular-animations/animations';
 import { MenuCategory } from '../../models/menu-category.model';
 import { StartBtn } from '../../models/start-btn.model';
@@ -28,7 +28,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   openMenuLinksMapingSubscription!: Subscription;
 
   showAppConfigBtns!: boolean;
+  showOnlyHeaderAppConfigBtn!: boolean;
   showAppConfigBtnsSubscription!: Subscription;
+
 
   appConfigBtnsMode = appConfigBtnsMode;
 
@@ -41,9 +43,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-      this.showAppConfigBtnsSubscription = this.appConfigService.getShowAppConfigBtns().subscribe(showAppConfigBtns=>{
-        this.showAppConfigBtns = showAppConfigBtns;
+      this.showAppConfigBtnsSubscription = this.appConfigService.getShowAppConfigBtns().pipe(
+        switchMap(showAppConfigBtns=>{
+          this.showAppConfigBtns = showAppConfigBtns;
+          return this.appConfigService.getShowOnlyHeaderConfigBtns()
+        })
+      ).subscribe((showOnlyHeader)=>{
+        this.showOnlyHeaderAppConfigBtn = showOnlyHeader;
       })
+
+
 
       this.menuCategories$ = this.menuCategoriesServive.getMenuCategories();
       this.startBtn = this.menuCategoriesServive.START_BTN;

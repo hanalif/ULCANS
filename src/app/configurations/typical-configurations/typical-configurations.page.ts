@@ -38,7 +38,6 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
     ngOnInit() {
       this.assetsSuscription = this.assetsService.getAssets().subscribe(assets =>{
         this.assetsList = assets;
-        this.cd.detectChanges();
       });
 
     }

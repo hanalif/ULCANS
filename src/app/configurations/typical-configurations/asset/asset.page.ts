@@ -6,7 +6,9 @@ import { UserSelectionService } from 'src/app/shared/services/user-selection.ser
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
 import { AssetsService } from '../../services/assets/assets.service';
-import { Subscription } from 'rxjs';
+import { Subscription, map, switchMap } from 'rxjs';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 
 @Component({
   selector: 'app-asset',
@@ -31,19 +33,28 @@ export class AssetPage implements OnInit,OnDestroy {
     private route: Router,
     private userSelectionsService: UserSelectionService,
     private assetsService: AssetsService,
+    private appConfigService: AppConfigurationService
     ) { }
 
 
   ngOnInit() {
+    this.appConfigService.getCurrAppConfigSettings().pipe(
+      switchMap(currAppConfig=>{
+          return this.router.data.pipe(map(data=>{
+            const assetForPreview = data['assetForPreview'];
+            this.asset = assetForPreview.asset;
+            this.configuration = assetForPreview.configuration;
+            this.areSpecialPoles = assetForPreview.areSpecialPoles;
+            this.wasStartedFromCalculator = assetForPreview.wasStartedFromCalculator;
 
-    this.router.data.subscribe(data=>{
-      const assetForPreview = data['assetForPreview'];
-      this.asset = assetForPreview.asset;
-      this.configuration = assetForPreview.configuration;
-      this.areSpecialPoles = assetForPreview.areSpecialPoles;
-      this.wasStartedFromCalculator = assetForPreview.wasStartedFromCalculator;
-      this.measureType = this.asset.initialMeasureType;
-    })
+            if(currAppConfig == AppConfirmationSelections.USA){
+              this.measureType = MeasureType.FEET;
+            }else{
+              this.measureType = this.asset.initialMeasureType;
+            }
+          }))
+      })
+    ).subscribe()
 
   }
 
