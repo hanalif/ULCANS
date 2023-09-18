@@ -26,8 +26,6 @@ export class AssetPage implements OnInit,OnDestroy {
   dataSubscription!: Subscription;
   wasStartedFromCalculator!: boolean;
 
-
-
   constructor(
     private router: ActivatedRoute,
     private route: Router,

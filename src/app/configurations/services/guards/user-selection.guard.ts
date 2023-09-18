@@ -1,13 +1,10 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { EMPTY, from, map, Observable, tap } from "rxjs";
 import { UserSelectionService } from "src/app/shared/services/user-selection.service";
 import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from "src/app/shared/models/alert-confirmation.enum";
 import { AssetForPdf } from "src/app/shared/models/asset-for-pdf.model";
-import { AssetsService } from "../assets/assets.service";
-
-
 
 
 @Injectable({
@@ -17,9 +14,7 @@ import { AssetsService } from "../assets/assets.service";
 export class UserSelectionGuard implements CanDeactivate<unknown>{
   constructor(
     private userSelectionsService: UserSelectionService,
-    private alertController: AlertController,
-    private assetService: AssetsService,
-    private route: Router){}
+    private alertController: AlertController){}
 
   async presentAlert() {
     const alert = await this.alertController.create({

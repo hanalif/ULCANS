@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription, switchMap } from 'rxjs';
+import { Observable, Subscription, map, switchMap } from 'rxjs';
 import { Animations } from 'src/app/angular-animations/animations';
 import { MenuCategory } from '../../models/menu-category.model';
 import { StartBtn } from '../../models/start-btn.model';

@@ -18,6 +18,14 @@ export class AppConfigurationService {
   private appEnvironment = environment;
   constructor() { }
 
+  getShowOnlyHeaderConfigBtnsValue(){
+    return this.showOnlyHeaderConfigBtns$.getValue();
+  }
+
+  getShowAppConfigBtnsValue(){
+    return this.showAppConfigBtns$.getValue();
+  }
+
   getShowAppConfigBtns(){
     return this.showAppConfigBtns$.asObservable();
   }
@@ -26,7 +34,7 @@ export class AppConfigurationService {
     return this.currAppConfigSettings$.asObservable();
   }
 
-  getShowOnlyHeaderConfigBtns(){
+getShowOnlyHeaderConfigBtns(){
     return this.showOnlyHeaderConfigBtns$.asObservable();
   }
 

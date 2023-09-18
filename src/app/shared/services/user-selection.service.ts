@@ -160,6 +160,12 @@ export class UserSelectionService {
     this.setNumberOfNewSelections(-1);
   }
 
+  resetUserSelections(){
+    this.assetsForPdf$.next([]);
+    this.localStorage.removeLocalStorageSessions(this.entityType);
+    this.numOfSelections$.next(0);
+  }
+
   getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
 
         const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
