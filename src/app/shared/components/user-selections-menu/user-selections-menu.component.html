@@ -640,7 +640,10 @@
           </td>
         </tr>
         <tr>
-          <td style="color: blue; text-decoration: underline; font-size: 12px;" id="link"><a href="https://fibrotex-tech.com/">fibrotex-tech.com</a></td>
+          <td style="color: blue; text-decoration: underline; font-size: 12px;" id="link">
+            <a *ngIf="appConfigSettings === AppConfigSettings.GLOBAL" href="https://fibrotex-tech.com/">fibrotex-tech.com</a>
+            <a *ngIf="appConfigSettings === AppConfigSettings.USA" href="https://fibrotexusa.com/">fibrotexusa.com</a>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -879,7 +882,12 @@
                 Please contact our marketing team and share the PDF at
               </td>
               <td style="font-size: 14px; color: blue; text-align: left;">
-                marketing@fibrotex-tech.com.
+                <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
+                  marketing@fibrotex-tech.com.
+                </span>
+                <span *ngIf="appConfigSettings === AppConfigSettings.USA">
+                  bizdev@fibrotexusa.com.
+                </span>
              </td>
             <tr>
               <td style="font-size: 14px; color: black;">

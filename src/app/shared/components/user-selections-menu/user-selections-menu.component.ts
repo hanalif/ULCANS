@@ -37,7 +37,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   patternsTitles: string[] = ['Side A', 'Pattern',  'Design' ,'Side B', 'Pattern',  'Design' ,' Type' ];
   assetTitles: string[] = ['Name', 'Length', 'Width', 'Height' ];
 
-  date = this.transformDate(new Date);
+  date!: String | Date | null;
+
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
   public indexForTablePdf: number = -1;
@@ -52,9 +53,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   appConfigSettings!: AppConfirmationSelections;
   appConfigSettingsSubscription!: Subscription;
 
-  transformDate(date: Date) {
-    return this.datePipe.transform(date, 'dd/MM/yyyy');
-  }
 
   constructor(
     private userSelectionService: UserSelectionService,
@@ -72,6 +70,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.appConfigSettingsSubscription = this.appConfigService.getCurrAppConfigSettings().subscribe(currAppSettings=>{
       this.appConfigSettings = currAppSettings;
+      this.date = this.transformDate(new Date);
     });
     this.assetsForPdfSubscription = this.userSelectionService.assetsForPdf$.subscribe(assetsForPdf=>{
       let assetsForDisplay = this.userSelectionService.getAssetsForDisplay(assetsForPdf);
@@ -93,6 +92,20 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
           this.userSelectionService.setIsDisabled(false);
         }
       })
+  }
+
+  transformDate(date: Date) {
+    let dateGl = this.datePipe.transform(date, 'dd/MM/yyyy');
+    let dateUs = this.datePipe.transform(date, 'MM/dd/yyyy');
+    if(this.appConfigSettings === AppConfirmationSelections.GLOBAL){
+      return dateGl;
+    }
+    if(this.appConfigSettings === AppConfirmationSelections.USA){
+      return dateUs;
+    }
+
+    return date;
+
   }
 
   onEditAsset(assetId: string, $event: Event, isInList: boolean, userSelectionId: string | undefined){
@@ -391,7 +404,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
     autoTable(doc, {
       useCss: true,
       html: '.marketing-table',
-      tableWidth: 413,
+      tableWidth: this.appConfigSettings === this.AppConfigSettings.GLOBAL? 413 : 393,
       theme: 'plain',
     });
 
