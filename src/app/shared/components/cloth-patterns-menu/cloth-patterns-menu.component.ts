@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { EMPTY, ReplaySubject, Subscription, of, switchMap, takeUntil } from 'rxjs';
+import { EMPTY, Observable, ReplaySubject, Subscription, of, switchMap, takeUntil } from 'rxjs';
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import Swiper, { Navigation, Thumbs } from 'swiper';
@@ -8,6 +8,8 @@ import { SystemSide } from '../../models/system-side.model';
 import { UserSelectionService } from '../../services/user-selection.service';
 import { ClothPattern } from 'src/app/configurations/environments-and-types/models/clothPattern.model';
 import { ActivatedRoute } from '@angular/router';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 
 
 @Component({
@@ -30,12 +32,21 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
   isFromUserMenu: boolean = false;
   userSelectionToEditId: string | undefined;
+  public AppConfigSettings = AppConfirmationSelections;
+  appConfigSettings!: AppConfirmationSelections;
+  appConfigSettingsSubscription!: Subscription;
 
 
-  constructor(private environmentsService: EnvironmentsService, private userSelectionService: UserSelectionService, private route: ActivatedRoute) { }
+  constructor(private environmentsService: EnvironmentsService,
+              private userSelectionService: UserSelectionService,
+              private route: ActivatedRoute,
+              private appConfigService: AppConfigurationService) { }
 
 
   ngOnInit() {
+    this.appConfigSettingsSubscription = this.appConfigService.getCurrAppConfigSettings().pipe(takeUntil(this.destroyed$)).subscribe(currAppSettings=>{
+      this.appConfigSettings = currAppSettings;
+    });
     this.environmentsService.currClothPatterns$.pipe(takeUntil(this.destroyed$)).subscribe(currClothPatterns=>{
       this.clothPatterns = currClothPatterns as ClothPattern[];
     })
