@@ -106,8 +106,23 @@
   }
 }
 
+.selection-btns{
+  &.with-txt{
+    display: flex;
+    gap: 2px;
+
+  }
+}
+
 .icon-btn{
   background-color: transparent;
+
+  &.with-txt{
+    width: fit-content;
+    display: flex;
+    gap: 5px;
+
+  }
 
 
     &.edit-btn{

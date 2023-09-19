@@ -276,14 +276,22 @@
                   </div>
                   </app-accordion-item>
                 </app-accordion>
-              <div class="selection-btns">
+              <div
+                class="selection-btns"
+                [ngClass]="{'with-txt': appConfigSettings === AppConfigSettings.USA}">
                 <button
+                [ngClass]="{'with-txt': appConfigSettings === AppConfigSettings.USA}"
                   (click)="onDeleteSelection(userSelection.id)"
                   class="icon-btn"
                 >
+                  <span *ngIf="appConfigSettings === AppConfigSettings.USA">Clear Selection</span>
                   <ion-icon name="trash-outline"></ion-icon>
                 </button>
-                <button (click)="onDownloadPdf(i)" class="icon-btn">
+                <button
+                    (click)="onDownloadPdf(i)"
+                    [ngClass]="{'with-txt': appConfigSettings === AppConfigSettings.USA}"
+                    class="icon-btn">
+                  <span *ngIf="appConfigSettings === AppConfigSettings.USA">Generate PDF</span>
                   <ion-icon name="download-outline"></ion-icon>
                 </button>
               </div>
@@ -574,14 +582,22 @@
                   </app-accordion>
                 </div>
                 <div class="card-buttom">
-                  <div class="selection-btns">
+                  <div
+                    class="selection-btns"
+                    [ngClass]="{'with-txt': appConfigSettings === AppConfigSettings.USA}">
                     <button
+                      [ngClass]="{'with-txt': appConfigSettings === AppConfigSettings.USA}"
                       (click)="onDeleteSelection(userSelection.id)"
                       class="icon-btn"
                     >
+                      <span *ngIf="appConfigSettings === AppConfigSettings.USA">Clear Selection</span>
                       <ion-icon name="trash-outline"></ion-icon>
                     </button>
-                    <button (click)="onDownloadPdf(i)" class="icon-btn">
+                    <button
+                      (click)="onDownloadPdf(i)"
+                      [ngClass]="{'with-txt': appConfigSettings === AppConfigSettings.USA}"
+                      class="icon-btn">
+                      <span *ngIf="appConfigSettings === AppConfigSettings.USA">Generate PDF</span>
                       <ion-icon name="download-outline"></ion-icon>
                     </button>
                   </div>

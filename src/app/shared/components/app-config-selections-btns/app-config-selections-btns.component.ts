@@ -7,6 +7,7 @@ import { AssetsService } from 'src/app/configurations/services/assets/assets.ser
 import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from '../../models/alert-confirmation.enum';
 import { UserSelectionService } from '../../services/user-selection.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-config-selections-btns',
@@ -40,7 +41,8 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
   constructor(private appConfigService: AppConfigurationService,
               private assetsService:AssetsService,
               private alertController: AlertController,
-              private userSelectionsService: UserSelectionService) { }
+              private userSelectionsService: UserSelectionService,
+              private route: Router) { }
 
   ngOnInit() {
     this.initialAppConfigSubscription = this.appConfigService.getCurrAppConfigSettings().subscribe(currConfig=>{
@@ -58,6 +60,7 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
           let isLeavePage = alertResult == AlertConfirmationType.Confirm;
           if(isLeavePage){
             this.userSelectionsService.resetUserSelections();
+            this.route.navigate(['home']);
             return this.assetsService.setAssets(configVal);
           }
           return of();
