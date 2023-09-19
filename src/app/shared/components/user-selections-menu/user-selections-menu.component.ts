@@ -15,6 +15,8 @@ import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
 import { AssetForPdf } from '../../models/asset-for-pdf.model';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 
 
 @Component({
@@ -46,6 +48,10 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   currUserSelectionSubscription!: Subscription;
   currUserSelection!: AssetForPdf | null;
 
+  public AppConfigSettings = AppConfirmationSelections;
+  appConfigSettings!: AppConfirmationSelections;
+  appConfigSettingsSubscription!: Subscription;
+
   transformDate(date: Date) {
     return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
@@ -59,10 +65,14 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private datePipe: DatePipe,
     private alertController: AlertController,
     private menuCategoriesService: MenuCategoriesService,
-    private route: Router
+    private route: Router,
+    private appConfigService: AppConfigurationService
     ) { }
 
   ngOnInit() {
+    this.appConfigSettingsSubscription = this.appConfigService.getCurrAppConfigSettings().subscribe(currAppSettings=>{
+      this.appConfigSettings = currAppSettings;
+    });
     this.assetsForPdfSubscription = this.userSelectionService.assetsForPdf$.subscribe(assetsForPdf=>{
       let assetsForDisplay = this.userSelectionService.getAssetsForDisplay(assetsForPdf);
       if(assetsForDisplay.length === -1 || assetsForDisplay.length === 0 ){
@@ -137,6 +147,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     this.assetsForPdfSubscription?.unsubscribe();
     this.isDiabledSubscription?.unsubscribe();
     this.currUserSelectionSubscription?.unsubscribe();
+    this.appConfigSettingsSubscription.unsubscribe();
   }
 
   onDeleteSelection(userSlectionId: string | undefined){

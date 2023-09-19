@@ -228,9 +228,18 @@
                                   alt="sidaA-pic"
                                 />
                               </div>
-                              {{userSelection.sideA.environment.clothPatterns[
-                                userSelection.sideA.indexForPatternUrl
-                              ].nameGl}}
+                              <ng-container
+                              ></ng-container>
+                              <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
+                                {{userSelection.sideA.environment.clothPatterns[
+                                  userSelection.sideA.indexForPatternUrl
+                                ].nameGl}}
+                              </span>
+                              <span *ngIf="appConfigSettings === AppConfigSettings.USA">
+                                {{userSelection.sideA.environment.clothPatterns[
+                                  userSelection.sideA.indexForPatternUrl
+                                ].nameUs}}
+                                </span>
                             </td>
                             <td>
                               {{ userSelection.sideB.environment.typeName }}
@@ -246,9 +255,16 @@
                                   alt="sideB-pic"
                                 />
                               </div>
-                              {{userSelection.sideB.environment.clothPatterns[
-                                userSelection.sideB.indexForPatternUrl
-                              ].nameGl}}
+                              <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
+                                {{userSelection.sideB.environment.clothPatterns[
+                                  userSelection.sideB.indexForPatternUrl
+                                ].nameGl}}
+                              </span>
+                              <span *ngIf="appConfigSettings === AppConfigSettings.USA">
+                                {{userSelection.sideB.environment.clothPatterns[
+                                  userSelection.sideB.indexForPatternUrl
+                                ].nameUs}}
+                              </span>
                             </td>
                             <td>
                               {{ userSelection.ulcansType.name }}
@@ -494,9 +510,17 @@
                             tableHeaderTitles[12]
                           }} / {{ userSelection.sideA.environment.typeName }}</span>
                           <span class="card-row_content mobile">
-                            {{userSelection.sideA.environment.clothPatterns[
-                              userSelection.sideA.indexForPatternUrl
-                            ].nameGl}}
+
+                            <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
+                              {{userSelection.sideA.environment.clothPatterns[
+                                userSelection.sideA.indexForPatternUrl
+                              ].nameGl}}
+                            </span>
+                            <span *ngIf="appConfigSettings === AppConfigSettings.USA">
+                              {{userSelection.sideA.environment.clothPatterns[
+                                userSelection.sideA.indexForPatternUrl
+                              ].nameUs}}
+                            </span>
                             <div class="card-img">
                               <img
                                 [src]="
@@ -514,9 +538,17 @@
                             tableHeaderTitles[13]
                           }} / {{ userSelection.sideB.environment.typeName }} </span>
                           <span class="card-row_content mobile">
-                            {{userSelection.sideB.environment.clothPatterns[
-                              userSelection.sideB.indexForPatternUrl
-                            ].nameGl}}
+
+                            <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
+                              {{userSelection.sideB.environment.clothPatterns[
+                                userSelection.sideB.indexForPatternUrl
+                              ].nameGl}}
+                            </span>
+                            <span *ngIf="appConfigSettings === AppConfigSettings.USA">
+                              {{userSelection.sideB.environment.clothPatterns[
+                                userSelection.sideB.indexForPatternUrl
+                              ].nameUs}}
+                            </span>
                             <div class="card-img">
                               <img
                                 [src]="
@@ -789,9 +821,16 @@
             />
           </td>
           <td>
-            {{assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
-              assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
-            ].nameGl}}
+            <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
+              {{assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
+                assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+              ].nameGl}}
+              </span>
+            <span *ngIf="appConfigSettings === AppConfigSettings.USA">
+              {{assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
+                assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+              ].nameUs}}
+              </span>
           </td>
           <td>
             {{ assetsForDisplay[indexForTablePdf].sideB.environment.typeName }}
@@ -807,9 +846,16 @@
             />
           </td>
           <td>
-            {{assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
-              assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
-            ].nameGl}}
+            <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
+              {{assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
+                assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+              ].nameGl}}
+              </span>
+            <span *ngIf="appConfigSettings === AppConfigSettings.USA">
+              {{assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
+                assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+              ].nameUs}}
+              </span>
           </td>
           <td>
             {{ assetsForDisplay[indexForTablePdf].ulcansType.name }}
