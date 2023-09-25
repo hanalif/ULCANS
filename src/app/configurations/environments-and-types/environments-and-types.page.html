@@ -12,43 +12,62 @@
             <div class="title">
              Environment And Type
             </div>
-          </div>
-        </div>
-        <div class="page-row">
-          <div class="top">
-            <div class="title">
-              Choose Your Environment:
-            </div>
-          </div>
-          <div class="cards-container">
-            <div *ngFor="let side of sides" class="card">
-              <div class="card-content">
-                <div class="card-top">
-                  <div class="card-title side-title">
-                    Side {{side}}:
+            <app-tab>
+              <app-tab-item>
+                <div tabItemHeader>
+                  Custom
+                </div>
+                <div tabItemBody>
+                  <div>
+                  <div class="page-row">
+                    <div class="top">
+                      <div class="title">
+                        Choose Your Environment:
+                      </div>
+                    </div>
+                    <div class="cards-container">
+                      <div *ngFor="let side of sides" class="card">
+                        <div class="card-content">
+                          <div class="card-top">
+                            <div class="card-title side-title">
+                              Side {{side}}:
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <app-environments-radio-btn [currUserSelection]="currUserSelection" [currSide]="side"></app-environments-radio-btn>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="page-row">
+                    <div class="top">
+                      <div class="title">
+                        Choose Your System Type:
+                      </div>
+                    </div>
+                    <div class="cards-container">
+                      <div class="card system-card">
+                        <div class="card-content">
+                          <div class="card-body system-card-body">
+                            <app-types-select-btn [currUserSelection]="currUserSelection" ></app-types-select-btn>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="card-body">
-                  <app-environments-radio-btn [currUserSelection]="currUserSelection" [currSide]="side"></app-environments-radio-btn>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="page-row">
-          <div class="top">
-            <div class="title">
-              Choose Your System Type:
-            </div>
-          </div>
-          <div class="cards-container">
-            <div class="card system-card">
-              <div class="card-content">
-                <div class="card-body system-card-body">
-                  <app-types-select-btn [currUserSelection]="currUserSelection" ></app-types-select-btn>
+              </app-tab-item>
+              <app-tab-item>
+                <div tabItemHeader>
+                  Choose POR Variant
                 </div>
-              </div>
-            </div>
+                <div tabItemBody>
+                  Tab body 2
+                </div>
+              </app-tab-item>
+            </app-tab>
           </div>
         </div>
       </div>

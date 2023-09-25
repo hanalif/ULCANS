@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AppConfirmationSelections } from './app-configurations.enum';
 import { BehaviorSubject} from 'rxjs';
 import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { AppConfigData } from './app-config-data.model';
 
 
 
@@ -16,7 +18,7 @@ export class AppConfigurationService {
 
   private readonly appConfigKey: string = 'appCofig';
   private appEnvironment = environment;
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getShowOnlyHeaderConfigBtnsValue(){
     return this.showOnlyHeaderConfigBtns$.getValue();
@@ -32,6 +34,10 @@ export class AppConfigurationService {
 
   getCurrAppConfigSettings(){
     return this.currAppConfigSettings$.asObservable();
+  }
+
+  getCurrAppConfigSettingsValue(){
+    return this.currAppConfigSettings$.getValue();
   }
 
 getShowOnlyHeaderConfigBtns(){
@@ -66,6 +72,11 @@ getShowOnlyHeaderConfigBtns(){
     if(!this.showOnlyHeaderConfigBtns$.getValue()){
       this.showOnlyHeaderConfigBtns$.next(true);
     }
+
+  }
+
+  getAppConfigurationsData(){
+    return this.http.get<AppConfigData[]>('assets/appConfigData.json')
 
   }
 

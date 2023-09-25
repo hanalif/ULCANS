@@ -1,0 +1,16 @@
+<div class="tab">
+  <div class="tab-item-headers">
+    <div *ngFor="let tabItem of tabItems; let i = index">
+      <div class="tab-item-header" [ngClass]="{selected: openedItemIndex === i}" (click)="onTabItemClicked(i)">
+        <ng-container [ngTemplateOutlet]="tabItem.tabItemHeader" [ngTemplateOutletContext]="this"></ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let tabItem of tabItems; let i = index" class="tab-item-bodies">
+    <div class="tab-item-body" *ngIf="openedItemIndex === i">
+      <ng-container [ngTemplateOutlet]="tabItem.tabItemBody" [ngTemplateOutletContext]="this"></ng-container>
+    </div>
+  </div>
+
+</div>

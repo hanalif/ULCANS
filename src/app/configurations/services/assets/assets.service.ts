@@ -8,6 +8,7 @@ import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { MToFtPipe } from 'src/app/shared/pipes/m-to-ft.pipe';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 
 
 @Injectable({providedIn: 'root'})
@@ -24,6 +25,7 @@ export class AssetsService {
     private utilService:UtilService,
     private mToFtPipe: MToFtPipe,
     private localStorage: StorageService,
+    private appConfigService: AppConfigurationService
     ) { }
 
   getSearchResultAssets(searchKey: string){
@@ -104,7 +106,7 @@ export class AssetsService {
       },
       isInList: false,
       initialMeasureType: measureType,
-      appConfig: 0
+      appConfig: this.appConfigService.getCurrAppConfigSettingsValue()
     }
 
 

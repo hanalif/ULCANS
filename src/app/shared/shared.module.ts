@@ -21,12 +21,62 @@ import { SqftToSqmPipe } from './pipes/sqft-to-sqm.pipe';
 import { BtnSelectionComponent } from './components/btn-selection/btn-selection.component';
 import {Swiper} from 'swiper';
 import { AppConfigSelectionsBtnsComponent } from './components/app-config-selections-btns/app-config-selections-btns.component';
+import { TabComponent } from './components/tab/tab.component';
+import { TabItemComponent } from './components/tab/tab-item/tab-item.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, BtnSelectionComponent,MainBtnComponent, SqftToSqmPipe ,FtToMPipe, MToFtPipe,AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, ClothPatternsMenuComponent,AppConfigSelectionsBtnsComponent],
-  imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule, NgScrollbarModule ],
-  exports: [HeaderComponent,BtnSelectionComponent, MainBtnComponent,SqftToSqmPipe, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent,NgScrollbarModule, ClothPatternsMenuComponent, AppConfigSelectionsBtnsComponent],
-  providers:[ FtToMPipe ,MToFtPipe, SqftToSqmPipe,FileOpener, File, Swiper]
+  declarations:
+  [
+    HeaderComponent,
+    BtnSelectionComponent,
+    MainBtnComponent,
+    SqftToSqmPipe ,
+    FtToMPipe,
+    MToFtPipe,
+    AccordionComponent,
+    AccordionItemComponent,
+    UserSelectionsMenuComponent,
+    ClothPatternsMenuComponent,
+    AppConfigSelectionsBtnsComponent,
+    TabComponent,
+    TabItemComponent
+  ],
+  imports:
+  [
+    IonicModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
+    NgScrollbarModule
+  ],
+  exports:
+  [
+    HeaderComponent,
+    BtnSelectionComponent,
+    MainBtnComponent,
+    SqftToSqmPipe,
+    FtToMPipe,
+    FormsModule,
+    AccordionComponent,
+    AccordionItemComponent,
+    UserSelectionsMenuComponent,
+    NgScrollbarModule,
+    ClothPatternsMenuComponent,
+    AppConfigSelectionsBtnsComponent,
+    TabComponent,
+    TabItemComponent
+  ],
+  providers:
+  [
+    FtToMPipe,
+    MToFtPipe,
+    SqftToSqmPipe,
+    FileOpener,
+    File,
+    Swiper
+  ]
 })
 export class SharedModule {}

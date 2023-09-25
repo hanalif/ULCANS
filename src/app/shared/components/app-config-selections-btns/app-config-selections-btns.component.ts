@@ -8,6 +8,7 @@ import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from '../../models/alert-confirmation.enum';
 import { UserSelectionService } from '../../services/user-selection.service';
 import { Router } from '@angular/router';
+import { AppConfigData } from 'src/app/app-configurations/app-config-data.model';
 
 @Component({
   selector: 'app-config-selections-btns',
@@ -22,21 +23,7 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
   initialAppConfigSubscription!: Subscription;
 
 
-  btnsData =
-  [
-    {
-      code: AppConfirmationSelections.USA,
-      txt: 'USA',
-      shortTxt: 'US',
-      imgLink: '../../../assets/imgs/logo/usa.png'
-    },
-    {
-      code: AppConfirmationSelections.GLOBAL,
-      txt: 'GLOBAL',
-      shortTxt: 'GL',
-      imgLink: '../../../assets/imgs/logo/global.png'
-    }
-  ]
+  btnsData!: AppConfigData[];
 
   constructor(private appConfigService: AppConfigurationService,
               private assetsService:AssetsService,
@@ -49,6 +36,9 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
       this.initialAppConfirmationSelection = currConfig;
     })
 
+    this.appConfigService.getAppConfigurationsData().subscribe(appConfigData=>{
+      this.btnsData = appConfigData;
+    });
 
   }
 

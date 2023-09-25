@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, isDevMode } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
-import { Observable, ReplaySubject, takeUntil } from 'rxjs';
+import { Observable, ReplaySubject, map, takeUntil } from 'rxjs';
 import { Animations } from './angular-animations/animations';
 import { EnvironmentsService } from './configurations/environments-and-types/services/environments.service';
 import { SystemTypesService } from './configurations/environments-and-types/services/system-types.service';
@@ -10,6 +10,7 @@ import { UserSelectionService } from './shared/services/user-selection.service';
 import { AppConfigurationService } from './app-configurations/app-configurations.service';
 import { UtilService } from './shared/services/util.service';
 import { AppConfirmationSelections } from './app-configurations/app-configurations.enum';
+import { AssetForPdf } from './shared/models/asset-for-pdf.model';
 
 
 
@@ -32,19 +33,21 @@ export class AppComponent implements OnInit, OnDestroy {
     private assetsService: AssetsService,
     private environmetsService: EnvironmentsService,
     private systemTypesService: SystemTypesService,
-    private appConfigService: AppConfigurationService
+    private appConfigService: AppConfigurationService,
+    private utilService: UtilService
     ) {}
 
 
   ngOnInit(): void {
     this.appCurrConfigVal = this.appConfigService.setAndGetInitialAppConfig();
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
-    this.userSelectionsService._initialUserSelections().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.userSelectionsService._initialUserSelections(this.appCurrConfigVal).pipe(takeUntil(this.destroyed$)).subscribe();
     this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();
     this.assetsService.setAssets(this.appCurrConfigVal).pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
     this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();
+    console.log(this.utilService._makeId());
   }
 
   onBackdropClicked(val:boolean){

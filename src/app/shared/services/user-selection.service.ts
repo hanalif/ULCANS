@@ -11,6 +11,8 @@ import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
 import { UtilService } from './util.service';
 import { SystemTypesService } from 'src/app/configurations/environments-and-types/services/system-types.service';
 import { StorageService } from './storage.service';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 
 
 @Injectable({
@@ -235,9 +237,7 @@ export class UserSelectionService {
 
   }
 
-
-
-  _initialUserSelections(){
+  _initialUserSelections(appCurrConfigVal: AppConfirmationSelections){
     let userSelectionsFromStorage = this.localStorage.get<AssetForPdf>(this.entityType);
 
     if(userSelectionsFromStorage.length !== 0){

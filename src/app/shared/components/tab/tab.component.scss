@@ -1,0 +1,35 @@
+.tab{
+
+  .tab-item-headers{
+    display: flex;
+    font-size: 25px;
+    font-family: Babas-pro, sans-serif;
+    border-bottom: 1px solid grey;
+  }
+
+
+
+  .tab-item-header{
+    border-top: 1px solid grey;
+    border-inline-start: 1px solid grey;
+    border-inline-end: 1px solid grey;
+    border-radius: 5px 7px 0px 0px;
+    padding: 20px;
+    width: 200px;
+
+    &.selected{
+      &::after{
+        content: "";
+        border-bottom: 1px solid black;
+      }
+      color: red;
+
+    }
+  }
+
+  .tab-item-bodies{
+    padding-top: 20px;
+  }
+
+
+}
