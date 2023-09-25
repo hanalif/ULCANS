@@ -33,8 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private assetsService: AssetsService,
     private environmetsService: EnvironmentsService,
     private systemTypesService: SystemTypesService,
-    private appConfigService: AppConfigurationService,
-    private utilService: UtilService
+    private appConfigService: AppConfigurationService
     ) {}
 
 
@@ -47,7 +46,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
     this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();
-    console.log(this.utilService._makeId());
   }
 
   onBackdropClicked(val:boolean){

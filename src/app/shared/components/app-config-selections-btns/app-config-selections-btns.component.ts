@@ -50,7 +50,7 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
           let isLeavePage = alertResult == AlertConfirmationType.Confirm;
           if(isLeavePage){
             this.userSelectionsService.resetUserSelections();
-            this.route.navigate(['home']);
+            this.route.navigate(['home'], {queryParams: {isFromAppConfigCmp: true}});
             return this.assetsService.setAssets(configVal);
           }
           return of();
@@ -60,7 +60,6 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
       this.assetsService.setAssets(configVal).subscribe();
     }
     this.appConfigService.setAppConfig(configVal);
-
   }
 
   ngOnDestroy(): void {

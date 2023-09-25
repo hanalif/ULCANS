@@ -5,6 +5,7 @@ import { UserSelectionService } from "src/app/shared/services/user-selection.ser
 import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from "src/app/shared/models/alert-confirmation.enum";
 import { AssetForPdf } from "src/app/shared/models/asset-for-pdf.model";
+import { AppConfigurationService } from "src/app/app-configurations/app-configurations.service";
 
 
 @Injectable({
@@ -14,7 +15,8 @@ import { AssetForPdf } from "src/app/shared/models/asset-for-pdf.model";
 export class UserSelectionGuard implements CanDeactivate<unknown>{
   constructor(
     private userSelectionsService: UserSelectionService,
-    private alertController: AlertController){}
+    private alertController: AlertController,
+    private appConfigService: AppConfigurationService){}
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -61,10 +63,10 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
     const assetId: string | undefined = (this.userSelectionsService.userCurrSelection$.value)?.assetId;
     const currUserSelection: AssetForPdf | null = this.userSelectionsService.getCurrUserSelectionValue();
     const isFromUserMenu: boolean | undefined = currentRoute.queryParams['isFromUserSelectionsMenu'];
+    const isFromAppConfigCmp: boolean | undefined = nextState.root.queryParams['isFromAppConfigCmp'];
 
     if(isFromUserMenu){
       return true;
-
     }
 
     if(currUserSelection === null){
@@ -79,12 +81,14 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
 
       if(currentState.url.includes(assetId)){
 
-        if((currentState.url.includes('environments-and-types'))){
+        if((-currentState.url.includes('environments-andtypes'))){
 
           if(nextState.url.includes(assetId)){
-
             return true;
+          }
 
+          if(isFromAppConfigCmp){
+            return true;
           }
 
           return from(this.presentAlert()).pipe(
