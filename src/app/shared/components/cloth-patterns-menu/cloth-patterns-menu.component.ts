@@ -3,7 +3,7 @@ import { EMPTY, Observable, ReplaySubject, Subscription, of, switchMap, takeUnti
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import Swiper, { Navigation, Thumbs } from 'swiper';
-import { AssetForPdf } from '../../models/asset-for-pdf.model';
+import { AssetForPdf } from '../../models/user-selections.model';
 import { SystemSide } from '../../models/system-side.model';
 import { UserSelectionService } from '../../services/user-selection.service';
 import { ClothPattern } from 'src/app/configurations/environments-and-types/models/clothPattern.model';

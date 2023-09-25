@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
-import { AssetForPdf } from '../../models/asset-for-pdf.model';
+import { AssetForPdf } from '../../models/user-selections.model';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 

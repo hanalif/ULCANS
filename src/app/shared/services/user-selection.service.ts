@@ -3,7 +3,7 @@ import { BehaviorSubject, of } from 'rxjs';
 import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
 import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
 import { AssetForDisplay } from '../models/asset-for-display';
-import { AssetForPdf } from '../models/asset-for-pdf.model';
+import { AssetForPdf } from '../models/user-selections.model';
 import { Platform } from '@ionic/angular';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import { SystemSide } from '../models/system-side.model';
@@ -11,7 +11,6 @@ import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
 import { UtilService } from './util.service';
 import { SystemTypesService } from 'src/app/configurations/environments-and-types/services/system-types.service';
 import { StorageService } from './storage.service';
-import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 
 

@@ -4,7 +4,7 @@ import { EMPTY, from, map, Observable, tap } from "rxjs";
 import { UserSelectionService } from "src/app/shared/services/user-selection.service";
 import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from "src/app/shared/models/alert-confirmation.enum";
-import { AssetForPdf } from "src/app/shared/models/asset-for-pdf.model";
+import { AssetForPdf } from "src/app/shared/models/user-selections.model";
 import { AppConfigurationService } from "src/app/app-configurations/app-configurations.service";
 
 

@@ -3,7 +3,7 @@ import {
   Resolve,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
+import { AssetForPdf } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { AssetForPreview } from '../../models/assetForPreview.model';
 import { AssetsService } from '../../services/assets/assets.service';

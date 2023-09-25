@@ -8,9 +8,8 @@ import { AssetsService } from './configurations/services/assets/assets.service';
 import { ConfigurationsService } from './configurations/services/configurationsService/configurations.service';
 import { UserSelectionService } from './shared/services/user-selection.service';
 import { AppConfigurationService } from './app-configurations/app-configurations.service';
-import { UtilService } from './shared/services/util.service';
 import { AppConfirmationSelections } from './app-configurations/app-configurations.enum';
-import { AssetForPdf } from './shared/models/asset-for-pdf.model';
+
 
 
 

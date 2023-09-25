@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../../models/asset.model';

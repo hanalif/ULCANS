@@ -1,4 +1,3 @@
-import { MeasureType } from "./measure-type.enum";
 import { SystemSide } from "./system-side.model";
 
 export interface AssetForPdf{
@@ -10,5 +9,5 @@ export interface AssetForPdf{
   systemTypeId: string,
   isCustomConfiguration: boolean,
   wasStartedFromCalculator: boolean,
-  initialIndexses: number[];
+  initialIndexses: number[]
 }

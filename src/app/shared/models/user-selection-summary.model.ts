@@ -1,4 +1,4 @@
-import { AssetForPdf } from "./asset-for-pdf.model";
+import { AssetForPdf } from "./user-selections.model";
 
 export interface UserSelectionSummary{
   assetsForPdf: AssetForPdf[]

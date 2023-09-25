@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
+import { AssetForPdf } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { SystemType } from '../../models/type.model';
 import { SystemTypesService } from '../../services/system-types.service';

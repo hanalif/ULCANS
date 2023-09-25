@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ReplaySubject, Subscription, takeUntil } from 'rxjs';
-import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
+import { AssetForPdf } from 'src/app/shared/models/user-selections.model';
 import { Environment } from '../../models/environment.model';
 import { EnvironmentsService } from '../../services/environments.service';
 
