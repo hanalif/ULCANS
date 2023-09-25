@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, tap } from 'rxjs';
-import { AssetForPdf } from 'src/app/shared/models/user-selections.model';
+import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 
 
@@ -21,7 +21,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   isFromUserSelectionsSubscription: Subscription | undefined;
   userSelectionToUpdateId: string | undefined;
 
-  currUserSelection!:AssetForPdf;
+  currUserSelection!:UserSelections;
 
   constructor(
     private router: Router,
@@ -37,10 +37,10 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
       if(this.isFromUserSelections){
         this.userSelectionToUpdateId = params['userSelectionToUpdateId'];
         if(this.userSelectionToUpdateId){
-          this.currUserSelection = this.userSelectionsService.getUserSelectionById(this.userSelectionToUpdateId) as AssetForPdf;
+          this.currUserSelection = this.userSelectionsService.getUserSelectionById(this.userSelectionToUpdateId) as UserSelections;
         }
       }else{
-          this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as AssetForPdf;
+          this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as UserSelections;
       }
     })
 
@@ -61,11 +61,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
         this.userSelectionsService.setIsUserSelectionsMenuOpen(true);
 
       }else{
-        let userSelectios: Partial<AssetForPdf> = {
+        let userSelectios: Partial<UserSelections> = {
           initialIndexses: [0,1,2]
         }
         this.userSelectionsService.updateCurrUserSelections(userSelectios);
-        this.userSelectionsService.addAssetForPdf();
+        this.userSelectionsService.addUserSelection();
       }
 
       this.router.navigate(['/configurations/typical-configurations']);

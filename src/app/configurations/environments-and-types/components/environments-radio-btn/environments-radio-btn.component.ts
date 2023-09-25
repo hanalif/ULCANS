@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ReplaySubject, Subscription, takeUntil } from 'rxjs';
-import { AssetForPdf } from 'src/app/shared/models/user-selections.model';
+import {UserSelections} from 'src/app/shared/models/user-selections.model';
 import { Environment } from '../../models/environment.model';
 import { EnvironmentsService } from '../../services/environments.service';
 
@@ -14,7 +14,7 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy, OnChang
 
   environmentIdSelection!: string;
   @Input() currSide!:string;
-  @Input() currUserSelection!: AssetForPdf
+  @Input() currUserSelection!: UserSelections
   environments!:Environment[];
 
   constructor(private environmentsService: EnvironmentsService) { }
@@ -28,7 +28,7 @@ export class EnvironmentsRadioBtnComponent implements OnInit, OnDestroy, OnChang
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue;
+    let currUserSelection: UserSelections = changes['currUserSelection'].currentValue;
 
     if(currUserSelection.sideA !== undefined){
       if(this.currSide === 'A'){

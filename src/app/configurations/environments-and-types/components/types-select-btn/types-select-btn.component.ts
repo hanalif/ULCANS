@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { AssetForPdf } from 'src/app/shared/models/user-selections.model';
+import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { SystemType } from '../../models/type.model';
 import { SystemTypesService } from '../../services/system-types.service';
@@ -17,7 +17,7 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
   isFromUserMenu: boolean = false;
   isFromMenuSubscription!: Subscription;
   userSelectionToUpdateId: string | undefined;
-  @Input() currUserSelection!: AssetForPdf;
+  @Input() currUserSelection!: UserSelections;
   changSrcs: string[] = ['assets/imgs/environments/png-small/check-mark.png', 'assets/imgs/environments/png-small/check-mark-greyBG.png']
 
   constructor(private systemTypesService: SystemTypesService,private userSelectionsService: UserSelectionService, private route: ActivatedRoute) { }
@@ -36,19 +36,19 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
 
   onType(id:string){
     this.systemTypeId = id;
-    let userSelectios: Partial<AssetForPdf> = {
+    let userSelectios: Partial<UserSelections> = {
       systemTypeId: id
     }
     if(this.isFromUserMenu){
-      this.userSelectionsService.addAssetForPdf(userSelectios, this.userSelectionToUpdateId);
+      this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
     }else{
       this.userSelectionsService.updateCurrUserSelections(userSelectios);
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue;
-    let prevUserSelection: AssetForPdf = changes['currUserSelection'].previousValue;
+    let currUserSelection: UserSelections = changes['currUserSelection'].currentValue;
+    let prevUserSelection: UserSelections = changes['currUserSelection'].previousValue;
     if(currUserSelection === prevUserSelection){
       return;
     }

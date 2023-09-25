@@ -3,7 +3,7 @@ import { BehaviorSubject, of } from 'rxjs';
 import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
 import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
 import { AssetForDisplay } from '../models/asset-for-display';
-import { AssetForPdf } from '../models/user-selections.model';
+import {UserSelections } from '../models/user-selections.model';
 import { Platform } from '@ionic/angular';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import { SystemSide } from '../models/system-side.model';
@@ -21,14 +21,14 @@ export class UserSelectionService {
 
   private isUserSelectionsMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
-  public assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
+  public assetsForPdf$: BehaviorSubject<UserSelections[]> = new BehaviorSubject<UserSelections[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private progressBar$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
 
-  public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
+  public userCurrSelection$: BehaviorSubject<UserSelections | null> = new BehaviorSubject<UserSelections | null>(null);
 
   public FOOTER_FORM_TXT: string = "";
   private readonly entityType: string = 'userSelections';
@@ -89,9 +89,9 @@ export class UserSelectionService {
     return this.assetsForPdf$.getValue();
   }
 
-  updateCurrUserSelections(userSelections: Partial<AssetForPdf>){
+  updateCurrUserSelections(userSelections: Partial<UserSelections>){
     let currSelctionValue = this.getCurrUserSelectionValue();
-    currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
+    currSelctionValue = {...currSelctionValue, ...userSelections} as UserSelections;
     let numsOfKeys = Object.values(currSelctionValue).length;
     let progressNum = numsOfKeys * 14.2857;
     this.progressBar$.next(progressNum);
@@ -107,22 +107,22 @@ export class UserSelectionService {
     this.progressBar$.next(0);
   }
 
-  addAssetForPdf(userSelectionToUpdate?: Partial<AssetForPdf>, userSelectionToUpdateId?: string){
-    let assetForPdf: AssetForPdf;
+  addUserSelection(userSelectionToUpdate?: Partial<UserSelections>, userSelectionToUpdateId?: string){
+    let userSelections: UserSelections;
     if(userSelectionToUpdate && userSelectionToUpdateId){
-      assetForPdf = this.updateUserSelection(userSelectionToUpdate, userSelectionToUpdateId) as AssetForPdf;
+      userSelections = this.updateUserSelection(userSelectionToUpdate, userSelectionToUpdateId) as UserSelections;
     } else{
-      assetForPdf = this.getCurrUserSelectionValue() as AssetForPdf;
-      if(!assetForPdf.id){
-        assetForPdf.id = this.utilService._makeId();
+      userSelections = this.getCurrUserSelectionValue() as UserSelections;
+      if(!userSelections.id){
+        userSelections.id = this.utilService._makeId();
       }
     }
 
-    this.addUserSelectionToSelectionsList(assetForPdf);
+    this.addUserSelectionToSelectionsList(userSelections);
 
   }
 
-  addUserSelectionToSelectionsList(userSelection: AssetForPdf){
+  addUserSelectionToSelectionsList(userSelection: UserSelections){
     const assetsForPdf = this.assetsForPdf$.getValue();
     const foundAssetIndex = assetsForPdf.findIndex(a=> a.id === userSelection.id);
     if(foundAssetIndex !== -1){
@@ -138,11 +138,11 @@ export class UserSelectionService {
     this.assetsForPdf$.next(assetsForPdf);
   }
 
-  updateUserSelection(userSelectionToUpdate: Partial<AssetForPdf>, userSelectionToUpdateId: string){
+  updateUserSelection(userSelectionToUpdate: Partial<UserSelections>, userSelectionToUpdateId: string){
     const userSelections = this.assetsForPdf$.getValue();
     let foundUserSelection = userSelections.find(us => us.id == userSelectionToUpdateId);
     if(foundUserSelection){
-      foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as AssetForPdf;
+      foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as UserSelections;
       return foundUserSelection;
     }
     return undefined;
@@ -167,7 +167,7 @@ export class UserSelectionService {
     this.numOfSelections$.next(0);
   }
 
-  getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
+  getAssetsForDisplay(assetsForPdf: UserSelections[]){
 
         const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
 
@@ -237,7 +237,7 @@ export class UserSelectionService {
   }
 
   _initialUserSelections(appCurrConfigVal: AppConfirmationSelections){
-    let userSelectionsFromStorage = this.localStorage.get<AssetForPdf>(this.entityType);
+    let userSelectionsFromStorage = this.localStorage.get<UserSelections>(this.entityType);
 
     if(userSelectionsFromStorage.length !== 0){
       this.numOfSelections$.next(userSelectionsFromStorage.length);

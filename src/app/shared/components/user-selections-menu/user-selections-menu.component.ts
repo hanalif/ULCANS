@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
-import { AssetForPdf } from '../../models/user-selections.model';
+import { UserSelections } from '../../models/user-selections.model';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 
@@ -47,7 +47,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   isDisabled!: boolean;
 
   currUserSelectionSubscription!: Subscription;
-  currUserSelection!: AssetForPdf | null;
+  currUserSelection!: UserSelections | null;
 
   public AppConfigSettings = AppConfirmationSelections;
   appConfigSettings!: AppConfirmationSelections;
@@ -132,7 +132,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
   onAccordionItem(index: number, userSelectionId: string | undefined, initialIndexes: number[]){
-    let userSelectios: Partial<AssetForPdf>;
+    let userSelectios: Partial<UserSelections>;
     let copyOfInitialIndexes = initialIndexes;
     let foundNumber = copyOfInitialIndexes.find(i => i == index);
 

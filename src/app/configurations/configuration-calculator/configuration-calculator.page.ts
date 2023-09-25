@@ -10,7 +10,7 @@ import { FtToMPipe } from 'src/app/shared/pipes/ft-to-m.pipe';
 import { DecimalPipe } from '@angular/common';
 import { AssetMeasures } from '../models/asset-measures.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
-import { AssetForPdf } from 'src/app/shared/models/user-selections.model';
+import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -142,7 +142,7 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
       assetId = this.assetService.generataAndAddAsset(formOutput.assetName, calculatorValue, configurayionId, this.measureType);
     }
 
-    let userSelections: Partial<AssetForPdf>;
+    let userSelections: Partial<UserSelections>;
 
     userSelections = {
       assetId: assetId,

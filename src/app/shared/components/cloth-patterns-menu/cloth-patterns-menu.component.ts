@@ -3,7 +3,7 @@ import { EMPTY, Observable, ReplaySubject, Subscription, of, switchMap, takeUnti
 import { Environment } from 'src/app/configurations/environments-and-types/models/environment.model';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import Swiper, { Navigation, Thumbs } from 'swiper';
-import { AssetForPdf } from '../../models/user-selections.model';
+import { UserSelections } from '../../models/user-selections.model';
 import { SystemSide } from '../../models/system-side.model';
 import { UserSelectionService } from '../../services/user-selection.service';
 import { ClothPattern } from 'src/app/configurations/environments-and-types/models/clothPattern.model';
@@ -149,7 +149,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
         clothPatternIndex: this.selectedPatternIndex
       }
 
-      let userSelections: Partial<AssetForPdf>;
+      let userSelections: Partial<UserSelections>;
 
       if(this.currSide === 'A'){
         userSelections ={
@@ -163,7 +163,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
 
       if(this.isFromUserMenu){
         if(this.userSelectionToEditId){
-          this.userSelectionService.addAssetForPdf(userSelections, this.userSelectionToEditId);
+          this.userSelectionService.addUserSelection(userSelections, this.userSelectionToEditId);
         }
       }else{
         this.userSelectionService.updateCurrUserSelections(userSelections);

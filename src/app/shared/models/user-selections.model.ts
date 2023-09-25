@@ -1,6 +1,6 @@
 import { SystemSide } from "./system-side.model";
 
-export interface AssetForPdf{
+export interface UserSelections{
   id: string,
   assetId: string,
   areSpecialPoles: boolean,
