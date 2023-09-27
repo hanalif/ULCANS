@@ -77,7 +77,6 @@ getShowOnlyHeaderConfigBtns(){
 
   getAppConfigurationsData(){
     return this.http.get<AppConfigData[]>('assets/appConfigData.json')
-
   }
 
 }

@@ -1,3 +1,4 @@
+
 import { SystemSide } from "./system-side.model";
 
 export interface UserSelections{
@@ -9,5 +10,7 @@ export interface UserSelections{
   systemTypeId: string,
   isCustomConfiguration: boolean,
   wasStartedFromCalculator: boolean,
-  initialIndexses: number[]
+  initialIndexses: number[],
+  isPORSelcetions: boolean,
+  porVariantSelectionId?: string
 }

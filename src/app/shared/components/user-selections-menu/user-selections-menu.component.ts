@@ -72,7 +72,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       this.appConfigSettings = currAppSettings;
       this.date = this.transformDate(new Date);
     });
-    this.assetsForPdfSubscription = this.userSelectionService.assetsForPdf$.subscribe(assetsForPdf=>{
+    this.assetsForPdfSubscription = this.userSelectionService.userSelections$.subscribe(assetsForPdf=>{
       let assetsForDisplay = this.userSelectionService.getAssetsForDisplay(assetsForPdf);
       if(assetsForDisplay.length === -1 || assetsForDisplay.length === 0 ){
         this.assetsForDisplay = [];

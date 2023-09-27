@@ -12,7 +12,7 @@
             <div class="title">
              Environment And Type
             </div>
-            <app-tab>
+            <app-tab [displayMode]="tabDisplayMode">
               <app-tab-item>
                 <div tabItemHeader>
                   Custom
@@ -64,7 +64,7 @@
                   Choose POR Variant
                 </div>
                 <div tabItemBody>
-                  Tab body 2
+                  <app-por-selections></app-por-selections>
                 </div>
               </app-tab-item>
             </app-tab>

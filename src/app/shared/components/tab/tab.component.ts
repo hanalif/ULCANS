@@ -1,5 +1,6 @@
-import { Component, ContentChildren, EventEmitter, OnInit, Output, QueryList } from '@angular/core';
+import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from '@angular/core';
 import { TabItemComponent } from './tab-item/tab-item.component';
+import { DisplayHeadersMode } from './models/display-headers-mode';
 
 @Component({
   selector: 'app-tab',
@@ -11,6 +12,8 @@ export class TabComponent implements OnInit {
   @Output() tabItemClicked = new EventEmitter<number>();
   openedItemsIndexesMap: any = {};
   openedItemIndex: number = 0;
+  @Input() displayMode!: DisplayHeadersMode;
+
 
   constructor() { }
 

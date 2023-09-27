@@ -43,6 +43,7 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
   }
 
   onConfigBtn(configVal: AppConfirmationSelections){
+
     let isConfigBtnPushed = this.appConfigService.getShowOnlyHeaderConfigBtnsValue();
     if(isConfigBtnPushed){
       from(this.presentAlert()).pipe(
@@ -51,15 +52,17 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
           if(isLeavePage){
             this.userSelectionsService.resetUserSelections();
             this.route.navigate(['home'], {queryParams: {isFromAppConfigCmp: true}});
+            this.appConfigService.setAppConfig(configVal);
             return this.assetsService.setAssets(configVal);
           }
           return of();
         })
       ).subscribe();
     }else{
+      this.appConfigService.setAppConfig(configVal);
       this.assetsService.setAssets(configVal).subscribe();
+
     }
-    this.appConfigService.setAppConfig(configVal);
   }
 
   ngOnDestroy(): void {

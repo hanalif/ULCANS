@@ -1,8 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, tap } from 'rxjs';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
+import { PORVariant } from './models/por-variant.model';
+import { DisplayHeadersMode } from 'src/app/shared/components/tab/models/display-headers-mode';
 
 
 
@@ -22,15 +26,35 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   userSelectionToUpdateId: string | undefined;
 
   currUserSelection!:UserSelections;
+  currAppEnvironment!: AppConfirmationSelections;
+  currAppEnvironmentSubscriptions!: Subscription;
+  appConfigSettings!: AppConfirmationSelections;
+  tabDisplayMode!: DisplayHeadersMode;
+
+
+  porSelectionsList?: PORVariant;
 
   constructor(
     private router: Router,
     private userSelectionsService: UserSelectionService,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,
+    private appConfigService: AppConfigurationService) { }
 
 
 
   ngOnInit() {
+   this.currAppEnvironmentSubscriptions = this.appConfigService.getCurrAppConfigSettings().subscribe(currAppEnvironment=>{
+    this.currAppEnvironment = currAppEnvironment;
+   })
+
+    this.appConfigService.getCurrAppConfigSettings().subscribe(appConfig=>{
+      this.appConfigSettings = appConfig;
+      this.tabDisplayMode = appConfig == AppConfirmationSelections.GLOBAL? DisplayHeadersMode.dontShowHeaders : DisplayHeadersMode.showHeders;
+    });
+
+
+
+
     this.isFromUserSelectionsSubscription = this.route.queryParams.subscribe(params=>{
       this.isFromUserSelections = params['isFromUserSelectionsMenu'];
 
@@ -74,6 +98,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.isFromUserSelectionsSubscription?.unsubscribe();
+    this.currAppEnvironmentSubscriptions?.unsubscribe();
   }
 
 
