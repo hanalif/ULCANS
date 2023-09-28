@@ -7,6 +7,7 @@
         background-color: #2e2e2e;
         padding: 20px;
         border-radius: 3px;
+        position: relative;
 
         h1{
           font-size: 18px;
@@ -30,6 +31,7 @@
 .card{
   background-color: black;
   padding-block-start: 3px;
+  position: relative;
 
   .card-row{
     border-color: rgb(193, 193, 193);

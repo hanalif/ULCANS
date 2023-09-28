@@ -23,6 +23,8 @@ import {Swiper} from 'swiper';
 import { AppConfigSelectionsBtnsComponent } from './components/app-config-selections-btns/app-config-selections-btns.component';
 import { TabComponent } from './components/tab/tab.component';
 import { TabItemComponent } from './components/tab/tab-item/tab-item.component';
+import { SelectBoxComponent } from './components/select-box/select-box.component';
+import { SelectBoxItemComponent } from './components/select-box/select-box-item/select-box-item.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { TabItemComponent } from './components/tab/tab-item/tab-item.component';
     ClothPatternsMenuComponent,
     AppConfigSelectionsBtnsComponent,
     TabComponent,
-    TabItemComponent
+    TabItemComponent,
+    SelectBoxComponent,
+    SelectBoxItemComponent
   ],
   imports:
   [
@@ -67,7 +71,9 @@ import { TabItemComponent } from './components/tab/tab-item/tab-item.component';
     ClothPatternsMenuComponent,
     AppConfigSelectionsBtnsComponent,
     TabComponent,
-    TabItemComponent
+    TabItemComponent,
+    SelectBoxComponent,
+    SelectBoxItemComponent
   ],
   providers:
   [

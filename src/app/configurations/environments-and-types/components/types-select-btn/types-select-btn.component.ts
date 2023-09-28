@@ -13,6 +13,7 @@ import { SystemTypesService } from '../../services/system-types.service';
 })
 export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
   systemTypes$!: Observable<SystemType[]>;
+  systemTypes!: SystemType[];
   systemTypeId!: string;
   isFromUserMenu: boolean = false;
   isFromMenuSubscription!: Subscription;
@@ -23,6 +24,9 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private systemTypesService: SystemTypesService,private userSelectionsService: UserSelectionService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.systemTypesService.systemTypes$.subscribe(systemTypes=>{
+      this.systemTypes = systemTypes;
+    })
     this.systemTypes$ = this.systemTypesService.systemTypes$;
     this.isFromMenuSubscription = this.route.queryParams.subscribe(params=>{
       this.isFromUserMenu = params['isFromUserSelectionsMenu'];
@@ -34,10 +38,10 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
 
   }
 
-  onType(id:string){
-    this.systemTypeId = id;
+  onType(index: number){
+    console.log(index);
     let userSelectios: Partial<UserSelections> = {
-      systemTypeId: id
+      systemTypeId: this.systemTypes[index].id
     }
     if(this.isFromUserMenu){
       this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
@@ -45,6 +49,18 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
       this.userSelectionsService.updateCurrUserSelections(userSelectios);
     }
   }
+
+  // onType(id:string){
+  //   this.systemTypeId = id;
+  //   let userSelectios: Partial<UserSelections> = {
+  //     systemTypeId: id
+  //   }
+  //   if(this.isFromUserMenu){
+  //     this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
+  //   }else{
+  //     this.userSelectionsService.updateCurrUserSelections(userSelectios);
+  //   }
+  // }
 
   ngOnChanges(changes: SimpleChanges): void {
     let currUserSelection: UserSelections = changes['currUserSelection'].currentValue;

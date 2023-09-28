@@ -1,0 +1,14 @@
+<div class="select-box">
+  <div *ngFor="let selectBoxItem of selectBoxItems; let i = index" class="select-box-item"  (click)="onSelectBoxItemClicked(i)">
+    <div class="check-mark" [ngClass]="{'marked': clickedItemIndex === i}">
+      <img *ngIf="clickedItemIndex !== i" [src]="changSrcs[1]" alt="">
+      <img *ngIf="clickedItemIndex === i" [src]="changSrcs[0]" alt="">
+      <div class="check-mark-icon" >
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="select-box-content" [ngClass]="{'selected': clickedItemIndex === i}">
+      <ng-container [ngTemplateOutlet]="selectBoxItem.selectBoxContent" [ngTemplateOutletContext]="this"></ng-container>
+    </div>
+  </div>
+</div>
