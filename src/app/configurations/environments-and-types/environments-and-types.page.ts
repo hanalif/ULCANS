@@ -83,6 +83,10 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     this.router.navigate(['configurations/typical-configurations', this.currUserSelection.assetId])
   }
 
+  onPORClick(index:number){
+
+  }
+
 
   onAddToYourSelections(){
     if(this.isDisabled){

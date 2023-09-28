@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PORVariant } from '../../models/por-variant.model';
 
 
@@ -12,10 +12,15 @@ export class PorSelectionsComponent implements OnInit {
   changSrcs: string[] = ['assets/imgs/environments/png-small/check-mark.png', 'assets/imgs/environments/png-small/check-mark-greyBG.png'];
   wideScreenTitles: string[] = ['', 'Type', 'NSN', 'Description', 'Pattern'];
   mobileTitles: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description']
+  @Output() selectedPORIndex = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
 
+  }
+
+  onPORClick(index:number){
+    this.selectedPORIndex.emit(index);
   }
 
 }

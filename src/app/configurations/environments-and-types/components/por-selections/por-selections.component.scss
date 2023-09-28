@@ -1,30 +1,56 @@
 // wide screen design
-.page-container{
-  .middle{
-    background-color: transparent;
+::ng-deep {
+  .page-container{
+    .wide-screen{
+      .middle{
+        background-color: transparent;
+      }
+    }
+  }
 
-      .table-container{
+
+
+  .select-box {
+    padding: 20px;
+    border-radius: 3px;
+    position: relative;
+    flex-direction: column;
+    gap: 25px;
+
+      .select-box-item{
         background-color: #2e2e2e;
-        padding: 20px;
         border-radius: 3px;
-        position: relative;
+      }
+
+      .select-box-content{
+        padding: 13px;
+      }
+    }
+      .table-container{
 
         h1{
           font-size: 18px;
           margin-block-start: 20px;
-        }
+          }
+          .styled-table{
+            tbody{
+              tr{
+                border-bottom: 1px solid #454952
+              }
+            }
 
-        tr{
-          border-color: rgb(215, 215, 215);
-        }
+          }
 
-        .table-img{
-          width: 80px;
-        }
-      }
-   }
+
+
+          .table-img{
+            width: 80px;
+          }
+    }
 
 }
+
+
 
 
 // mobile design
@@ -50,9 +76,6 @@
   margin-top: 12px;
   padding: 0px;
 
-  &.aside{
-    justify-content: flex-start;
-  }
 
   &.sideB{
     margin-top: 25px;
