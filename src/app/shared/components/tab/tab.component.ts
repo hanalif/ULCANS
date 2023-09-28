@@ -21,8 +21,7 @@ export class TabComponent implements OnInit {
 
   onTabItemClicked(itemIndex: number){
     this.openedItemIndex = this.openedItemIndex !== itemIndex ? itemIndex : 0;
-    this.tabItemClicked.emit(itemIndex);
-
+    this.tabItemClicked.emit(this.openedItemIndex);
   }
 
 

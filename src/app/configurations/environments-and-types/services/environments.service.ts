@@ -27,6 +27,10 @@ export class EnvironmentsService {
     return this.environments$.getValue();
   }
 
+  getPORListValue(){
+    return this.PORList$.getValue();
+  }
+
   getEnvironmentsByIds(environmentsIds: string[]){
     let environments = this.getEnvironmentsValue();
     let environmentsByIds: Environment[] = [];

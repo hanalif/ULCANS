@@ -8,9 +8,14 @@ import { PORVariant } from '../../models/por-variant.model';
   styleUrls: ['./por-selections.component.scss'],
 })
 export class PorSelectionsComponent implements OnInit {
-  @Input() nsnsList!: PORVariant;
+  @Input() nsnsList!: PORVariant[];
+  changSrcs: string[] = ['assets/imgs/environments/png-small/check-mark.png', 'assets/imgs/environments/png-small/check-mark-greyBG.png'];
+  wideScreenTitles: string[] = ['', 'Type', 'NSN', 'Description', 'Pattern'];
+  mobileTitles: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description']
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
 }

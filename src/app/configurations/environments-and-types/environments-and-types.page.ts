@@ -7,6 +7,7 @@ import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { PORVariant } from './models/por-variant.model';
 import { DisplayHeadersMode } from 'src/app/shared/components/tab/models/display-headers-mode';
+import { EnvironmentsService } from './services/environments.service';
 
 
 
@@ -29,16 +30,18 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   currAppEnvironment!: AppConfirmationSelections;
   currAppEnvironmentSubscriptions!: Subscription;
   appConfigSettings!: AppConfirmationSelections;
+  AppConfigSettings = AppConfirmationSelections;
   tabDisplayMode!: DisplayHeadersMode;
 
 
-  porSelectionsList?: PORVariant;
+  porSelectionsList!: PORVariant[];
 
   constructor(
     private router: Router,
     private userSelectionsService: UserSelectionService,
     private route: ActivatedRoute,
-    private appConfigService: AppConfigurationService) { }
+    private appConfigService: AppConfigurationService,
+    private environmnetsService: EnvironmentsService) { }
 
 
 
@@ -52,6 +55,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
       this.tabDisplayMode = appConfig == AppConfirmationSelections.GLOBAL? DisplayHeadersMode.dontShowHeaders : DisplayHeadersMode.showHeders;
     });
 
+    this.porSelectionsList = this.environmnetsService.getPORListValue();
 
 
 
@@ -69,6 +73,10 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     })
 
     this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
+  }
+
+  tabItemClicked(tabIndex: number){
+    console.log(tabIndex);
   }
 
   onBack(){

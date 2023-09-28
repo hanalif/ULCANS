@@ -1,0 +1,65 @@
+// wide screen design
+.page-container{
+  .middle{
+    background-color: transparent;
+
+      .table-container{
+        background-color: #2e2e2e;
+        padding: 20px;
+        border-radius: 3px;
+
+        h1{
+          font-size: 18px;
+          margin-block-start: 20px;
+        }
+
+        tr{
+          border-color: rgb(215, 215, 215);
+        }
+
+        .table-img{
+          width: 80px;
+        }
+      }
+   }
+
+}
+
+
+// mobile design
+.card{
+  background-color: black;
+  padding-block-start: 3px;
+
+  .card-row{
+    border-color: rgb(193, 193, 193);
+    padding: 5px;
+  }
+
+  .card-img{
+    width: 80px;
+  }
+
+
+.side-title{
+  border: none;
+  font-size: 20px;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 0px;
+
+  &.aside{
+    justify-content: flex-start;
+  }
+
+  &.sideB{
+    margin-top: 25px;
+  }
+}
+}
+
+
+
+
+
+

@@ -1,3 +1,151 @@
-<p>
-  por-selections works!
-</p>
+  <ng-scrollbar class="scrollbar" [autoHeightDisabled]="false">
+  <div class="page-container main-layout">
+    <div class="top">
+      <div class="title">
+        <span>Program of Record ULCANS variant</span>
+      </div>
+    </div>
+
+      <div class="body">
+        <!-- Table For Wide Screens -->
+
+        <div class="wide-screen">
+          <div class="middle">
+            <div *ngFor="let POR of nsnsList" class="table-container">
+              <h1 style="text-align: left;">Environments: {{POR.environment}}</h1>
+              <table class="styled-table style1">
+                <thead>
+                  <tr>
+                    <th
+                      *ngFor="let tableTitle of wideScreenTitles"
+                    >
+                      {{ tableTitle }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Side A:
+                    </td>
+                    <td>
+                      {{POR.sideA.type}}
+                    </td>
+                    <td>
+                      {{POR.sideA.NSN}}
+                    </td>
+                    <td>
+                      {{POR.sideA.partDescription}}
+                    </td>
+                    <td class="td-img">
+                      <div class="table-img">
+                        <img
+                          [src]="POR.sideA.imgLink"
+                          alt="configuration-pic"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Side B:
+                    </td>
+                    <td>
+                      {{POR.sideB.type}}
+                    </td>
+                    <td>
+                      {{POR.sideB.NSN}}
+                    </td>
+                    <td>
+                      {{POR.sideB.partDescription}}
+                    </td>
+                    <td class="td-img">
+                      <div class="table-img">
+                        <img
+                          [src]="POR.sideB.imgLink"
+                          alt="configuration-pic"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+          <!-- Cards For Mobile Screens -->
+
+          <div class="cards-container mobile">
+            <div *ngFor="let POR of nsnsList" class="card">
+              <div class="card-body">
+                  <div class="card-row side-title">
+                    <span class="card-row_title ">{{POR.environment}}</span>
+                </div>
+                <div class="card-row side-title aside">
+                  <span class="card-row_title ">
+                    Side A:
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"> Type: {{POR.sideA.type}}</span>
+                  <span class="card-row_content mobile">
+                    <div class="card-img">
+                      <img
+                        [src]="POR.sideA.imgLink"
+                        alt=""
+                      />
+                    </div>
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"
+                    >{{ mobileTitles[1] }}</span
+                  >
+                  <span class="card-row_content mobile">
+                    {{POR.sideA.NSN}}
+                  </span>
+                </div>
+                <div class="card-row">
+                  <!-- <span class="card-row_title"
+                    >{{ mobileTitles[2] }}</span
+                  > -->
+                  <span class="card-row_title">
+                    {{POR.sideA.partDescription}}
+                  </span>
+                </div>
+                <div class="card-row side-title aside sideB">
+                  <span class="card-row_title">Side B:</span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"> Type: {{POR.sideB.type}}</span>
+                  <span class="card-row_content mobile">
+                    <div class="card-img">
+                      <img
+                        [src]="POR.sideB.imgLink"
+                        alt=""
+                      />
+                    </div>
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="card-row_title"
+                    >{{ mobileTitles[4] }}</span>
+                    <span class="card-row_content mobile">
+                      {{POR.sideB.NSN}}
+                    </span>
+                </div>
+                <div class="card-row">
+                  <!-- <span class="card-row_title"
+                    >{{ mobileTitles[5] }}</span> -->
+                  <span class="card-row_title">
+                    {{POR.sideB.partDescription}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </ng-scrollbar>
+

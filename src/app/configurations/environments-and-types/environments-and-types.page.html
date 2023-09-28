@@ -12,7 +12,9 @@
             <div class="title">
              Environment And Type
             </div>
-            <app-tab [displayMode]="tabDisplayMode">
+            <app-tab
+              [displayMode]="tabDisplayMode"
+              (tabItemClicked)="tabItemClicked($event)">
               <app-tab-item>
                 <div tabItemHeader>
                   Custom
@@ -59,12 +61,12 @@
                 </div>
                 </div>
               </app-tab-item>
-              <app-tab-item>
+              <app-tab-item *ngIf="appConfigSettings === AppConfigSettings.USA">
                 <div tabItemHeader>
                   Choose POR Variant
                 </div>
                 <div tabItemBody>
-                  <app-por-selections></app-por-selections>
+                  <app-por-selections [nsnsList]="porSelectionsList"></app-por-selections>
                 </div>
               </app-tab-item>
             </app-tab>
