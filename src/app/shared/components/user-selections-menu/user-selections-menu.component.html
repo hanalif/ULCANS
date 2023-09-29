@@ -198,7 +198,70 @@
                       <button class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditPatterns($event, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                     </div>
                     <div accordionItemBody class="accordion-body">
-                      <div class="table-container">
+                      <!-- por selection patterns wide screen -->
+                      <div *ngIf="userSelection.porSelection" class="table-container">
+                        <h1 style="text-align: left;">Environments: {{userSelection.porSelection.environment}}</h1>
+                        <table class="styled-table style1">
+                          <thead>
+                            <tr>
+                              <th
+                                *ngFor="let tableTitle of wideScreenTitlesPOR"
+                              >
+                                {{ tableTitle }}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Side A:
+                              </td>
+                              <td>
+                                {{userSelection.porSelection.sideA.type}}
+                              </td>
+                              <td>
+                                {{userSelection.porSelection.sideA.NSN}}
+                              </td>
+                              <td>
+                                {{userSelection.porSelection.sideA.partDescription}}
+                              </td>
+                              <td class="td-img">
+                                <div class="table-img">
+                                  <img
+                                    [src]="userSelection.porSelection.sideA.imgLink"
+                                    alt="configuration-pic"
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Side B:
+                              </td>
+                              <td>
+                                {{userSelection.porSelection.sideB.type}}
+                              </td>
+                              <td>
+                                {{userSelection.porSelection.sideB.NSN}}
+                              </td>
+                              <td>
+                                {{userSelection.porSelection.sideB.partDescription}}
+                              </td>
+                              <td class="td-img">
+                                <div class="table-img">
+                                  <img
+                                    [src]="userSelection.porSelection.sideB.imgLink"
+                                    alt="por-pattern"
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <!-- custom patterns wide screen -->
+                      <div *ngIf="userSelection.sideA && userSelection.sideB && userSelection.ulcansType " class="table-container">
                       <table class="styled-table style1">
                         <thead>
                           <tr>
@@ -509,7 +572,72 @@
                         Patterns
                         <button class="icon-btn edit-btn" [ngClass]="{'disabled': isDisabled}" (click)="onEditPatterns($event, userSelection!.id )"><ion-icon name="create-outline"></ion-icon></button>
                       </div>
-                      <div accordionItemBody class="accordion-body">
+                      <!-- por selection patterns mobile -->
+                      <div *ngIf="userSelection.porSelection" accordionItemBody class="accordion-body">
+                        <div class="card-body">
+                          <div class="card-row side-title">
+                            <span class="card-row_title ">{{userSelection.porSelection.environment}}</span>
+                        </div>
+                        <div class="card-row side-title">
+                          <span class="card-row_title ">
+                            Side A
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title"> Type: {{userSelection.porSelection.sideA.type}}</span>
+                          <span class="card-row_content mobile">
+                            <div class="card-img">
+                              <img
+                                [src]="userSelection.porSelection.sideA.imgLink"
+                                alt=""
+                              />
+                            </div>
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title"
+                            >{{ mobileTitlesPOR[1] }}</span
+                          >
+                          <span class="card-row_content mobile">
+                            {{userSelection.porSelection.sideA.NSN}}
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">
+                            {{userSelection.porSelection.sideA.partDescription}}
+                          </span>
+                        </div>
+                        <div class="card-row side-title sideB">
+                          <span class="card-row_title">Side B</span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title"> Type: {{userSelection.porSelection.sideB.type}}</span>
+                          <span class="card-row_content mobile">
+                            <div class="card-img">
+                              <img
+                                [src]="userSelection.porSelection.sideB.imgLink"
+                                alt=""
+                              />
+                            </div>
+                          </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title"
+                            >{{ mobileTitlesPOR[4] }}</span>
+                            <span class="card-row_content mobile">
+                              {{userSelection.porSelection.sideB.NSN}}
+                            </span>
+                        </div>
+                        <div class="card-row">
+                          <span class="card-row_title">
+                            {{userSelection.porSelection.sideB.partDescription}}
+                          </span>
+                        </div>
+                      </div>
+                      </div>
+
+                       <!-- custom selection patterns mobile -->
+                      <div *ngIf="userSelection.sideA && userSelection.sideB && userSelection.ulcansType " accordionItemBody class="accordion-body">
                         <div class="card-row">
                           <span class="card-row_title">{{
                             tableHeaderTitles[12]
@@ -623,7 +751,7 @@
 
   <!-- Tables For Pdf -->
   <div
-    *ngIf="assetsForDisplay[indexForTablePdf]"
+    *ngIf="userSelectionForPdf"
     class="tables-container"
     hidden
   >
@@ -640,7 +768,7 @@
       </tbody>
     </table>
 
-  <!-- Dante and Link -->
+  <!-- Date and Link -->
 
     <table class="date-link-table">
       <tbody>
@@ -664,7 +792,7 @@
       <tbody>
         <tr>
           <td style="font-size: 16px; color: black; text-align: center;">
-            ULCANS Preferences For {{assetsForDisplay[indexForTablePdf].asset!.name}}
+            ULCANS Preferences For {{userSelectionForPdf.asset!.name}}
           </td>
         </tr>
       </tbody>
@@ -683,27 +811,27 @@
       <tbody>
         <tr class="row">
           <td>
-            {{ assetsForDisplay[indexForTablePdf].asset!.name }}
+            {{ userSelectionForPdf.asset!.name }}
           </td>
           <td>
             {{
-              assetsForDisplay[indexForTablePdf].asset!.measures.lengthFt
-                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
+              userSelectionForPdf.asset!.measures.lengthFt
+                | ftToM : userSelectionForPdf.asset!.initialMeasureType
                 | number : "1.1-1"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType === MeasureType.METERS
+              userSelectionForPdf.asset!.initialMeasureType === MeasureType.METERS
                 ? "M"
                 : "FT"
             }}
           </td>
           <td>
-            {{ assetsForDisplay[indexForTablePdf].asset!.measures.widthFt
-              | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
+            {{ userSelectionForPdf.asset!.measures.widthFt
+              | ftToM : userSelectionForPdf.asset!.initialMeasureType
               | number : "1.1-1"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType === MeasureType.METERS
+              userSelectionForPdf.asset!.initialMeasureType === MeasureType.METERS
                   ? "M"
                   : "FT"
             }}
@@ -711,12 +839,12 @@
           </td>
           <td>
             {{
-              assetsForDisplay[indexForTablePdf].asset!.measures.heightFt
-                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
+              userSelectionForPdf.asset!.measures.heightFt
+                | ftToM : userSelectionForPdf.asset!.initialMeasureType
                 | number : "1.1-1"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType === MeasureType.METERS
+              userSelectionForPdf.asset!.initialMeasureType === MeasureType.METERS
                 ? "M"
                 : "FT"
             }}
@@ -727,7 +855,7 @@
 
     <!-- Configuration -->
 
-    <table *ngIf="assetsForDisplay[indexForTablePdf].configuratoin" class="config-table">
+    <table *ngIf="userSelectionForPdf.configuratoin" class="config-table">
       <thead>
         <tr class="row header blue">
           <th *ngFor="let configTitle of configurationTitles">
@@ -740,29 +868,29 @@
           <td id="imgEl">
             <img
               [src]="
-                assetsForDisplay[indexForTablePdf].configuratoin!.imgUrlForPdf
+              userSelectionForPdf.configuratoin!.imgUrlForPdf
               "
               alt=""
             />
           </td>
           <td>
-            {{ assetsForDisplay[indexForTablePdf].configuratoin!.name }}
+            {{ userSelectionForPdf.configuratoin!.name }}
           </td>
           <td>
-            {{ assetsForDisplay[indexForTablePdf].configuratoin!.hexagon}}
+            {{ userSelectionForPdf.configuratoin!.hexagon}}
           </td>
           <td>
-            {{ assetsForDisplay[indexForTablePdf].configuratoin!.rhombus}}
+            {{ userSelectionForPdf.configuratoin!.rhombus}}
           </td>
           <td>
             {{
-              assetsForDisplay[indexForTablePdf].configuratoin!.measures
+              userSelectionForPdf.configuratoin!.measures
                 .widthFt
-                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
+                | ftToM : userSelectionForPdf.asset!.initialMeasureType
                 | number : "1.1-2"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType ===
+              userSelectionForPdf.asset!.initialMeasureType ===
               MeasureType.METERS
                 ? "M"
                 : "FT"
@@ -771,13 +899,13 @@
           </td>
           <td>
             {{
-              assetsForDisplay[indexForTablePdf].configuratoin!.measures
+              userSelectionForPdf.configuratoin!.measures
                 .lengthFt
-                | ftToM : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
+                | ftToM : userSelectionForPdf.asset!.initialMeasureType
                 | number : "1.1-2"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType ===
+              userSelectionForPdf.asset!.initialMeasureType ===
               MeasureType.METERS
                 ? "M"
                 : "FT"
@@ -785,32 +913,32 @@
           </td>
           <td>
             {{
-              assetsForDisplay[indexForTablePdf].configuratoin!.measures
+              userSelectionForPdf.configuratoin!.measures
                 .areaSqFt
-                | sqftToSqm : assetsForDisplay[indexForTablePdf].asset!.initialMeasureType
+                | sqftToSqm : userSelectionForPdf.asset!.initialMeasureType
                 | number : "1.0-0"
             }}
             {{
-              assetsForDisplay[indexForTablePdf].asset!.initialMeasureType ===
+              userSelectionForPdf.asset!.initialMeasureType ===
               MeasureType.METERS
                 ? "SQM"
                 : "SQFT"
             }}
           </td>
           <td>
-             <h5 *ngIf="assetsForDisplay[indexForTablePdf].areSpecialPoles">*</h5>
-            {{ assetsForDisplay[indexForTablePdf].configuratoin!.poles }}
+             <h5 *ngIf="userSelectionForPdf.areSpecialPoles">*</h5>
+            {{ userSelectionForPdf.configuratoin!.poles }}
           </td>
           <td>
-            {{ assetsForDisplay[indexForTablePdf].configuratoin!.pins }}
+            {{ userSelectionForPdf.configuratoin!.pins }}
           </td>
         </tr>
       </tbody>
     </table>
 
     <!-- Patterns -->
-
-      <table class="patterns-table">
+    <!--Custom patterns table -->
+    <table class="patterns-custom-table">
       <thead>
         <tr class="row header blue">
           <th *ngFor="let patternTitle of patternsTitles">
@@ -818,16 +946,16 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="row">
+      <tbody >
+        <tr *ngIf="userSelectionForPdf.sideA && userSelectionForPdf.sideB && userSelectionForPdf.ulcansType" class="row">
           <td>
-            {{ assetsForDisplay[indexForTablePdf].sideA.environment.typeName }}
+            {{ userSelectionForPdf.sideA.environment.typeName }}
           </td>
           <td id="imgEl">
             <img
               [src]="
-                assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
-                assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+              userSelectionForPdf.sideA.environment.clothPatterns[
+              userSelectionForPdf.sideA.indexForPatternUrl
               ].shapeLowResolutionUrl
               "
               alt=""
@@ -835,24 +963,24 @@
           </td>
           <td>
             <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
-              {{assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
-                assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+              {{userSelectionForPdf.sideA.environment.clothPatterns[
+                userSelectionForPdf.sideA.indexForPatternUrl
               ].nameGl}}
               </span>
             <span *ngIf="appConfigSettings === AppConfigSettings.USA">
-              {{assetsForDisplay[indexForTablePdf].sideA.environment.clothPatterns[
-                assetsForDisplay[indexForTablePdf].sideA.indexForPatternUrl
+              {{userSelectionForPdf.sideA.environment.clothPatterns[
+                userSelectionForPdf.sideA.indexForPatternUrl
               ].nameUs}}
               </span>
           </td>
-          <td>
-            {{ assetsForDisplay[indexForTablePdf].sideB.environment.typeName }}
+          <td >
+            {{ userSelectionForPdf.sideB.environment.typeName }}
           </td>
           <td id="imgEl">
             <img
               [src]="
-                assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
-                assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+              userSelectionForPdf.sideB.environment.clothPatterns[
+              userSelectionForPdf.sideB.indexForPatternUrl
               ].shapeLowResolutionUrl
               "
               alt=""
@@ -860,23 +988,91 @@
           </td>
           <td>
             <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
-              {{assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
-                assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+              {{userSelectionForPdf.sideB.environment.clothPatterns[
+                userSelectionForPdf.sideB.indexForPatternUrl
               ].nameGl}}
               </span>
             <span *ngIf="appConfigSettings === AppConfigSettings.USA">
-              {{assetsForDisplay[indexForTablePdf].sideB.environment.clothPatterns[
-                assetsForDisplay[indexForTablePdf].sideB.indexForPatternUrl
+              {{userSelectionForPdf.sideB.environment.clothPatterns[
+                userSelectionForPdf.sideB.indexForPatternUrl
               ].nameUs}}
               </span>
           </td>
           <td>
-            {{ assetsForDisplay[indexForTablePdf].ulcansType.name }}
+            {{ userSelectionForPdf.ulcansType.name }}
           </td>
         </tr>
       </tbody>
     </table>
 
+     <!--POR patterns table -->
+        <table *ngIf="userSelectionForPdf.porSelection" class="por-patterns-title-table">
+          <tbody>
+            <tr>
+              <td>
+                <h1>Program of Record ULCANS variant:</h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1> {{userSelectionForPdf.porSelection.environment}}</h1>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table *ngIf="userSelectionForPdf.porSelection" class="por-patterns-table">
+          <thead>
+            <tr>
+              <th
+                *ngFor="let tableTitle of wideScreenTitlesPOR"
+              >
+                {{ tableTitle }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Side A:
+              </td>
+              <td>
+                {{userSelectionForPdf.porSelection.sideA.type}}
+              </td>
+              <td>
+                {{userSelectionForPdf.porSelection.sideA.NSN}}
+              </td>
+              <td>
+                {{userSelectionForPdf.porSelection.sideA.partDescription}}
+              </td>
+              <td id="imgEl">
+                <img
+                    [src]="userSelectionForPdf.porSelection.sideA.imgLink"
+                    alt="configuration-pic"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Side B:
+              </td>
+              <td>
+                {{userSelectionForPdf.porSelection.sideB.type}}
+              </td>
+              <td>
+                {{userSelectionForPdf.porSelection.sideB.NSN}}
+              </td>
+              <td>
+                {{userSelectionForPdf.porSelection.sideB.partDescription}}
+              </td>
+              <td id="imgEl">
+                  <img
+                    [src]="userSelectionForPdf.porSelection.sideB.imgLink"
+                    alt="por-pattern"
+                  />
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <!-- marketing email -->
 
         <table class="marketing-table">

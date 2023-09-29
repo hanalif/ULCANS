@@ -103,6 +103,19 @@
       gap: 4px;
     }
 
+    .side-title{
+      border: none;
+      font-size: 20px;
+      justify-content: center;
+      margin-top: 12px;
+      padding: 0px;
+
+
+      &.sideB{
+        margin-top: 25px;
+      }
+    }
+
   }
 }
 

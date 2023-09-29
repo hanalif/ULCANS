@@ -5,15 +5,23 @@ import { Asset } from "src/app/configurations/models/asset.model";
 import { Configuration } from "src/app/configurations/models/configuration.model";
 import { MeasureType } from "./measure-type.enum";
 import { SystemSideForDisplay } from "./system-side-for-display.mode";
+import { PORVariant } from "src/app/configurations/environments-and-types/models/por-variant.model";
 
 export interface AssetForDisplay {
   id?: string,
   asset?: Asset,
   configuratoin?: Configuration,
-  sideA: SystemSideForDisplay,
-  sideB: SystemSideForDisplay,
+  areSpecialPoles?: boolean,
+  initialIndexes: number[],
+
+  //custom
+  sideA?: SystemSideForDisplay,
+  sideB?: SystemSideForDisplay,
   environment?: Environment,
-  ulcansType: SystemType,
-  areSpecialPoles: boolean,
-  initialIndexes: number[]
+
+  ulcansType?: SystemType,
+
+  //por
+  porSelection?: PORVariant
+
 }

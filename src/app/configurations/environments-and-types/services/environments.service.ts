@@ -43,6 +43,12 @@ export class EnvironmentsService {
     return environmentsByIds;
   }
 
+  getPORVariantById(PORId: string){
+    const PORList = this.PORList$.getValue();
+    const porSelection: PORVariant = PORList.find(POR=> POR.id == PORId) as PORVariant;
+    return porSelection;
+  }
+
   getEnvironmentById(id: string){
     const environments = this.environments$.getValue();
     const environment: Environment = environments.find(e=> e.id === id) as Environment;

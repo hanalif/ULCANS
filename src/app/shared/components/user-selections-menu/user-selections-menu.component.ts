@@ -36,6 +36,10 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   configurationTitles: string[] = ['Type','Name', 'Hexagon', 'Rhombus', 'Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
   patternsTitles: string[] = ['Side A', 'Pattern',  'Design' ,'Side B', 'Pattern',  'Design' ,' Type' ];
   assetTitles: string[] = ['Name', 'Length', 'Width', 'Height' ];
+  wideScreenTitlesPOR: string[] = ['', 'Type', 'NSN', 'Description', 'Pattern'];
+  mobileTitlesPOR: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description']
+
+  userSelectionForPdf!: AssetForDisplay;
 
   date!: String | Date | null;
 
@@ -192,6 +196,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   onDownloadPdf(index: number){
     this.indexForTablePdf = index;
+    this.userSelectionForPdf = this.assetsForDisplay[this.indexForTablePdf];
+
     setTimeout(() => this.exportToPdf(), 0);
   }
 
@@ -275,7 +281,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
 
     autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY,
+      startY: (doc as any).lastAutoTable.finalY + 10,
       body: [
         [
           {
@@ -290,7 +296,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       theme: "plain"
     });
 
-    if(!this.assetsForDisplay[this.indexForTablePdf].configuratoin){
+    if(!this.userSelectionForPdf.configuratoin){
       autoTable(doc, {
         startY: (doc as any).lastAutoTable.finalY + 1,
         body: [
@@ -309,7 +315,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     }
 
 
-if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
+if(this.userSelectionForPdf.configuratoin){
   autoTable(doc, {
     startY: (doc as any).lastAutoTable.finalY + 3,
     html: '.config-table',
@@ -339,7 +345,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
     theme: 'striped'
   });
 
-  if(this.assetsForDisplay[this.indexForTablePdf].areSpecialPoles){
+  if(this.userSelectionForPdf.areSpecialPoles){
     autoTable(doc, {
       startY: (doc as any).lastAutoTable.finalY + 1,
       body: [
@@ -358,9 +364,8 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
   }
 }
 
-
     autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 3,
+      startY: (doc as any).lastAutoTable.finalY + 10,
       body: [
         [
           {
@@ -375,33 +380,79 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
       theme: "plain"
     });
 
+    // custom patterns table
+    if(this.userSelectionForPdf.sideA && this.userSelectionForPdf.sideB && this.userSelectionForPdf.ulcansType){
+      autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 3,
+        html: '.patterns-custom-table',
+        headStyles:{
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 30,
+          minCellWidth: 70
+        },
+        bodyStyles: {
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 60,
+          minCellWidth: 70,
+        },
 
-    autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 3,
-      html: '.patterns-table',
-      headStyles:{
-        valign: 'middle',
-        halign: 'center',
-        minCellHeight: 30,
-        minCellWidth: 70
-      },
-      bodyStyles: {
-        valign: 'middle',
-        halign: 'center',
-        minCellHeight: 60,
-        minCellWidth: 70,
-      },
+        didDrawCell: (data: any) => {
+          var cellId = data.cell.raw.id;
+          if( cellId === 'imgEl'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 60, data.cell.contentHeight, '', 'FAST' );
+          }
+        },
+        theme: 'striped'
+      });
+    }
 
-      didDrawCell: (data: any) => {
-        var cellId = data.cell.raw.id;
-        if( cellId === 'imgEl'){
-          var td = data.cell.raw;
-          var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 60, data.cell.contentHeight, '', 'FAST' );
-        }
-      },
-      theme: 'striped'
-    });
+    // por patterns table
+    if(this.userSelectionForPdf.porSelection){
+      autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 3,
+        html: '.por-patterns-title-table',
+        bodyStyles: {
+          valign: 'middle',
+          cellWidth: 'wrap',
+          halign: 'left',
+          minCellHeight: 30,
+          minCellWidth: 40
+        },
+        theme: 'striped'
+      });
+
+      autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 3,
+        html: '.por-patterns-table',
+        headStyles:{
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 30,
+          minCellWidth: 70
+        },
+        bodyStyles: {
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 60,
+          minCellWidth: 70,
+        },
+
+        didDrawCell: (data: any) => {
+          var cellId = data.cell.raw.id;
+          if( cellId === 'imgEl'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 60, data.cell.contentHeight, '', 'FAST' );
+          }
+        },
+        theme: 'striped'
+      });
+    }
+
 
     autoTable(doc, {
       useCss: true,

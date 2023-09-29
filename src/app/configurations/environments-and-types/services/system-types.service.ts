@@ -22,6 +22,11 @@ export class SystemTypesService {
     return this.systemTypes$.getValue()
   }
 
+  getUlcansTypeById(typeId: string){
+    let types = this.getTypes();
+    return types.find(type => type.id === typeId);
+  }
+
   getUlcansTypesByIds(typesIds: string[]){
     let types = this.getTypes();
     let typesByIds: SystemType[] = [];

@@ -11,9 +11,9 @@ export interface UserSelections{
   initialIndexses: number[],
 
   //custom
-  sideA: SystemSide,
-  sideB: SystemSide,
-  systemTypeId: string,
+  sideA?: SystemSide,
+  sideB?: SystemSide,
+  systemTypeId?: string,
 
 
   //POR
