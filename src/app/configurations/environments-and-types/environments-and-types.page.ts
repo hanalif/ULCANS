@@ -8,6 +8,7 @@ import { UserSelectionService } from 'src/app/shared/services/user-selection.ser
 import { PORVariant } from './models/por-variant.model';
 import { DisplayHeadersMode } from 'src/app/shared/components/tab/models/display-headers-mode';
 import { EnvironmentsService } from './services/environments.service';
+import { PatternsSelections } from 'src/app/shared/models/patterns-selections.enum';
 
 
 
@@ -59,9 +60,6 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     });
 
     this.porSelectionsList = this.environmnetsService.getPORListValue();
-
-
-
     this.isFromUserSelectionsSubscription = this.route.queryParams.subscribe(params=>{
       this.isFromUserSelections = params['isFromUserSelectionsMenu'];
 
@@ -79,6 +77,8 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   }
 
   tabItemClicked(tabIndex: number){
+    this.userSelectionsService.setTabIndex(tabIndex);
+    this.userSelectionsService.setProgressBar();
     this.tabIndex = tabIndex;
   }
 
@@ -88,6 +88,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   onPORClick(index:number){
     this.selectedPorId = this.porSelectionsList[index].id;
+    let userSelectios: Partial<UserSelections> = {
+      porVariantSelectionId: this.selectedPorId
+    }
+    this.userSelectionsService.updateCurrUserSelections(userSelectios);
+    this.userSelectionsService.setProgressBar();
   }
 
 
@@ -102,7 +107,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
       }else{
         let userSelectios: Partial<UserSelections> = {
           initialIndexses: [0,1,2],
-          porVariantSelectionId: this.selectedPorId
+          patternsSelections: this.tabIndex
         }
 
         this.userSelectionsService.updateCurrUserSelections(userSelectios);
@@ -117,6 +122,5 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     this.isFromUserSelectionsSubscription?.unsubscribe();
     this.currAppEnvironmentSubscriptions?.unsubscribe();
   }
-
 
 }

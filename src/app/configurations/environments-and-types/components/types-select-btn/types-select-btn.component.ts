@@ -48,6 +48,7 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
       this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
     }else{
       this.userSelectionsService.updateCurrUserSelections(userSelectios);
+      this.userSelectionsService.setProgressBar();
     }
   }
 

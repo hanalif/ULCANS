@@ -167,6 +167,7 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
         }
       }else{
         this.userSelectionService.updateCurrUserSelections(userSelections);
+        this.userSelectionService.setProgressBar();
       }
   }
 

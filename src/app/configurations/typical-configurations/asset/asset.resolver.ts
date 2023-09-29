@@ -37,6 +37,7 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
       }
 
       this.userSelectionsService.updateCurrUserSelections(userSelections);
+      this.userSelectionsService.setProgressBar();
       let config: Configuration | undefined;
       //generate asset for preview
       if(asset.configurationId){

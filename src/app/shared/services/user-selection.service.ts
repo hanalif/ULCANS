@@ -12,6 +12,7 @@ import { UtilService } from './util.service';
 import { SystemTypesService } from 'src/app/configurations/environments-and-types/services/system-types.service';
 import { StorageService } from './storage.service';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { PatternsSelections } from '../models/patterns-selections.enum';
 
 
 @Injectable({
@@ -20,14 +21,14 @@ import { AppConfirmationSelections } from 'src/app/app-configurations/app-config
 export class UserSelectionService {
 
   private isUserSelectionsMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
+  private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   public userSelections$: BehaviorSubject<UserSelections[]> = new BehaviorSubject<UserSelections[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private progressBar$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
-
+  public tabIndex$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   public userCurrSelection$: BehaviorSubject<UserSelections | null> = new BehaviorSubject<UserSelections | null>(null);
 
   public FOOTER_FORM_TXT: string = "";
@@ -65,6 +66,10 @@ export class UserSelectionService {
     return this.progressBar$.asObservable();
   }
 
+  setTabIndex(index: number){
+    this.tabIndex$.next(index);
+  }
+
   setIsUserSelectionsMenuOpen(val:boolean){
     this.isUserSelectionsMenuOpen$.next(val);
   }
@@ -86,21 +91,38 @@ export class UserSelectionService {
   }
 
 
+  setProgressBar(){
+    let tabIndex = this.tabIndex$.getValue();
+    let currSelctionValue = this.getCurrUserSelectionValue() as UserSelections;
+    let totalControls = tabIndex == PatternsSelections.POR ? 5 : 7;
+    let usedControls: number = 0;
+    let relevantControls: Partial<UserSelections> = {
+      ...currSelctionValue
+    };
+    if (tabIndex == PatternsSelections.POR) {
+      delete relevantControls.sideA;
+      delete relevantControls.sideB;
+      delete relevantControls.systemTypeId;
+    }
+    else {
+      delete relevantControls.porVariantSelectionId;
+    }
 
-  updateCurrUserSelections(userSelections: Partial<UserSelections>){
+    usedControls = Object.values(relevantControls).length;
+    let progressPercent = usedControls / totalControls * 100
+    if(progressPercent < 100){
+      this.setIsDisabled(true);
+    }else{
+      this.setIsDisabled(false);
+    }
+  this.progressBar$.next(progressPercent);
+  }
 
-    let currSelctionValue = this.getCurrUserSelectionValue();
+
+  updateCurrUserSelections(userSelections?: Partial<UserSelections>){
+    let currSelctionValue = this.getCurrUserSelectionValue() as UserSelections;
       currSelctionValue = {...currSelctionValue, ...userSelections} as UserSelections;
-      let numsOfKeys = Object.values(currSelctionValue).length;
-      let progressNum = numsOfKeys * 14.2857;
-      this.progressBar$.next(progressNum);
-      if(numsOfKeys === 7){
-        this.setIsDisabled(false);
-      }
-      this.userCurrSelection$.next(currSelctionValue);
-
-
-
+    this.userCurrSelection$.next(currSelctionValue);
   }
 
   resetCurrUserSelection(){

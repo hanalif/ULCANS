@@ -119,6 +119,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     }
 
     this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
+    this.userSelectionService.setIsDisabled(false);
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
 
@@ -129,6 +130,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       return;
     }
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
+    this.userSelectionService.setIsDisabled(false);
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
   onAccordionItem(index: number, userSelectionId: string | undefined, initialIndexes: number[]){

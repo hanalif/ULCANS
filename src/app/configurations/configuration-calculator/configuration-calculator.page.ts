@@ -158,7 +158,9 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
           wasStartedFromCalculator:true
         }
 
+
         this.userSelectionsService.updateCurrUserSelections(userSelections);
+        this.userSelectionsService.setProgressBar();
         this.router.navigate(['configurations/typical-configurations', assetId]);
       }
 
