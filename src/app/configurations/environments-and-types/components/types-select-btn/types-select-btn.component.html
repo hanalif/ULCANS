@@ -1,6 +1,6 @@
 
-  <app-select-box (selectBoxItemClicked)="onType($event)">
-      <app-select-box-item  *ngFor="let type of systemTypes; let i = index">
+  <app-select-box [clickedItemIndex]="systemTypeIndex" (selectBoxItemClicked)="onType($event)">
+      <app-select-box-item *ngFor="let type of systemTypes; let i = index">
         <div selectBoxContent class="type-box">
           <div class="type-title"><h3>{{type.name}}</h3></div>
           <div class="type-description">

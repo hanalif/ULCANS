@@ -20,8 +20,9 @@ export class TabComponent implements OnInit {
   ngOnInit() {}
 
   onTabItemClicked(itemIndex: number){
-    this.openedItemIndex = this.openedItemIndex !== itemIndex ? itemIndex : 0;
+    this.openedItemIndex = itemIndex;
     this.tabItemClicked.emit(this.openedItemIndex);
+
   }
 
 

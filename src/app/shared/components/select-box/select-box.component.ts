@@ -7,9 +7,9 @@ import { SelectBoxItemComponent } from './select-box-item/select-box-item.compon
   styleUrls: ['./select-box.component.scss']
 })
 export class SelectBoxComponent implements OnInit {
+  @Input() clickedItemIndex: number = -1;
   @ContentChildren(SelectBoxItemComponent) selectBoxItems: QueryList<SelectBoxItemComponent> = new QueryList<SelectBoxItemComponent>;
   @Output() selectBoxItemClicked = new EventEmitter<number>();
-  clickedItemIndex: number = -1;
   changSrcs: string[] = ['assets/imgs/environments/png-small/check-mark.png', 'assets/imgs/environments/png-small/check-mark-greyBG.png']
   constructor() { }
 

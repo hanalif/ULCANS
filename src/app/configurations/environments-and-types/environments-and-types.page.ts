@@ -35,6 +35,9 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
 
   porSelectionsList!: PORVariant[];
+  selectedPorId: string | undefined = undefined;
+  tabIndex: number = 0;
+
 
   constructor(
     private router: Router,
@@ -76,7 +79,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   }
 
   tabItemClicked(tabIndex: number){
-    console.log(tabIndex);
+    this.tabIndex = tabIndex;
   }
 
   onBack(){
@@ -84,7 +87,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   }
 
   onPORClick(index:number){
-
+    this.selectedPorId = this.porSelectionsList[index].id;
   }
 
 
@@ -98,8 +101,10 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
       }else{
         let userSelectios: Partial<UserSelections> = {
-          initialIndexses: [0,1,2]
+          initialIndexses: [0,1,2],
+          porVariantSelectionId: this.selectedPorId
         }
+
         this.userSelectionsService.updateCurrUserSelections(userSelectios);
         this.userSelectionsService.addUserSelection();
       }

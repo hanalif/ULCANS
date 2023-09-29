@@ -5,17 +5,23 @@
       .middle{
         background-color: transparent;
       }
+
+      .select-box{
+        flex-direction: column;
+      }
     }
   }
-
-
 
   .select-box {
     padding: 20px;
     border-radius: 3px;
     position: relative;
-    flex-direction: column;
     gap: 25px;
+
+
+      .type-box{
+        background-color: transparent;
+      }
 
       .select-box-item{
         background-color: #2e2e2e;

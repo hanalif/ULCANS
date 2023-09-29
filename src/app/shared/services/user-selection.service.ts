@@ -85,16 +85,22 @@ export class UserSelectionService {
     return this.userSelections$.getValue();
   }
 
+
+
   updateCurrUserSelections(userSelections: Partial<UserSelections>){
+
     let currSelctionValue = this.getCurrUserSelectionValue();
-    currSelctionValue = {...currSelctionValue, ...userSelections} as UserSelections;
-    let numsOfKeys = Object.values(currSelctionValue).length;
-    let progressNum = numsOfKeys * 14.2857;
-    this.progressBar$.next(progressNum);
-    if(numsOfKeys === 7){
-      this.setIsDisabled(false);
-    }
-    this.userCurrSelection$.next(currSelctionValue);
+      currSelctionValue = {...currSelctionValue, ...userSelections} as UserSelections;
+      let numsOfKeys = Object.values(currSelctionValue).length;
+      let progressNum = numsOfKeys * 14.2857;
+      this.progressBar$.next(progressNum);
+      if(numsOfKeys === 7){
+        this.setIsDisabled(false);
+      }
+      this.userCurrSelection$.next(currSelctionValue);
+
+
+
   }
 
   resetCurrUserSelection(){

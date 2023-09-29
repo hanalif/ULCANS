@@ -12,9 +12,11 @@ import { SystemTypesService } from '../../services/system-types.service';
   styleUrls: ['./types-select-btn.component.scss'],
 })
 export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
-  systemTypes$!: Observable<SystemType[]>;
   systemTypes!: SystemType[];
   systemTypeId!: string;
+
+  systemTypeIndex: number = -1;
+
   isFromUserMenu: boolean = false;
   isFromMenuSubscription!: Subscription;
   userSelectionToUpdateId: string | undefined;
@@ -27,10 +29,10 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
     this.systemTypesService.systemTypes$.subscribe(systemTypes=>{
       this.systemTypes = systemTypes;
     })
-    this.systemTypes$ = this.systemTypesService.systemTypes$;
     this.isFromMenuSubscription = this.route.queryParams.subscribe(params=>{
       this.isFromUserMenu = params['isFromUserSelectionsMenu'];
       if(this.isFromUserMenu){
+        this.systemTypeIndex = this.systemTypes.findIndex(s=> s.id === this.systemTypeId);
         this.userSelectionToUpdateId = params['userSelectionToUpdateId'];
       }
 
@@ -39,7 +41,6 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   onType(index: number){
-    console.log(index);
     let userSelectios: Partial<UserSelections> = {
       systemTypeId: this.systemTypes[index].id
     }
@@ -50,17 +51,6 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  // onType(id:string){
-  //   this.systemTypeId = id;
-  //   let userSelectios: Partial<UserSelections> = {
-  //     systemTypeId: id
-  //   }
-  //   if(this.isFromUserMenu){
-  //     this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
-  //   }else{
-  //     this.userSelectionsService.updateCurrUserSelections(userSelectios);
-  //   }
-  // }
 
   ngOnChanges(changes: SimpleChanges): void {
     let currUserSelection: UserSelections = changes['currUserSelection'].currentValue;

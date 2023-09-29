@@ -11,7 +11,7 @@
 
         <div class="wide-screen">
           <div class="middle">
-            <app-select-box (selectBoxItemClicked)="onPORClick($event)" class="table-container">
+            <app-select-box [clickedItemIndex]="porIndexClicked" (selectBoxItemClicked)="onPORClick($event)" class="table-container">
               <app-select-box-item *ngFor="let POR of nsnsList">
                 <div selectBoxContent >
                   <h1 style="text-align: left;">Environments: {{POR.environment}}</h1>
@@ -80,7 +80,7 @@
 
           <!-- Cards For Mobile Screens -->
           <div class="cards-container mobile">
-            <app-select-box (selectBoxItemClicked)="onPORClick($event)">
+            <app-select-box [clickedItemIndex]="porIndexClicked" (selectBoxItemClicked)="onPORClick($event)">
               <app-select-box-item *ngFor="let POR of nsnsList" >
                 <div selectBoxContent class="card">
                   <div class="card-body">
