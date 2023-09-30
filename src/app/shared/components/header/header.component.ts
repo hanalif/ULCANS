@@ -8,6 +8,7 @@ import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { UserSelectionService } from '../../services/user-selection.service';
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 import { appConfigBtnsMode } from '../../models/app-config-btns-mode.enum';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 
 @Component({
   selector: 'app-header',
@@ -33,6 +34,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   appConfigBtnsMode = appConfigBtnsMode;
+  appConfigSettings!: AppConfirmationSelections;
+  AppConfigSettings = AppConfirmationSelections;
+  appConfigSubscriptions!: Subscription;
 
 
   constructor(
@@ -43,6 +47,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+      this.appConfigSubscriptions = this.appConfigService.getCurrAppConfigSettings().subscribe(appConfig=>{
+        this.appConfigSettings = appConfig;
+      });
       this.showAppConfigBtnsSubscription = this.appConfigService.getShowAppConfigBtns().pipe(
         switchMap(showAppConfigBtns=>{
           this.showAppConfigBtns = showAppConfigBtns;
@@ -93,6 +100,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
    this.progressBarSubscription?.unsubscribe();
    this.openMenuLinksMapingSubscription.unsubscribe();
    this.showAppConfigBtnsSubscription.unsubscribe();
+   this.appConfigSubscriptions.unsubscribe();
   }
 
 }

@@ -47,6 +47,11 @@
 
     "subCategories": [
       {
+        "subTitle": "NSN Information",
+        "subRouterLink": "/useful-information/por-list",
+        "isUsaAppConfig": true
+      },
+      {
         "subTitle": "Equipment Description",
         "subRouterLink": "/useful-information/equipment-description"
       },
@@ -54,6 +59,7 @@
         "subTitle": "Maintenance",
         "subRouterLink": "/useful-information/maintenance"
       }
+
     ]
   }
 ]

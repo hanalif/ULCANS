@@ -48,13 +48,15 @@
             <ion-icon name="caret-down-outline"></ion-icon>
           </div>
           <div class="top-nav-body">
-            <div *ngFor="let subCategory of menuCategory.subCategories" class="top-nav-body-item">
-              <a
-                [routerLink]="subCategory.subRouterLink"
-                routerLinkActive="is-active"
-                >{{subCategory.subTitle}}
-              </a>
-            </div>
+            <ng-container *ngFor="let subCategory of menuCategory.subCategories">
+              <div class="top-nav-body-item" *ngIf="!subCategory.isUsaAppConfig || (appConfigSettings === AppConfigSettings.USA && subCategory.isUsaAppConfig)" >
+                <a
+                  [routerLink]="subCategory.subRouterLink"
+                  routerLinkActive="is-active"
+                  >{{subCategory.subTitle}}
+                </a>
+              </div>
+            </ng-container>
           </div>
         </div>
       </div>
@@ -93,19 +95,20 @@
         *ngIf="openMenuLinksMaping[menuCategory.id]"
         [@slidesDownAnimation]
       >
-        <div
-          *ngFor="let subCategory of menuCategory.subCategories"
-          class="accordion-item"
-        >
+        <ng-container
+          *ngFor="let subCategory of menuCategory.subCategories">
+        <div *ngIf="!subCategory.isUsaAppConfig || (appConfigSettings === AppConfigSettings.USA && subCategory.isUsaAppConfig)"  class="accordion-item">
           <div
-            class="inner accordion-item-header"
-            (click)="onAccordionItemHeader()"
-            [routerLink]="subCategory.subRouterLink"
-            routerLinkActive="is-active"
-          >
-            <a>{{ subCategory.subTitle | uppercase }}</a>
-          </div>
+          class="inner accordion-item-header"
+          (click)="onAccordionItemHeader()"
+          [routerLink]="subCategory.subRouterLink"
+          routerLinkActive="is-active"
+        >
+          <a>{{ subCategory.subTitle | uppercase }}</a>
         </div>
+        </div>
+
+        </ng-container>
       </div>
     </div>
     <div class="accordion-item dropdown-get-ulcans-btn">
