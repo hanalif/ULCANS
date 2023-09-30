@@ -44,11 +44,16 @@ export class AssetPage implements OnInit,OnDestroy {
             this.areSpecialPoles = assetForPreview.areSpecialPoles;
             this.wasStartedFromCalculator = assetForPreview.wasStartedFromCalculator;
 
-            if(currAppConfig == AppConfirmationSelections.USA){
-              this.measureType = MeasureType.FEET;
+            if(!this.asset.isInList){
+              this.measureType = this.asset.initialMeasureType
             }else{
-              this.measureType = this.asset.initialMeasureType;
+              if(currAppConfig == AppConfirmationSelections.USA){
+                this.measureType = MeasureType.FEET;
+              }else{
+                this.measureType = this.asset.initialMeasureType;
+              }
             }
+
           }))
       })
     ).subscribe()

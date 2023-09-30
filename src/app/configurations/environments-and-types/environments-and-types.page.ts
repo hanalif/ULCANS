@@ -70,7 +70,9 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
           this.currUserSelection = this.userSelectionsService.getUserSelectionById(this.userSelectionToUpdateId) as UserSelections;
           if(this.currUserSelection.porVariantSelectionId){
             this.porIndexClicked = this.porSelectionsList.findIndex(por=> por.id == this.currUserSelection.porVariantSelectionId);
-            this.tabIndex = PatternsSelections.POR;
+            this.tabIndex = PatternsSelections.POR
+          }else{
+            this.tabIndex = PatternsSelections.custom
           }
         }
       }else{
@@ -97,14 +99,13 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
     this.selectedPorId = this.porSelectionsList[index].id;
     let userSelectios: Partial<UserSelections> = {
-      porVariantSelectionId: this.selectedPorId,
-      patternsSelections: PatternsSelections.POR
+      porVariantSelectionId: this.selectedPorId
     }
 
 
     if(!this.isFromUserSelections){
-      this.userSelectionsService.setProgressBar();
       this.userSelectionsService.updateCurrUserSelections(userSelectios);
+      this.userSelectionsService.setProgressBar();
     }else{
       this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
     }
@@ -122,8 +123,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
       }else{
         let userSelectios: Partial<UserSelections> = {
-          initialIndexses: [0,1,2],
-          patternsSelections: this.tabIndex
+          initialIndexses: [0,1,2]
         }
 
         this.userSelectionsService.updateCurrUserSelections(userSelectios);

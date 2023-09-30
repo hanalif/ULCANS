@@ -93,8 +93,12 @@ export class UserSelectionService {
 
 
   setProgressBar(){
-    let tabIndex = this.tabIndex$.getValue();
     let currSelctionValue = this.getCurrUserSelectionValue() as UserSelections;
+    if(!currSelctionValue){
+      return;
+    }
+
+    let tabIndex = this.tabIndex$.getValue();
     let totalControls = tabIndex == PatternsSelections.POR ? 5 : 7;
     let usedControls: number = 0;
     let relevantControls: Partial<UserSelections> = {
@@ -111,6 +115,11 @@ export class UserSelectionService {
 
     usedControls = Object.values(relevantControls).length;
     let progressPercent = usedControls / totalControls * 100
+    if(progressPercent < 100){
+      this.setIsDisabled(true);
+    }else{
+      this.setIsDisabled(false);
+    }
 
     this.progressBar$.next(progressPercent);
   }
@@ -129,7 +138,7 @@ export class UserSelectionService {
   }
 
   setUserSelectionsPatterns(userSelection: Partial<UserSelections> | UserSelections){
-    if(userSelection.patternsSelections == PatternsSelections.POR){
+    if(userSelection.porVariantSelectionId){
       userSelection.sideA = undefined,
       userSelection.sideB = undefined,
       userSelection.systemTypeId = undefined
@@ -205,7 +214,6 @@ export class UserSelectionService {
   }
 
   getAssetsForDisplay(userSelections: UserSelections[]){
-        const userSelectionsTypes = userSelections.map(us => us.patternsSelections);
         const porSelectionsIds = userSelections.map(us =>
           {
             if(!us.porVariantSelectionId){

@@ -4,11 +4,15 @@ import { SystemSide } from "./system-side.model";
 
 export interface UserSelections{
   id: string,
+  initialIndexses: number[],
+
   wasStartedFromCalculator: boolean,
   assetId: string,
   areSpecialPoles: boolean,
   isCustomConfiguration: boolean,
-  initialIndexses: number[],
+
+
+
 
   //custom
   sideA?: SystemSide,
@@ -18,5 +22,4 @@ export interface UserSelections{
 
   //POR
   porVariantSelectionId?: string,
-  patternsSelections: PatternsSelections
 }

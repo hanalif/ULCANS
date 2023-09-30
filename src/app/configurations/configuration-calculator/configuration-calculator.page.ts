@@ -8,10 +8,11 @@ import { CalculatorFormValue } from './calculator-form-value.model';
 import { Asset } from '../models/asset.model';
 import { FtToMPipe } from 'src/app/shared/pipes/ft-to-m.pipe';
 import { DecimalPipe } from '@angular/common';
-import { AssetMeasures } from '../models/asset-measures.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { Subscription } from 'rxjs';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 
 @Component({
   selector: 'app-configuration-calculator',
@@ -37,13 +38,13 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private measurmentsPipe: FtToMPipe,
-    private _decimalPipe: DecimalPipe) { }
+    private _decimalPipe: DecimalPipe,
+    private appConfigService: AppConfigurationService) { }
 
     assetToUpdate: Asset | undefined;
 
   ngOnInit() {
     let assetId = this.activatedRoute.snapshot.paramMap.get('assetId');
-
     if(assetId){
       let assetById = this.assetService.getAssetById(assetId);
       if(assetById){
@@ -52,7 +53,13 @@ export class ConfigurationCalculatorPage implements OnInit, OnDestroy{
       }else{
         this.assetToUpdate = undefined;
       }
-
+    }else{
+      const appConfigSettings = this.appConfigService.getCurrAppConfigSettingsValue();
+      if(appConfigSettings == AppConfirmationSelections.USA){
+        this.measureType = MeasureType.FEET;
+      }else{
+        this.measureType = MeasureType.METERS;
+      }
     }
 
     this.isFromAssetsSubscription = this.activatedRoute.queryParams.subscribe(params=>{
