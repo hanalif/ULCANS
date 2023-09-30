@@ -76,6 +76,7 @@ export class UserSelectionService {
 
 
   setIsDisabled(val:boolean){
+
     this.isDisabled$.next(val);
   }
   getCurrUserSelectionValue(){
@@ -110,12 +111,8 @@ export class UserSelectionService {
 
     usedControls = Object.values(relevantControls).length;
     let progressPercent = usedControls / totalControls * 100
-    if(progressPercent < 100){
-      this.setIsDisabled(true);
-    }else{
-      this.setIsDisabled(false);
-    }
-  this.progressBar$.next(progressPercent);
+
+    this.progressBar$.next(progressPercent);
   }
 
 
@@ -131,15 +128,31 @@ export class UserSelectionService {
     this.progressBar$.next(0);
   }
 
+  setUserSelectionsPatterns(userSelection: Partial<UserSelections> | UserSelections){
+    if(userSelection.patternsSelections == PatternsSelections.POR){
+      userSelection.sideA = undefined,
+      userSelection.sideB = undefined,
+      userSelection.systemTypeId = undefined
+    }else{
+      userSelection.porVariantSelectionId = undefined
+    }
+
+    return userSelection;
+  }
+
   addUserSelection(userSelectionToUpdate?: Partial<UserSelections>, userSelectionToUpdateId?: string){
     let userSelections: UserSelections;
     if(userSelectionToUpdate && userSelectionToUpdateId){
+      userSelectionToUpdate = this.setUserSelectionsPatterns(userSelectionToUpdate);
       userSelections = this.updateUserSelection(userSelectionToUpdate, userSelectionToUpdateId) as UserSelections;
     } else{
-      userSelections = this.getCurrUserSelectionValue() as UserSelections;
+      let currUserSelections = this.getCurrUserSelectionValue() as UserSelections;
+      userSelections = this.setUserSelectionsPatterns(currUserSelections) as UserSelections;
+
       if(!userSelections.id){
         userSelections.id = this.utilService._makeId();
       }
+
     }
 
     this.addUserSelectionToSelectionsList(userSelections);
@@ -262,7 +275,6 @@ export class UserSelectionService {
           initialIndexes: initialIndexes[i],
           porSelection: porSelections[i]
         }
-        console.log(assetForDisplay);
         assetsForDisplay.push(assetForDisplay);
       }
       return assetsForDisplay;

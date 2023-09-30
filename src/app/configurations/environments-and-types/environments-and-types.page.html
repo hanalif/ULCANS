@@ -14,7 +14,9 @@
             </div>
             <app-tab
               [displayMode]="tabDisplayMode"
-              (tabItemClicked)="tabItemClicked($event)">
+              (tabItemClicked)="tabItemClicked($event)"
+              [openedItemIndex]="tabIndex"
+              >
               <app-tab-item>
                 <div tabItemHeader>
                   Custom
@@ -66,7 +68,7 @@
                   Choose POR Variant
                 </div>
                 <div tabItemBody>
-                  <app-por-selections (selectedPORIndex)="onPORClick($event)" [nsnsList]="porSelectionsList"></app-por-selections>
+                  <app-por-selections [porIndexClicked]="porIndexClicked" (selectedPORIndex)="onPORClick($event)" [nsnsList]="porSelectionsList"></app-por-selections>
                 </div>
               </app-tab-item>
             </app-tab>
@@ -80,7 +82,6 @@
   <ion-toolbar>
     <div class="footer-container main-layout">
       <div class="next-button-wrapper">
-        <!-- <button type="submit"  class="regular-btn"><span class="mobile-buttom">{{'continue' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button> -->
           <button (click)="onAddToYourSelections()" class="regular-btn" [ngClass]="{'disabled': isDiabled$ | async}" >
             <span>{{isFromUserSelections? 'Back To Your Selections': 'Add To Your Selections'}}</span><ion-icon [name]="isFromUserSelections? 'reader-outline': 'add-outline'"></ion-icon>
           </button>

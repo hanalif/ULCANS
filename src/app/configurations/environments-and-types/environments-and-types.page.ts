@@ -37,7 +37,8 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
   porSelectionsList!: PORVariant[];
   selectedPorId: string | undefined = undefined;
-  tabIndex: number = 0;
+  tabIndex!: number;
+  porIndexClicked: number = -1;
 
 
   constructor(
@@ -61,15 +62,20 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
     this.porSelectionsList = this.environmnetsService.getPORListValue();
     this.isFromUserSelectionsSubscription = this.route.queryParams.subscribe(params=>{
-      this.isFromUserSelections = params['isFromUserSelectionsMenu'];
+    this.isFromUserSelections = params['isFromUserSelectionsMenu'];
 
       if(this.isFromUserSelections){
         this.userSelectionToUpdateId = params['userSelectionToUpdateId'];
         if(this.userSelectionToUpdateId){
           this.currUserSelection = this.userSelectionsService.getUserSelectionById(this.userSelectionToUpdateId) as UserSelections;
+          if(this.currUserSelection.porVariantSelectionId){
+            this.porIndexClicked = this.porSelectionsList.findIndex(por=> por.id == this.currUserSelection.porVariantSelectionId);
+            this.tabIndex = PatternsSelections.POR;
+          }
         }
       }else{
           this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as UserSelections;
+          this.tabIndex = PatternsSelections.custom;
       }
     })
 
@@ -87,12 +93,22 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   }
 
   onPORClick(index:number){
+    this.porIndexClicked = index;
+
     this.selectedPorId = this.porSelectionsList[index].id;
     let userSelectios: Partial<UserSelections> = {
-      porVariantSelectionId: this.selectedPorId
+      porVariantSelectionId: this.selectedPorId,
+      patternsSelections: PatternsSelections.POR
     }
-    this.userSelectionsService.updateCurrUserSelections(userSelectios);
-    this.userSelectionsService.setProgressBar();
+
+
+    if(!this.isFromUserSelections){
+      this.userSelectionsService.setProgressBar();
+      this.userSelectionsService.updateCurrUserSelections(userSelectios);
+    }else{
+      this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
+    }
+
   }
 
 

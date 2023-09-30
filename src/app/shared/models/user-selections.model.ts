@@ -18,8 +18,5 @@ export interface UserSelections{
 
   //POR
   porVariantSelectionId?: string,
-
   patternsSelections: PatternsSelections
-
-
 }

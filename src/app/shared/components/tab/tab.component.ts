@@ -1,6 +1,7 @@
-import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from '@angular/core';
+import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList, SimpleChanges } from '@angular/core';
 import { TabItemComponent } from './tab-item/tab-item.component';
 import { DisplayHeadersMode } from './models/display-headers-mode';
+import { PatternsSelections } from '../../models/patterns-selections.enum';
 
 @Component({
   selector: 'app-tab',
@@ -10,21 +11,32 @@ import { DisplayHeadersMode } from './models/display-headers-mode';
 export class TabComponent implements OnInit {
   @ContentChildren(TabItemComponent) tabItems: QueryList<TabItemComponent> = new QueryList<TabItemComponent>;
   @Output() tabItemClicked = new EventEmitter<number>();
-  openedItemsIndexesMap: any = {};
-  openedItemIndex: number = 0;
+  @Input() openedItemIndex: number = 0;
   @Input() displayMode!: DisplayHeadersMode;
 
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    let openedItemIndex: PatternsSelections = changes['openedItemIndex'].currentValue;
+    let prevopenedItemIndex: PatternsSelections = changes['openedItemIndex'].previousValue;
+    if(openedItemIndex === prevopenedItemIndex){
+      return;
+    }
+
+  }
+
+
 
   onTabItemClicked(itemIndex: number){
     this.openedItemIndex = itemIndex;
     this.tabItemClicked.emit(this.openedItemIndex);
 
   }
-
 
 
 }

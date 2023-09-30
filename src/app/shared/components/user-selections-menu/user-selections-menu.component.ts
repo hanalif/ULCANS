@@ -90,11 +90,11 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     this.isDiabledSubscription = this.userSelectionService.getisDisabled().subscribe(isDisabled=> this.isDisabled = isDisabled);
       this.currUserSelectionSubscription = this.userSelectionService.getCurrUserSelectionValueAsObservable().subscribe(currUserSelection=>{
         this.currUserSelection = currUserSelection;
-        if(currUserSelection){
-          this.userSelectionService.setIsDisabled(true);
-        }else{
-          this.userSelectionService.setIsDisabled(false);
-        }
+        // if(currUserSelection){
+        //   this.userSelectionService.setIsDisabled(true);
+        // }else{
+        //   this.userSelectionService.setIsDisabled(false);
+        // }
       })
   }
 
@@ -123,7 +123,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     }
 
     this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
-    this.userSelectionService.setIsDisabled(false);
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
 
@@ -134,9 +133,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       return;
     }
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
-    this.userSelectionService.setIsDisabled(false);
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
+
   onAccordionItem(index: number, userSelectionId: string | undefined, initialIndexes: number[]){
     let userSelectios: Partial<UserSelections>;
     let copyOfInitialIndexes = initialIndexes;

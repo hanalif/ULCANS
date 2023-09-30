@@ -13,7 +13,7 @@ export class PorSelectionsComponent implements OnInit {
   wideScreenTitles: string[] = ['', 'Type', 'NSN', 'Description', 'Pattern'];
   mobileTitles: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description']
   @Output() selectedPORIndex = new EventEmitter<number>();
-  porIndexClicked!: number;
+  @Input() porIndexClicked!: number;
   constructor() { }
 
   ngOnInit() {
