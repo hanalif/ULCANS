@@ -2,11 +2,13 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChi
 import { Router } from '@angular/router';
 import { IonIcon, IonSearchbar, NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { debounceTime, EMPTY, from, map, Subscription, tap } from 'rxjs';
+import { Subscription, debounceTime, from } from 'rxjs';
 import {AlertConfirmationType} from '../../shared/models/alert-confirmation.enum';
 import { Asset } from '../models/asset.model';
 import { AssetsService } from '../services/assets/assets.service';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+
 
 @Component({
   selector: 'app-typical-configurations',
@@ -23,7 +25,6 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
   alertSubscription!: Subscription;
 
 
-
   constructor(
     private assetsService:AssetsService,
     private cd: ChangeDetectorRef,
@@ -37,7 +38,6 @@ export class TypicalConfigurationsPage implements OnInit, AfterViewInit, OnDestr
     ngOnInit() {
       this.assetsSuscription = this.assetsService.getAssets().subscribe(assets =>{
         this.assetsList = assets;
-        this.cd.detectChanges();
       });
 
     }

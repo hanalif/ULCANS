@@ -1,0 +1,82 @@
+@import "../../../styles/setup/mixins";
+@import "../../../styles/setup/variables";
+
+ .btns-container{
+  display: flex;
+  gap: 10px;
+  width: 450px;
+
+  &.small{
+    gap: 0px;
+    justify-content: end;
+    width: 100%;
+  }
+
+  .regular-btn{
+    font-family: Babas-pro, sans-serif;
+    gap: 5px;
+    padding: 2px;
+    color: black;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+
+    &.small{
+      font-size: 16px;
+      background-color: transparent;
+      width:fit-content;
+      border-radius: 2px;
+      color: white;
+      letter-spacing: 1px;
+
+    }
+
+    &:hover.medium{
+      color: black;
+      background-color: #00a9ff;
+    }
+
+    &.selected.small{
+      span.small{
+        color:#00a9ff;
+      }
+
+    }
+
+    &:hover.small{
+       span.small{
+        color:#00a9ff ;
+      }
+    }
+
+    .txt-container{
+      display: flex;
+      gap: 6px;
+    }
+
+    @include for-bpoint-mobile{
+      & .txt-container{
+        justify-content: center;
+        align-items: center;
+
+
+        // & span{
+        //   font-size: 18px;
+        // }
+      }
+
+
+    }
+
+  }
+
+
+  @include for-bpoint-mobile{
+      width: 100%;
+  }
+}
+
+.icon-container{
+  width: 20px;
+  display: flex;
+}

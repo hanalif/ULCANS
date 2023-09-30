@@ -3,7 +3,7 @@ import { BehaviorSubject, of } from 'rxjs';
 import { AssetsService } from 'src/app/configurations/services/assets/assets.service';
 import { ConfigurationsService } from 'src/app/configurations/services/configurationsService/configurations.service';
 import { AssetForDisplay } from '../models/asset-for-display';
-import { AssetForPdf } from '../models/asset-for-pdf.model';
+import { UserSelections } from '../models/user-selections.model';
 import { Platform } from '@ionic/angular';
 import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 import { SystemSide } from '../models/system-side.model';
@@ -11,6 +11,8 @@ import { SystemSideForDisplay } from '../models/system-side-for-display.mode';
 import { UtilService } from './util.service';
 import { SystemTypesService } from 'src/app/configurations/environments-and-types/services/system-types.service';
 import { StorageService } from './storage.service';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { PatternsSelections } from '../models/patterns-selections.enum';
 
 
 @Injectable({
@@ -19,15 +21,15 @@ import { StorageService } from './storage.service';
 export class UserSelectionService {
 
   private isUserSelectionsMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
-  public assetsForPdf$: BehaviorSubject<AssetForPdf[]> = new BehaviorSubject<AssetForPdf[]>([]);
+  private numOfSelections$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  public userSelections$: BehaviorSubject<UserSelections[]> = new BehaviorSubject<UserSelections[]>([]);
   private isProcessingPdf$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private isDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private progressBar$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
-
-  public userCurrSelection$: BehaviorSubject<AssetForPdf | null> = new BehaviorSubject<AssetForPdf | null>(null);
+  public tabIndex$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  public userCurrSelection$: BehaviorSubject<UserSelections | null> = new BehaviorSubject<UserSelections | null>(null);
 
   public FOOTER_FORM_TXT: string = "";
   private readonly entityType: string = 'userSelections';
@@ -52,12 +54,12 @@ export class UserSelectionService {
     return this.isDisabled$.asObservable();
   }
 
-  getnumOfSelections(){
-    return this.numOfSelections$.asObservable();
+  getIsDisabledValue(){
+    return this.isDisabled$.getValue();
   }
 
-  getAssetsForPdf(){
-    return this.assetsForPdf$.asObservable();
+  getnumOfSelections(){
+    return this.numOfSelections$.asObservable();
   }
 
   getIsProcessingPdf(){
@@ -66,6 +68,10 @@ export class UserSelectionService {
 
   getprogressBar(){
     return this.progressBar$.asObservable();
+  }
+
+  setTabIndex(index: number){
+    this.tabIndex$.next(index);
   }
 
   setIsUserSelectionsMenuOpen(val:boolean){
@@ -84,64 +90,122 @@ export class UserSelectionService {
     return this.userCurrSelection$.asObservable();
   }
 
-  _getAssetsForPdfValue(){
-    return this.assetsForPdf$.getValue();
+  _getUserSelections(){
+    return this.userSelections$.getValue();
   }
 
-  updateCurrUserSelections(userSelections: Partial<AssetForPdf>){
-    let currSelctionValue = this.getCurrUserSelectionValue();
-    currSelctionValue = {...currSelctionValue, ...userSelections} as AssetForPdf;
-    let numsOfKeys = Object.values(currSelctionValue).length;
-    let progressNum = numsOfKeys * 14.2857;
-    this.progressBar$.next(progressNum);
-    if(numsOfKeys === 7){
-      this.setIsDisabled(false);
+  updateDisabled() {
+    const progressPercent = this.getProgressPercentage();
+    this.setIsDisabled(progressPercent < 100);
+  }
+
+  setProgressBar(){
+    const progressPercent = this.getProgressPercentage();
+    this.progressBar$.next(progressPercent);
+  }
+
+  getProgressPercentage(): number {
+    let currSelctionValue = this.getCurrUserSelectionValue() as UserSelections;
+    if(!currSelctionValue){
+      return 0;
     }
+    let tabIndex = currSelctionValue.patternType;
+    let totalControls: number = 0;
+    let usedControls: number = 0;
+    let progressPercent: number = 0;
+    let relevantControls: Partial<UserSelections> = {
+      ...currSelctionValue
+    };
+    if(currSelctionValue.id){
+      if(currSelctionValue.patternType == PatternsSelections.POR && currSelctionValue.porVariantSelectionId){
+        progressPercent = 100;
+      }
+
+      if(currSelctionValue.patternType == PatternsSelections.custom && currSelctionValue.sideA && currSelctionValue.sideB && currSelctionValue.systemTypeId){
+        progressPercent = 100;
+      }
+
+    }else{
+      totalControls = tabIndex == PatternsSelections.POR ? 6 : 8;
+      if (tabIndex == PatternsSelections.POR) {
+        delete relevantControls.sideA;
+        delete relevantControls.sideB;
+        delete relevantControls.systemTypeId;
+      }
+      else {
+        delete relevantControls.porVariantSelectionId;
+      }
+      usedControls = Object.values(relevantControls).length;
+      progressPercent = usedControls / totalControls * 100;
+    }
+
+    return progressPercent;
+  }
+
+
+  updateCurrUserSelections(userSelections?: Partial<UserSelections>){
+    let currSelctionValue = this.getCurrUserSelectionValue() as UserSelections;
+      currSelctionValue = {...currSelctionValue, ...userSelections} as UserSelections;
     this.userCurrSelection$.next(currSelctionValue);
   }
 
   resetCurrUserSelection(){
-    this.setIsDisabled(false);
     this.userCurrSelection$.next(null);
     this.progressBar$.next(0);
   }
 
-  addAssetForPdf(userSelectionToUpdate?: Partial<AssetForPdf>, userSelectionToUpdateId?: string){
-    let assetForPdf: AssetForPdf;
-    if(userSelectionToUpdate && userSelectionToUpdateId){
-      assetForPdf = this.updateUserSelection(userSelectionToUpdate, userSelectionToUpdateId) as AssetForPdf;
-    } else{
-      assetForPdf = this.getCurrUserSelectionValue() as AssetForPdf;
-      if(!assetForPdf.id){
-        assetForPdf.id = this.utilService._makeId();
-      }
+  setUserSelectionsPatterns(userSelections: UserSelections){
+    if(userSelections.patternType == PatternsSelections.POR){
+      userSelections.sideA = undefined,
+      userSelections.sideB = undefined,
+      userSelections.systemTypeId = undefined
+    }else{
+      userSelections.porVariantSelectionId = undefined
     }
 
-    this.addUserSelectionToSelectionsList(assetForPdf);
-
+    return userSelections;
   }
 
-  addUserSelectionToSelectionsList(userSelection: AssetForPdf){
-    const assetsForPdf = this.assetsForPdf$.getValue();
-    const foundAssetIndex = assetsForPdf.findIndex(a=> a.id === userSelection.id);
+  addUserSelection(){
+    let userSelections: UserSelections;
+    let currUserSelections = this.getCurrUserSelectionValue() as UserSelections;
+    if(currUserSelections.id){
+      let userSelectionToUpdate = this.setUserSelectionsPatterns(currUserSelections);
+      userSelections = this.updateUserSelection(userSelectionToUpdate, currUserSelections.id) as UserSelections;
+    } else{
+      userSelections = this.setUserSelectionsPatterns(currUserSelections) as UserSelections;
+      userSelections.id = this.utilService._makeId();
+    }
+    this.addUserSelectionToSelectionsList(userSelections);
+  }
+
+  addUserSelectionToSelectionsList(userSelection: UserSelections){
+    const userSelections = this.userSelections$.getValue();
+    const foundAssetIndex = userSelections.findIndex(a=> a.id === userSelection.id);
     if(foundAssetIndex !== -1){
-      assetsForPdf.splice(foundAssetIndex, 1, userSelection);
+      userSelections.splice(foundAssetIndex, 1, userSelection);
     }else{
-      assetsForPdf.push(userSelection);
+      userSelections.push(userSelection);
       this.setNumberOfNewSelections(1);
       this.resetCurrUserSelection();
-
     }
 
     this.localStorage.put(this.entityType, userSelection);
-    this.assetsForPdf$.next(assetsForPdf);
+    this.userSelections$.next(userSelections);
   }
 
-  updateUserSelection(userSelectionToUpdate: Partial<AssetForPdf>, userSelectionToUpdateId: string){
-    const userSelections = this.assetsForPdf$.getValue();
+  updateUserSelection(userSelectionToUpdate: Partial<UserSelections>, userSelectionToUpdateId: string){
+    const userSelections = this.userSelections$.getValue();
     let foundUserSelection = userSelections.find(us => us.id == userSelectionToUpdateId);
     if(foundUserSelection){
-      foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as AssetForPdf;
+      foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as UserSelections;
+      // if((foundUserSelection.sideA && foundUserSelection.sideB && foundUserSelection.systemTypeId && this.tabIndex$.getValue() ==  PatternsSelections.custom) || (foundUserSelection.porVariantSelectionId && this.tabIndex$.getValue() == PatternsSelections.POR)){
+      //   this.setIsDisabled(false);
+      // }
+      // else {
+      //   this.setIsDisabled(true);
+      // }
+
       return foundUserSelection;
     }
     return undefined;
@@ -150,55 +214,105 @@ export class UserSelectionService {
 
 
   removeUserSelection(userSelectionId: string){
-    let userSelections = this.assetsForPdf$.getValue();
+    let userSelections = this.userSelections$.getValue();
     const index = userSelections.findIndex(selection=> selection.id === userSelectionId);
     userSelections.splice(index, 1);
 
     this.localStorage.remove(this.entityType, userSelectionId);
 
-    this.assetsForPdf$.next(userSelections);
+    this.userSelections$.next(userSelections);
     this.setNumberOfNewSelections(-1);
   }
 
-  getAssetsForDisplay(assetsForPdf: AssetForPdf[]){
+  resetUserSelections(){
+    this.userSelections$.next([]);
+    this.localStorage.removeLocalStorageSessions(this.entityType);
+    this.numOfSelections$.next(0);
+  }
 
-        const assetIds = (assetsForPdf.map(asset => asset.assetId)) as string[];
+  getAssetsForDisplay(userSelections: UserSelections[]){
+        const porSelectionsIds = userSelections.map(us =>
+          {
+            if(!us.porVariantSelectionId){
+              return  us.porVariantSelectionId = undefined;
+            }
+            return us.porVariantSelectionId;
+          });
 
-        const sidesA = (assetsForPdf.map(asset => asset.sideA));
-        const sidesB = (assetsForPdf.map(asset => asset.sideB));
-        const ulcansTypesIds = (assetsForPdf.map(asset=> asset.systemTypeId));
-        const initialIndexes = (assetsForPdf.map(asset=> asset.initialIndexses));
+        const assetIds = (userSelections.map(us => us.assetId)) as string[];
+
+        const sidesA = (userSelections.map(us =>
+          {
+            if(!us.sideA){
+               return us.sideA = undefined;
+            }
+            return us.sideA;
+          }));
+
+        const sidesB = (userSelections.map(us =>
+          {
+            if(!us.sideB){
+              return us.sideA = undefined;
+            }
+            return us.sideB
+          }));
+
+        const ulcansTypesIds = (userSelections.map(us=> {
+          if(!us.systemTypeId){
+            return us.systemTypeId = undefined
+          }
+          return us.systemTypeId
+        }));
+
+        const initialIndexes = (userSelections.map(us=> us.initialIndexses));
 
         const assets = this.assetsService.getAssetsByIds(assetIds);
         const configurationsIds = (assets.map(a => a.configurationId)) as string[];
         const sidesAForDisplay = this.getSidesForDisplay(sidesA);
         const sidesBForDisplay = this.getSidesForDisplay(sidesB);
         const configurations = this.configurationsService.getConfigurationsByIds(configurationsIds);
-        const ulcansTypes = this.systemTypesService.getUlcansTypesByIds(ulcansTypesIds);
+        const ulcansTypes = ulcansTypesIds.map(ulcansTypeId=>{
+          if(!ulcansTypeId){
+            return undefined;
+          }
+          return this.systemTypesService.getUlcansTypeById(ulcansTypeId);
+        })
+        const porSelections = porSelectionsIds.map(porId=>{
+          if(porId){
+            return this.environmentsService.getPORVariantById(porId);
+          }
+          return undefined;
+        })
+
 
 
         let assetsForDisplay: AssetForDisplay[] = [];
 
-        for(let i = 0; i< assetsForPdf.length; i++){
+        for(let i = 0; i< userSelections.length; i++){
           let assetForDisplay = {
-          id: assetsForPdf[i].id,
-          asset: assets.find(a=> a.id === assetsForPdf[i].assetId),
+          id: userSelections[i].id,
+          asset: assets.find(a=> a.id === userSelections[i].assetId),
           configuratoin: configurations.find(c => c.id === configurationsIds[i]),
           sideA: sidesAForDisplay[i],
           sideB: sidesBForDisplay[i],
           ulcansType: ulcansTypes[i],
-          areSpecialPoles: assetsForPdf[i].areSpecialPoles,
-          initialIndexes: initialIndexes[i]
+          areSpecialPoles: userSelections[i].areSpecialPoles,
+          initialIndexes: initialIndexes[i],
+          porSelection: porSelections[i]
         }
-
         assetsForDisplay.push(assetForDisplay);
       }
       return assetsForDisplay;
   }
 
-  getSidesForDisplay(sidesArr: SystemSide[]){
+  getSidesForDisplay(sidesArr: (SystemSide | undefined)[] ){
       return sidesArr.map(side => {
-      const sideForDispaly: SystemSideForDisplay = this.environmentsService.getSystemSideForDisplay(side.environmentId, side.clothPatternIndex);
+        let sideForDispaly: SystemSideForDisplay | undefined;
+        if(!side){
+          return sideForDispaly = undefined
+        }
+
+        sideForDispaly = this.environmentsService.getSystemSideForDisplay(side.environmentId, side.clothPatternIndex);
       return sideForDispaly;
     })
   }
@@ -214,14 +328,14 @@ export class UserSelectionService {
   }
 
   getUserSelectionById(userSelectionId: string){
-    let userSelections = this._getAssetsForPdfValue();
+    let userSelections = this._getUserSelections();
     return userSelections.find(us=> us.id == userSelectionId);
   }
 
   getIsAssetInUserSelection(assetId:string){
-    let assetsForPdf = this._getAssetsForPdfValue();
-    let isAssetIdFound = assetsForPdf.find(a => a.assetId === assetId);
-    if(isAssetIdFound){
+    let userSelections = this._getUserSelections();
+    let isUserSelectionFound = userSelections.find(us => us.assetId === assetId);
+    if(isUserSelectionFound){
       return true;
     }else{
       return false;
@@ -230,17 +344,16 @@ export class UserSelectionService {
   }
 
 
-
-  _initialUserSelections(){
-    let userSelectionsFromStorage = this.localStorage.get<AssetForPdf>(this.entityType);
+  _initialUserSelections(appCurrConfigVal: AppConfirmationSelections){
+    let userSelectionsFromStorage = this.localStorage.get<UserSelections>(this.entityType);
 
     if(userSelectionsFromStorage.length !== 0){
       this.numOfSelections$.next(userSelectionsFromStorage.length);
-      this.assetsForPdf$.next(userSelectionsFromStorage);
+      this.userSelections$.next(userSelectionsFromStorage);
       return of();
     }
 
-    return this.assetsForPdf$.asObservable();
+    return this.userSelections$.asObservable();
   }
 
 }

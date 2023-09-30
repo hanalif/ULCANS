@@ -3,7 +3,7 @@ import {
   Resolve,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
+import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { AssetForPreview } from '../../models/assetForPreview.model';
 import { AssetsService } from '../../services/assets/assets.service';
@@ -29,7 +29,7 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
 
       let wasStartedFromCalculator = this.userSelectionsService.getCurrUserSelectionValue()?.wasStartedFromCalculator;
       //save to curr user selection
-      let userSelections: Partial<AssetForPdf> = {
+      let userSelections: Partial<UserSelections> = {
         assetId: assetId,
         areSpecialPoles: areSpecialPoles,
         isCustomConfiguration: isCustomConfiguration,
@@ -37,6 +37,7 @@ export class AssetResolver implements Resolve<AssetForPreview | undefined>  {
       }
 
       this.userSelectionsService.updateCurrUserSelections(userSelections);
+      this.userSelectionsService.setProgressBar();
       let config: Configuration | undefined;
       //generate asset for preview
       if(asset.configurationId){

@@ -12,43 +12,66 @@
             <div class="title">
              Environment And Type
             </div>
-          </div>
-        </div>
-        <div class="page-row">
-          <div class="top">
-            <div class="title">
-              Choose Your Environment:
-            </div>
-          </div>
-          <div class="cards-container">
-            <div *ngFor="let side of sides" class="card">
-              <div class="card-content">
-                <div class="card-top">
-                  <div class="card-title side-title">
-                    Side {{side}}:
+            <app-tab
+              [displayMode]="tabDisplayMode"
+              (tabItemClicked)="tabItemClicked($event)"
+              [openedItemIndex]="tabIndex"
+              >
+              <app-tab-item>
+                <div tabItemHeader>
+                  Custom
+                </div>
+                <div tabItemBody>
+                  <div>
+                  <div class="page-row">
+                    <div class="top">
+                      <div class="title">
+                        Choose Your Environment:
+                      </div>
+                    </div>
+                    <div class="cards-container">
+                      <div *ngFor="let side of sides" class="card">
+                        <div class="card-content">
+                          <div class="card-top">
+                            <div class="card-title side-title">
+                              Side {{side}}:
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <app-environments-radio-btn [currUserSelection]="currUserSelection" [currSide]="side"></app-environments-radio-btn>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="page-row">
+                    <div class="top">
+                      <div class="title">
+                        Choose Your System Type:
+                      </div>
+                    </div>
+                    <div class="cards-container">
+                      <div class="card system-card">
+                        <div class="card-content">
+                          <div class="card-body system-card-body">
+                            <app-types-select-btn [currUserSelection]="currUserSelection" ></app-types-select-btn>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="card-body">
-                  <app-environments-radio-btn [currUserSelection]="currUserSelection" [currSide]="side"></app-environments-radio-btn>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="page-row">
-          <div class="top">
-            <div class="title">
-              Choose Your System Type:
-            </div>
-          </div>
-          <div class="cards-container">
-            <div class="card system-card">
-              <div class="card-content">
-                <div class="card-body system-card-body">
-                  <app-types-select-btn [currUserSelection]="currUserSelection" ></app-types-select-btn>
+              </app-tab-item>
+              <app-tab-item *ngIf="appConfigSettings === AppConfigSettings.USA">
+                <div tabItemHeader>
+                  Choose POR Variant
                 </div>
-              </div>
-            </div>
+                <div tabItemBody>
+                  <app-por-selections [porIndexClicked]="porIndexClicked" (selectedPORIndex)="onPORClick($event)" [nsnsList]="porSelectionsList"></app-por-selections>
+                </div>
+              </app-tab-item>
+            </app-tab>
           </div>
         </div>
       </div>
@@ -59,9 +82,8 @@
   <ion-toolbar>
     <div class="footer-container main-layout">
       <div class="next-button-wrapper">
-        <!-- <button type="submit"  class="regular-btn"><span class="mobile-buttom">{{'continue' | uppercase}}</span><ion-icon name="arrow-forward-outline"></ion-icon></button> -->
-          <button (click)="onAddToYourSelections()" class="regular-btn" [ngClass]="{'disabled': isDiabled$ | async}" >
-            <span>{{isFromUserSelections? 'Back To Your Selections': 'Add To Your Selections'}}</span><ion-icon [name]="isFromUserSelections? 'reader-outline': 'add-outline'"></ion-icon>
+          <button (click)="onAddToYourSelections()" [disabled]="isDiabled$ | async" class="regular-btn" [ngClass]="{'disabled': isDiabled$ | async}" >
+            <span>{{isFromUserSelections? 'Update Your Selections': 'Add To Your Selections'}}</span><ion-icon [name]="isFromUserSelections? 'reader-outline': 'add-outline'"></ion-icon>
           </button>
       </div>
       <p class="footer-txt">The app offers limited ULCANS preferences. For more options, please reach out.</p>

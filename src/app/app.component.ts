@@ -1,12 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, isDevMode } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
-import { Observable, ReplaySubject, takeUntil } from 'rxjs';
+import { Observable, ReplaySubject, map, takeUntil } from 'rxjs';
 import { Animations } from './angular-animations/animations';
 import { EnvironmentsService } from './configurations/environments-and-types/services/environments.service';
 import { SystemTypesService } from './configurations/environments-and-types/services/system-types.service';
 import { AssetsService } from './configurations/services/assets/assets.service';
 import { ConfigurationsService } from './configurations/services/configurationsService/configurations.service';
 import { UserSelectionService } from './shared/services/user-selection.service';
+import { AppConfigurationService } from './app-configurations/app-configurations.service';
+import { AppConfirmationSelections } from './app-configurations/app-configurations.enum';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -18,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   isUserSelectionsMenuOpen$!: Observable<boolean>;
   isClothPatternsMenuOpen$!: Observable<boolean>;
+  appCurrConfigVal!: AppConfirmationSelections;
 
   constructor(
     private animationCtrl: AnimationController,
@@ -26,18 +32,20 @@ export class AppComponent implements OnInit, OnDestroy {
     private assetsService: AssetsService,
     private environmetsService: EnvironmentsService,
     private systemTypesService: SystemTypesService,
+    private appConfigService: AppConfigurationService
     ) {}
 
 
   ngOnInit(): void {
+    this.appCurrConfigVal = this.appConfigService.setAndGetInitialAppConfig();
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
-    this.userSelectionsService._initialUserSelections().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.userSelectionsService._initialUserSelections(this.appCurrConfigVal).pipe(takeUntil(this.destroyed$)).subscribe();
     this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();
-    this.assetsService._getAssetes().pipe(takeUntil(this.destroyed$)).subscribe();
+    this.assetsService.setAssets(this.appCurrConfigVal).pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();
     this.systemTypesService._setUlcansTypes().pipe(takeUntil(this.destroyed$)).subscribe();
-
+    this.environmetsService._setPORSelections().pipe(takeUntil(this.destroyed$)).subscribe();
   }
 
   onBackdropClicked(val:boolean){

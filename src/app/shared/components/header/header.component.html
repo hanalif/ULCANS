@@ -1,5 +1,4 @@
 <div class="header-wrapper">
-
   <div class="header-container main-layout">
     <div class="header-inline-start">
       <div (click)="onLogo()" class="logo">
@@ -7,20 +6,25 @@
           src="assets/imgs/logo/logo-png.png"
         ></ion-img>
       </div>
-      <div (click)="onReaderIcon(true)" class="user-selections-menu-icon">
+      <div *ngIf="showAppConfigBtns && showOnlyHeaderAppConfigBtn || !showAppConfigBtns && !showOnlyHeaderAppConfigBtn" (click)="onReaderIcon(true)" class="user-selections-menu-icon">
         <ion-badge class="badge-icon wide-screen" slot="end">{{numsOfUserSelections$ | async}}</ion-badge>
         <ion-icon class="reader-icon wide-screen" name="reader-outline"></ion-icon>
       </div>
     </div>
+
+
     <div class="top-nav">
 
-      <!-- Hamburger Icon For Mobile -->
+      <ng-container *ngIf="showAppConfigBtns && showOnlyHeaderAppConfigBtn || !showAppConfigBtns && !showOnlyHeaderAppConfigBtn">
+
+        <!-- Hamburger Icon For Mobile -->
       <ion-icon
         *ngIf="!isDropdownMenuOpen"
         (click)="onHamburgerIcon()"
         class="hamburger-btn"
         style="color: white"
         name="menu-outline"
+        class= "menu-outline-icon"
       ></ion-icon>
       <ion-icon
         *ngIf="isDropdownMenuOpen"
@@ -44,17 +48,21 @@
             <ion-icon name="caret-down-outline"></ion-icon>
           </div>
           <div class="top-nav-body">
-            <div *ngFor="let subCategory of menuCategory.subCategories" class="top-nav-body-item">
-              <a
-                [routerLink]="subCategory.subRouterLink"
-                routerLinkActive="is-active"
-                >{{subCategory.subTitle}}
-              </a>
-            </div>
+            <ng-container *ngFor="let subCategory of menuCategory.subCategories">
+              <div class="top-nav-body-item" *ngIf="!subCategory.isUsaAppConfig || (appConfigSettings === AppConfigSettings.USA && subCategory.isUsaAppConfig)" >
+                <a
+                  [routerLink]="subCategory.subRouterLink"
+                  routerLinkActive="is-active"
+                  >{{subCategory.subTitle}}
+                </a>
+              </div>
+            </ng-container>
           </div>
         </div>
       </div>
       <app-main-btn routerLink={{startBtn.btnLink}} routerLinkActive="is-active" class="top-nav-btn">{{ startBtn.btnTitle | uppercase }}</app-main-btn>
+    </ng-container>
+    <app-config-selections-btns class="config-btns" [displayMode]="appConfigBtnsMode.small" *ngIf="showAppConfigBtns"></app-config-selections-btns>
     </div>
   </div>
 
@@ -87,19 +95,20 @@
         *ngIf="openMenuLinksMaping[menuCategory.id]"
         [@slidesDownAnimation]
       >
-        <div
-          *ngFor="let subCategory of menuCategory.subCategories"
-          class="accordion-item"
-        >
+        <ng-container
+          *ngFor="let subCategory of menuCategory.subCategories">
+        <div *ngIf="!subCategory.isUsaAppConfig || (appConfigSettings === AppConfigSettings.USA && subCategory.isUsaAppConfig)"  class="accordion-item">
           <div
-            class="inner accordion-item-header"
-            (click)="onAccordionItemHeader()"
-            [routerLink]="subCategory.subRouterLink"
-            routerLinkActive="is-active"
-          >
-            <a>{{ subCategory.subTitle | uppercase }}</a>
-          </div>
+          class="inner accordion-item-header"
+          (click)="onAccordionItemHeader()"
+          [routerLink]="subCategory.subRouterLink"
+          routerLinkActive="is-active"
+        >
+          <a>{{ subCategory.subTitle | uppercase }}</a>
         </div>
+        </div>
+
+        </ng-container>
       </div>
     </div>
     <div class="accordion-item dropdown-get-ulcans-btn">

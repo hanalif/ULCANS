@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { WelcomeTxtComponent } from './welcome-txt/welcome-txt.component';
 
 
 
@@ -17,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     HomePageRoutingModule,
     SharedModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, WelcomeTxtComponent],
+  exports: [WelcomeTxtComponent]
 })
 export class HomePageModule {}

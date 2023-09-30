@@ -7,7 +7,9 @@ import { CalculatorFormValue } from '../../configuration-calculator/calculator-f
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { MToFtPipe } from 'src/app/shared/pipes/m-to-ft.pipe';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { Entity } from 'src/app/shared/models/entity.model';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+
 
 @Injectable({providedIn: 'root'})
 
@@ -22,7 +24,8 @@ export class AssetsService {
     private http: HttpClient,
     private utilService:UtilService,
     private mToFtPipe: MToFtPipe,
-    private localStorage: StorageService
+    private localStorage: StorageService,
+    private appConfigService: AppConfigurationService
     ) { }
 
   getSearchResultAssets(searchKey: string){
@@ -102,7 +105,8 @@ export class AssetsService {
         lengthFt: updatedCalculatorFormValue.length,
       },
       isInList: false,
-      initialMeasureType: measureType
+      initialMeasureType: measureType,
+      appConfig: this.appConfigService.getCurrAppConfigSettingsValue()
     }
 
 
@@ -129,9 +133,6 @@ export class AssetsService {
     this.addAssets(assets);
     this.localStorage.remove(this.entityType, assetId);
   }
-
-
-
 
 
   addAsset(assetToAdd: Asset){
@@ -172,23 +173,37 @@ export class AssetsService {
     this.localStorage.removeLocalStorageSessions(this.entityType);
   }
 
+  getAssetsByAppConfig(assets:Asset[], currConfig: AppConfirmationSelections){
+      return assets.filter(asset=>{
+        let assetToReturn = asset.appConfig === currConfig || asset.appConfig === AppConfirmationSelections.NONE;
+        return assetToReturn;
+      })
+  }
 
-  _getAssetes(){
+
+  _getAssets(appConfigVal: AppConfirmationSelections){
     let assetsFromStorage = this.localStorage.get<Asset>(this.entityType);
+    let assets: Asset[];
     if(assetsFromStorage.length !== 0){
-      this.assets$.next(assetsFromStorage);
-      return of();
+      assets = this.getAssetsByAppConfig(assetsFromStorage, appConfigVal);
+      this.assets$.next(assets);
     }
+  }
 
+  setAssets(appConfigVal: AppConfirmationSelections){
+    let assets: Asset[];
     return this.http.get<Asset[]>('assets/assets.json').pipe(map(assetsFromJson=> {
-      this.assets$.next(assetsFromJson);
-      let assetsFromStorage = this._getAssetsFromLocalStorage();
-      if(assetsFromStorage.length != 0 ){
-       let assets = [...this.assets$.getValue(), ...assetsFromStorage as Asset[]];
-      this.assets$.next(assets as Asset[]);
+      assets = this.getAssetsByAppConfig(assetsFromJson, appConfigVal);
+      let assetsFromStorage = this._getAssetsFromLocalStorage() as Asset[];
+      if(assetsFromStorage.length !== 0 ){
+      assetsFromStorage = this.getAssetsByAppConfig(assetsFromStorage ,appConfigVal);
+       assets = [...assets, ...assetsFromStorage as Asset[]];
       }else{
-        this._saveAssetsToLocalStorage(assetsFromJson);
+        this._saveAssetsToLocalStorage(assets);
       }
+      this.assets$.next(assets as Asset[]);
     }));
   }
 }
+
+

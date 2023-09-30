@@ -16,7 +16,11 @@ const routes: Routes = [
   {
     path: 'maintenance',
     loadChildren: () => import('./maintenance/maintenance.module').then( m => m.MaintenancePageModule)
+  },  {
+    path: 'por-list',
+    loadChildren: () => import('./por-list/por-list.module').then( m => m.PorListPageModule)
   }
+
 
 ];
 

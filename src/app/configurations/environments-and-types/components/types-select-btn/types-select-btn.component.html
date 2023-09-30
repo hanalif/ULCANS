@@ -1,19 +1,13 @@
-<div class="types-container">
-  <div
-    class="type-box"
-    *ngFor="let type of systemTypes$ | async"
-    (click)="onType(type.id)"
-    [ngClass]="{'selected': systemTypeId === type.id}">
-    <div class="check-mark" [ngClass]="{'selected': systemTypeId === type.id}">
-      <img *ngIf="systemTypeId !== type.id" [src]="changSrcs[1]" alt="">
-      <img *ngIf="systemTypeId === type.id" [src]="changSrcs[0]" alt="">
-      <div class="check-mark-icon">
-        <ion-icon name="checkmark-outline"></ion-icon>
-      </div>
-    </div>
-    <div class="type-title"><h3>{{type.name}}</h3></div>
-    <div class="type-description">
-      <p>{{type.description}}</p>
-    </div>
-  </div>
-</div>
+
+  <app-select-box [clickedItemIndex]="systemTypeIndex" (selectBoxItemClicked)="onType($event)">
+      <app-select-box-item *ngFor="let type of systemTypes; let i = index">
+        <div selectBoxContent class="type-box">
+          <div class="type-title"><h3>{{type.name}}</h3></div>
+          <div class="type-description">
+          <p>{{type.description}}</p>
+          </div>
+        </div>
+      </app-select-box-item>
+  </app-select-box>
+
+

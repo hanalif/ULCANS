@@ -1,7 +1,7 @@
 import { Entity } from "src/app/shared/models/entity.model";
 import { AssetMeasures } from "./asset-measures.model";
-import { Configuration } from "./configuration.model";
 import { MeasureType } from "src/app/shared/models/measure-type.enum";
+import { AppConfirmationSelections } from "src/app/app-configurations/app-configurations.enum";
 
 export interface Asset extends Entity{
     assetImgUrl: string,
@@ -9,5 +9,6 @@ export interface Asset extends Entity{
     configurationId: string | undefined,
     measures: AssetMeasures,
     isInList: boolean,
-    initialMeasureType: MeasureType
+    initialMeasureType: MeasureType,
+    appConfig: AppConfirmationSelections
 }

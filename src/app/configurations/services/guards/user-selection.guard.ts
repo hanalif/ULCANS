@@ -1,13 +1,11 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { EMPTY, from, map, Observable, tap } from "rxjs";
 import { UserSelectionService } from "src/app/shared/services/user-selection.service";
 import { AlertController } from '@ionic/angular';
 import { AlertConfirmationType } from "src/app/shared/models/alert-confirmation.enum";
-import { AssetForPdf } from "src/app/shared/models/asset-for-pdf.model";
-import { AssetsService } from "../assets/assets.service";
-
-
+import { UserSelections } from "src/app/shared/models/user-selections.model";
+import { AppConfigurationService } from "src/app/app-configurations/app-configurations.service";
 
 
 @Injectable({
@@ -18,8 +16,7 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
   constructor(
     private userSelectionsService: UserSelectionService,
     private alertController: AlertController,
-    private assetService: AssetsService,
-    private route: Router){}
+    private appConfigService: AppConfigurationService){}
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -64,12 +61,12 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
 
   canDeactivate(component: unknown, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     const assetId: string | undefined = (this.userSelectionsService.userCurrSelection$.value)?.assetId;
-    const currUserSelection: AssetForPdf | null = this.userSelectionsService.getCurrUserSelectionValue();
+    const currUserSelection: UserSelections | null = this.userSelectionsService.getCurrUserSelectionValue();
     const isFromUserMenu: boolean | undefined = currentRoute.queryParams['isFromUserSelectionsMenu'];
+    const isFromAppConfigCmp: boolean | undefined = nextState.root.queryParams['isFromAppConfigCmp'];
 
     if(isFromUserMenu){
       return true;
-
     }
 
     if(currUserSelection === null){
@@ -84,12 +81,14 @@ export class UserSelectionGuard implements CanDeactivate<unknown>{
 
       if(currentState.url.includes(assetId)){
 
-        if((currentState.url.includes('environments-and-types'))){
+        if((-currentState.url.includes('environments-andtypes'))){
 
           if(nextState.url.includes(assetId)){
-
             return true;
+          }
 
+          if(isFromAppConfigCmp){
+            return true;
           }
 
           return from(this.presentAlert()).pipe(

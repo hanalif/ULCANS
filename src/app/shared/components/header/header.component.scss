@@ -4,6 +4,15 @@
 .header-wrapper{
   position: relative;
 }
+.menu-outline-icon{
+  display: none;
+  color: white;
+  font-size: 40px;
+
+  @include for-bpoint-tablet-landscape{
+    display: block;
+  }
+}
 .header-container{
     display: flex;
     justify-content: space-between;
@@ -96,6 +105,7 @@
 
       display: flex;
       gap: 20px;
+      align-items: center;
 
       @include for-bpoint-tablet-landscape{
         flex-direction: row-reverse;

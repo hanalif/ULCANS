@@ -20,15 +20,69 @@ import { MToFtPipe } from './pipes/m-to-ft.pipe';
 import { SqftToSqmPipe } from './pipes/sqft-to-sqm.pipe';
 import { BtnSelectionComponent } from './components/btn-selection/btn-selection.component';
 import {Swiper} from 'swiper';
-
-
-
+import { AppConfigSelectionsBtnsComponent } from './components/app-config-selections-btns/app-config-selections-btns.component';
+import { TabComponent } from './components/tab/tab.component';
+import { TabItemComponent } from './components/tab/tab-item/tab-item.component';
+import { SelectBoxComponent } from './components/select-box/select-box.component';
+import { SelectBoxItemComponent } from './components/select-box/select-box-item/select-box-item.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, BtnSelectionComponent,MainBtnComponent, SqftToSqmPipe ,FtToMPipe, MToFtPipe,AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent, ClothPatternsMenuComponent],
-  imports: [ IonicModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule,CommonModule, RouterModule, NgScrollbarModule ],
-  exports: [HeaderComponent,BtnSelectionComponent, MainBtnComponent,SqftToSqmPipe, FtToMPipe, FormsModule, AccordionComponent, AccordionItemComponent, UserSelectionsMenuComponent,NgScrollbarModule, ClothPatternsMenuComponent],
-  providers:[ FtToMPipe ,MToFtPipe, SqftToSqmPipe,FileOpener, File, Swiper]
+  declarations:
+  [
+    HeaderComponent,
+    BtnSelectionComponent,
+    MainBtnComponent,
+    SqftToSqmPipe ,
+    FtToMPipe,
+    MToFtPipe,
+    AccordionComponent,
+    AccordionItemComponent,
+    UserSelectionsMenuComponent,
+    ClothPatternsMenuComponent,
+    AppConfigSelectionsBtnsComponent,
+    TabComponent,
+    TabItemComponent,
+    SelectBoxComponent,
+    SelectBoxItemComponent
+  ],
+  imports:
+  [
+    IonicModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
+    NgScrollbarModule
+  ],
+  exports:
+  [
+    HeaderComponent,
+    BtnSelectionComponent,
+    MainBtnComponent,
+    SqftToSqmPipe,
+    FtToMPipe,
+    FormsModule,
+    AccordionComponent,
+    AccordionItemComponent,
+    UserSelectionsMenuComponent,
+    NgScrollbarModule,
+    ClothPatternsMenuComponent,
+    AppConfigSelectionsBtnsComponent,
+    TabComponent,
+    TabItemComponent,
+    SelectBoxComponent,
+    SelectBoxItemComponent
+  ],
+  providers:
+  [
+    FtToMPipe,
+    MToFtPipe,
+    SqftToSqmPipe,
+    FileOpener,
+    File,
+    Swiper
+  ]
 })
 export class SharedModule {}

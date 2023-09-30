@@ -5,6 +5,7 @@ import { Environment} from 'src/app/configurations/environments-and-types/models
 import { CurrEnvironmentIdAndSide } from '../models/curr-environmentId-and-side.model';
 import { SystemSideForDisplay } from 'src/app/shared/models/system-side-for-display.mode';
 import { ClothPattern } from '../models/clothPattern.model';
+import { PORVariant } from '../models/por-variant.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,20 @@ export class EnvironmentsService {
   constructor(private http: HttpClient) { }
 
   public environments$: BehaviorSubject<Environment[]> = new BehaviorSubject<Environment[]>([]);
+  public PORList$: BehaviorSubject<PORVariant[]> = new BehaviorSubject<PORVariant[]>([]);
   private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public currClothPatterns$: BehaviorSubject<ClothPattern[] | null> = new BehaviorSubject<ClothPattern[] | null>(null);
   public currEnvironmentIdAndSide$: BehaviorSubject<CurrEnvironmentIdAndSide | null> = new BehaviorSubject<CurrEnvironmentIdAndSide | null>(null);
 
+
+
   getEnvironmentsValue(){
     return this.environments$.getValue();
+  }
+
+  getPORListValue(){
+    return this.PORList$.getValue();
   }
 
   getEnvironmentsByIds(environmentsIds: string[]){
@@ -33,6 +41,12 @@ export class EnvironmentsService {
       }
     }
     return environmentsByIds;
+  }
+
+  getPORVariantById(PORId: string){
+    const PORList = this.PORList$.getValue();
+    const porSelection: PORVariant = PORList.find(POR=> POR.id == PORId) as PORVariant;
+    return porSelection;
   }
 
   getEnvironmentById(id: string){
@@ -72,6 +86,12 @@ setCurrClothPatterns(environmentId: string, currSide:string){
   _setEnvironments(){
     return this.http.get<Environment[]>('assets/environments.json').pipe(map(environments => this.environments$.next(environments)));
   }
+
+  _setPORSelections(){
+    return this.http.get<PORVariant[]>('assets/NSNs.json').pipe(map(porSelections=> this.PORList$.next(porSelections)));
+  }
+
+
 
 
 

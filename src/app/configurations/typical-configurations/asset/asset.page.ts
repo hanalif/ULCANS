@@ -1,15 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
 import { MeasureType } from 'src/app/shared/models/measure-type.enum';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { Asset } from '../../models/asset.model';
 import { Configuration } from '../../models/configuration.model';
 import { AssetsService } from '../../services/assets/assets.service';
-import { AssetForPreview } from '../../models/assetForPreview.model';
-import { Subscription } from 'rxjs';
-
-
+import { Subscription, map, switchMap } from 'rxjs';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 
 @Component({
   selector: 'app-asset',
@@ -31,18 +29,34 @@ export class AssetPage implements OnInit,OnDestroy {
     private router: ActivatedRoute,
     private route: Router,
     private userSelectionsService: UserSelectionService,
-    private assetsService: AssetsService) { }
+    private assetsService: AssetsService,
+    private appConfigService: AppConfigurationService
+    ) { }
 
 
   ngOnInit() {
-    this.router.data.subscribe(data=>{
-      const assetForPreview = data['assetForPreview'];
-      this.asset = assetForPreview.asset;
-      this.configuration = assetForPreview.configuration;
-      this.areSpecialPoles = assetForPreview.areSpecialPoles;
-      this.wasStartedFromCalculator = assetForPreview.wasStartedFromCalculator;
-      this.measureType = this.asset.initialMeasureType;
-    })
+    this.appConfigService.getCurrAppConfigSettings().pipe(
+      switchMap(currAppConfig=>{
+          return this.router.data.pipe(map(data=>{
+            const assetForPreview = data['assetForPreview'];
+            this.asset = assetForPreview.asset;
+            this.configuration = assetForPreview.configuration;
+            this.areSpecialPoles = assetForPreview.areSpecialPoles;
+            this.wasStartedFromCalculator = assetForPreview.wasStartedFromCalculator;
+
+            if(!this.asset.isInList){
+              this.measureType = this.asset.initialMeasureType
+            }else{
+              if(currAppConfig == AppConfirmationSelections.USA){
+                this.measureType = MeasureType.FEET;
+              }else{
+                this.measureType = this.asset.initialMeasureType;
+              }
+            }
+
+          }))
+      })
+    ).subscribe()
 
   }
 
@@ -61,7 +75,7 @@ export class AssetPage implements OnInit,OnDestroy {
       }
       this.assetsService.updateAsset(assetToUpdate, this.asset.id);
     }
-    this.userSelectionsService.setIsDisabled(true);
+    // this.userSelectionsService.setIsDisabled(true);
 
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {assetId: this.asset.id}});
   }

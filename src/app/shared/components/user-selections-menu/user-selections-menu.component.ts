@@ -14,7 +14,9 @@ import { Subscription } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
-import { AssetForPdf } from '../../models/asset-for-pdf.model';
+import { UserSelections } from '../../models/user-selections.model';
+import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
+import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 
 
 @Component({
@@ -34,8 +36,13 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   configurationTitles: string[] = ['Type','Name', 'Hexagon', 'Rhombus', 'Width', 'Length', 'Area SQ', 'Poles', 'Pins'];
   patternsTitles: string[] = ['Side A', 'Pattern',  'Design' ,'Side B', 'Pattern',  'Design' ,' Type' ];
   assetTitles: string[] = ['Name', 'Length', 'Width', 'Height' ];
+  wideScreenTitlesPOR: string[] = ['', 'Type', 'NSN', 'Description', 'Pattern'];
+  mobileTitlesPOR: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description']
 
-  date = this.transformDate(new Date);
+  userSelectionForPdf!: AssetForDisplay;
+
+  date!: String | Date | null;
+
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
   public indexForTablePdf: number = -1;
@@ -44,11 +51,12 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   isDisabled!: boolean;
 
   currUserSelectionSubscription!: Subscription;
-  currUserSelection!: AssetForPdf | null;
+  currUserSelection!: UserSelections | null;
 
-  transformDate(date: Date) {
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
-  }
+  public AppConfigSettings = AppConfirmationSelections;
+  appConfigSettings!: AppConfirmationSelections;
+  appConfigSettingsSubscription!: Subscription;
+
 
   constructor(
     private userSelectionService: UserSelectionService,
@@ -59,11 +67,16 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private datePipe: DatePipe,
     private alertController: AlertController,
     private menuCategoriesService: MenuCategoriesService,
-    private route: Router
+    private route: Router,
+    private appConfigService: AppConfigurationService
     ) { }
 
   ngOnInit() {
-    this.assetsForPdfSubscription = this.userSelectionService.assetsForPdf$.subscribe(assetsForPdf=>{
+    this.appConfigSettingsSubscription = this.appConfigService.getCurrAppConfigSettings().subscribe(currAppSettings=>{
+      this.appConfigSettings = currAppSettings;
+      this.date = this.transformDate(new Date);
+    });
+    this.assetsForPdfSubscription = this.userSelectionService.userSelections$.subscribe(assetsForPdf=>{
       let assetsForDisplay = this.userSelectionService.getAssetsForDisplay(assetsForPdf);
       if(assetsForDisplay.length === -1 || assetsForDisplay.length === 0 ){
         this.assetsForDisplay = [];
@@ -77,21 +90,31 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     this.isDiabledSubscription = this.userSelectionService.getisDisabled().subscribe(isDisabled=> this.isDisabled = isDisabled);
       this.currUserSelectionSubscription = this.userSelectionService.getCurrUserSelectionValueAsObservable().subscribe(currUserSelection=>{
         this.currUserSelection = currUserSelection;
-        if(currUserSelection){
-          this.userSelectionService.setIsDisabled(true);
-        }else{
-          this.userSelectionService.setIsDisabled(false);
-        }
+        // if(currUserSelection){
+        //   this.userSelectionService.setIsDisabled(true);
+        // }else{
+        //   this.userSelectionService.setIsDisabled(false);
+        // }
       })
+  }
+
+  transformDate(date: Date) {
+    let dateGl = this.datePipe.transform(date, 'dd/MM/yyyy');
+    let dateUs = this.datePipe.transform(date, 'MM/dd/yyyy');
+    if(this.appConfigSettings === AppConfirmationSelections.GLOBAL){
+      return dateGl;
+    }
+    if(this.appConfigSettings === AppConfirmationSelections.USA){
+      return dateUs;
+    }
+
+    return date;
+
   }
 
   onEditAsset(assetId: string, $event: Event, isInList: boolean, userSelectionId: string | undefined){
     $event.stopPropagation();
     if(isInList){
-      return;
-    }
-
-    if(this.currUserSelection){
       return;
     }
 
@@ -102,14 +125,12 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   onEditPatterns($event: Event, userSelectionId: string | undefined){
     $event.stopPropagation();
 
-    if(this.currUserSelection){
-      return;
-    }
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
+
   onAccordionItem(index: number, userSelectionId: string | undefined, initialIndexes: number[]){
-    let userSelectios: Partial<AssetForPdf>;
+    let userSelectios: Partial<UserSelections>;
     let copyOfInitialIndexes = initialIndexes;
     let foundNumber = copyOfInitialIndexes.find(i => i == index);
 
@@ -137,6 +158,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     this.assetsForPdfSubscription?.unsubscribe();
     this.isDiabledSubscription?.unsubscribe();
     this.currUserSelectionSubscription?.unsubscribe();
+    this.appConfigSettingsSubscription.unsubscribe();
   }
 
   onDeleteSelection(userSlectionId: string | undefined){
@@ -166,6 +188,8 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   onDownloadPdf(index: number){
     this.indexForTablePdf = index;
+    this.userSelectionForPdf = this.assetsForDisplay[this.indexForTablePdf];
+
     setTimeout(() => this.exportToPdf(), 0);
   }
 
@@ -249,7 +273,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
 
     autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY,
+      startY: (doc as any).lastAutoTable.finalY + 10,
       body: [
         [
           {
@@ -264,7 +288,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       theme: "plain"
     });
 
-    if(!this.assetsForDisplay[this.indexForTablePdf].configuratoin){
+    if(!this.userSelectionForPdf.configuratoin){
       autoTable(doc, {
         startY: (doc as any).lastAutoTable.finalY + 1,
         body: [
@@ -283,7 +307,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     }
 
 
-if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
+if(this.userSelectionForPdf.configuratoin){
   autoTable(doc, {
     startY: (doc as any).lastAutoTable.finalY + 3,
     html: '.config-table',
@@ -313,7 +337,7 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
     theme: 'striped'
   });
 
-  if(this.assetsForDisplay[this.indexForTablePdf].areSpecialPoles){
+  if(this.userSelectionForPdf.areSpecialPoles){
     autoTable(doc, {
       startY: (doc as any).lastAutoTable.finalY + 1,
       body: [
@@ -332,9 +356,8 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
   }
 }
 
-
     autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 3,
+      startY: (doc as any).lastAutoTable.finalY + 10,
       body: [
         [
           {
@@ -349,38 +372,84 @@ if(this.assetsForDisplay[this.indexForTablePdf].configuratoin){
       theme: "plain"
     });
 
+    // custom patterns table
+    if(this.userSelectionForPdf.sideA && this.userSelectionForPdf.sideB && this.userSelectionForPdf.ulcansType){
+      autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 3,
+        html: '.patterns-custom-table',
+        headStyles:{
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 30,
+          minCellWidth: 70
+        },
+        bodyStyles: {
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 60,
+          minCellWidth: 70,
+        },
 
-    autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 3,
-      html: '.patterns-table',
-      headStyles:{
-        valign: 'middle',
-        halign: 'center',
-        minCellHeight: 30,
-        minCellWidth: 70
-      },
-      bodyStyles: {
-        valign: 'middle',
-        halign: 'center',
-        minCellHeight: 60,
-        minCellWidth: 70,
-      },
+        didDrawCell: (data: any) => {
+          var cellId = data.cell.raw.id;
+          if( cellId === 'imgEl'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 60, data.cell.contentHeight, '', 'FAST' );
+          }
+        },
+        theme: 'striped'
+      });
+    }
 
-      didDrawCell: (data: any) => {
-        var cellId = data.cell.raw.id;
-        if( cellId === 'imgEl'){
-          var td = data.cell.raw;
-          var img = td.getElementsByTagName('img')[0];
-          doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 60, data.cell.contentHeight, '', 'FAST' );
-        }
-      },
-      theme: 'striped'
-    });
+    // por patterns table
+    if(this.userSelectionForPdf.porSelection){
+      autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 3,
+        html: '.por-patterns-title-table',
+        bodyStyles: {
+          valign: 'middle',
+          cellWidth: 'wrap',
+          halign: 'left',
+          minCellHeight: 30,
+          minCellWidth: 40
+        },
+        theme: 'striped'
+      });
+
+      autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 3,
+        html: '.por-patterns-table',
+        headStyles:{
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 30,
+          minCellWidth: 70
+        },
+        bodyStyles: {
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 60,
+          minCellWidth: 70,
+        },
+
+        didDrawCell: (data: any) => {
+          var cellId = data.cell.raw.id;
+          if( cellId === 'imgEl'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 60, data.cell.contentHeight, '', 'FAST' );
+          }
+        },
+        theme: 'striped'
+      });
+    }
+
 
     autoTable(doc, {
       useCss: true,
       html: '.marketing-table',
-      tableWidth: 413,
+      tableWidth: this.appConfigSettings === this.AppConfigSettings.GLOBAL? 413 : 393,
       theme: 'plain',
     });
 

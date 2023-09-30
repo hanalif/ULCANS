@@ -103,11 +103,39 @@
       gap: 4px;
     }
 
+    .side-title{
+      border: none;
+      font-size: 20px;
+      justify-content: center;
+      margin-top: 12px;
+      padding: 0px;
+
+
+      &.sideB{
+        margin-top: 25px;
+      }
+    }
+
+  }
+}
+
+.selection-btns{
+  &.with-txt{
+    display: flex;
+    gap: 2px;
+
   }
 }
 
 .icon-btn{
   background-color: transparent;
+
+  &.with-txt{
+    width: fit-content;
+    display: flex;
+    gap: 5px;
+
+  }
 
 
     &.edit-btn{

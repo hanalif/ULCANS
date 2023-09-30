@@ -1,5 +1,6 @@
 export interface ClothPattern{
-  name: string,
+  nameGl: string,
+  nameUs: string,
   landscapeUrl: string,
   shapeHighResolutionUrl: string,
   shapeLowResolutionUrl: string

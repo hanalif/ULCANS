@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { AssetForPdf } from 'src/app/shared/models/asset-for-pdf.model';
+import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { SystemType } from '../../models/type.model';
 import { SystemTypesService } from '../../services/system-types.service';
@@ -12,21 +12,27 @@ import { SystemTypesService } from '../../services/system-types.service';
   styleUrls: ['./types-select-btn.component.scss'],
 })
 export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
-  systemTypes$!: Observable<SystemType[]>;
+  systemTypes!: SystemType[];
   systemTypeId!: string;
+
+  systemTypeIndex: number = -1;
+
   isFromUserMenu: boolean = false;
   isFromMenuSubscription!: Subscription;
   userSelectionToUpdateId: string | undefined;
-  @Input() currUserSelection!: AssetForPdf;
+  @Input() currUserSelection!: UserSelections;
   changSrcs: string[] = ['assets/imgs/environments/png-small/check-mark.png', 'assets/imgs/environments/png-small/check-mark-greyBG.png']
 
   constructor(private systemTypesService: SystemTypesService,private userSelectionsService: UserSelectionService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.systemTypes$ = this.systemTypesService.systemTypes$;
+    this.systemTypesService.systemTypes$.subscribe(systemTypes=>{
+      this.systemTypes = systemTypes;
+    })
     this.isFromMenuSubscription = this.route.queryParams.subscribe(params=>{
       this.isFromUserMenu = params['isFromUserSelectionsMenu'];
       if(this.isFromUserMenu){
+        this.systemTypeIndex = this.systemTypes.findIndex(s=> s.id === this.systemTypeId);
         this.userSelectionToUpdateId = params['userSelectionToUpdateId'];
       }
 
@@ -34,24 +40,23 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
 
   }
 
-  onType(id:string){
-    this.systemTypeId = id;
-    let userSelectios: Partial<AssetForPdf> = {
-      systemTypeId: id
+  onType(index: number){
+    let userSelectios: Partial<UserSelections> = {
+      systemTypeId: this.systemTypes[index].id
     }
-    if(this.isFromUserMenu){
-      this.userSelectionsService.addAssetForPdf(userSelectios, this.userSelectionToUpdateId);
-    }else{
-      this.userSelectionsService.updateCurrUserSelections(userSelectios);
+
+    this.userSelectionsService.updateCurrUserSelections(userSelectios);
+
+    this.userSelectionsService.updateDisabled();
+    if(!this.isFromUserMenu){
+      this.userSelectionsService.setProgressBar();
     }
   }
 
+
   ngOnChanges(changes: SimpleChanges): void {
-    let currUserSelection: AssetForPdf = changes['currUserSelection'].currentValue;
-    let prevUserSelection: AssetForPdf = changes['currUserSelection'].previousValue;
-    if(currUserSelection === prevUserSelection){
-      return;
-    }
+    let currUserSelection: UserSelections = changes['currUserSelection'].currentValue;
+
 
     if(currUserSelection.systemTypeId){
       this.systemTypeId = currUserSelection.systemTypeId

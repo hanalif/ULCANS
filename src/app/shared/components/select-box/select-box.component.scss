@@ -1,0 +1,43 @@
+@import '../../../styles/setup/mixins';
+@import '../../../styles/setup/variables';
+
+.select-box-item{
+  position: relative;
+}
+
+.selected{
+  border: 1px solid white;
+  border-radius: 3px;
+}
+.check-mark{
+  z-index: 999;
+  cursor: pointer;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: -5px;
+  left: -5px;
+
+
+  &.marked{
+    .check-mark-icon{
+      opacity: 1;
+    }
+}
+
+  .check-mark-icon{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    font-size: 25px;
+    top: -2px;
+    left: -5px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
+
+
+
+
