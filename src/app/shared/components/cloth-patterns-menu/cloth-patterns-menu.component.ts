@@ -161,14 +161,12 @@ export class ClothPatternsMenuComponent implements OnInit, OnDestroy, AfterViewI
         }
       }
 
-      if(this.isFromUserMenu){
-        if(this.userSelectionToEditId){
-          this.userSelectionService.addUserSelection(userSelections, this.userSelectionToEditId);
-        }
-      }else{
-        this.userSelectionService.updateCurrUserSelections(userSelections);
+      this.userSelectionService.updateDisabled();
+      if(!this.isFromUserMenu){
         this.userSelectionService.setProgressBar();
       }
+
+      this.userSelectionService.updateCurrUserSelections(userSelections);
   }
 
   ngOnDestroy(): void {

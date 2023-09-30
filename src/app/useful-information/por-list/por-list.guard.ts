@@ -3,7 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { map, Observable, tap } from "rxjs";
 import { AppConfirmationSelections } from "src/app/app-configurations/app-configurations.enum";
 import { AppConfigurationService } from "src/app/app-configurations/app-configurations.service";
-import { UserSelectionService } from "src/app/shared/services/user-selection.service";
 
 @Injectable({providedIn: 'root'})
 

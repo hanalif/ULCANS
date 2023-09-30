@@ -118,10 +118,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if(this.currUserSelection){
-      return;
-    }
-
     this.route.navigate(['configurations', 'configuration-calaulator', assetId], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }
@@ -129,9 +125,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   onEditPatterns($event: Event, userSelectionId: string | undefined){
     $event.stopPropagation();
 
-    if(this.currUserSelection){
-      return;
-    }
     this.route.navigate(['/configurations/environments-and-types'], {queryParams: {isFromUserSelectionsMenu: true, userSelectionToUpdateId: userSelectionId}});
     this.userSelectionService.setIsUserSelectionsMenuOpen(false);
   }

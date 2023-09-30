@@ -44,10 +44,11 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
     let userSelectios: Partial<UserSelections> = {
       systemTypeId: this.systemTypes[index].id
     }
-    if(this.isFromUserMenu){
-      this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
-    }else{
-      this.userSelectionsService.updateCurrUserSelections(userSelectios);
+
+    this.userSelectionsService.updateCurrUserSelections(userSelectios);
+
+    this.userSelectionsService.updateDisabled();
+    if(!this.isFromUserMenu){
       this.userSelectionsService.setProgressBar();
     }
   }
@@ -55,10 +56,7 @@ export class TypesSelectBtnComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     let currUserSelection: UserSelections = changes['currUserSelection'].currentValue;
-    let prevUserSelection: UserSelections = changes['currUserSelection'].previousValue;
-    if(currUserSelection === prevUserSelection){
-      return;
-    }
+
 
     if(currUserSelection.systemTypeId){
       this.systemTypeId = currUserSelection.systemTypeId

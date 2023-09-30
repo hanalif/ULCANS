@@ -22,7 +22,6 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
   sides: string[] =['A','B']
 
   isDiabled$!: Observable<boolean>;
-  isDisabled!: boolean;
   isFromUserSelections: boolean = false;
   isFromUserSelectionsSubscription: Subscription | undefined;
   userSelectionToUpdateId: string | undefined;
@@ -55,6 +54,7 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     this.currAppEnvironment = currAppEnvironment;
    })
 
+
     this.appConfigService.getCurrAppConfigSettings().subscribe(appConfig=>{
       this.appConfigSettings = appConfig;
       this.tabDisplayMode = appConfig == AppConfirmationSelections.GLOBAL? DisplayHeadersMode.dontShowHeaders : DisplayHeadersMode.showHeders;
@@ -65,9 +65,11 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     this.isFromUserSelections = params['isFromUserSelectionsMenu'];
 
       if(this.isFromUserSelections){
+
         this.userSelectionToUpdateId = params['userSelectionToUpdateId'];
         if(this.userSelectionToUpdateId){
           this.currUserSelection = this.userSelectionsService.getUserSelectionById(this.userSelectionToUpdateId) as UserSelections;
+          this.userSelectionsService.updateCurrUserSelections(this.currUserSelection);
           if(this.currUserSelection.porVariantSelectionId){
             this.porIndexClicked = this.porSelectionsList.findIndex(por=> por.id == this.currUserSelection.porVariantSelectionId);
             this.tabIndex = PatternsSelections.POR
@@ -79,15 +81,33 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
           this.currUserSelection = this.userSelectionsService.getCurrUserSelectionValue() as UserSelections;
           this.tabIndex = PatternsSelections.custom;
       }
+
+      let userSelectios: Partial<UserSelections> = {
+        patternType: this.tabIndex
+      }
+      this.userSelectionsService.updateCurrUserSelections(userSelectios);
+
     })
 
-    this.isDiabled$ = this.userSelectionsService.getisDisabled().pipe(tap(isDisabled=> this.isDisabled = isDisabled));
+    this.isDiabled$ = this.userSelectionsService.getisDisabled();
+
+    this.isDiabled$.subscribe(isDisabled => {
+      console.log(isDisabled);
+    })
   }
 
   tabItemClicked(tabIndex: number){
     this.userSelectionsService.setTabIndex(tabIndex);
-    this.userSelectionsService.setProgressBar();
     this.tabIndex = tabIndex;
+    let userSelectios: Partial<UserSelections> = {
+      patternType: this.tabIndex
+    }
+    this.userSelectionsService.updateCurrUserSelections(userSelectios);
+
+    this.userSelectionsService.updateDisabled();
+    if(!this.userSelectionToUpdateId){
+      this.userSelectionsService.setProgressBar();
+    }
   }
 
   onBack(){
@@ -101,37 +121,35 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
     let userSelectios: Partial<UserSelections> = {
       porVariantSelectionId: this.selectedPorId
     }
+    this.userSelectionsService.updateCurrUserSelections(userSelectios);
 
-
+    this.userSelectionsService.updateDisabled();
     if(!this.isFromUserSelections){
-      this.userSelectionsService.updateCurrUserSelections(userSelectios);
       this.userSelectionsService.setProgressBar();
-    }else{
-      this.userSelectionsService.addUserSelection(userSelectios, this.userSelectionToUpdateId);
     }
 
   }
 
 
   onAddToYourSelections(){
-    if(this.isDisabled){
-      return;
+    if(this.isFromUserSelections){
+      let currUserSelections = this.userSelectionsService.getCurrUserSelectionValue();
+      if((!currUserSelections?.sideA || !currUserSelections.sideB || !currUserSelections.systemTypeId || currUserSelections.patternType != PatternsSelections.custom) && (!currUserSelections?.porVariantSelectionId || currUserSelections.patternType != PatternsSelections.POR)){
 
-    }else{
-      if(this.isFromUserSelections){
-        this.userSelectionsService.setIsUserSelectionsMenuOpen(true);
-
-      }else{
-        let userSelectios: Partial<UserSelections> = {
-          initialIndexses: [0,1,2]
-        }
-
-        this.userSelectionsService.updateCurrUserSelections(userSelectios);
-        this.userSelectionsService.addUserSelection();
+        console.log('didt do right');
+        return;
       }
-
-      this.router.navigate(['/configurations/typical-configurations']);
+      this.userSelectionsService.setIsUserSelectionsMenuOpen(true);
+    }else{
+      let userSelectios: Partial<UserSelections> = {
+        initialIndexses: [0,1,2]
+      }
+      this.userSelectionsService.updateCurrUserSelections(userSelectios);
     }
+    this.router.navigate(['/configurations/typical-configurations']);
+
+
+    this.userSelectionsService.addUserSelection();
   }
 
   ngOnDestroy(): void {

@@ -6,13 +6,12 @@ export interface UserSelections{
   id: string,
   initialIndexses: number[],
 
+
+  patternType: PatternsSelections
   wasStartedFromCalculator: boolean,
   assetId: string,
   areSpecialPoles: boolean,
   isCustomConfiguration: boolean,
-
-
-
 
   //custom
   sideA?: SystemSide,
@@ -22,4 +21,5 @@ export interface UserSelections{
 
   //POR
   porVariantSelectionId?: string,
+
 }

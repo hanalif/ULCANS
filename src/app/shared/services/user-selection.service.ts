@@ -54,6 +54,10 @@ export class UserSelectionService {
     return this.isDisabled$.asObservable();
   }
 
+  getIsDisabledValue(){
+    return this.isDisabled$.getValue();
+  }
+
   getnumOfSelections(){
     return this.numOfSelections$.asObservable();
   }
@@ -76,7 +80,6 @@ export class UserSelectionService {
 
 
   setIsDisabled(val:boolean){
-
     this.isDisabled$.next(val);
   }
   getCurrUserSelectionValue(){
@@ -91,37 +94,52 @@ export class UserSelectionService {
     return this.userSelections$.getValue();
   }
 
+  updateDisabled() {
+    const progressPercent = this.getProgressPercentage();
+    this.setIsDisabled(progressPercent < 100);
+  }
 
   setProgressBar(){
+    const progressPercent = this.getProgressPercentage();
+    this.progressBar$.next(progressPercent);
+  }
+
+  getProgressPercentage(): number {
     let currSelctionValue = this.getCurrUserSelectionValue() as UserSelections;
     if(!currSelctionValue){
-      return;
+      return 0;
     }
-
-    let tabIndex = this.tabIndex$.getValue();
-    let totalControls = tabIndex == PatternsSelections.POR ? 5 : 7;
+    let tabIndex = currSelctionValue.patternType;
+    let totalControls: number = 0;
     let usedControls: number = 0;
+    let progressPercent: number = 0;
     let relevantControls: Partial<UserSelections> = {
       ...currSelctionValue
     };
-    if (tabIndex == PatternsSelections.POR) {
-      delete relevantControls.sideA;
-      delete relevantControls.sideB;
-      delete relevantControls.systemTypeId;
-    }
-    else {
-      delete relevantControls.porVariantSelectionId;
-    }
+    if(currSelctionValue.id){
+      if(currSelctionValue.patternType == PatternsSelections.POR && currSelctionValue.porVariantSelectionId){
+        progressPercent = 100;
+      }
 
-    usedControls = Object.values(relevantControls).length;
-    let progressPercent = usedControls / totalControls * 100
-    if(progressPercent < 100){
-      this.setIsDisabled(true);
+      if(currSelctionValue.patternType == PatternsSelections.custom && currSelctionValue.sideA && currSelctionValue.sideB && currSelctionValue.systemTypeId){
+        progressPercent = 100;
+      }
+
     }else{
-      this.setIsDisabled(false);
+      totalControls = tabIndex == PatternsSelections.POR ? 6 : 8;
+      if (tabIndex == PatternsSelections.POR) {
+        delete relevantControls.sideA;
+        delete relevantControls.sideB;
+        delete relevantControls.systemTypeId;
+      }
+      else {
+        delete relevantControls.porVariantSelectionId;
+      }
+      usedControls = Object.values(relevantControls).length;
+      progressPercent = usedControls / totalControls * 100;
     }
 
-    this.progressBar$.next(progressPercent);
+    return progressPercent;
   }
 
 
@@ -132,40 +150,33 @@ export class UserSelectionService {
   }
 
   resetCurrUserSelection(){
-    this.setIsDisabled(false);
     this.userCurrSelection$.next(null);
     this.progressBar$.next(0);
   }
 
-  setUserSelectionsPatterns(userSelection: Partial<UserSelections> | UserSelections){
-    if(userSelection.porVariantSelectionId){
-      userSelection.sideA = undefined,
-      userSelection.sideB = undefined,
-      userSelection.systemTypeId = undefined
+  setUserSelectionsPatterns(userSelections: UserSelections){
+    if(userSelections.patternType == PatternsSelections.POR){
+      userSelections.sideA = undefined,
+      userSelections.sideB = undefined,
+      userSelections.systemTypeId = undefined
     }else{
-      userSelection.porVariantSelectionId = undefined
+      userSelections.porVariantSelectionId = undefined
     }
 
-    return userSelection;
+    return userSelections;
   }
 
-  addUserSelection(userSelectionToUpdate?: Partial<UserSelections>, userSelectionToUpdateId?: string){
+  addUserSelection(){
     let userSelections: UserSelections;
-    if(userSelectionToUpdate && userSelectionToUpdateId){
-      userSelectionToUpdate = this.setUserSelectionsPatterns(userSelectionToUpdate);
-      userSelections = this.updateUserSelection(userSelectionToUpdate, userSelectionToUpdateId) as UserSelections;
+    let currUserSelections = this.getCurrUserSelectionValue() as UserSelections;
+    if(currUserSelections.id){
+      let userSelectionToUpdate = this.setUserSelectionsPatterns(currUserSelections);
+      userSelections = this.updateUserSelection(userSelectionToUpdate, currUserSelections.id) as UserSelections;
     } else{
-      let currUserSelections = this.getCurrUserSelectionValue() as UserSelections;
       userSelections = this.setUserSelectionsPatterns(currUserSelections) as UserSelections;
-
-      if(!userSelections.id){
-        userSelections.id = this.utilService._makeId();
-      }
-
+      userSelections.id = this.utilService._makeId();
     }
-
     this.addUserSelectionToSelectionsList(userSelections);
-
   }
 
   addUserSelectionToSelectionsList(userSelection: UserSelections){
@@ -177,7 +188,6 @@ export class UserSelectionService {
       userSelections.push(userSelection);
       this.setNumberOfNewSelections(1);
       this.resetCurrUserSelection();
-
     }
 
     this.localStorage.put(this.entityType, userSelection);
@@ -189,6 +199,13 @@ export class UserSelectionService {
     let foundUserSelection = userSelections.find(us => us.id == userSelectionToUpdateId);
     if(foundUserSelection){
       foundUserSelection = {...foundUserSelection, ...userSelectionToUpdate} as UserSelections;
+      // if((foundUserSelection.sideA && foundUserSelection.sideB && foundUserSelection.systemTypeId && this.tabIndex$.getValue() ==  PatternsSelections.custom) || (foundUserSelection.porVariantSelectionId && this.tabIndex$.getValue() == PatternsSelections.POR)){
+      //   this.setIsDisabled(false);
+      // }
+      // else {
+      //   this.setIsDisabled(true);
+      // }
+
       return foundUserSelection;
     }
     return undefined;
