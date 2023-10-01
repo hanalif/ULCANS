@@ -4,6 +4,9 @@
 ::ng-deep{
 
   .por-list-container{
+    .scrollbar {
+      --scrollbar-thumb-color: #7a7a7a;
+    }
     .page-container{
       margin-block-start: 30px;
 
