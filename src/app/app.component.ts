@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isUserSelectionsMenuOpen$!: Observable<boolean>;
   isClothPatternsMenuOpen$!: Observable<boolean>;
   appCurrConfigVal!: AppConfirmationSelections;
+  isExpandImgModalOpen$!: Observable<boolean>;
 
   constructor(
     private animationCtrl: AnimationController,
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isUserSelectionsMenuOpen$ = this.userSelectionsService.getIsUserSelectionsMenuOpen();
     this.userSelectionsService._initialUserSelections(this.appCurrConfigVal).pipe(takeUntil(this.destroyed$)).subscribe();
     this.isClothPatternsMenuOpen$ = this.environmetsService.getIsClothPatternMenuOpen();
+    this.isExpandImgModalOpen$ = this.environmetsService.getIsExpandImgModalOpen();
     this.assetsService.setAssets(this.appCurrConfigVal).pipe(takeUntil(this.destroyed$)).subscribe();
     this.configurationsService._getConfugurations().pipe(takeUntil(this.destroyed$)).subscribe();
     this.environmetsService._setEnvironments().pipe(takeUntil(this.destroyed$)).subscribe();

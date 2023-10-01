@@ -26,6 +26,7 @@ import { TabItemComponent } from './components/tab/tab-item/tab-item.component';
 import { SelectBoxComponent } from './components/select-box/select-box.component';
 import { SelectBoxItemComponent } from './components/select-box/select-box-item/select-box-item.component';
 import { NsnListComponent } from './components/nsn-list/nsn-list.component';
+import { ExpandImgModalComponent } from './components/nsn-list/expand-img-modal/expand-img-modal.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { NsnListComponent } from './components/nsn-list/nsn-list.component';
     TabItemComponent,
     SelectBoxComponent,
     SelectBoxItemComponent,
-    NsnListComponent
+    NsnListComponent,
+    ExpandImgModalComponent
   ],
   imports:
   [
@@ -76,7 +78,8 @@ import { NsnListComponent } from './components/nsn-list/nsn-list.component';
     TabItemComponent,
     SelectBoxComponent,
     SelectBoxItemComponent,
-    NsnListComponent
+    NsnListComponent,
+    ExpandImgModalComponent
   ],
   providers:
   [

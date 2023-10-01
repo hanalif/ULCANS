@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PORVariant } from 'src/app/configurations/environments-and-types/models/por-variant.model';
+import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
 
 @Component({
   selector: 'app-nsn-list',
@@ -15,14 +16,24 @@ export class NsnListComponent implements OnInit {
   @Input() porIndexClicked!: number;
   @Input() displayMode!: string;
 
+  imgLinkToExpand!: string;
 
-  constructor() { }
+
+  constructor(private environmentService: EnvironmentsService) { }
 
   ngOnInit() {}
 
   onPORClick(index:number){
     this.porIndexClicked = index;
     this.selectedPORIndex.emit(index);
+  }
+
+  onClickExpandIcon(event: MouseEvent ,imgLink: string){
+    event.stopPropagation();
+    this.environmentService.setIsExpandImgModal(imgLink);
+    this.environmentService.setisExpandImgModalOpen(true);
+    this.imgLinkToExpand = imgLink;
+    console.log(imgLink)
   }
 
 }

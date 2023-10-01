@@ -5,9 +5,13 @@
 
   <app-cloth-patterns-menu
     *ngIf="isClothPatternsMenuOpen$ | async" >
-
   </app-cloth-patterns-menu>
-  <div (click)="onBackdropClicked(false)" *ngIf="(isUserSelectionsMenuOpen$ | async) || (isClothPatternsMenuOpen$ | async) " class="backdrop"></div>
+
+  <app-expand-img-modal
+    *ngIf="isExpandImgModalOpen$ | async"
+  ></app-expand-img-modal>
+
+  <div (click)="onBackdropClicked(false)" *ngIf="(isUserSelectionsMenuOpen$ | async) || (isClothPatternsMenuOpen$ | async) || (isExpandImgModalOpen$ | async)" class="backdrop"></div>
   <ion-header>
     <app-header></app-header>
   </ion-header>

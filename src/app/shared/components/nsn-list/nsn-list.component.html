@@ -8,7 +8,6 @@
     </div>
 
       <div class="body">
-
         <div class="sub-title por-txt" [ngClass]="displayMode">
            <span>ULCANS Increment I reduces visual detection by providing environment-specific color patterns. Each screen is reversible and printed with two different camouflage patterns. System class specifies the color combination.</span>
         </div>
@@ -17,7 +16,7 @@
 
         <div class="wide-screen">
           <div class="middle">
-            <app-select-box [clickedItemIndex]="porIndexClicked" (selectBoxItemClicked)="onPORClick($event)" class="table-container">
+            <app-select-box  [clickedItemIndex]="porIndexClicked" (selectBoxItemClicked)="onPORClick($event)" class="table-container">
               <app-select-box-item *ngFor="let POR of nsnsList">
                 <div selectBoxContent >
                   <h1 style="text-align: left;">Environments: {{POR.environment}}</h1>
@@ -46,6 +45,7 @@
                       {{POR.sideA.partDescription}}
                     </td>
                     <td class="td-img">
+                      <ion-icon (click)="onClickExpandIcon($event, POR.sideA.imgResolution)" class="expand-icon" name="expand-outline"></ion-icon>
                       <div class="table-img">
                         <img
                           [src]="POR.sideA.imgLink"
@@ -68,6 +68,7 @@
                       {{POR.sideB.partDescription}}
                     </td>
                     <td class="td-img">
+                      <ion-icon (click)="onClickExpandIcon($event, POR.sideB.imgResolution)" class="expand-icon" name="expand-outline"></ion-icon>
                       <div class="table-img">
                         <img
                           [src]="POR.sideB.imgLink"
@@ -100,7 +101,8 @@
                   </div>
                   <div class="card-row">
                     <span class="card-row_title"> Type: {{POR.sideA.type}}</span>
-                    <span class="card-row_content mobile">
+                    <span class="card-row_content mobile img-content">
+                      <ion-icon (click)="onClickExpandIcon($event, POR.sideA.imgResolution)" class="expand-icon" name="expand-outline"></ion-icon>
                       <div class="card-img">
                         <img
                           [src]="POR.sideA.imgLink"
@@ -127,7 +129,8 @@
                   </div>
                   <div class="card-row">
                     <span class="card-row_title"> Type: {{POR.sideB.type}}</span>
-                    <span class="card-row_content mobile">
+                    <span class="card-row_content mobile img-content">
+                      <ion-icon (click)="onClickExpandIcon($event ,POR.sideB.imgResolution)" class="expand-icon" name="expand-outline"></ion-icon>
                       <div class="card-img">
                         <img
                           [src]="POR.sideB.imgLink"

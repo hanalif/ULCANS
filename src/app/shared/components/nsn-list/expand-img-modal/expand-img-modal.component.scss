@@ -1,0 +1,29 @@
+@import '../../../../styles/setup/mixins';
+@import '../../../../styles/setup/variables';
+
+
+.img-container{
+
+
+  @include for-bpoint-tablet{
+    width: 450px;
+  }
+
+  @include for-bpoint-mobile{
+    width: 350px;
+  }
+
+  position: relative;
+  .close-icon{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: #303339;
+  }
+
+  img{
+    border-radius: 3px;
+    border: 2px solid black;
+  }
+
+}

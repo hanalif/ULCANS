@@ -2,42 +2,42 @@
 @import '../../styles/setup/variables';
 
 ::ng-deep{
-  .page-container{
-    margin-block-start: 30px;
 
-    .wide-screen.middle{
+  .por-list-container{
+    .page-container{
+      margin-block-start: 30px;
+
+      .wide-screen.middle{
+          padding: 0px;
+
+      }
+
+
+      .select-box{
+        display: flex;
         padding: 0px;
-
-    }
-    .por-txt{
-
-      &.por-txt-show{
-        display: block;
-      }
-    }
-
-    .select-box{
-      display: flex;
-      padding: 0px;
-      background-color: #1f1f1f;
-      gap: 0px;
-
-      @include for-bpoint-tablet{
-        flex-direction: column;
-      }
-
-      .select-box-item{
         background-color: #1f1f1f;
-        .check-mark{
-          display: none;
+        gap: 0px;
+
+        @include for-bpoint-tablet{
+          flex-direction: column;
+        }
+
+        .select-box-item{
+          background-color: #1f1f1f;
+          .check-mark{
+            display: none;
+          }
+        }
+
+        .select-box-content.selected{
+          border: none;
         }
       }
-
-      .select-box-content.selected{
-        border: none;
-      }
     }
+
   }
+
 
 
 

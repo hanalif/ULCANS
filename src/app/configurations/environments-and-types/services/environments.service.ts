@@ -17,8 +17,10 @@ export class EnvironmentsService {
   public environments$: BehaviorSubject<Environment[]> = new BehaviorSubject<Environment[]>([]);
   public PORList$: BehaviorSubject<PORVariant[]> = new BehaviorSubject<PORVariant[]>([]);
   private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isExpandImgModalOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public currClothPatterns$: BehaviorSubject<ClothPattern[] | null> = new BehaviorSubject<ClothPattern[] | null>(null);
   public currEnvironmentIdAndSide$: BehaviorSubject<CurrEnvironmentIdAndSide | null> = new BehaviorSubject<CurrEnvironmentIdAndSide | null>(null);
+  public currImgToExpandLink$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
 
 
@@ -65,8 +67,21 @@ export class EnvironmentsService {
     return this.isClothPatternMenuOpen$;
  }
 
+ getcurrImgToExpandLink(){
+  return this.currImgToExpandLink$.asObservable();
+ }
+
+ getIsExpandImgModalOpen() {
+  return this.isExpandImgModalOpen$;
+}
+
+
  setIsClothPatternsMenuOpen(val:boolean){
   this.isClothPatternMenuOpen$.next(val);
+}
+
+setisExpandImgModalOpen(val:boolean){
+  this.isExpandImgModalOpen$.next(val);
 }
 
 setCurrClothPatterns(environmentId: string, currSide:string){
@@ -79,6 +94,10 @@ setCurrClothPatterns(environmentId: string, currSide:string){
     currEnvironmentId: environmentId
   }
   this.currEnvironmentIdAndSide$.next(currEnvironmentIdAndSide);
+}
+
+setIsExpandImgModal(imgLink: string){
+  this.currImgToExpandLink$.next(imgLink);
 }
 
 
