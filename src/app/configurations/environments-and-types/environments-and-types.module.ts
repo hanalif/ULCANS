@@ -10,7 +10,7 @@ import { EnvironmentsAndTypesPage } from './environments-and-types.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EnvironmentsRadioBtnComponent } from './components/environments-radio-btn/environments-radio-btn.component';
 import { TypesSelectBtnComponent } from './components/types-select-btn/types-select-btn.component';
-import { PorSelectionsComponent } from './components/por-selections/por-selections.component';
+
 
 
 @NgModule({
@@ -24,8 +24,7 @@ import { PorSelectionsComponent } from './components/por-selections/por-selectio
   declarations: [
     EnvironmentsAndTypesPage,
     EnvironmentsRadioBtnComponent,
-    TypesSelectBtnComponent,
-    PorSelectionsComponent
+    TypesSelectBtnComponent
   ],
 
 })

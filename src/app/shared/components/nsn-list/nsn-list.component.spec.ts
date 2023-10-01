@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PorSelectionsComponent } from './por-selections.component';
+import { NsnListComponent } from './nsn-list.component';
 
-describe('PorSelectionsComponent', () => {
-  let component: PorSelectionsComponent;
-  let fixture: ComponentFixture<PorSelectionsComponent>;
+describe('NsnListComponent', () => {
+  let component: NsnListComponent;
+  let fixture: ComponentFixture<NsnListComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PorSelectionsComponent ],
+      declarations: [ NsnListComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PorSelectionsComponent);
+    fixture = TestBed.createComponent(NsnListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

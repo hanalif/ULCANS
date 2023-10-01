@@ -3,12 +3,12 @@ import {  ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, tap } from 'rxjs';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
-import { UserSelections } from 'src/app/shared/models/user-selections.model';
 import { UserSelectionService } from 'src/app/shared/services/user-selection.service';
 import { PORVariant } from './models/por-variant.model';
-import { DisplayHeadersMode } from 'src/app/shared/components/tab/models/display-headers-mode';
 import { EnvironmentsService } from './services/environments.service';
 import { PatternsSelections } from 'src/app/shared/models/patterns-selections.enum';
+import { UserSelections } from 'src/app/shared/models/user-selections.model';
+import { DisplayHeadersMode } from 'src/app/shared/components/tab/models/display-headers-mode';
 
 
 
