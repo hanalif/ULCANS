@@ -13,6 +13,7 @@ export class NsnListComponent implements OnInit {
   mobileTitles: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description']
   @Output() selectedPORIndex = new EventEmitter<number>();
   @Input() porIndexClicked!: number;
+  @Input() displayMode!: string;
 
 
   constructor() { }

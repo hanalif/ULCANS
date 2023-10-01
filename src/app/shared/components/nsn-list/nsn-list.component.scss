@@ -1,6 +1,27 @@
 // wide screen design
 ::ng-deep {
   .page-container{
+
+      .por-txt{
+        background-color: #2d3038;
+        color: #bebebe;
+        font-size: 26px;
+        padding: 10px;
+        border-radius: 5px;
+        padding-block-end: 20px;
+
+        &.show{
+          display: block;
+        }
+
+        &.none{
+          display: none;;
+        }
+
+      }
+
+
+
     .wide-screen{
       .middle{
         background-color: transparent;

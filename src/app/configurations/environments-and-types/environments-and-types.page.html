@@ -68,7 +68,7 @@
                   Choose POR Variant
                 </div>
                 <div tabItemBody>
-                  <app-nsn-list [porIndexClicked]="porIndexClicked" (selectedPORIndex)="onPORClick($event)" [nsnsList]="porSelectionsList"></app-nsn-list>
+                  <app-nsn-list [displayMode]="'none'" [porIndexClicked]="porIndexClicked" (selectedPORIndex)="onPORClick($event)" [nsnsList]="porSelectionsList"></app-nsn-list>
                 </div>
               </app-tab-item>
             </app-tab>
