@@ -7,14 +7,16 @@
       "type": "RS",
       "NSN":"1080-01-677-6912",
       "partDescription":"RADAR SCATTERING,ULCANS I, WOODLAND - FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.4.5.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.4.5.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/1.4.5.jpg"
     },
     "sideB":
     {
       "type": "RT",
       "NSN":"1080-01-677-6918",
       "partDescription": "RADAR TRANSPARENT,ULCANS II,WOODLAND - FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.6.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.6.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/1.6.jpg"
     }
   },
   {
@@ -25,14 +27,16 @@
       "type": "RS",
       "NSN":"1080-01-682-4997",
       "partDescription": "RADAR SCATTERING,ULCANS I,DESERT/URBAN -FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.5.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.5.png",
+      "imgResolution":  "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/2.5.jpg"
     },
     "sideB":
     {
       "type": "RT",
       "NSN":"1080-01-682-5467",
       "partDescription": "RADAR TRANSPARENT,ULCANS II,DESERT/URBN FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.4.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.4.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/2.4.jpg"
     }
   },
   {
@@ -43,14 +47,16 @@
       "type": "RS",
       "NSN":"1080-01-682-5481",
       "partDescription": "RADAR SCATTERING, ULCANS I, SNOW/ALPINE-FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/3.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/3.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/3.jpg"
     },
     "sideB":
     {
       "type": "RT",
       "NSN":"1080-01-682-5498",
       "partDescription": "RADAR TRANSPARENT,ULCANS II,SNOW/ALPINE FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/3.6.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/3.6.png",
+      "imgResolution":"assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/3.6.jpg"
     }
   },
   {
@@ -61,14 +67,16 @@
       "type": "RS",
       "NSN":"TDB",
       "partDescription": "RADAR SCATTERING,ULCANS I,WOOD/URBAN - FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.4.5.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.4.5.png",
+      "imgResolution":"assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/1.4.5.jpg"
     },
     "sideB":
     {
       "type": "RT",
       "NSN":"TDB",
       "partDescription": "RADAR TRANSPARENT,ULCANS II,WOOD/URBAN - FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.4.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.4.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/2.4.jpg"
     }
   },
   {
@@ -79,14 +87,16 @@
       "type": "RS",
       "NSN":"TDB",
       "partDescription": "RADAR SCATTERING,ULCANS I,WOOD/DESERT -FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.4.5.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.4.5.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.4.5.jpg"
     },
     "sideB":
     {
       "type": "RT",
       "NSN":"TDB",
       "partDescription": "RADAR TRANSPARENT,ULCANS II,WOOD/DESERT FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.5.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/2.5.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/2.5.jpg"
     }
   },
   {
@@ -97,14 +107,16 @@
       "type": "RS",
       "NSN":"TDB",
       "partDescription": "RADAR SCATTERING, ULCANS I, WOOD / ALPINE-FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.6.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/1.6.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/1.6.jpg"
     },
     "sideB":
     {
       "type": "RT",
       "NSN":"TDB",
       "partDescription": "RADAR TRANSPARENT,ULCANS II, WOOD / ALPINE FULL KIT",
-      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/3.6.png"
+      "imgLink": "assets/imgs/environments/cloth-patterns/us-nsns/shapes/3.6.png",
+      "imgResolution": "assets/imgs/environments/cloth-patterns/us-nsns/low-resolution/3.6.jpg"
     }
   }
 ]
