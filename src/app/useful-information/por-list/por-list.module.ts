@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PorListPageRoutingModule } from './por-list-routing.module';
 
 import { PorListPage } from './por-list.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PorListPageRoutingModule
+    PorListPageRoutingModule,
+    SharedModule
   ],
   declarations: [PorListPage]
 })

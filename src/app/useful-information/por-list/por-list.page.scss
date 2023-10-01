@@ -1,0 +1,28 @@
+@import '../../styles/setup/mixins';
+@import '../../styles/setup/variables';
+
+::ng-deep{
+  .page-container{
+    margin-block-start: 30px;
+  }
+  .select-box{
+    display: flex;
+
+    @include for-bpoint-tablet{
+      flex-direction: column;
+    }
+
+    .select-box-item{
+      .check-mark{
+        display: none;
+      }
+    }
+
+
+
+    .select-box-content.selected{
+      border: none;
+    }
+  }
+
+}

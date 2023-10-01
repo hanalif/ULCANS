@@ -17,7 +17,6 @@ export class EnvironmentsService {
   public environments$: BehaviorSubject<Environment[]> = new BehaviorSubject<Environment[]>([]);
   public PORList$: BehaviorSubject<PORVariant[]> = new BehaviorSubject<PORVariant[]>([]);
   private isClothPatternMenuOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
   public currClothPatterns$: BehaviorSubject<ClothPattern[] | null> = new BehaviorSubject<ClothPattern[] | null>(null);
   public currEnvironmentIdAndSide$: BehaviorSubject<CurrEnvironmentIdAndSide | null> = new BehaviorSubject<CurrEnvironmentIdAndSide | null>(null);
 

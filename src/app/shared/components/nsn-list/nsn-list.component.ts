@@ -14,6 +14,7 @@ export class NsnListComponent implements OnInit {
   @Output() selectedPORIndex = new EventEmitter<number>();
   @Input() porIndexClicked!: number;
 
+
   constructor() { }
 
   ngOnInit() {}
