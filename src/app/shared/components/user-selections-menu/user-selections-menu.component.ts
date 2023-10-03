@@ -201,7 +201,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
     autoTable(doc, {
       bodyStyles: {
-        minCellHeight: 62,
+        minCellHeight: 52,
       },
       html: '.logo-table',
       didDrawCell: (data: any) => {

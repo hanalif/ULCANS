@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "ULCANS_ORG",
+	"appId": "com.fibrotex.ulcans",
+	"appName": "ULCANS_QRG",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

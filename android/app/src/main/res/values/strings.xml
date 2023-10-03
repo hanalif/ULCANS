@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">ULCANS_ORG</string>
-    <string name="title_activity_main">ULCANS_ORG</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">ULCANS_QRG</string>
+    <string name="title_activity_main">ULCANS_QRG</string>
+    <string name="package_name">com.fibrotex.ulcans</string>
+    <string name="custom_url_scheme">com.fibrotex.ulcans</string>
 </resources>
