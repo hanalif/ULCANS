@@ -12,8 +12,6 @@ import { AccordionComponent } from './components/accordion/accordion.component';
 import { AccordionItemComponent } from './components/accordion/accordion-item/accordion-item.component';
 import { UserSelectionsMenuComponent } from './components/user-selections-menu/user-selections-menu.component';
 
-import { File } from '@ionic-native/file/ngx';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ClothPatternsMenuComponent } from './components/cloth-patterns-menu/cloth-patterns-menu.component';
 import { MToFtPipe } from './pipes/m-to-ft.pipe';
@@ -27,6 +25,8 @@ import { SelectBoxComponent } from './components/select-box/select-box.component
 import { SelectBoxItemComponent } from './components/select-box/select-box-item/select-box-item.component';
 import { NsnListComponent } from './components/nsn-list/nsn-list.component';
 import { ExpandImgModalComponent } from './components/nsn-list/expand-img-modal/expand-img-modal.component';
+import { IonicNativePlugin } from '@ionic-native/core';
+
 
 
 @NgModule({
@@ -86,8 +86,6 @@ import { ExpandImgModalComponent } from './components/nsn-list/expand-img-modal/
     FtToMPipe,
     MToFtPipe,
     SqftToSqmPipe,
-    FileOpener,
-    File,
     Swiper
   ]
 })

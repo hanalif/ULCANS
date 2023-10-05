@@ -15,10 +15,33 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ConfigurationsModule, UsefulInformationModule, CamouflageInstructionsModule, SharedModule, BrowserAnimationsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy } ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot({
+      platform: {
+        /** The default `desktop` function returns false for devices with a touchscreen.
+        * This is not always wanted, so this function tests the User Agent instead.
+        **/
+        'desktop': (win) => {
+          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(win.navigator.userAgent);
+          return !isMobile;
+        }
+      },
+    }),
+    AppRoutingModule,
+    ConfigurationsModule,
+    UsefulInformationModule,
+    CamouflageInstructionsModule,
+    SharedModule,
+    BrowserAnimationsModule
+
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
   bootstrap: [AppComponent],
 
 })

@@ -1,22 +1,21 @@
-import {  Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {  Component, OnDestroy, OnInit} from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { AssetForDisplay } from '../../models/asset-for-display';
-import { FtToMPipe } from '../../pipes/ft-to-m.pipe';
 import { UserSelectionService } from '../../services/user-selection.service';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { File } from '@ionic-native/file/ngx';
 import { DatePipe } from '@angular/common';
 import 'jspdf-autotable';
-import autoTable, { Cell, CellHookData } from 'jspdf-autotable';
-import JSPDF, { jsPDF } from 'jspdf';
+import autoTable, { } from 'jspdf-autotable';
+import  { jsPDF } from 'jspdf';
 import { AlertController } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MeasureType } from '../../models/measure-type.enum';
 import { MenuCategoriesService } from '../../services/menu-categories.service';
 import { Router } from '@angular/router';
 import { UserSelections } from '../../models/user-selections.model';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { FileSharer } from '@byteowls/capacitor-filesharer';
 
 
 @Component({
@@ -46,6 +45,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   public measureType: MeasureType = MeasureType.METERS;
   public MeasureType = MeasureType;
   public indexForTablePdf: number = -1;
+  public loadingPdf = false;
 
   isDiabledSubscription!: Subscription;
   isDisabled!: boolean;
@@ -60,15 +60,13 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
 
   constructor(
     private userSelectionService: UserSelectionService,
-    private measurmentsPipe: FtToMPipe,
     public plt: Platform,
-    private file: File,
-    private fileOpener: FileOpener,
     private datePipe: DatePipe,
     private alertController: AlertController,
     private menuCategoriesService: MenuCategoriesService,
     private route: Router,
-    private appConfigService: AppConfigurationService
+    private appConfigService: AppConfigurationService,
+    public platform: Platform
     ) { }
 
   ngOnInit() {
@@ -90,11 +88,6 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     this.isDiabledSubscription = this.userSelectionService.getisDisabled().subscribe(isDisabled=> this.isDisabled = isDisabled);
       this.currUserSelectionSubscription = this.userSelectionService.getCurrUserSelectionValueAsObservable().subscribe(currUserSelection=>{
         this.currUserSelection = currUserSelection;
-        // if(currUserSelection){
-        //   this.userSelectionService.setIsDisabled(true);
-        // }else{
-        //   this.userSelectionService.setIsDisabled(false);
-        // }
       })
   }
 
@@ -485,21 +478,35 @@ if(this.userSelectionForPdf.configuratoin){
     });
 
 
-    if(platform.desktop || platform.mobileWeb){
-      return doc.save("output.pdf",{ returnPromise: true }).then(()=>{
-      })
-    }
+    const pdfDataUriString = doc.output('datauristring');
+    const pdfBase64 = pdfDataUriString.split(',')[1];
+    const fileName = `ulcans-info.pdf`;
+    this.loadingPdf = true;
 
-
-    if(platform.mobile){
-      let blobPdf = new Blob([doc.output('blob')], {type: 'application/pdf'});
-        this.file.writeFile(this.file.dataDirectory, 'output.pdf', blobPdf, {replace: true}).then(fileEntry=>{
-          this.fileOpener.open(this.file.dataDirectory + 'output.pdf', 'application/pdf');
-        })
-    }
+    FileSharer.share({
+      filename: fileName,
+      contentType: "application/pdf",
+      // If you want to save base64:
+      base64Data: pdfBase64,
+    }).then(() => {
+      this.loadingPdf = false;
+    }).catch(error => {
+      this.loadingPdf = false;
+    });
 
     return;
   }
+
+  blobToBase64(blob: Blob): Observable<string> {
+    return new Observable<string>(observer => {
+        const reader = new FileReader();
+        reader.onerror = observer.error;
+        reader.onabort = observer.error;
+        reader.onload = () => observer.next(reader.result as string);
+        reader.onloadend = observer.complete;
+        reader.readAsDataURL(blob);
+    })
+}
 
   checkPlatform(currPlatforms: string[]){
     let isCurrPlatformDesktop: boolean = false;

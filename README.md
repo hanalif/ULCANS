@@ -4,7 +4,7 @@ update android:
 
 ionic build
 ionic cap sync
-change the fields in build.grandle file in android studio: 
+change the fields in build.gradle file in android studio: 
 versionCode 7
 versionName "3.4"
 

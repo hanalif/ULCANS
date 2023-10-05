@@ -91,9 +91,6 @@ export class EnvironmentsAndTypesPage implements OnInit, OnDestroy {
 
     this.isDiabled$ = this.userSelectionsService.getisDisabled();
 
-    this.isDiabled$.subscribe(isDisabled => {
-      console.log(isDisabled);
-    })
   }
 
   tabItemClicked(tabIndex: number){

@@ -349,10 +349,16 @@
                   <ion-icon name="trash-outline"></ion-icon>
                 </button>
                 <button
-                    (click)="onDownloadPdf(i)"
-                    class="icon-btn with-txt">
-                  <span>Generate PDF</span>
-                  <ion-icon name="download-outline"></ion-icon>
+                  [disabled]="loadingPdf"
+                  (click)="onDownloadPdf(i)"
+                  class="icon-btn with-txt">
+                  <ng-container *ngIf="!loadingPdf">
+                    <span>Generate PDF</span>
+                    <ion-icon name="download-outline"></ion-icon>
+                  </ng-container>
+                  <ng-container *ngIf="loadingPdf">
+                    <span>Loading...</span>
+                  </ng-container>
                 </button>
               </div>
             </div>
@@ -717,10 +723,16 @@
                       <ion-icon name="trash-outline"></ion-icon>
                     </button>
                     <button
+                      [disabled]="loadingPdf"
                       (click)="onDownloadPdf(i)"
                       class="icon-btn with-txt">
-                      <span>Generate PDF</span>
-                      <ion-icon name="download-outline"></ion-icon>
+                      <ng-container *ngIf="!loadingPdf">
+                        <span>Generate PDF</span>
+                        <ion-icon name="download-outline"></ion-icon>
+                      </ng-container>
+                      <ng-container *ngIf="loadingPdf">
+                        <span>Loading...</span>
+                      </ng-container>
                     </button>
                   </div>
                 </div>
