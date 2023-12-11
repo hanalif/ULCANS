@@ -12,6 +12,7 @@
   background-position: center;
 
 
+
   .img-slider-banner{
       position: absolute;
       top: 0;
@@ -23,6 +24,7 @@
       gap: 52px;
       background-image:
       linear-gradient(105deg, rgba(1, 37, 52, 0.805) 31%, rgba(72, 164, 203, 0.256) 100%);
+      
 
   }
 }
@@ -30,19 +32,19 @@
 @keyframes animate{
   0%,100%{
       background-image:
-      url('../../../assets/imgs/home/ulcans-5.jpg');
+      url('/assets/imgs/home/ulcans-5.jpg');
   }
   25%{
       background-image:
-      url('../../../assets/imgs/home/ulcans-4.jpg');
+      url('/assets/imgs/home/ulcans-4.jpg');
   }
   50%{
       background-image:
-      url('../../../assets/imgs/home/ulcans-3.jpg');
+      url('/assets/imgs/home/ulcans-3.jpg');
   }
   75%{
       background-image:
-      url('../../../assets/imgs/home/ulcans-2.jpg');
+      url('/assets/imgs/home/ulcans-2.jpg');
   }
 
 }
