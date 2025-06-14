@@ -9,6 +9,13 @@ import { MenuCategoriesService } from 'src/app/shared/services/menu-categories.s
   styleUrls: ['./welcome-txt.component.scss'],
 })
 export class WelcomeTxtComponent implements OnInit {
+  imgs: string[] = 
+  [
+    '../../../assets/imgs/home/ulcans-5.jpg',
+    '../../../assets/imgs/home/ulcans-4.jpg',
+    '../../../assets/imgs/home/ulcans-3.jpg',
+    '../../../assets/imgs/home/ulcans-2.jpg'];
+  
 
   constructor(private menuCategoriesService: MenuCategoriesService) { }
 
