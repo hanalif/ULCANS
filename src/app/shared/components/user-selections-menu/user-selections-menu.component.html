@@ -1085,6 +1085,8 @@
             </tr>
           </tbody>
         </table>
+
+
         <!-- marketing email -->
 
         <table class="marketing-table">
@@ -1101,10 +1103,10 @@
               </td>
               <td style="font-size: 14px; color: blue; text-align: left;">
                 <span *ngIf="appConfigSettings === AppConfigSettings.GLOBAL">
-                  marketing@fibrotex-tech.com.
+                  marketing&#64;fibrotex-tech.com.
                 </span>
                 <span *ngIf="appConfigSettings === AppConfigSettings.USA">
-                  bizdev@fibrotexusa.com.
+                  bizdev&#64;fibrotexusa.com.
                 </span>
              </td>
             <tr>
@@ -1112,6 +1114,55 @@
                 Thank you!
               </td>
               <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--POR patterns table -->
+        <table class="nsn-for-pdf-table">
+          <thead>
+            <tr>
+              <th
+                *ngFor="let tableTitle of PORTitlesForPdf"
+              >
+                {{ tableTitle }}
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let por of nsnsList">
+            <tr>
+              <td>
+                {{por.sideA.patternSortDes}}
+              </td>
+              <td>
+                {{por.sideA.NSN}}
+              </td>
+              <td>
+                {{por.sideA.type}}
+              </td>
+              <td id="imgEl">
+                <img
+                    [src]="por.sideA.imgLink"
+                    alt="configuration-pic"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {{por.sideB.patternSortDes}}
+              </td>
+              <td>
+                {{por.sideB.NSN}}
+              </td>
+              <td>
+                {{por.sideB.type}}
+              </td>
+              <td id="imgEl">
+                  <img
+                    [src]="por.sideB.imgLink"
+                    alt="por-pattern"
+                  />
+              </td>
             </tr>
           </tbody>
         </table>

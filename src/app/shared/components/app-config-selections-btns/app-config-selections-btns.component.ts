@@ -53,14 +53,14 @@ export class AppConfigSelectionsBtnsComponent implements OnInit, OnDestroy {
             this.userSelectionsService.resetUserSelections();
             this.route.navigate(['home'], {queryParams: {isFromAppConfigCmp: true}});
             this.appConfigService.setAppConfig(configVal);
-            return this.assetsService.setAssets(configVal);
+            return this.assetsService.setAssets(configVal, true);
           }
           return of();
         })
       ).subscribe();
     }else{
       this.appConfigService.setAppConfig(configVal);
-      this.assetsService.setAssets(configVal).subscribe();
+      this.assetsService.setAssets(configVal, true).subscribe();
 
     }
   }

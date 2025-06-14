@@ -3,5 +3,6 @@ export interface nsnSide {
   NSN: string,
   partDescription: string,
   imgLink: string,
-  imgResolution: string
+  imgResolution: string,
+  patternShortDes: string
 }

@@ -9,6 +9,7 @@ import { MToFtPipe } from 'src/app/shared/pipes/m-to-ft.pipe';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { AppConfirmationSelections } from 'src/app/app-configurations/app-configurations.enum';
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
+import { appendFile } from 'fs';
 
 
 @Injectable({providedIn: 'root'})
@@ -19,6 +20,7 @@ export class AssetsService {
   private readonly entityType: string = 'assets';
 
   private assets$: BehaviorSubject<Asset[]> = new BehaviorSubject<Asset[]>([]);
+  private allConfigsAssets$: BehaviorSubject<Asset[]> = new BehaviorSubject<Asset[]>([]);
 
   constructor(
     private http: HttpClient,
@@ -175,7 +177,7 @@ export class AssetsService {
 
   getAssetsByAppConfig(assets:Asset[], currConfig: AppConfirmationSelections){
       return assets.filter(asset=>{
-        let assetToReturn = asset.appConfig === currConfig || asset.appConfig === AppConfirmationSelections.NONE;
+        let assetToReturn = asset.appConfig === currConfig;
         return assetToReturn;
       })
   }
@@ -190,20 +192,46 @@ export class AssetsService {
     }
   }
 
-  setAssets(appConfigVal: AppConfirmationSelections){
+  setAllConfigAssets(appConfigVal: AppConfirmationSelections)
+  {
+      return this._getJasonAssets().pipe(map(assetsFromJson=>
+        {
+          console.log("assets from json" +assetsFromJson);
+          let jsonAssets = this.getAssetsByAppConfig(assetsFromJson, AppConfirmationSelections.NONE);
+          console.log("jasonAssets");
+          console.log(jsonAssets);
+           this.allConfigsAssets$.next(jsonAssets as Asset[]);
+        }))
+  }
+
+
+  setAssets(appConfigVal: AppConfirmationSelections, isFromBtn?:Boolean){
     let assets: Asset[];
-    return this.http.get<Asset[]>('assets/assets.json').pipe(map(assetsFromJson=> {
-      assets = this.getAssetsByAppConfig(assetsFromJson, appConfigVal);
-      let assetsFromStorage = this._getAssetsFromLocalStorage() as Asset[];
-      if(assetsFromStorage.length !== 0 ){
-      assetsFromStorage = this.getAssetsByAppConfig(assetsFromStorage ,appConfigVal);
-       assets = [...assets, ...assetsFromStorage as Asset[]];
-      }else{
-        this._saveAssetsToLocalStorage(assets);
-      }
+    console.log("is from btn"+ isFromBtn);
+    return this._getJasonAssets().pipe(map(assetsFromJson=> {
+        if(isFromBtn)
+          {
+            assets = this.getAssetsByAppConfig(assetsFromJson, appConfigVal);
+               this._resetAssets();
+               let allConfigAssetes = this.getAssetsByAppConfig(assetsFromJson, AppConfirmationSelections.NONE);
+               console.log("all config assets"+ allConfigAssetes);
+                assets = [...assets, ...allConfigAssetes as Asset[]];
+                console.log(assets);
+               this._saveAssetsToLocalStorage(assets);
+          }else
+          {
+              assets = this._getAssetsFromLocalStorage() as Asset[];
+          }
       this.assets$.next(assets as Asset[]);
     }));
   }
+
+  _getJasonAssets()
+  {
+    return this.http.get<Asset[]>('assets/assets.json');
+  }
+
+
 }
 
 

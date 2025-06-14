@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">ULCANS_QRG</string>
     <string name="title_activity_main">ULCANS_QRG</string>
-    <string name="package_name">com.fibrotex.ulcans</string>
-    <string name="custom_url_scheme">com.fibrotex.ulcans</string>
+    <string name="package_name">com.fibrotex.ulcans.myapp</string>
+    <string name="custom_url_scheme">com.fibrotex.ulcans.myapp</string>
 </resources>

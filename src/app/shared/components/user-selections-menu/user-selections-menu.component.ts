@@ -16,6 +16,8 @@ import { AppConfirmationSelections } from 'src/app/app-configurations/app-config
 import { AppConfigurationService } from 'src/app/app-configurations/app-configurations.service';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { FileSharer } from '@byteowls/capacitor-filesharer';
+import { EnvironmentsService } from 'src/app/configurations/environments-and-types/services/environments.service';
+import { PORVariant } from 'src/app/configurations/environments-and-types/models/por-variant.model';
 
 
 @Component({
@@ -36,7 +38,10 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   patternsTitles: string[] = ['Side A', 'Pattern',  'Design' ,'Side B', 'Pattern',  'Design' ,' Type' ];
   assetTitles: string[] = ['Name', 'Length', 'Width', 'Height' ];
   wideScreenTitlesPOR: string[] = ['', 'Type', 'NSN', 'Description', 'Pattern'];
-  mobileTitlesPOR: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description']
+  mobileTitlesPOR: string[]= ['SideA', 'NSN' ,'Description','SideB', 'NSN' ,'description'];
+  PORTitlesForPdf: string[] = ['Pattern', 'NSN', 'Type',''];
+
+  nsnsList: PORVariant[] = [];
 
   userSelectionForPdf!: AssetForDisplay;
 
@@ -58,6 +63,9 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
   appConfigSettingsSubscription!: Subscription;
 
 
+
+
+
   constructor(
     private userSelectionService: UserSelectionService,
     public plt: Platform,
@@ -66,10 +74,13 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
     private menuCategoriesService: MenuCategoriesService,
     private route: Router,
     private appConfigService: AppConfigurationService,
-    public platform: Platform
+    public platform: Platform,
+    public environmentsService: EnvironmentsService
     ) { }
 
   ngOnInit() {
+    this.nsnsList = this.environmentsService.getPORListValue();
+
     this.appConfigSettingsSubscription = this.appConfigService.getCurrAppConfigSettings().subscribe(currAppSettings=>{
       this.appConfigSettings = currAppSettings;
       this.date = this.transformDate(new Date);
@@ -89,6 +100,7 @@ export class UserSelectionsMenuComponent implements OnInit, OnDestroy {
       this.currUserSelectionSubscription = this.userSelectionService.getCurrUserSelectionValueAsObservable().subscribe(currUserSelection=>{
         this.currUserSelection = currUserSelection;
       })
+
   }
 
   transformDate(date: Date) {
@@ -442,7 +454,7 @@ if(this.userSelectionForPdf.configuratoin){
     autoTable(doc, {
       useCss: true,
       html: '.marketing-table',
-      tableWidth: this.appConfigSettings === this.AppConfigSettings.GLOBAL? 413 : 393,
+      tableWidth: this.appConfigSettings === this.AppConfigSettings.GLOBAL? 413 : 416,
       theme: 'plain',
     });
 
@@ -451,9 +463,7 @@ if(this.userSelectionForPdf.configuratoin){
       ? pageSize.height
       : pageSize.getHeight();
 
-    autoTable(doc, {
-
-
+      autoTable(doc, {
       body: [
         [
           {
@@ -476,6 +486,61 @@ if(this.userSelectionForPdf.configuratoin){
       ],
       theme: "plain"
     });
+
+      // NSN List for USA prod
+
+    if(this.appConfigSettings == this.AppConfigSettings.USA)
+      {
+        doc.addPage();
+
+// הוספת כותרת למעלה
+autoTable(doc, {
+  startY: 40,
+  body: [
+    [
+      {
+        content: 'ULCANS NSNs',
+        styles: {
+          halign: 'center',
+          fontSize: 14,
+          fontStyle: 'bold'
+        }
+      }
+    ]
+  ],
+  theme: 'plain'
+});
+
+   autoTable(doc, {
+        startY: (doc as any).lastAutoTable.finalY + 3,
+        html: '.nsn-for-pdf-table',
+        headStyles:{
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 30,
+          minCellWidth: 70
+        },
+        bodyStyles: {
+          valign: 'middle',
+          halign: 'center',
+          minCellHeight: 55,
+          minCellWidth: 70,
+        },
+
+        didDrawCell: (data: any) => {
+          var cellId = data.cell.raw.id;
+          if( cellId === 'imgEl'){
+            var td = data.cell.raw;
+            var img = td.getElementsByTagName('img')[0];
+            doc.addImage(img.src, 'JPEG',data.cell.x,  data.cell.y, data.cell.contentWidth + 55, data.cell.contentHeight, '', 'FAST' );
+          }
+        },
+        theme: 'striped'
+      });
+
+      }
+
+
 
 
     const pdfDataUriString = doc.output('datauristring');

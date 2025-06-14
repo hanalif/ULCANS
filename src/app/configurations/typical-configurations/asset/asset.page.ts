@@ -28,7 +28,6 @@ export class AssetPage implements OnInit,OnDestroy {
   constructor(
     private router: ActivatedRoute,
     private route: Router,
-    private userSelectionsService: UserSelectionService,
     private assetsService: AssetsService,
     private appConfigService: AppConfigurationService
     ) { }
